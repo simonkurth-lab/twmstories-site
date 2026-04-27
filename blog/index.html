@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stories & Guides | TWM Stories — Central Coast Photography Blog</title>
+  <meta name="description" content="Senior portrait tips, memory film guides, and Central Coast photography stories from TWM Stories — based in Arroyo Grande, CA.">
+  <link rel="canonical" href="https://www.twmstories.com/blog/">
+  <link rel="icon" type="image/png" href="../assets/logo.png">
+  <meta property="og:title" content="Stories & Guides | TWM Stories">
+  <meta property="og:description" content="Senior portrait tips, memory film guides, and Central Coast photography stories.">
+  <meta property="og:url" content="https://www.twmstories.com/blog/">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=zodiak@400,500,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #141210;
+      --surface: #1c1a17;
+      --border: rgba(200,169,106,0.15);
+      --gold: #C8A96A;
+      --gold-faint: rgba(200,169,106,0.08);
+      --text: #F2EDE4;
+      --text-muted: rgba(242,237,228,0.6);
+      --text-faint: rgba(242,237,228,0.35);
+      --font-display: 'Zodiak', Georgia, serif;
+      --font-body: 'Satoshi', system-ui, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(20,18,16,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+    }
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .logo img {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: contain;
+    }
+    .logo-text {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .logo-sub {
+      font-size: 0.7rem;
+      color: var(--text-faint);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .back-link {
+      font-size: 0.8rem;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    .back-link:hover { opacity: 1; }
+
+    /* Hero */
+    .blog-hero {
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .blog-hero .label {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+    .blog-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--text);
+      max-width: 700px;
+      margin: 0 auto 1.25rem;
+    }
+    .blog-hero p {
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto;
+      font-size: 1rem;
+    }
+
+    /* Posts grid */
+    .posts-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    .post-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .post-card:hover {
+      border-color: rgba(200,169,106,0.4);
+      transform: translateY(-2px);
+    }
+    .post-card-body {
+      padding: 1.75rem;
+    }
+    .post-meta {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 0.875rem;
+    }
+    .post-category {
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .post-date {
+      font-size: 0.72rem;
+      color: var(--text-faint);
+    }
+    .post-card h2 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 400;
+      line-height: 1.3;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+    .post-card p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+    .post-link {
+      font-size: 0.8rem;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+    }
+
+    /* Footer */
+    .blog-footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .blog-footer p {
+      font-size: 0.8rem;
+      color: var(--text-faint);
+    }
+    .blog-footer a {
+      color: var(--gold);
+      opacity: 0.8;
+    }
+
+    @media (max-width: 600px) {
+      .blog-hero { padding: 3rem 1.25rem 2.5rem; }
+      .posts-section { padding: 2.5rem 1.25rem; }
+      .posts-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="logo">
+        <img src="../assets/logo.png" alt="TWM Stories logo">
+        <div>
+          <div class="logo-text">TWM Stories</div>
+          <div class="logo-sub">Ngā Kōrero Ora</div>
+        </div>
+      </a>
+      <a href="/" class="back-link">← Back to site</a>
+    </div>
+  </header>
+
+  <section class="blog-hero">
+    <p class="label">Stories & Guides</p>
+    <h1>From the Central Coast</h1>
+    <p>Senior portrait guides, memory film stories, and photography tips for families in Arroyo Grande, San Luis Obispo, Pismo Beach, and the 805.</p>
+  </section>
+
+  <section class="posts-section">
+    <div class="posts-grid">
+
+      <a href="/blog/what-is-a-senior-memory-film.html" class="post-card">
+        <div class="post-card-body">
+          <div class="post-meta">
+            <span class="post-category">Senior Experience</span>
+            <span class="post-date">April 2026</span>
+          </div>
+          <h2>What Is a Senior Memory Film — and Why Central Coast Families Are Choosing It</h2>
+          <p>There's a moment between the last day of high school and the first morning of whatever comes next when everything your senior has been becomes everything they were. A Senior Memory Film exists to catch that moment.</p>
+          <span class="post-link">Read the story →</span>
+        </div>
+      </a>
+
+      <!-- Future posts will be added here -->
+
+    </div>
+  </section>
+
+  <footer class="blog-footer">
+    <p>TWM Stories · Arroyo Grande, CA · <a href="/">twmstories.com</a></p>
+    <p style="margin-top:0.5rem;">Ngā Kōrero Ora — Living Stories</p>
+  </footer>
+
+</body>
+</html>
