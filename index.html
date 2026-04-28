@@ -1561,38 +1561,40 @@
     <div id="page-fridaynight" class="page" style="display:none;">
 
       <style>
-        /* ── Friday Night Stories: scoped additions ── */
-        /* Uses existing site tokens from style.css — no new variables needed */
+        /* ── Friday Night Stories: scoped overrides (apply only inside #page-fridaynight) ── */
+        #page-fridaynight {
+          background: #0D1B2A;
+          color: #F2EDE4;
+        }
 
-        /* Dark hero locked to dark palette regardless of theme */
-        .fns-hero {
-          background: #111009;
-          padding: clamp(5rem, 12vw, 9rem) var(--space-4) clamp(4rem, 8vw, 6rem);
-          position: relative;
-          overflow: hidden;
+        /* Section wrappers */
+        #page-fridaynight .fns-section {
+          padding: clamp(4rem, 8vw, 7rem) var(--space-4);
         }
-        .fns-hero::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background:
-            radial-gradient(ellipse at 15% 70%, rgba(200,169,106,0.08) 0%, transparent 55%),
-            radial-gradient(ellipse at 85% 15%, rgba(200,169,106,0.05) 0%, transparent 50%);
-          pointer-events: none;
+        #page-fridaynight .fns-section--alt {
+          background: #1A2D42;
         }
-        .fns-hero-inner {
+        #page-fridaynight .fns-inner {
           max-width: var(--content-default);
           margin: 0 auto;
-          position: relative;
         }
-        .fns-hero-eyebrow {
+        #page-fridaynight .fns-inner--narrow {
+          max-width: 680px;
+          margin: 0 auto;
+        }
+
+        /* Masthead hero */
+        #page-fridaynight .fns-masthead {
+          padding: clamp(6rem, 14vw, 10rem) var(--space-4) clamp(5rem, 10vw, 8rem);
+        }
+        #page-fridaynight .fns-eyebrow {
           font-size: var(--text-xs);
           letter-spacing: 0.2em;
           text-transform: uppercase;
           color: #C8A96A;
           margin-bottom: var(--space-4);
         }
-        .fns-hero h1 {
+        #page-fridaynight .fns-masthead h1 {
           font-family: var(--font-display);
           font-size: clamp(3rem, 8vw, 6.5rem);
           font-weight: 700;
@@ -1601,532 +1603,293 @@
           color: #F2EDE4;
           margin-bottom: var(--space-5);
         }
-        .fns-hero h1 em {
-          font-style: italic;
-          color: #C8A96A;
-        }
-        .fns-hero-sub {
-          font-size: var(--text-base);
-          color: rgba(242,237,228,0.65);
-          max-width: 52ch;
-          line-height: 1.75;
-          margin-bottom: var(--space-8);
-        }
-        .fns-hero-buttons {
-          display: flex;
-          gap: var(--space-3);
-          flex-wrap: wrap;
-        }
-        .fns-btn-primary {
-          display: inline-flex;
-          align-items: center;
-          gap: var(--space-2);
-          background: #C8A96A;
-          color: #111009;
-          padding: var(--space-3) var(--space-6);
-          border-radius: 3px;
-          font-size: var(--text-sm);
-          font-weight: 600;
-          letter-spacing: 0.04em;
-          text-decoration: none;
-          border: none;
-          cursor: pointer;
-          transition: background 0.2s;
-        }
-        .fns-btn-primary:hover { background: #dfc07a; color: #111009; }
-        .fns-btn-outline {
-          display: inline-flex;
-          align-items: center;
-          gap: var(--space-2);
-          background: transparent;
-          color: #C8A96A;
-          padding: var(--space-3) var(--space-6);
-          border-radius: 3px;
-          font-size: var(--text-sm);
-          font-weight: 500;
-          letter-spacing: 0.04em;
-          text-decoration: none;
-          border: 1.5px solid rgba(200,169,106,0.5);
-          cursor: pointer;
-          transition: border-color 0.2s, color 0.2s;
-        }
-        .fns-btn-outline:hover { border-color: #C8A96A; color: #dfc07a; }
-
-        /* Team Coverage includes list */
-        .fns-includes {
-          list-style: none;
-          padding: 0;
-          margin: var(--space-6) 0;
-          display: grid;
-          gap: var(--space-3);
-        }
-        .fns-includes li {
-          display: flex;
-          gap: var(--space-3);
-          align-items: baseline;
-          font-size: var(--text-base);
-          color: var(--color-text-muted);
-          line-height: 1.6;
-        }
-        .fns-includes li::before {
-          content: '—';
-          color: var(--color-primary);
-          flex-shrink: 0;
-          font-weight: 600;
-        }
-        .fns-note {
-          font-size: var(--text-sm);
-          color: var(--color-text-faint);
-          font-style: italic;
-          line-height: 1.65;
-          margin-top: var(--space-2);
+        #page-fridaynight .fns-masthead-sub {
+          font-size: var(--text-lg);
+          color: rgba(242,237,228,0.7);
+          max-width: 56ch;
+          line-height: 1.7;
         }
 
-        /* Package grid (2 cards) */
-        .fns-pkg-grid {
+        /* What This Is */
+        #page-fridaynight .fns-editorial-headline {
+          font-family: var(--font-display);
+          font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+          font-weight: 400;
+          color: #F2EDE4;
+          line-height: 1.2;
+          margin-bottom: var(--space-5);
+          max-width: 40ch;
+        }
+        #page-fridaynight .fns-editorial-body {
+          font-size: var(--text-base);
+          color: rgba(242,237,228,0.7);
+          line-height: 1.8;
+          max-width: 60ch;
+        }
+
+        /* Editorial departments grid */
+        #page-fridaynight .fns-dept-grid {
           display: grid;
           gap: var(--space-5);
           margin-top: var(--space-8);
+          grid-template-columns: 1fr 1fr;
         }
-        @media (min-width: 600px) {
-          .fns-pkg-grid { grid-template-columns: 1fr 1fr; }
+        @media (min-width: 768px) {
+          #page-fridaynight .fns-dept-grid {
+            grid-template-columns: repeat(3, 1fr);
+          }
         }
-        .fns-pkg-card {
-          padding: var(--space-6);
-          background: var(--color-surface);
-          border: 1px solid var(--color-border);
-          border-radius: var(--radius-lg);
-          display: flex;
-          flex-direction: column;
-          gap: var(--space-2);
-          position: relative;
-        }
-        .fns-pkg-card--featured {
-          border-color: var(--color-primary);
-          border-width: 2px;
-        }
-        .fns-pkg-badge {
-          position: absolute;
-          top: calc(-1 * var(--space-3));
-          left: var(--space-4);
-          background: var(--color-primary);
-          color: #FAF8F5;
+        #page-fridaynight .fns-dept-label {
           font-size: var(--text-xs);
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
+          color: #C8A96A;
           font-weight: 600;
-          padding: var(--space-1) var(--space-3);
-          border-radius: var(--radius-full);
-          letter-spacing: 0.05em;
+          margin-bottom: var(--space-2);
         }
-        .fns-pkg-name {
-          font-family: var(--font-display);
-          font-size: var(--text-lg);
-          font-weight: 400;
-          color: var(--color-text);
-        }
-        .fns-pkg-price {
-          font-family: var(--font-display);
-          font-size: var(--text-xl);
-          color: var(--color-primary);
-          font-weight: 500;
-        }
-        .fns-pkg-desc {
+        #page-fridaynight .fns-dept-desc {
           font-size: var(--text-sm);
-          color: var(--color-text-muted);
+          color: rgba(242,237,228,0.6);
           line-height: 1.6;
         }
-        .fns-pkg-included {
-          font-size: var(--text-xs);
-          color: var(--color-primary);
-          font-weight: 600;
-          letter-spacing: 0.05em;
-          text-transform: uppercase;
-          margin-top: auto;
-          padding-top: var(--space-3);
-          border-top: 1px solid var(--color-border);
-        }
 
-        /* Post card grid */
-        .fns-post-grid {
+        /* Latest stories grid */
+        #page-fridaynight .fns-stories-headline {
+          font-family: var(--font-display);
+          font-size: clamp(1.75rem, 4vw, 2.75rem);
+          font-weight: 400;
+          color: #F2EDE4;
+          margin-bottom: 0;
+        }
+        #page-fridaynight .fns-stories-grid {
           display: grid;
           gap: var(--space-6);
           margin-top: var(--space-8);
         }
         @media (min-width: 640px) {
-          .fns-post-grid { grid-template-columns: repeat(2, 1fr); }
+          #page-fridaynight .fns-stories-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (min-width: 1000px) {
-          .fns-post-grid { grid-template-columns: repeat(3, 1fr); }
+          #page-fridaynight .fns-stories-grid { grid-template-columns: repeat(3, 1fr); }
         }
-        .fns-post-card {
-          display: block;
-          text-decoration: none;
-          background: var(--color-surface);
-          border: 1px solid var(--color-border);
-          border-radius: var(--radius-lg);
-          overflow: hidden;
-          transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+        #page-fridaynight .fns-story-card {
+          display: flex;
+          flex-direction: column;
         }
-        .fns-post-card:hover {
-          border-color: var(--color-primary);
-          transform: translateY(-3px);
-          box-shadow: var(--shadow-md);
-        }
-        .fns-post-card--featured {
-          border-color: var(--color-primary);
-          border-width: 2px;
-        }
-        @media (min-width: 1000px) {
-          .fns-post-card--featured {
-            grid-column: span 1;
-          }
-        }
-        .fns-post-img {
+        #page-fridaynight .fns-story-img {
           width: 100%;
-          aspect-ratio: 16/9;
-          object-fit: cover;
+          aspect-ratio: 16 / 9;
+          background: #0D1B2A;
+          border: 1px solid rgba(200,169,106,0.25);
+          border-radius: var(--radius-lg) var(--radius-lg) 0 0;
           display: block;
-          transition: transform 0.5s ease;
+          flex-shrink: 0;
         }
-        .fns-post-card:hover .fns-post-img { transform: scale(1.03); }
-        .fns-post-img-wrap {
-          overflow: hidden;
-        }
-        .fns-post-body {
-          padding: var(--space-5) var(--space-5) var(--space-6);
+        #page-fridaynight .fns-story-body {
+          padding: var(--space-4) var(--space-4) var(--space-5);
+          border: 1px solid rgba(200,169,106,0.25);
+          border-top: none;
+          border-radius: 0 0 var(--radius-lg) var(--radius-lg);
           display: flex;
           flex-direction: column;
           gap: var(--space-2);
+          flex: 1;
         }
-        .fns-post-tag {
+        #page-fridaynight .fns-story-dept {
           font-size: var(--text-xs);
           letter-spacing: 0.15em;
           text-transform: uppercase;
-          color: var(--color-primary);
+          color: #C8A96A;
           font-weight: 600;
         }
-        .fns-post-title {
+        #page-fridaynight .fns-story-title {
           font-family: var(--font-display);
           font-size: var(--text-lg);
           font-weight: 400;
-          color: var(--color-text);
+          color: #F2EDE4;
           line-height: 1.25;
         }
-        .fns-post-excerpt {
+        #page-fridaynight .fns-story-desc {
           font-size: var(--text-sm);
-          color: var(--color-text-muted);
+          color: rgba(242,237,228,0.6);
           line-height: 1.65;
+          flex: 1;
         }
-        .fns-post-read {
-          margin-top: var(--space-2);
+        #page-fridaynight .fns-story-link {
           font-size: var(--text-sm);
           font-weight: 600;
-          color: var(--color-primary);
+          color: #C8A96A;
+          text-decoration: none;
+          margin-top: var(--space-2);
           letter-spacing: 0.04em;
         }
-        .fns-post-card:hover .fns-post-read::after {
-          content: ' →';
-        }
-        /* Placeholder card (coming soon) */
-        .fns-post-card--placeholder {
-          opacity: 0.55;
-          pointer-events: none;
-        }
-        .fns-post-img-placeholder {
-          width: 100%;
-          aspect-ratio: 16/9;
-          background: var(--color-surface-2);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: var(--text-xs);
-          letter-spacing: 0.15em;
-          text-transform: uppercase;
-          color: var(--color-text-faint);
-        }
+        #page-fridaynight .fns-story-link:hover { color: #dfc07a; }
 
-        /* Video embed */
-        .fns-video-wrap {
-          width: 100%;
-          max-width: 860px;
-          margin: var(--space-8) auto 0;
-          border-radius: var(--radius-lg);
-          overflow: hidden;
-          box-shadow: var(--shadow-lg);
-          background: var(--color-surface-2);
-          aspect-ratio: 16/9;
-        }
-        .fns-video-wrap iframe {
-          width: 100%;
-          height: 100%;
-          display: block;
-          border: none;
-        }
-        .fns-video-placeholder {
-          width: 100%;
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: var(--space-2);
-          color: var(--color-text-faint);
-          font-size: var(--text-sm);
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-        }
-
-        /* Final CTA — dark locked */
-        .fns-cta-final {
-          background: #111009;
-          padding: clamp(4rem, 8vw, 7rem) var(--space-4);
+        /* Continue the Story */
+        #page-fridaynight .fns-continue {
+          background: #1A2D42;
+          padding: clamp(4rem, 8vw, 6rem) var(--space-4);
           text-align: center;
         }
-        .fns-cta-final-inner {
-          max-width: 600px;
-          margin: 0 auto;
+        #page-fridaynight .fns-continue-rule {
+          width: 48px;
+          height: 1px;
+          background: #C8A96A;
+          margin: 0 auto var(--space-6);
+          border: none;
         }
-        .fns-cta-eyebrow {
-          font-size: var(--text-xs);
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          color: #C8A96A;
-          margin-bottom: var(--space-4);
-        }
-        .fns-cta-final h2 {
+        #page-fridaynight .fns-continue-quote {
           font-family: var(--font-display);
-          font-size: clamp(2rem, 5vw, 3.5rem);
-          font-weight: 700;
-          color: #F2EDE4;
-          line-height: 1.1;
-          margin-bottom: var(--space-4);
+          font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+          font-weight: 400;
+          font-style: italic;
+          color: rgba(242,237,228,0.85);
+          line-height: 1.5;
+          max-width: 44ch;
+          margin: 0 auto var(--space-6);
         }
-        .fns-cta-final p {
-          font-size: var(--text-base);
-          color: rgba(242,237,228,0.55);
-          line-height: 1.7;
-          margin-bottom: var(--space-8);
-        }
-        .fns-cta-buttons {
-          display: flex;
-          gap: var(--space-3);
-          justify-content: center;
-          flex-wrap: wrap;
-        }
-
-        /* Coverage / split layout */
-        .fns-coverage-split {
-          display: grid;
-          gap: var(--space-10);
-          align-items: start;
-        }
-        @media (min-width: 768px) {
-          .fns-coverage-split { grid-template-columns: 1fr 1fr; }
-        }
-        .fns-price-display {
-          display: flex;
-          align-items: baseline;
-          gap: var(--space-2);
-          margin-bottom: var(--space-5);
-        }
-        .fns-price-amount {
-          font-family: var(--font-display);
-          font-size: var(--text-3xl);
-          color: var(--color-primary);
-          font-weight: 500;
-          line-height: 1;
-        }
-        .fns-price-unit {
+        #page-fridaynight .fns-continue-link {
           font-size: var(--text-sm);
-          color: var(--color-text-faint);
+          font-weight: 600;
+          color: #C8A96A;
+          text-decoration: none;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+        }
+        #page-fridaynight .fns-continue-link:hover { color: #dfc07a; }
+
+        /* Page footer note */
+        #page-fridaynight .fns-page-footer {
+          padding: var(--space-8) var(--space-4) var(--space-10);
+          text-align: center;
+        }
+        #page-fridaynight .fns-page-footer p {
+          font-size: var(--text-xs);
+          color: rgba(242,237,228,0.35);
+          line-height: 1.8;
           letter-spacing: 0.03em;
+          margin: 0;
         }
       </style>
 
 
       <!-- ══════════════════════════════════════════
-           SECTION 1 · HERO
+           SECTION 1 · MASTHEAD HERO
       ══════════════════════════════════════════ -->
-      <section class="fns-hero">
-        <div class="fns-hero-inner">
-          <p class="fns-hero-eyebrow">TWM Stories · Season Coverage</p>
-          <h1>Friday <em>Night</em><br>Stories</h1>
-          <p class="fns-hero-sub">Season-long football storytelling built around the moments that happen under the lights. Launching for the 2026 season — get on the list before spots fill.</p>
-          <div class="fns-hero-buttons">
-            <a href="https://tawhaowhaostories.pixieset.com/contact-form/cf_jNb7w8oNx4QgmgWjgDRYIBH5w6YO"
-               target="_blank" rel="noopener noreferrer"
-               class="fns-btn-primary">Coming Soon — Join the Interest List →</a>
-          </div>
+      <section class="fns-masthead">
+        <div class="fns-inner">
+          <p class="fns-eyebrow">TWM Stories Presents</p>
+          <h1>Friday Night Stories</h1>
+          <p class="fns-masthead-sub">A season-long editorial project covering Central Coast high school football — the atmosphere, the emotion, the moments that define a season.</p>
         </div>
       </section>
 
 
       <!-- ══════════════════════════════════════════
-           SECTION 2 · TEAM COVERAGE OFFER
+           SECTION 2 · WHAT THIS IS
       ══════════════════════════════════════════ -->
-      <section class="section">
-        <div class="section-inner">
-          <div class="fns-coverage-split">
+      <section class="fns-section">
+        <div class="fns-inner--narrow">
+          <h2 class="fns-editorial-headline">This is not a photography portfolio. This is a publication.</h2>
+          <p class="fns-editorial-body">Friday Night Stories covers high school football the way a magazine would — photo essays, player features, film room breakdowns, and stories about what it actually feels like to play under the lights on a Friday night. Published throughout the season. Free to read.</p>
+        </div>
+      </section>
 
+
+      <!-- ══════════════════════════════════════════
+           SECTION 3 · EDITORIAL DEPARTMENTS
+      ══════════════════════════════════════════ -->
+      <section class="fns-section fns-section--alt">
+        <div class="fns-inner">
+          <div class="fns-dept-grid">
             <div>
-              <p class="section-label">Coming 2026 Season</p>
-              <h2 class="section-title">Team Coverage</h2>
-              <div class="fns-price-display">
-                <span class="fns-price-amount">$100</span>
-                <span class="fns-price-unit">/ player · per season</span>
-              </div>
-              <p style="font-size:var(--text-sm);color:var(--color-text-faint);margin-bottom:var(--space-5);">Pricing and availability confirmed closer to the season — get on the interest list now.</p>
-              <a href="https://tawhaowhaostories.pixieset.com/contact-form/cf_jNb7w8oNx4QgmgWjgDRYIBH5w6YO"
-                 target="_blank" rel="noopener noreferrer"
-                 class="hero-cta" style="display:inline-flex;background:transparent;border:1.5px solid var(--color-primary);color:var(--color-primary);">Coming Soon — Join the Interest List →</a>
+              <p class="fns-dept-label">Cover Stories</p>
+              <p class="fns-dept-desc">Feature narratives from the season</p>
             </div>
-
             <div>
-              <ul class="fns-includes">
-                <li>Home game photo coverage throughout the season</li>
-                <li>Weekly online galleries from covered games</li>
-                <li>Weekly highlight video deliverables</li>
-                <li>Select player features shared through TWM Stories</li>
-                <li>Access to this season's football story content hub</li>
-                <li>Priority option to upgrade into a Senior Memory Experience</li>
-                <li>Potential travel to select away games when schedule, access, and availability allow</li>
-              </ul>
-              <p class="fns-note">This is story-driven season coverage, not individual recruiting-film coverage. Home games are the core of this offer. Select away game coverage may be possible depending on schedule, access, and availability.</p>
+              <p class="fns-dept-label">Photo Essays</p>
+              <p class="fns-dept-desc">Sequences that tell the story without words</p>
             </div>
-
+            <div>
+              <p class="fns-dept-label">Player Features</p>
+              <p class="fns-dept-desc">Profiles of athletes worth knowing</p>
+            </div>
+            <div>
+              <p class="fns-dept-label">Film Room</p>
+              <p class="fns-dept-desc">Short cinematic highlight films</p>
+            </div>
+            <div>
+              <p class="fns-dept-label">From the Stands</p>
+              <p class="fns-dept-desc">The atmosphere, the families, the community</p>
+            </div>
           </div>
         </div>
       </section>
 
 
       <!-- ══════════════════════════════════════════
-           SECTION 3 · SENIOR PACKAGE INTEGRATION
+           SECTION 4 · LATEST STORIES
       ══════════════════════════════════════════ -->
-      <section class="section section--alt">
-        <div class="section-inner">
-          <p class="section-label">Senior Players · Coming 2026</p>
-          <h2 class="section-title">Team Coverage included with Senior Memory Experiences</h2>
-          <p class="section-subtitle">For senior football players, Team Coverage is woven into the season alongside your portrait session and memory film — at no extra cost.</p>
+      <section class="fns-section">
+        <div class="fns-inner">
+          <h2 class="fns-stories-headline">Latest Stories</h2>
+          <div class="fns-stories-grid">
 
-          <div class="fns-pkg-grid">
-
-            <!-- Foundation package -->
-            <div class="fns-pkg-card">
-              <div class="fns-pkg-name">Foundation Memory Experience</div>
-              <div class="fns-pkg-price">$500</div>
-              <div class="fns-pkg-desc">Senior portraits + short memory film. A complete record of this season, told in stills and motion.</div>
-              <div class="fns-pkg-included">✓ Team Coverage Included</div>
-              <a href="https://tawhaowhaostories.pixieset.com/booking/Foundation"
-                 target="_blank" rel="noopener noreferrer"
-                 class="hero-cta" style="display:inline-flex;margin-top:var(--space-4);">Book Foundation →</a>
-            </div>
-
-            <!-- Signature package -->
-            <div class="fns-pkg-card fns-pkg-card--featured">
-              <span class="fns-pkg-badge">Most Popular</span>
-              <div class="fns-pkg-name">Signature Memory Experience</div>
-              <div class="fns-pkg-price">$700</div>
-              <div class="fns-pkg-desc">Expanded senior story, cinematic film, and memory book. Childhood photos woven in. The full version of this season.</div>
-              <div class="fns-pkg-included">✓ Team Coverage Included</div>
-              <a href="https://tawhaowhaostories.pixieset.com/booking/signature"
-                 target="_blank" rel="noopener noreferrer"
-                 class="hero-cta" style="display:inline-flex;margin-top:var(--space-4);">Book Signature →</a>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-
-      <!-- ══════════════════════════════════════════
-           SECTION 4 · STORIES / POST FEED
-           To add a new post: duplicate one of the
-           .fns-post-card blocks below and update
-           the href, image src, tag, title, and excerpt.
-           Remove fns-post-card--placeholder when live.
-      ══════════════════════════════════════════ -->
-      <section class="section">
-        <div class="section-inner">
-          <p class="section-label">From the Field</p>
-          <h2 class="section-title">Stories</h2>
-          <p class="section-subtitle">More stories coming this season. Here's what the work looks like.</p>
-
-          <div class="fns-post-grid">
-
-            <!-- ── LIVE POST: The Kick ─────────────────────
-                 Do not modify the original post file.
-                 Only update this card if the URL changes.
-            ─────────────────────────────────────────────── -->
-            <a href="/friday-night-stories/the-kick/"
-               class="fns-post-card fns-post-card--featured">
-              <div class="fns-post-img-wrap">
-                <!-- REPLACE src if you get a better game photo for this card -->
-                <img src="https://twmstories.com/assets/sports-football.jpg"
-                     alt="CIF Playoff football — Arroyo Grande vs Bakersfield High"
-                     class="fns-post-img" loading="lazy" decoding="async">
+            <div class="fns-story-card">
+              <div class="fns-story-img"></div>
+              <div class="fns-story-body">
+                <span class="fns-story-dept">Cover Story</span>
+                <h3 class="fns-story-title">The Last Home Game</h3>
+                <p class="fns-story-desc">What it means when the season is almost over and everything is on the line.</p>
+                <a href="#" class="fns-story-link">Read Story →</a>
               </div>
-              <div class="fns-post-body">
-                <span class="fns-post-tag">Game Coverage · CIF Playoffs</span>
-                <h3 class="fns-post-title">The Kick</h3>
-                <p class="fns-post-excerpt">Arroyo Grande vs. Bakersfield High. CIF playoffs. Extra time. I drove two hours to stand in that end zone — and I will never forget what I saw.</p>
-                <span class="fns-post-read">Read the story</span>
-              </div>
-            </a>
-
-
-          </div><!-- /fns-post-grid -->
-        </div>
-      </section>
-
-
-      <!-- ══════════════════════════════════════════
-           SECTION 5 · FEATURED VIDEO EMBED
-           Replace the placeholder div with an iframe
-           when you have a highlight film ready.
-
-           Bunny.net example:
-           <iframe src="https://iframe.mediadelivery.net/embed/YOUR-LIBRARY-ID/YOUR-VIDEO-ID?autoplay=false&loop=false&muted=false&preload=true"
-                   loading="lazy" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
-                   allowfullscreen></iframe>
-
-           Instagram Reel example (use aspect-ratio: 9/16 on .fns-video-wrap):
-           <iframe src="https://www.instagram.com/reel/YOUR-REEL-ID/embed"
-                   scrolling="no" allowtransparency="true" allowfullscreen></iframe>
-      ══════════════════════════════════════════ -->
-      <section class="section section--alt">
-        <div class="section-inner" style="text-align:center;">
-          <p class="section-label">This Season</p>
-          <h2 class="section-title">Weekly Highlight Films</h2>
-          <p class="section-subtitle" style="margin-inline:auto;">Short films delivered throughout the season — edited to music that fits the team, built around the moments that mattered.</p>
-
-          <div class="fns-video-wrap">
-            <!-- REPLACE this div with an <iframe> embed when your first film is ready -->
-            <div class="fns-video-placeholder">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
-              <span>First highlight film coming soon</span>
             </div>
-          </div>
 
+            <div class="fns-story-card">
+              <div class="fns-story-img"></div>
+              <div class="fns-story-body">
+                <span class="fns-story-dept">Photo Essay</span>
+                <h3 class="fns-story-title">Under the Lights</h3>
+                <p class="fns-story-desc">A sequence of moments from opening night that words could not capture.</p>
+                <a href="#" class="fns-story-link">Read Story →</a>
+              </div>
+            </div>
+
+            <div class="fns-story-card">
+              <div class="fns-story-img"></div>
+              <div class="fns-story-body">
+                <span class="fns-story-dept">Player Feature</span>
+                <h3 class="fns-story-title">Beyond the Roster</h3>
+                <p class="fns-story-desc">One athlete. One season. One story worth telling.</p>
+                <a href="#" class="fns-story-link">Read Story →</a>
+              </div>
+            </div>
+
+          </div>
         </div>
       </section>
 
 
       <!-- ══════════════════════════════════════════
-           SECTION 6 · FINAL CTA
+           SECTION 5 · CONTINUE THE STORY
       ══════════════════════════════════════════ -->
-      <section class="fns-cta-final">
-        <div class="fns-cta-final-inner">
-          <p class="fns-cta-eyebrow">Pilot Season · One School · Limited Availability</p>
-          <h2>Want your player included this season?</h2>
-          <p>Real moments. Story-driven coverage. A living content hub your family can follow all season long — and keep long after it's over.</p>
-          <div class="fns-cta-buttons">
-            <a href="https://tawhaowhaostories.pixieset.com/contact-form/cf_jNb7w8oNx4QgmgWjgDRYIBH5w6YO"
-               target="_blank" rel="noopener noreferrer"
-               class="fns-btn-primary">Coming Soon — Join the Interest List →</a>
-          </div>
-        </div>
-      </section>
+      <div class="fns-continue">
+        <hr class="fns-continue-rule">
+        <p class="fns-continue-quote">"Every season has a last game. Every senior has a story worth telling beyond it."</p>
+        <a href="#" onclick="showPage('seniors'); return false;" class="fns-continue-link">Continue the Story →</a>
+      </div>
+
+
+      <!-- ══════════════════════════════════════════
+           SECTION 6 · PAGE FOOTER NOTE
+      ══════════════════════════════════════════ -->
+      <div class="fns-page-footer">
+        <p>Friday Night Stories is a free editorial project by TWM Stories — Arroyo Grande, CA</p>
+        <p>Ngā Kōrero Ora — Living Stories</p>
+      </div>
 
     </div><!-- /#page-fridaynight -->
+
 
     <!-- ===== END FRIDAY NIGHT STORIES ===== -->
 
