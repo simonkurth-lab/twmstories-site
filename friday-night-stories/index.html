@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Friday Night Stories | TWM Stories</title>
+  <meta name="description" content="Stories from the sideline. Football, families, seniors, and the moments that matter most. From TWM Stories on California's Central Coast.">
+  <meta property="og:title" content="Friday Night Stories | TWM Stories">
+  <meta property="og:description" content="Stories from the sideline. Football, families, seniors, and the moments that matter most.">
+  <meta property="og:image" content="https://www.twmstories.com/assets/sports-football.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.twmstories.com/friday-night-stories/">
+  <link rel="canonical" href="https://www.twmstories.com/friday-night-stories/">
+
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=zodiak@400,700,400i&f[]=satoshi@300,400,600&display=swap">
+
+  <style>
+    :root {
+      --bg: #141210;
+      --gold: #C8A96A;
+      --gold-light: #e0c080;
+      --light: #F2EDE4;
+      --mid: #8a7a6a;
+      --dark-card: #1c1916;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--light);
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      font-size: 18px;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(to bottom, rgba(20,18,16,0.95), transparent);
+    }
+
+    .nav-brand {
+      font-family: 'Zodiak', serif;
+      font-size: 1rem;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--light);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+    /* HERO */
+    .hero {
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(to bottom, #0a0807 0%, #1a1410 50%, #141210 100%);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 15% 60%, rgba(200,169,106,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 20%, rgba(200,169,106,0.04) 0%, transparent 50%);
+    }
+
+    .hero-deco {
+      position: absolute;
+      right: -1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Zodiak', serif;
+      font-size: 22vw;
+      font-weight: 700;
+      color: rgba(200,169,106,0.03);
+      user-select: none;
+      pointer-events: none;
+      line-height: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .series-label {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-family: 'Zodiak', serif;
+      font-size: clamp(3rem, 9vw, 7rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      color: var(--light);
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: rgba(242,237,228,0.6);
+      max-width: 520px;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .hero-rule {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.5rem 0;
+      opacity: 0.5;
+    }
+
+    /* POSTS SECTION */
+    .posts-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(200,169,106,0.15);
+    }
+
+    .section-header h2 {
+      font-family: 'Zodiak', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    .section-header span {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(138,122,106,0.5);
+    }
+
+    /* POST CARD */
+    .post-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      background: var(--dark-card);
+      border: 1px solid rgba(200,169,106,0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      text-decoration: none;
+      transition: border-color 0.3s;
+    }
+
+    .post-card:hover {
+      border-color: rgba(200,169,106,0.35);
+    }
+
+    .post-card:hover .card-image img {
+      transform: scale(1.03);
+    }
+
+    .card-image {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+      filter: brightness(0.85);
+    }
+
+    .card-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent 60%, var(--dark-card));
+    }
+
+    .card-body {
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .card-tag {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .card-title {
+      font-family: 'Zodiak', serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--light);
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.01em;
+    }
+
+    .card-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .card-excerpt {
+      font-size: 0.95rem;
+      color: rgba(242,237,228,0.6);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+
+    .card-read {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      transition: gap 0.2s;
+    }
+
+    .post-card:hover .card-read {
+      gap: 0.8rem;
+    }
+
+    .card-read::after {
+      content: '→';
+    }
+
+    /* TEAM COVERAGE CTA */
+    .coverage-cta {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+    }
+
+    .coverage-inner {
+      background: var(--dark-card);
+      border: 1px solid rgba(200,169,106,0.15);
+      border-radius: 4px;
+      padding: 3.5rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .coverage-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .coverage-inner h3 {
+      font-family: 'Zodiak', serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      color: var(--light);
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+
+    .coverage-inner p {
+      font-size: 0.9rem;
+      color: rgba(242,237,228,0.55);
+      line-height: 1.7;
+      max-width: 480px;
+    }
+
+    .btn-gold {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      background: var(--gold);
+      color: var(--bg);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      border-radius: 2px;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+
+    .btn-gold:hover { background: var(--gold-light); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(200,169,106,0.1);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      color: var(--mid);
+      letter-spacing: 0.05em;
+    }
+
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* MOBILE */
+    @media (max-width: 680px) {
+      nav { padding: 1rem; }
+      .nav-links { display: none; }
+      .hero { padding: 5rem 1.25rem 3rem; }
+
+      .post-card {
+        grid-template-columns: 1fr;
+      }
+
+      .card-image {
+        aspect-ratio: 16/9;
+      }
+
+      .card-image::after {
+        background: linear-gradient(to bottom, transparent 50%, var(--dark-card));
+      }
+
+      .card-body {
+        padding: 2rem 1.5rem;
+      }
+
+      .coverage-inner {
+        grid-template-columns: 1fr;
+        padding: 2rem 1.5rem;
+        gap: 1.5rem;
+      }
+
+      .posts-section { padding: 3rem 1.25rem; }
+      .coverage-cta { padding: 0 1.25rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="https://www.twmstories.com" class="nav-brand">TWM Stories</a>
+    <ul class="nav-links">
+      <li><a href="https://www.twmstories.com/#seniors">Senior Sessions</a></li>
+      <li><a href="https://tawhaowhaostories.pixieset.com/contact-form/cf_jNb7w8oNx4QgmgWjgDRYIBH5w6YO">Book Now</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-deco">FNS</div>
+    <div class="hero-content">
+      <span class="series-label">TWM Stories · Central Coast</span>
+      <h1>Friday <em>Night</em><br>Stories</h1>
+      <div class="hero-rule"></div>
+      <p class="hero-sub">Stories from the sideline. Football, families, seniors — and the moments that matter most when the lights come on.</p>
+    </div>
+  </header>
+
+  <section class="posts-section">
+    <div class="section-header">
+      <h2>Stories</h2>
+      <span>1 story</span>
+    </div>
+
+    <a href="https://www.twmstories.com/friday-night-stories/the-kick/" class="post-card">
+      <div class="card-image">
+        <img src="/assets/sports-football.jpg" alt="CIF Playoff football — Arroyo Grande vs Bakersfield High">
+      </div>
+      <div class="card-body">
+        <span class="card-tag">Game Coverage · CIF Playoffs</span>
+        <h2 class="card-title">The <em>Kick</em></h2>
+        <p class="card-excerpt">Arroyo Grande vs. Bakersfield High. CIF playoffs. Extra time. I drove two hours to stand in that end zone — and I will never forget what I saw.</p>
+        <span class="card-read">Read the story</span>
+      </div>
+    </a>
+  </section>
+
+  <section class="coverage-cta">
+    <div class="coverage-inner">
+      <div>
+        <p class="coverage-label">Team Coverage · 2026 Season</p>
+        <h3>Want your team's season documented?</h3>
+        <p>I cover Central Coast football — the games, the moments, the players. Team coverage starts at $100 per player. Senior Memory packages available for your athlete's final season.</p>
+      </div>
+      <a href="https://tawhaowhaostories.pixieset.com/contact-form/cf_jNb7w8oNx4QgmgWjgDRYIBH5w6YO" class="btn-gold">Get in Touch</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>
+      <a href="https://www.twmstories.com">TWM Stories</a> · Arroyo Grande, CA · Central Coast Senior Portraits & Cinematic Films<br>
+      <a href="https://instagram.com/tawhaowhao_media">@tawhaowhao_media</a>
+    </p>
+  </footer>
+
+</body>
+</html>
