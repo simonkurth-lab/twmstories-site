@@ -404,17 +404,16 @@
 
       <!-- Senior Girls -->
       <section class="section">
+        <style>
+          .girls-video { float:right; width:260px; margin:0 0 var(--space-4) var(--space-6); }
+          @media (max-width:640px) {
+            .girls-video { float:none; width:160px; margin:0 auto var(--space-5); display:block; }
+          }
+        </style>
         <div class="section-inner fade-in">
-          <div class="split">
-            <div class="split-text">
-              <p class="section-label">Senior Girls</p>
-              <h2>Where they actually are</h2>
-              <p>Some of the best senior sessions happen when she stops thinking about the camera. That's when the real images come.</p>
-              <p>Whether it's her sport, her people, or just who she is right now before everything shifts, this is how we tell that story.</p>
-              <a href="#" class="hero-cta" onclick="showPage('seniors'); return false;" style="display:inline-flex;">See the Senior Experience →</a>
-            </div>
-            <div class="split-img" style="display:flex;justify-content:center;align-items:flex-start;">
-              <div style="width:320px;max-width:100%;aspect-ratio:9/16;position:relative;border-radius:8px;overflow:hidden;background:#0a0807;">
+          <div style="max-width:680px;margin-inline:auto;">
+            <div class="girls-video">
+              <div style="aspect-ratio:9/16;border-radius:8px;overflow:hidden;background:#0a0807;">
                 <iframe
                   src="https://iframe.mediadelivery.net/embed/635710/017348e3-bfc0-4bc4-a8c3-2e2c3127c54c?autoplay=false&loop=false&muted=false&preload=false&controls=true"
                   style="width:100%;height:100%;border:0;display:block;"
@@ -425,6 +424,11 @@
                 </iframe>
               </div>
             </div>
+            <h2>Where they actually are</h2>
+            <p>Some of the best senior sessions happen when she stops thinking about the camera. That's when the real images come.</p>
+            <p>Whether it's her sport, her people, or just who she is right now before everything shifts, this is how we tell that story.</p>
+            <a href="#" class="hero-cta" onclick="showPage('seniors'); return false;" style="display:inline-flex;margin-top:var(--space-4);">See the Senior Experience →</a>
+            <div style="clear:both;"></div>
           </div>
         </div>
       </section>
