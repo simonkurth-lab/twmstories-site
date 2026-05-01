@@ -1385,10 +1385,15 @@
 
       <!-- Full-width autoplay video strip -->
       <div class="full-bleed" style="position:relative;background:#0a0a0a;overflow:hidden;height:70vh;min-height:400px;">
+        <img
+          src="https://twmstories.com/assets/sports-soccer-night.jpg"
+          alt=""
+          aria-hidden="true"
+          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;">
         <iframe
           src=""
           data-src="https://iframe.mediadelivery.net/embed/635710/5b804b27-3dfa-447c-8a8d-bee3aef71249?autoplay=true&loop=false&muted=true&preload=true&controls=false&background=true"
-          style="position:absolute;top:-10%;left:-5%;width:110%;height:120%;border:0;"
+          style="position:absolute;top:-10%;left:-5%;width:110%;height:120%;border:0;z-index:1;"
           allow="autoplay"
           allowfullscreen
           title="TWM Stories — Sports reel">
@@ -2228,12 +2233,10 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
       // Re-process Instagram embeds whenever a page with them is shown
-      // Load motion hero video on first visit
-      if (page === 'motion') {
-        const motionHero = document.querySelector('#page-motion .full-bleed iframe[data-src]');
-        if (motionHero && !motionHero.src) {
-          motionHero.src = motionHero.dataset.src;
-        }
+      // Reload motion hero video each visit; clear when leaving so autoplay fires fresh
+      const motionHero = document.querySelector('#page-motion .full-bleed iframe[data-src]');
+      if (motionHero) {
+        motionHero.src = page === 'motion' ? motionHero.dataset.src : '';
       }
 
       if ((page === 'seniors' || page === 'motion') && window.instgrm) {
