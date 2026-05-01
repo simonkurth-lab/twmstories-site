@@ -1027,6 +1027,112 @@
         </div>
       </section>
 
+      <!-- Seniors page: Sneak Peek carousel -->
+      <section class="section section--alt">
+        <div class="section-inner fade-in" style="text-align:center;">
+          <p class="section-label">Sneak Peek</p>
+          <h2 class="section-title">A look at what's coming</h2>
+          <p class="section-subtitle" style="margin-inline:auto;max-width:500px;">This is an early look at a session in progress, not the finished film. The full edit includes additional footage and music.</p>
+
+          <div class="film-carousel" id="senCarousel">
+            <div class="film-carousel__track" id="senTrack"></div>
+            <button class="film-carousel__arrow film-carousel__arrow--prev" id="senPrev" aria-label="Previous film">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="film-carousel__arrow film-carousel__arrow--next" id="senNext" aria-label="Next film">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+
+          <div class="film-carousel__meta" id="senMeta">
+            <p class="film-carousel__title" id="senTitle"></p>
+            <p class="film-carousel__desc" id="senDesc"></p>
+          </div>
+          <div class="film-carousel__footer">
+            <div class="film-carousel__dots" id="senDots"></div>
+            <span class="film-carousel__counter" id="senCounter"></span>
+          </div>
+        </div>
+      </section>
+
+      <script>
+        (function() {
+          const SEN_FILMS = [
+            {
+              type: 'bunny',
+              libraryId: '635710',
+              videoId: '79c19c60-499e-41a5-8975-4fe1e91e8dd6',
+              title: 'Sneak Peek: Senior Memory Film',
+              desc: 'An early look at a session in progress. This is not the finished film. The full edit includes additional footage and music.'
+            }
+          ];
+
+          const track = document.getElementById('senTrack');
+          const dotsEl = document.getElementById('senDots');
+          const titleEl = document.getElementById('senTitle');
+          const descEl = document.getElementById('senDesc');
+          const counterEl = document.getElementById('senCounter');
+          const prevBtn = document.getElementById('senPrev');
+          const nextBtn = document.getElementById('senNext');
+          const carousel = document.getElementById('senCarousel');
+          let current = 0;
+
+          function buildSrc(film) {
+            return `https://iframe.mediadelivery.net/embed/${film.libraryId}/${film.videoId}?autoplay=false&loop=false&muted=false&preload=true`;
+          }
+
+          SEN_FILMS.forEach((film, i) => {
+            const slide = document.createElement('div');
+            slide.className = 'film-slide';
+            slide.innerHTML = `<div class="yt-frame"><iframe src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen title="${film.title}"></iframe></div>`;
+            track.appendChild(slide);
+
+            const dot = document.createElement('button');
+            dot.className = 'film-dot';
+            dot.setAttribute('aria-label', `Film ${i + 1}`);
+            dot.addEventListener('click', () => goTo(i));
+            dotsEl.appendChild(dot);
+          });
+
+          function loadSlide(index) {
+            track.querySelectorAll('.film-slide').forEach((s, i) => {
+              const iframe = s.querySelector('iframe');
+              if (i === index) { iframe.src = buildSrc(SEN_FILMS[i]); s.classList.add('active'); }
+              else { iframe.src = ''; s.classList.remove('active'); }
+            });
+          }
+
+          function goTo(index) {
+            current = (index + SEN_FILMS.length) % SEN_FILMS.length;
+            track.style.transform = `translateX(-${current * 100}%)`;
+            loadSlide(current);
+            titleEl.textContent = SEN_FILMS[current].title;
+            descEl.textContent = SEN_FILMS[current].desc;
+            counterEl.textContent = SEN_FILMS.length > 1 ? `${current + 1} / ${SEN_FILMS.length}` : '';
+            dotsEl.querySelectorAll('.film-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+            const show = SEN_FILMS.length > 1;
+            prevBtn.style.display = show ? '' : 'none';
+            nextBtn.style.display = show ? '' : 'none';
+          }
+
+          prevBtn.addEventListener('click', () => goTo(current - 1));
+          nextBtn.addEventListener('click', () => goTo(current + 1));
+
+          let touchStartX = 0, touchStartY = 0;
+          carousel.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].clientX;
+            touchStartY = e.changedTouches[0].clientY;
+          }, { passive: true });
+          carousel.addEventListener('touchend', e => {
+            const dx = e.changedTouches[0].clientX - touchStartX;
+            const dy = e.changedTouches[0].clientY - touchStartY;
+            if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) goTo(current + (dx < 0 ? 1 : -1));
+          }, { passive: true });
+
+          goTo(0);
+        })();
+      </script>
+
       <!-- Couples + special events -->
       <section class="section">
         <div class="section-inner">
@@ -1339,7 +1445,7 @@
             libraryId: '635710',
             videoId: '79c19c60-499e-41a5-8975-4fe1e91e8dd6',
             title: 'Sneak Peek: Senior Memory Film',
-            desc: 'An early look at a session in progress. This is not the finished film. The full edit includes additional footage, colour grading, and music.'
+            desc: 'An early look at a session in progress. This is not the finished film. The full edit includes additional footage and music.'
           },
           {
             type: 'bunny',
