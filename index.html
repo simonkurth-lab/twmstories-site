@@ -1386,7 +1386,8 @@
       <!-- Full-width autoplay video strip -->
       <div class="full-bleed" style="position:relative;background:#0a0a0a;overflow:hidden;height:70vh;min-height:400px;">
         <iframe
-          src="https://iframe.mediadelivery.net/embed/635710/5b804b27-3dfa-447c-8a8d-bee3aef71249?autoplay=true&loop=false&muted=true&preload=true&controls=false&background=true"
+          src=""
+          data-src="https://iframe.mediadelivery.net/embed/635710/5b804b27-3dfa-447c-8a8d-bee3aef71249?autoplay=true&loop=false&muted=true&preload=true&controls=false&background=true"
           style="position:absolute;top:-10%;left:-5%;width:110%;height:120%;border:0;"
           allow="autoplay"
           allowfullscreen
@@ -2227,6 +2228,14 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
       // Re-process Instagram embeds whenever a page with them is shown
+      // Load motion hero video on first visit
+      if (page === 'motion') {
+        const motionHero = document.querySelector('#page-motion .full-bleed iframe[data-src]');
+        if (motionHero && !motionHero.src) {
+          motionHero.src = motionHero.dataset.src;
+        }
+      }
+
       if ((page === 'seniors' || page === 'motion') && window.instgrm) {
         window.instgrm.Embeds.process();
       }
