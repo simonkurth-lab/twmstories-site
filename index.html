@@ -1568,9 +1568,7 @@
 
       <!-- Community Reel — Instagram embed -->
       <section class="section" style="text-align:center;padding-block:var(--space-12);">
-        <div style="max-width:540px;margin:0 auto;padding:0 var(--space-4);">
-          <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DUUwiWME5E4/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:4px;box-shadow:0 0 0 1px rgba(0,0,0,0.15),0 2px 8px 0 rgba(0,0,0,0.3);margin:0 auto;max-width:540px;width:100%;"></blockquote>
-        </div>
+        <div data-insta-embed="https://www.instagram.com/reel/DUUwiWME5E4/"></div>
       </section>
 
       <!-- More films coming -->
@@ -2106,7 +2104,7 @@
     </div>
   </footer>
 
-  <script async src="https://www.instagram.com/embed.js"></script>
+  <script src="/assets/js/insta-embed.js" defer></script>
   <script>
     // Theme toggle
     (function () {
@@ -2169,8 +2167,9 @@
         motionHero.src = page === 'motion' ? motionHero.dataset.src : '';
       }
 
-      if ((page === 'seniors' || page === 'motion') && window.instgrm) {
-        window.instgrm.Embeds.process();
+      if (page === 'motion' || page === 'seniors') {
+        if (window.TWMInstaEmbed) window.TWMInstaEmbed.init();
+        else if (window.instgrm) window.instgrm.Embeds.process();
       }
     }
 
