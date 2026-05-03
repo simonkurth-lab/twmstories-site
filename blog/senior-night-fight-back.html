@@ -135,8 +135,9 @@
     .fig-float-left img {
       width: 100%;
       display: block;
-      aspect-ratio: 3/2;
+      aspect-ratio: 4/5;
       object-fit: cover;
+      object-position: top;
     }
     .fig-float-right figcaption,
     .fig-float-left figcaption {
@@ -239,13 +240,13 @@
     .spotlight-tag { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); background: rgba(200,169,106,0.08); border: 1px solid var(--border-mid); padding: 2px 6px; border-radius: 2px; }
 
     /* ── Stats box ── */
-    .stats-box { background: var(--navy-mid); border: 1px solid var(--border); border-top: 3px solid var(--gold); border-radius: 4px; padding: 1.75rem 2rem; margin: 2.5rem 0; clear: both; }
-    .stats-box-label { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
-    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
-    .stat { text-align: center; padding: 0.5rem 0; }
-    .stat + .stat { border-left: 1px solid var(--border-mid); }
-    .stat-number { display: block; font-size: 2.5rem; font-weight: 700; color: var(--text); line-height: 1; margin-bottom: 0.4rem; }
-    .stat-desc { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-faint); line-height: 1.4; }
+    .stats-box { margin: 2.5rem 0; clear: both; border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+    .stats-box-label { font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 0.45rem 1.25rem; display: block; font-weight: 700; }
+    .stats-row { display: flex; justify-content: space-between; align-items: baseline; padding: 0.7rem 1.25rem; border-bottom: 1px solid var(--border-mid); }
+    .stats-row:last-child { border-bottom: none; }
+    .stats-row:nth-child(odd) { background: rgba(200,169,106,0.04); }
+    .stat-label { font-family: var(--font-body); font-size: 0.82rem; color: var(--text-muted); letter-spacing: 0.02em; }
+    .stat-value { font-family: var(--font-display); font-size: 1.4rem; font-weight: 400; color: var(--gold); letter-spacing: -0.01em; }
 
     /* ── Signature + about ── */
     .signature { font-family: var(--font-display); font-size: 1.1rem; font-style: italic; color: var(--text-muted); margin: 0.5rem 0 3rem; clear: both; }
@@ -319,7 +320,7 @@
 
       <p class="article-intro">Friday night at Arroyo Grande, the scoreboard said one thing. The Eagles said another.</p>
 
-      <p>Down 10-3 heading into the fifth — most teams start doing the math. This group never did. They showed up to play, and then they played their way back into a game nobody outside that dugout thought was theirs to win.</p>
+      <p>What happened in the bottom of the sixth is the kind of inning you don't forget. Eleven runs. Six hits. And a complete refusal to let the night end that way.</p>
 
       <!-- Game reel — t=10 skips first 10 seconds -->
       <div class="video-wrap">
@@ -341,16 +342,10 @@
         <figcaption>At the plate from the start. The Eagles put together 15 hits on the night.</figcaption>
       </figure>
 
-      <p>What happened in the bottom of the sixth is the kind of inning that gets replayed in team group chats for years. Eleven runs. Six hits. Walks. Wild pitches. And a bench that never stopped making noise.</p>
-
-      <p>Every at-bat in that inning felt like it had weight. There was no jog to the plate, no going through the motions. They earned every run and they knew it.</p>
-
       <figure class="fig-float-left">
         <img src="../assets/baseball/baseball-02-fielder.jpg" alt="Eagles fielder on the diamond" loading="lazy">
         <figcaption>Defense held long enough. The offense took it from there.</figcaption>
       </figure>
-
-      <p>The comeback started earlier, though — it started in the dugout, in the way they talked to each other between innings. You could feel it even behind the camera. Nobody was finished.</p>
 
       <blockquote class="pull-quote">"A complete refusal to let the night end that way."</blockquote>
 
@@ -399,20 +394,18 @@
       </div>
 
       <div class="stats-box">
-        <p class="stats-box-label">By the Numbers</p>
-        <div class="stats-grid">
-          <div class="stat">
-            <span class="stat-number">15</span>
-            <span class="stat-desc">Team Hits</span>
-          </div>
-          <div class="stat">
-            <span class="stat-number">11</span>
-            <span class="stat-desc">6th Inning Runs</span>
-          </div>
-          <div class="stat">
-            <span class="stat-number">+11</span>
-            <span class="stat-desc">Deficit Erased</span>
-          </div>
+        <span class="stats-box-label">By the Numbers</span>
+        <div class="stats-row">
+          <span class="stat-label">Team Hits</span>
+          <span class="stat-value">15</span>
+        </div>
+        <div class="stats-row">
+          <span class="stat-label">Runs in the 6th Inning</span>
+          <span class="stat-value">11</span>
+        </div>
+        <div class="stats-row">
+          <span class="stat-label">Deficit Erased</span>
+          <span class="stat-value">+11</span>
         </div>
       </div>
 
@@ -432,6 +425,8 @@
       </figure>
 
       <p>Final: <strong style="color:var(--text);">Arroyo Grande 14, Mission College Prep 10.</strong> That's the stuff I love to document.</p>
+
+      <p>The game was epic for the amount of offense by both teams.</p>
 
       <figure class="fig-float-right">
         <img src="../assets/baseball/baseball-05-dugout.jpg" alt="Eagles dugout energy during the comeback" loading="lazy">
