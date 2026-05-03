@@ -10,7 +10,7 @@
   <meta property="og:title" content="Senior Night Fight Back">
   <meta property="og:description" content="Down 10-3. Eleven runs in the sixth. Fifteen hits as a team. Final: AG 14, MCP 10.">
   <meta property="og:url" content="https://www.twmstories.com/blog/senior-night-fight-back.html">
-  <meta property="og:image" content="https://www.twmstories.com/assets/sports-baseball.jpg">
+  <meta property="og:image" content="https://www.twmstories.com/assets/baseball/baseball-07-celebration.jpg">
   <meta property="og:type" content="article">
   <meta property="article:published_time" content="2026-05-02">
   <meta property="article:author" content="Simon Kurth">
@@ -94,13 +94,10 @@
     .article-date { font-size: 0.62rem; letter-spacing: 0.1em; color: var(--text-faint); }
     .meta-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--border); display: inline-block; }
 
-    /* ── Divider ── */
-    .article-divider { max-width: 740px; margin: 0 auto; border: none; border-top: 1px solid var(--border-mid); }
-
     /* ── Article body ── */
     .article-body { max-width: 740px; margin: 0 auto; padding: 3rem 2rem 4rem; }
     .article-body p { margin-bottom: 1.5rem; color: var(--text-muted); }
-    .article-intro { font-size: 1.2rem; color: var(--text); line-height: 1.65; border-left: 3px solid var(--gold); padding-left: 1.25rem; margin-bottom: 0; }
+    .article-intro { font-size: 1.2rem; color: var(--text); line-height: 1.65; border-left: 3px solid var(--gold); padding-left: 1.25rem; margin-bottom: 1.75rem; }
 
     /* ── Section heading ── */
     .section-heading {
@@ -115,6 +112,89 @@
       gap: 1rem;
     }
     .section-heading::after { content: ''; flex: 1; height: 1px; background: var(--border-mid); }
+
+    /* ── Opener image ── */
+    .opener-image { width: 100%; margin: 0 0 2.5rem; }
+    .opener-image img { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
+    .opener-image figcaption { font-size: 0.65rem; color: var(--text-faint); padding-top: 0.5rem; letter-spacing: 0.04em; line-height: 1.5; border-top: 1px solid var(--border-mid); margin-top: 0.4rem; }
+
+    /* ── Floated images ── */
+    .fig-float-right {
+      float: right;
+      width: 44%;
+      margin: 0.25rem 0 1.25rem 1.75rem;
+      clear: right;
+    }
+    .fig-float-left {
+      float: left;
+      width: 44%;
+      margin: 0.25rem 1.75rem 1.25rem 0;
+      clear: left;
+    }
+    .fig-float-right img,
+    .fig-float-left img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 3/2;
+      object-fit: cover;
+    }
+    .fig-float-right figcaption,
+    .fig-float-left figcaption {
+      font-size: 0.62rem;
+      color: var(--text-faint);
+      padding-top: 0.4rem;
+      letter-spacing: 0.03em;
+      line-height: 1.45;
+      border-top: 1px solid var(--border-mid);
+      margin-top: 0.3rem;
+    }
+    .clearfix::after { content: ''; display: table; clear: both; }
+
+    /* ── Full-bleed image ── */
+    .fig-fullbleed {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 2.5rem 0;
+    }
+    .fig-fullbleed img {
+      width: 100%;
+      display: block;
+      max-height: 70vh;
+      object-fit: cover;
+    }
+    .fig-fullbleed figcaption {
+      max-width: 740px;
+      margin: 0 auto;
+      font-size: 0.65rem;
+      color: var(--text-faint);
+      padding: 0.5rem 2rem 0;
+      letter-spacing: 0.04em;
+      line-height: 1.5;
+    }
+
+    /* ── Wide image (full column) ── */
+    .fig-wide {
+      width: 100%;
+      margin: 2rem 0;
+      clear: both;
+    }
+    .fig-wide img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+    .fig-wide figcaption {
+      font-size: 0.65rem;
+      color: var(--text-faint);
+      padding-top: 0.5rem;
+      letter-spacing: 0.04em;
+      line-height: 1.5;
+      border-top: 1px solid var(--border-mid);
+      margin-top: 0.4rem;
+    }
 
     /* ── Video ── */
     .video-wrap { width: 100vw; position: relative; left: 50%; transform: translateX(-50%); margin: 2rem 0; border-top: 1px solid var(--border-mid); border-bottom: 1px solid var(--border-mid); }
@@ -133,32 +213,33 @@
       font-style: italic;
       background: var(--navy-mid);
       border-radius: 0 4px 4px 0;
+      clear: both;
     }
 
-    /* ── Player spotlight ── */
+    /* ── Player spotlight grid ── */
+    .spotlight-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 2.5rem 0;
+      clear: both;
+    }
     .player-spotlight {
       background: var(--navy-mid);
       border: 1px solid var(--border);
       border-top: 3px solid var(--gold);
       border-radius: 4px;
-      padding: 1.5rem 1.75rem;
-      margin: 2.5rem 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.5rem;
-      flex-wrap: wrap;
+      padding: 1.25rem 1.25rem 1rem;
     }
-    .spotlight-label { font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
-    .spotlight-name { font-family: var(--font-body); font-size: 1.35rem; font-weight: 700; color: var(--text); line-height: 1; margin-bottom: 0.65rem; }
-    .spotlight-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-    .spotlight-tag { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); background: rgba(200,169,106,0.08); border: 1px solid var(--border-mid); padding: 3px 8px; border-radius: 2px; }
-    .spotlight-avg { text-align: right; flex-shrink: 0; }
-    .spotlight-big { display: block; font-size: 3rem; font-weight: 700; color: var(--gold); line-height: 1; }
-    .spotlight-avg-label { font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-faint); margin-top: 0.25rem; }
+    .spotlight-label { font-size: 0.55rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+    .spotlight-name { font-family: var(--font-body); font-size: 1.1rem; font-weight: 700; color: var(--text); line-height: 1; margin-bottom: 0.6rem; }
+    .spotlight-big { display: block; font-size: 2.5rem; font-weight: 700; color: var(--gold); line-height: 1; margin-bottom: 0.25rem; }
+    .spotlight-avg-label { font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.6rem; display: block; }
+    .spotlight-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .spotlight-tag { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); background: rgba(200,169,106,0.08); border: 1px solid var(--border-mid); padding: 2px 6px; border-radius: 2px; }
 
     /* ── Stats box ── */
-    .stats-box { background: var(--navy-mid); border: 1px solid var(--border); border-top: 3px solid var(--gold); border-radius: 4px; padding: 1.75rem 2rem; margin: 2.5rem 0; }
+    .stats-box { background: var(--navy-mid); border: 1px solid var(--border); border-top: 3px solid var(--gold); border-radius: 4px; padding: 1.75rem 2rem; margin: 2.5rem 0; clear: both; }
     .stats-box-label { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
     .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
     .stat { text-align: center; padding: 0.5rem 0; }
@@ -166,22 +247,9 @@
     .stat-number { display: block; font-size: 2.5rem; font-weight: 700; color: var(--text); line-height: 1; margin-bottom: 0.4rem; }
     .stat-desc { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-faint); line-height: 1.4; }
 
-    /* ── Photo grid ── */
-    .photo-section-label { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.85rem; }
-    .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 3rem; }
-    .photo-placeholder {
-      aspect-ratio: 4/3;
-      background: var(--navy-mid);
-      border: 1px dashed rgba(200,169,106,0.3);
-      border-radius: 3px;
-      display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.6rem;
-      color: var(--text-faint); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
-    }
-    .photo-placeholder svg { opacity: 0.3; }
-
     /* ── Signature + about ── */
-    .signature { font-family: var(--font-display); font-size: 1.1rem; font-style: italic; color: var(--text-muted); margin: 0.5rem 0 3rem; }
-    .about-section { border-top: 1px solid var(--border-mid); padding-top: 2rem; }
+    .signature { font-family: var(--font-display); font-size: 1.1rem; font-style: italic; color: var(--text-muted); margin: 0.5rem 0 3rem; clear: both; }
+    .about-section { border-top: 1px solid var(--border-mid); padding-top: 2rem; clear: both; }
     .about-section h3 { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
     .about-section p { font-size: 0.875rem; color: var(--text-faint); line-height: 1.7; margin: 0; }
 
@@ -194,10 +262,11 @@
       .game-hero { padding: 3rem 1.25rem 2.5rem; }
       .article-body { padding: 2rem 1.25rem 3rem; }
       .stat-number { font-size: 1.9rem; }
-      .photo-grid { grid-template-columns: 1fr; }
       .score-team { padding: 0.75rem 1.25rem; }
-      .player-spotlight { flex-direction: column; gap: 1rem; }
-      .spotlight-avg { text-align: left; }
+      .fig-float-left,
+      .fig-float-right { float: none; width: 100%; margin: 1rem 0 1.5rem; }
+      .spotlight-grid { grid-template-columns: 1fr; }
+      .fig-fullbleed img { max-height: 55vw; }
     }
   </style>
 </head>
@@ -241,11 +310,16 @@
       </div>
     </div>
 
-    <hr class="article-divider">
-
     <div class="article-body">
 
+      <figure class="opener-image">
+        <img src="../assets/baseball/baseball-07-celebration.jpg" alt="Arroyo Grande Eagles celebrate on senior night" loading="eager">
+        <figcaption>The Eagles after the final out — Senior Night, May 2, 2026. Arroyo Grande 14, Mission College Prep 10.</figcaption>
+      </figure>
+
       <p class="article-intro">Friday night at Arroyo Grande, the scoreboard said one thing. The Eagles said another.</p>
+
+      <p>Down 10-3 heading into the fifth — most teams start doing the math. This group never did. They showed up to play, and then they played their way back into a game nobody outside that dugout thought was theirs to win.</p>
 
       <!-- Game reel — t=10 skips first 10 seconds -->
       <div class="video-wrap">
@@ -262,27 +336,65 @@
 
       <p class="section-heading">The Comeback</p>
 
-      <p>Down 10-3 heading into the fifth — most teams start doing the math. This group never did.</p>
+      <figure class="fig-float-right">
+        <img src="../assets/baseball/baseball-01-batter.jpg" alt="Eagles batter at the plate" loading="lazy">
+        <figcaption>At the plate from the start. The Eagles put together 15 hits on the night.</figcaption>
+      </figure>
 
-      <p>What happened in the bottom of the sixth is the kind of inning you don't forget. Eleven runs. Six hits. And a complete refusal to let the night end that way.</p>
+      <p>What happened in the bottom of the sixth is the kind of inning that gets replayed in team group chats for years. Eleven runs. Six hits. Walks. Wild pitches. And a bench that never stopped making noise.</p>
+
+      <p>Every at-bat in that inning felt like it had weight. There was no jog to the plate, no going through the motions. They earned every run and they knew it.</p>
+
+      <figure class="fig-float-left">
+        <img src="../assets/baseball/baseball-02-fielder.jpg" alt="Eagles fielder on the diamond" loading="lazy">
+        <figcaption>Defense held long enough. The offense took it from there.</figcaption>
+      </figure>
+
+      <p>The comeback started earlier, though — it started in the dugout, in the way they talked to each other between innings. You could feel it even behind the camera. Nobody was finished.</p>
 
       <blockquote class="pull-quote">"A complete refusal to let the night end that way."</blockquote>
 
-      <p>Brock Paz was everywhere — four hits in five at-bats, a solo home run to center in the first, a triple and two singles when it mattered most. Anders Winter, Jones Stumph, Tane Kurth, Reid Bronson — all collecting hits, all keeping the line moving, every single at-bat.</p>
+      <p class="clearfix">Brock Paz was everywhere — four hits in five at-bats, a solo home run to center in the first, a triple and two singles when it mattered most. Reid Bronson launched one over the fence. So did Jones Stumph. Anders Winter, Tane Kurth — all of them kept the line moving, every single at-bat.</p>
 
-      <div class="player-spotlight">
-        <div>
+      <figure class="fig-float-right">
+        <img src="../assets/baseball/baseball-03-action.jpg" alt="Game action — Arroyo Grande Eagles" loading="lazy">
+        <figcaption>The kind of play that turns an inning. Senior night brought out something extra.</figcaption>
+      </figure>
+
+      <p>That's fifteen hits as a team. You don't get fifteen hits without everyone contributing. You don't erase an eleven-run deficit without the whole lineup showing up in the same moment.</p>
+
+      <!-- Player spotlights -->
+      <div class="spotlight-grid">
+        <div class="player-spotlight">
           <p class="spotlight-label">Player Spotlight</p>
           <p class="spotlight-name">Brock Paz</p>
+          <span class="spotlight-big">4/5</span>
+          <span class="spotlight-avg-label">At the plate</span>
           <div class="spotlight-tags">
             <span class="spotlight-tag">Solo HR</span>
             <span class="spotlight-tag">Triple</span>
             <span class="spotlight-tag">2 Singles</span>
           </div>
         </div>
-        <div class="spotlight-avg">
-          <span class="spotlight-big">4/5</span>
-          <p class="spotlight-avg-label">At the plate</p>
+        <div class="player-spotlight">
+          <p class="spotlight-label">Player Spotlight</p>
+          <p class="spotlight-name">Reid Bronson</p>
+          <span class="spotlight-big">HR</span>
+          <span class="spotlight-avg-label">Home Run</span>
+          <div class="spotlight-tags">
+            <span class="spotlight-tag">Home Run</span>
+            <span class="spotlight-tag">RBI</span>
+          </div>
+        </div>
+        <div class="player-spotlight">
+          <p class="spotlight-label">Player Spotlight</p>
+          <p class="spotlight-name">Jones Stumph</p>
+          <span class="spotlight-big">HR</span>
+          <span class="spotlight-avg-label">Home Run</span>
+          <div class="spotlight-tags">
+            <span class="spotlight-tag">Home Run</span>
+            <span class="spotlight-tag">RBI</span>
+          </div>
         </div>
       </div>
 
@@ -304,29 +416,45 @@
         </div>
       </div>
 
-      <p>Fifteen hits as a team. That's just heart and determination showing up repeatedly when it would've been easy not to.</p>
+    </div>
 
-      <p>Final: <strong style="color:var(--text);">Arroyo Grande 14, Mission College Prep 10.</strong></p>
+    <!-- Full-bleed scoreboard image breakout -->
+    <figure class="fig-fullbleed">
+      <img src="../assets/baseball/baseball-06-scoreboard.jpg" alt="The scoreboard tells the story — Arroyo Grande 14, Mission Prep 10" loading="lazy">
+      <figcaption style="padding-bottom: 0.25rem;">The scoreboard at the end. Senior Night, Arroyo Grande High School.</figcaption>
+    </figure>
 
-      <p>That's the stuff I love to document.</p>
+    <div class="article-body" style="padding-top: 1.5rem;">
+
+      <figure class="fig-float-left">
+        <img src="../assets/baseball/baseball-04-pitch.jpg" alt="Eagles pitcher on the mound" loading="lazy">
+        <figcaption>On the mound. Keeping the game close enough to matter.</figcaption>
+      </figure>
+
+      <p>Senior nights carry a particular kind of pressure — it's the last one. For families in the stands, for coaches who've watched these kids grow up, and for the seniors who know exactly what "last one" means.</p>
+
+      <p>This group turned it into one worth remembering. Not through a clean, comfortable win. Through a fight.</p>
+
+      <figure class="fig-float-right">
+        <img src="../assets/baseball/baseball-05-dugout.jpg" alt="Eagles dugout energy during the comeback" loading="lazy">
+        <figcaption>The dugout never quit. That energy carries.</figcaption>
+      </figure>
+
+      <p>There were a lot of parents with phones out in the sixth. There were a lot of voices getting hoarse. The kind of noise that makes the field feel bigger than it is.</p>
+
+      <p>Final: <strong style="color:var(--text);">Arroyo Grande 14, Mission College Prep 10.</strong> That's the stuff I love to document.</p>
+
+      <figure class="fig-wide">
+        <img src="../assets/baseball/baseball-08-dugout.jpg" alt="Eagles players during the game" loading="lazy">
+        <figcaption>Together the whole way through. That's what this team was on senior night.</figcaption>
+      </figure>
+
+      <figure class="fig-wide">
+        <img src="../assets/baseball/baseball-09-team.jpg" alt="Arroyo Grande Eagles baseball team, Senior Night 2026" loading="lazy">
+        <figcaption>The 2026 Arroyo Grande Eagles. Senior Night. One for the books.</figcaption>
+      </figure>
 
       <p class="signature">— Simon</p>
-
-      <p class="photo-section-label">Photos</p>
-      <div class="photo-grid">
-        <div class="photo-placeholder">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          Photo coming soon
-        </div>
-        <div class="photo-placeholder">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          Photo coming soon
-        </div>
-        <div class="photo-placeholder">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          Photo coming soon
-        </div>
-      </div>
 
       <div class="about-section">
         <h3>About TWM Stories</h3>
