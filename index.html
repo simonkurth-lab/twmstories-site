@@ -1566,11 +1566,6 @@
         </div>
       </section>
 
-      <!-- Community Reel — Instagram embed -->
-      <section class="section" style="text-align:center;padding-block:var(--space-12);">
-        <div data-insta-embed="https://www.instagram.com/reel/DUUwiWME5E4/"></div>
-      </section>
-
       <!-- More films coming -->
       <section class="section section--alt" style="text-align:center;">
         <div class="section-narrow fade-in">
@@ -2104,7 +2099,6 @@
     </div>
   </footer>
 
-  <script src="/assets/js/insta-embed.js" defer></script>
   <script>
     // Theme toggle
     (function () {
@@ -2167,9 +2161,8 @@
         motionHero.src = page === 'motion' ? motionHero.dataset.src : '';
       }
 
-      if (page === 'motion' || page === 'seniors') {
-        if (window.TWMInstaEmbed) window.TWMInstaEmbed.init();
-        else if (window.instgrm) window.instgrm.Embeds.process();
+      if ((page === 'seniors' || page === 'motion') && window.instgrm) {
+        window.instgrm.Embeds.process();
       }
     }
 
