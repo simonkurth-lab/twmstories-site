@@ -95,6 +95,15 @@
   
   <link rel="stylesheet" href="./base.css">
   <link rel="stylesheet" href="./style.css">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NL9075LYZ2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NL9075LYZ2');
+  </script>
 </head>
 <body>
 
@@ -2288,6 +2297,26 @@
         s.src="https://w.behold.so/widget.js";
         d.head.append(s);
       }, 2000); // 2 second delay — page content loads first
+    });
+
+    // CTA click tracking
+    document.querySelectorAll('a[href*="pixieset.com/booking"], a[href*="pixieset.com/contact-form"]').forEach(function(el) {
+      el.addEventListener('click', function() {
+        if (typeof gtag === 'undefined') return;
+        var pageEl = el.closest('[id^="page-"]');
+        var page = pageEl ? pageEl.id.replace('page-', '') : 'unknown';
+        var dest = el.href.includes('/booking') ? 'booking' : 'contact';
+        var label = el.textContent.trim().replace(/\s*→$/, '').trim();
+        var pos = el.classList.contains('pricing-card') ? 'pricing'
+                : el.closest('.hero, .page-hero') ? 'hero'
+                : 'page';
+        gtag('event', 'cta_click', {
+          cta_page: page,
+          cta_position: pos,
+          cta_label: label,
+          cta_destination: dest
+        });
+      });
     });
   </script>
 
