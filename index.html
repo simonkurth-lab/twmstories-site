@@ -2238,6 +2238,10 @@
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
+      if (!_historyNav) {
+        history.pushState(null, '', page === 'home' ? location.pathname : '#' + page);
+      }
+
       // Re-process Instagram embeds whenever a page with them is shown
       // Reload motion hero video each visit; clear when leaving so autoplay fires fresh
       const motionHero = document.querySelector('#page-motion .full-bleed iframe[data-src]');
@@ -2253,6 +2257,23 @@
     function closeMobile() {
       document.querySelector('.mobile-nav').classList.remove('is-open');
     }
+
+    // Hash-based routing — enables shareable URLs like twmstories.com/#seniors
+    var _historyNav = false;
+    window.addEventListener('popstate', function() {
+      var hash = location.hash.replace('#', '');
+      _historyNav = true;
+      showPage(hash && document.getElementById('page-' + hash) ? hash : 'home');
+      _historyNav = false;
+    });
+    (function() {
+      var hash = location.hash.replace('#', '');
+      if (hash && document.getElementById('page-' + hash)) {
+        _historyNav = true;
+        showPage(hash);
+        _historyNav = false;
+      }
+    })();
 
     // Mobile theme toggle visibility
     (function() {
