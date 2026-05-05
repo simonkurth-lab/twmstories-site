@@ -341,7 +341,13 @@ a:hover {
   font-weight: 500;
   letter-spacing: 0.04em;
   text-decoration: none;
+  min-height: 44px;
+  line-height: 1.2;
   transition: background var(--transition-interactive), transform var(--transition-interactive), box-shadow var(--transition-interactive);
+}
+.hero-cta:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
 }
 .hero-cta:hover {
   background: var(--color-primary-hover);
@@ -783,6 +789,45 @@ a:hover {
   transform: translateY(0);
 }
 
+/* ===== BTN VARIANTS ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  border-radius: 4px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  min-height: 44px;
+  min-width: 44px;
+  line-height: 1.2;
+  transition:
+    background var(--transition-interactive),
+    color var(--transition-interactive),
+    border-color var(--transition-interactive),
+    box-shadow var(--transition-interactive),
+    transform var(--transition-interactive);
+}
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+.btn--outline {
+  border: 1.5px solid var(--color-primary);
+  color: var(--color-primary);
+  background: transparent;
+}
+.btn--outline:hover {
+  background: var(--color-primary);
+  color: #FAF8F5;
+}
+.btn--outline:active {
+  transform: translateY(1px);
+}
+
 /* ===== FOOTER ===== */
 .site-footer {
   border-top: 1px solid oklch(from var(--color-text) l c h / 0.08);
@@ -1167,4 +1212,93 @@ behold-widget {
   color: #F5F1EC;
   font-size: var(--text-sm);
   letter-spacing: 0.03em;
+}
+
+/* ===== MOBILE CONVERSION — ≤414px ===== */
+/*
+ * Scoped to ≤414px. Desktop layout and proportions are untouched.
+ * Goals: reduce dead vertical padding, stack hero CTAs full-width,
+ * cut service card scroll debt, add breathing room to mid-page CTAs.
+ */
+@media (max-width: 414px) {
+
+  /* Section padding: clamp min is 3rem (48px) which adds 96px/section.
+     Drop to 2.5rem per side — still generous, far less scroll debt. */
+  .section {
+    padding-top: var(--space-10);
+    padding-bottom: var(--space-10);
+  }
+
+  /* Hero content: reduce top padding (dead space when bottom-aligned)
+     and tighten bottom so CTA sits closer to fold on smallest phones. */
+  .hero-content {
+    padding-top: var(--space-10);
+    padding-bottom: var(--space-8);
+  }
+
+  /* Hero CTA group: stack vertically, full-width, 48px touch targets. */
+  .hero-cta-group {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  .hero-cta {
+    width: 100%;
+    justify-content: center;
+    min-height: 48px;
+    padding: var(--space-4) var(--space-6);
+  }
+
+  /* Services: 2 columns so 4 tall cards don't create ~1800px of scroll. */
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+  .service-card {
+    aspect-ratio: 2/3;
+  }
+  .service-card-overlay {
+    padding: var(--space-4);
+  }
+
+  /* Steps (More Than Just Photos, How It Works): tighter rhythm. */
+  .steps {
+    gap: var(--space-6);
+  }
+  .step p {
+    font-size: var(--text-sm);
+  }
+
+  /* Section subtitles: less bottom margin. */
+  .section-subtitle {
+    margin-bottom: var(--space-6);
+  }
+
+  /* Split section (I'm already at your games): tighter gap when stacked. */
+  .split {
+    gap: var(--space-5);
+  }
+
+  /* Mid-page CTA strip: consistent breathing room on both sides. */
+  .mid-cta-strip {
+    padding: var(--space-8) var(--space-4) var(--space-10);
+  }
+
+  /* Instagram section final booking CTA: full-width on small phones. */
+  .instagram-booking-cta {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+  }
+  .instagram-booking-cta .hero-cta,
+  .instagram-booking-cta .btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 48px;
+  }
+
+  /* .btn mobile sizing (mirrors .btn mobile block from user spec) */
+  .btn {
+    min-height: 48px;
+    padding: var(--space-3) var(--space-5);
+  }
 }
