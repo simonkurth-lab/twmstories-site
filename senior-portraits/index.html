@@ -248,10 +248,8 @@
     /* ── Gallery ── */
     .sp-gallery {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      column-gap: var(--space-4);
-      row-gap: var(--space-4);
-      align-items: start;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-3);
       padding: 0 var(--space-4);
       max-width: var(--content-wide);
       margin: 0 auto;
@@ -260,11 +258,9 @@
       width: 100%;
       aspect-ratio: 3/4;
       object-fit: cover;
+      object-position: center 15%;
       border-radius: var(--radius-md);
       display: block;
-    }
-    .sp-gallery img:nth-child(even) {
-      margin-top: clamp(3rem, 7vw, 5.5rem);
     }
 
     /* ── Video embed ── */
@@ -396,12 +392,10 @@
 
     /* ── Mobile ── */
     @media (max-width: 767px) {
-      .sp-gallery { grid-template-columns: 1fr; }
-      .sp-gallery img { aspect-ratio: 4/3; }
-      .sp-gallery img:nth-child(even) { margin-top: 0; }
+      .sp-gallery { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 414px) {
-      .sp-gallery img { aspect-ratio: 4/3; }
+      .sp-gallery { grid-template-columns: 1fr 1fr; }
       .sp-hero-ctas { flex-direction: column; }
       .sp-hero-ctas .hero-cta,
       .sp-hero-ctas .btn { width: 100%; justify-content: center; min-height: 48px; }
@@ -439,9 +433,9 @@
 
     <!-- ─────────────────────────────── Hero ─── -->
     <div class="sp-hero">
-      <p class="sp-hero-eyebrow">Senior Portrait Photographer · Central Coast, CA</p>
+      <p class="sp-hero-eyebrow">The Senior Memory Experience</p>
       <h1>Senior Portrait Photographer · Arroyo Grande &amp; the Central Coast</h1>
-      <p class="sp-hero-sub">Natural, unposed portrait sessions for seniors and families on California's Central Coast. Photos that look like your senior — not just a photoshoot. With the option to add a cinematic memory film that captures even more: presence, personality, and the moments that won't come back.</p>
+      <p class="sp-hero-sub">Not posed. Not forced. Senior portraits that look like your senior — and for families who want more, a cinematic memory film built around who they actually are right now. Serving Arroyo Grande, San Luis Obispo, Pismo Beach, and the Central Coast.</p>
       <div class="sp-hero-ctas">
         <a href="https://tawhaowhaostories.pixieset.com/booking/" target="_blank" rel="noopener noreferrer" class="hero-cta">Check Dates &amp; Reserve →</a>
         <a href="#packages" class="btn btn--outline">See Packages &amp; Pricing ↓</a>
