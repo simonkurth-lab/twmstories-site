@@ -8,6 +8,13 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- Senior Portraits service page -->
+  <url>
+    <loc>https://www.twmstories.com/senior-portraits/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- Blog index -->
   <url>
     <loc>https://www.twmstories.com/blog/</loc>
