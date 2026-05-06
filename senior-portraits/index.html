@@ -182,41 +182,18 @@
       justify-content: space-between;
       gap: var(--space-4);
     }
-    .sp-logo {
+    .sp-back {
       display: flex;
       align-items: center;
-      gap: var(--space-3);
+      gap: var(--space-2);
       text-decoration: none;
-      flex-shrink: 0;
-    }
-    .sp-logo-icon {
-      width: 34px;
-      height: 34px;
-      object-fit: contain;
-      flex-shrink: 0;
-    }
-    .sp-logo-text {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-      line-height: 1;
-    }
-    .sp-logo-wordmark {
-      font-family: var(--font-display);
-      font-size: var(--text-sm);
-      font-weight: 500;
-      color: var(--color-text);
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      transition: color var(--transition-interactive);
-    }
-    .sp-logo:hover .sp-logo-wordmark { color: var(--color-primary); }
-    .sp-logo-tagline {
-      font-size: 0.58rem;
       color: var(--color-text-muted);
-      letter-spacing: 0.06em;
-      font-weight: 400;
+      font-size: var(--text-sm);
+      transition: color var(--transition-interactive);
+      white-space: nowrap;
     }
+    .sp-back:hover { color: var(--color-primary); }
+    .sp-back svg { width: 14px; height: 14px; flex-shrink: 0; }
     .sp-hcta-short { display: none; }
     .sp-header-title {
       font-family: var(--font-display);
@@ -426,7 +403,6 @@
       .sp-header-title { display: none; }
       .sp-hcta-full { display: none; }
       .sp-hcta-short { display: inline; }
-      .sp-logo-tagline { display: none; }
     }
   </style>
 
@@ -444,12 +420,9 @@
   <!-- ─────────────────────────────── Header ─── -->
   <header class="sp-header">
     <div class="sp-header-inner">
-      <a href="/" class="sp-logo" aria-label="TWM Stories — home">
-        <img src="../assets/logo.png" alt="" role="presentation" class="sp-logo-icon" width="34" height="34">
-        <span class="sp-logo-text">
-          <span class="sp-logo-wordmark">TWM Stories</span>
-          <span class="sp-logo-tagline">ngā kōrero ora — living stories</span>
-        </span>
+      <a href="/" class="sp-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        TWM Stories
       </a>
       <span class="sp-header-title">Senior Portraits</span>
       <a href="https://tawhaowhaostories.pixieset.com/booking/" target="_blank" rel="noopener noreferrer" class="hero-cta"><span class="sp-hcta-full">Check Dates &amp; Reserve →</span><span class="sp-hcta-short" aria-hidden="true">Reserve →</span></a>
