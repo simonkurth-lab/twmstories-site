@@ -160,15 +160,15 @@ a:hover {
   object-fit: contain;
 }
 .logo-full {
-  height: 72px;
+  height: 96px;
   width: auto;
   display: block;
 }
 @media (max-width: 900px) {
-  .logo-full { height: 56px; }
+  .logo-full { height: 72px; }
 }
 @media (max-width: 600px) {
-  .logo-full { height: 52px; }
+  .logo-full { height: 60px; }
   .header-inner { padding: var(--space-4) var(--space-4); }
 }
 .logo-text {

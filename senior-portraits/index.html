@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -195,15 +195,15 @@
     .sp-back:hover { color: var(--color-primary); }
     .sp-back svg { width: 14px; height: 14px; flex-shrink: 0; }
     .sp-logo-full {
-      height: 64px;
+      height: 80px;
       width: auto;
       display: block;
     }
     @media (max-width: 767px) {
-      .sp-logo-full { height: 52px; }
+      .sp-logo-full { height: 64px; }
     }
     @media (max-width: 480px) {
-      .sp-logo-full { height: 48px; }
+      .sp-logo-full { height: 56px; }
     }
     .sp-hcta-short { display: none; }
     .sp-header-title {
@@ -212,6 +212,11 @@
       font-weight: 500;
       color: var(--color-text);
       letter-spacing: 0.02em;
+    }
+    .sp-header-inner .hero-cta {
+      font-size: var(--text-xs);
+      padding: 0.45rem 1rem;
+      white-space: nowrap;
     }
 
     /* ── Hero ── */
