@@ -196,17 +196,19 @@
           alt="Senior portrait session hero — TWM Stories, Arroyo Grande California"
           aria-hidden="true"
           style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;z-index:0;transition:opacity 0.8s ease;">
-        <!-- Desktop horizontal video — src set directly so loading begins immediately -->
+        <!-- Desktop horizontal video -->
         <iframe id="hero-desktop"
-          src="https://iframe.mediadelivery.net/embed/635710/ee5a6dd5-64f2-470e-a5d9-82293037571e?autoplay=true&loop=true&muted=true&preload=true&controls=false&background=true"
-          style="position:absolute;top:-10%;left:-5%;width:110%;height:120%;border:0;z-index:1;opacity:0;transition:opacity 1.2s ease;"
+          src=""
+          data-src="https://iframe.mediadelivery.net/embed/635710/ee5a6dd5-64f2-470e-a5d9-82293037571e?autoplay=true&loop=false&muted=true&preload=true&controls=false&background=true"
+          style="position:absolute;top:-10%;left:-5%;width:110%;height:120%;border:0;z-index:1;opacity:0;transition:opacity 0.8s ease;"
           allow="autoplay"
           title="TWM Stories — Living Stories">
         </iframe>
         <!-- Mobile vertical video -->
         <iframe id="hero-mobile"
-          src="https://iframe.mediadelivery.net/embed/635710/709fa170-0ff9-4a02-a322-5f95fefc7d0e?autoplay=true&loop=true&muted=true&preload=true&controls=false&background=true"
-          style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;z-index:1;opacity:0;transition:opacity 1.2s ease;"
+          src=""
+          data-src="https://iframe.mediadelivery.net/embed/635710/709fa170-0ff9-4a02-a322-5f95fefc7d0e?autoplay=true&loop=false&muted=true&preload=true&controls=false&background=true"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;z-index:1;opacity:0;transition:opacity 0.8s ease;"
           allow="autoplay"
           title="TWM Stories — Living Stories Mobile">
         </iframe>
@@ -215,18 +217,20 @@
           @media (max-width: 767px) { #hero-desktop { display: none !important; } }
         </style>
         <script>
-          (function() {
-            var isMobile = window.innerWidth < 768;
-            var iframe = document.getElementById(isMobile ? 'hero-mobile' : 'hero-desktop');
-            var poster = document.getElementById('hero-poster');
-            if (!iframe) return;
-            iframe.addEventListener('load', function() {
+          window.addEventListener('load', function() {
+            const isMobile = window.innerWidth < 768;
+            const iframe = isMobile
+              ? document.getElementById('hero-mobile')
+              : document.getElementById('hero-desktop');
+            const poster = document.getElementById('hero-poster');
+            if (iframe) {
+              iframe.src = iframe.dataset.src;
               setTimeout(function() {
                 iframe.style.opacity = '1';
-                if (poster) poster.style.opacity = '0';
-              }, 800);
-            });
-          })();
+                poster.style.opacity = '0';
+              }, 1500);
+            }
+          });
         </script>
         <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.3) 50%, rgba(10,10,10,0.15) 100%);pointer-events:none;z-index:2;"></div>
         <div class="hero-content" style="position:relative;z-index:3;">
