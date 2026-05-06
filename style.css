@@ -168,7 +168,8 @@ a:hover {
   .logo-full { height: 90px; }
 }
 @media (max-width: 600px) {
-  .logo-full { height: 78px; }
+  .logo-full { height: 82px; }
+  .header-inner { padding-top: 0.6rem; padding-bottom: 0.6rem; }
 }
 .logo-text {
   font-family: var(--font-display);
