@@ -154,29 +154,26 @@ a:hover {
   color: var(--color-text);
 }
 .logo-icon {
-  width: 34px;
-  height: 34px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
   object-fit: contain;
-  flex-shrink: 0;
 }
 .logo-text {
   font-family: var(--font-display);
-  font-size: var(--text-sm);
+  font-size: var(--text-lg);
   font-weight: 500;
-  line-height: 1;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  transition: color var(--transition-interactive);
+  line-height: 1.1;
+  letter-spacing: 0.02em;
 }
-.logo:hover .logo-text { color: var(--color-primary); }
 .logo-sub {
   font-family: var(--font-body);
-  font-size: 0.58rem;
+  font-size: var(--text-xs);
   color: var(--color-text-muted);
   font-weight: 400;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   white-space: nowrap;
-  margin-top: 3px;
 }
 
 /* Desktop Nav */
@@ -1224,8 +1221,6 @@ behold-widget {
  * cut service card scroll debt, add breathing room to mid-page CTAs.
  */
 @media (max-width: 414px) {
-
-  .logo-sub { display: none; }
 
   /* Section padding: clamp min is 3rem (48px) which adds 96px/section.
      Drop to 2.5rem per side — still generous, far less scroll debt. */
