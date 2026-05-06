@@ -432,6 +432,23 @@
       color: var(--color-text-faint);
     }
 
+    /* ── Mobile-only bridge portrait ── */
+    .sp-mobile-bridge { display: none; }
+    @media (max-width: 767px) {
+      .sp-mobile-bridge {
+        display: block;
+        margin: var(--space-8) var(--space-4);
+      }
+      .sp-mobile-bridge img {
+        width: 100%;
+        aspect-ratio: 4/5;
+        object-fit: cover;
+        object-position: center 18%;
+        border-radius: var(--radius-md);
+        display: block;
+      }
+    }
+
     /* ── Mobile ── */
     @media (max-width: 767px) {
       .sp-gallery { grid-template-columns: 1fr 1fr; }
@@ -515,6 +532,15 @@
         class="sp-hero-img"
         width="800" height="1067"
         loading="eager" decoding="async">
+    </div>
+
+    <!-- ─────────────────────────────── Mobile Bridge Portrait ─── -->
+    <div class="sp-mobile-bridge">
+      <img
+        src="https://images.pixieset.com/210334211/11d86e4fe69cf4168a8b1de55a4f2c4f-xxlarge.jpg"
+        alt="Senior portrait — authentic moment, Central Coast California"
+        width="800" height="1067"
+        loading="lazy" decoding="async">
     </div>
 
     <!-- ─────────────────────────────── What This Is ─── -->
