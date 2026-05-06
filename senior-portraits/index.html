@@ -205,9 +205,25 @@
 
     /* ── Hero ── */
     .sp-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(var(--space-8), 5vw, var(--space-16));
+      align-items: center;
       padding: clamp(var(--space-12), 8vw, var(--space-20)) var(--space-4) var(--space-8);
       max-width: var(--content-wide);
       margin: 0 auto;
+    }
+    .sp-hero-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: center 15%;
+      border-radius: var(--radius-md);
+      display: block;
+    }
+    @media (max-width: 767px) {
+      .sp-hero { grid-template-columns: 1fr; }
+      .sp-hero-img { display: none; }
     }
     .sp-hero-eyebrow {
       font-size: var(--text-xs);
@@ -433,14 +449,22 @@
 
     <!-- ─────────────────────────────── Hero ─── -->
     <div class="sp-hero">
-      <p class="sp-hero-eyebrow">The Senior Memory Experience</p>
-      <h1>Senior Portrait Photographer · Arroyo Grande &amp; the Central Coast</h1>
-      <p class="sp-hero-sub">Not posed. Not forced. Senior portraits that look like your senior — and for families who want more, a cinematic memory film built around who they actually are right now. Serving Arroyo Grande, San Luis Obispo, Pismo Beach, and the Central Coast.</p>
-      <div class="sp-hero-ctas">
-        <a href="https://tawhaowhaostories.pixieset.com/booking/" target="_blank" rel="noopener noreferrer" class="hero-cta">Check Dates &amp; Reserve →</a>
-        <a href="#packages" class="btn btn--outline">See Packages &amp; Pricing ↓</a>
+      <div>
+        <p class="sp-hero-eyebrow">The Senior Memory Experience</p>
+        <h1>Senior Portrait Photographer · Arroyo Grande &amp; the Central Coast</h1>
+        <p class="sp-hero-sub">Not posed. Not forced. Senior portraits that look like your senior — and for families who want more, a cinematic memory film built around who they actually are right now. Serving Arroyo Grande, San Luis Obispo, Pismo Beach, and the Central Coast.</p>
+        <div class="sp-hero-ctas">
+          <a href="https://tawhaowhaostories.pixieset.com/booking/" target="_blank" rel="noopener noreferrer" class="hero-cta">Check Dates &amp; Reserve →</a>
+          <a href="#packages" class="btn btn--outline">See Packages &amp; Pricing ↓</a>
+        </div>
+        <p class="sp-hero-note">$100 deposit secures your date &nbsp;·&nbsp; Limited sessions each season &nbsp;·&nbsp; Payment plans available</p>
       </div>
-      <p class="sp-hero-note">$100 deposit secures your date &nbsp;·&nbsp; Limited sessions each season &nbsp;·&nbsp; Payment plans available</p>
+      <img
+        src="https://images.pixieset.com/210334211/a0a8888f2a8bf1d17ccc75c4eec33a24-xxlarge.jpg"
+        alt="Senior girl portrait at golden hour — Central Coast senior photographer"
+        class="sp-hero-img"
+        width="800" height="1067"
+        loading="eager" decoding="async">
     </div>
 
     <!-- ─────────────────────────────── What This Is ─── -->
