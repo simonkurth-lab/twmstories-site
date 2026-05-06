@@ -74,11 +74,17 @@
     }
 
     .nav-brand {
-      font-family: 'Zodiak', serif;
-      font-size: 1rem;
-      color: var(--gold);
       text-decoration: none;
-      letter-spacing: 0.05em;
+      display: block;
+      line-height: 0;
+    }
+    .nav-brand img {
+      height: 72px;
+      width: auto;
+      display: block;
+    }
+    @media (max-width: 600px) {
+      .nav-brand img { height: 56px; }
     }
 
     .nav-links {
@@ -383,7 +389,9 @@
 <body>
 
   <nav>
-    <a href="https://www.twmstories.com" class="nav-brand">TWM Stories</a>
+    <a href="https://www.twmstories.com" class="nav-brand">
+      <img src="/assets/logo-full.png" alt="TWM Stories logo">
+    </a>
     <ul class="nav-links">
       <li><a href="https://www.twmstories.com/friday-night-stories">Friday Night Stories</a></li>
       <li><a href="https://www.twmstories.com/#seniors">Senior Sessions</a></li>
