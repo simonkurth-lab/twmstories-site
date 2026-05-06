@@ -141,7 +141,7 @@ a:hover {
 .header-inner {
   max-width: var(--content-wide);
   margin: 0 auto;
-  padding: var(--space-3) var(--space-4);
+  padding: var(--space-5) var(--space-4);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -160,12 +160,16 @@ a:hover {
   object-fit: contain;
 }
 .logo-full {
-  height: 52px;
+  height: 72px;
   width: auto;
   display: block;
 }
+@media (max-width: 900px) {
+  .logo-full { height: 56px; }
+}
 @media (max-width: 600px) {
-  .logo-full { height: 38px; }
+  .logo-full { height: 52px; }
+  .header-inner { padding: var(--space-4) var(--space-4); }
 }
 .logo-text {
   font-family: var(--font-display);
