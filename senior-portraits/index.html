@@ -194,6 +194,15 @@
     }
     .sp-back:hover { color: var(--color-primary); }
     .sp-back svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .sp-logo-full {
+      height: 48px;
+      width: auto;
+      display: block;
+      mix-blend-mode: screen;
+    }
+    @media (max-width: 480px) {
+      .sp-logo-full { height: 36px; }
+    }
     .sp-hcta-short { display: none; }
     .sp-header-title {
       font-family: var(--font-display);
@@ -436,9 +445,8 @@
   <!-- ─────────────────────────────── Header ─── -->
   <header class="sp-header">
     <div class="sp-header-inner">
-      <a href="/" class="sp-back">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
-        TWM Stories
+      <a href="/" class="sp-back sp-logo-link" aria-label="TWM Stories — home">
+        <img src="../assets/logo-full.png" alt="TWM Stories logo" class="sp-logo-full">
       </a>
       <span class="sp-header-title">Senior Portraits</span>
       <a href="https://tawhaowhaostories.pixieset.com/booking/" target="_blank" rel="noopener noreferrer" class="hero-cta"><span class="sp-hcta-full">Check Dates &amp; Reserve →</span><span class="sp-hcta-short" aria-hidden="true">Reserve →</span></a>
