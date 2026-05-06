@@ -213,6 +213,29 @@
       color: var(--color-text);
       letter-spacing: 0.02em;
     }
+    .sp-nav {
+      display: flex;
+      align-items: center;
+      gap: var(--space-6);
+    }
+    .sp-nav a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+      font-size: var(--text-sm);
+      letter-spacing: 0.02em;
+      transition: color var(--transition-interactive);
+      white-space: nowrap;
+    }
+    .sp-nav a:hover { color: var(--color-text); }
+    .sp-nav a.sp-nav-active { color: var(--color-primary); }
+    .sp-nav-galleries {
+      background: var(--color-primary);
+      color: #FAF8F5 !important;
+      padding: var(--space-2) var(--space-4);
+      border-radius: 4px;
+    }
+    .sp-nav-galleries:hover { background: var(--color-primary-hover); }
+    @media (max-width: 900px) { .sp-nav { display: none; } }
 
     /* ── Hero ── */
     .sp-hero {
@@ -450,6 +473,13 @@
       <a href="/" class="sp-back sp-logo-link" aria-label="TWM Stories — home">
         <img src="../assets/logo-full.png" alt="TWM Stories logo" class="sp-logo-full">
       </a>
+      <nav class="sp-nav" aria-label="Site navigation">
+        <a href="/">Home</a>
+        <a href="/senior-portraits/" class="sp-nav-active">Senior Experience</a>
+        <a href="/blog/">Blog</a>
+        <a href="https://tawhaowhaostories.pixieset.com/contact-form/cf_jNb7w8oNx4QgmgWjgDRYIBH5w6YO" target="_blank" rel="noopener noreferrer">Contact</a>
+        <a href="https://tawhaowhaostories.pixieset.com/" target="_blank" rel="noopener noreferrer" class="sp-nav-galleries">Client Galleries</a>
+      </nav>
       <span class="sp-header-title">Senior Portraits</span>
     </div>
   </header>
