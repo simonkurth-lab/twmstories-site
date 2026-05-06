@@ -1332,8 +1332,8 @@
       <div class="full-bleed" style="position:relative;background:#0a0a0a;overflow:hidden;height:70vh;min-height:400px;">
         <iframe
           src=""
-          data-src="https://iframe.mediadelivery.net/embed/635710/5b804b27-3dfa-447c-8a8d-bee3aef71249?autoplay=true&loop=false&muted=true&preload=true&controls=false&background=true"
-          style="position:absolute;top:-10%;left:-5%;width:110%;height:120%;border:0;z-index:1;"
+          data-src="https://iframe.mediadelivery.net/embed/635710/5b804b27-3dfa-447c-8a8d-bee3aef71249?autoplay=true&loop=true&muted=true&preload=true&controls=false&background=true"
+          style="position:absolute;top:-10%;left:-5%;width:110%;height:120%;border:0;z-index:1;opacity:0;transition:opacity 0.8s ease;"
           allow="autoplay"
           allowfullscreen
           title="TWM Stories — Sports reel">
@@ -2268,7 +2268,17 @@
       // Reload motion hero video each visit; clear when leaving so autoplay fires fresh
       const motionHero = document.querySelector('#page-motion .full-bleed iframe[data-src]');
       if (motionHero) {
-        motionHero.src = page === 'motion' ? motionHero.dataset.src : '';
+        if (page === 'motion') {
+          motionHero.style.opacity = '0';
+          motionHero.src = motionHero.dataset.src;
+          motionHero.addEventListener('load', function onLoad() {
+            setTimeout(function() { motionHero.style.opacity = '1'; }, 600);
+            motionHero.removeEventListener('load', onLoad);
+          });
+        } else {
+          motionHero.src = '';
+          motionHero.style.opacity = '0';
+        }
       }
 
       if ((page === 'seniors' || page === 'motion') && window.instgrm) {
