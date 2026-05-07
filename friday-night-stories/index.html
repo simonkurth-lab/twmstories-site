@@ -208,6 +208,46 @@
       color: rgba(138,122,106,0.4);
     }
 
+    /* ── Archive video ── */
+    .archive-video {
+      margin-top: 3rem;
+    }
+
+    .archive-video-tag {
+      display: block;
+      font-size: 0.63rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.65;
+      margin-bottom: 1rem;
+    }
+
+    .video-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #0a0807;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .video-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-caption {
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(138,122,106,0.45);
+      margin-top: 0.85rem;
+    }
+
     /* ── Story card ── */
     .story-card {
       display: grid;
@@ -615,8 +655,7 @@
     <div class="manifesto-divider"></div>
     <p class="manifesto-body">
       Friday Night Stories documents the athletes, moments, and seasons of California's Central Coast.
-      Not as a business. As a responsibility to the community.
-      These athletes deserve to be seen. These seasons go by faster than anyone expects.
+      These seasons go by faster than anyone expects.
       This is an attempt to hold onto some of that.
     </p>
   </section>
@@ -643,6 +682,19 @@
         <span class="card-read">Read the story</span>
       </div>
     </a>
+    <div class="archive-video">
+      <span class="archive-video-tag">From the Booth &nbsp;·&nbsp; CIF Playoffs 2024</span>
+      <div class="video-wrap">
+        <iframe
+          src="https://iframe.mediadelivery.net/embed/635710/b1be188b-8379-4cab-9ef6-97f8e428c36a?autoplay=false&loop=false&muted=false&preload=true&controls=true"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+          allowfullscreen
+          loading="lazy"
+          title="Zack Tayman & Terry Veal on the call — CIF Playoffs 2024 | Friday Night Stories">
+        </iframe>
+      </div>
+      <p class="video-caption">Zack Tayman &amp; Terry Veal on the call</p>
+    </div>
   </section>
 
   <!-- Editorial moments -->
