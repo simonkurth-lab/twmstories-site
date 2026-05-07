@@ -344,6 +344,85 @@
 
     .bridge-link:hover { opacity: 1; }
 
+    /* ── From the Blog ── */
+    .blog-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+    }
+
+    .blog-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 2.75rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(200,169,106,0.1);
+    }
+
+    .blog-header h2 {
+      font-family: 'Zodiak', serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    .blog-header-link {
+      font-size: 0.67rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+
+    .blog-header-link:hover { opacity: 1; }
+
+    .blog-list { display: flex; flex-direction: column; }
+
+    .blog-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      padding: 1.75rem 0;
+      border-bottom: 1px solid rgba(200,169,106,0.06);
+      text-decoration: none;
+      transition: border-color 0.3s;
+    }
+
+    .blog-item:last-child { border-bottom: none; }
+    .blog-item:hover { border-color: rgba(200,169,106,0.18); }
+
+    .blog-item-tag {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.6;
+    }
+
+    .blog-item-title {
+      font-family: 'Zodiak', serif;
+      font-size: clamp(1.05rem, 2vw, 1.28rem);
+      font-weight: 400;
+      color: var(--light);
+      line-height: 1.3;
+      transition: color 0.2s;
+    }
+
+    .blog-item:hover .blog-item-title { color: var(--gold-lt); }
+
+    .blog-item-desc {
+      font-size: 0.85rem;
+      color: rgba(242,237,228,0.4);
+      line-height: 1.7;
+      font-weight: 300;
+      max-width: 600px;
+    }
+
     /* ── Coverage inquiry ── */
     .coverage-section {
       max-width: 900px;
@@ -435,6 +514,7 @@
       .manifesto { padding: 5rem 1.5rem 4.5rem; }
       .archive-section { padding: 0 1.25rem 5rem; }
       .senior-bridge { padding: 0 1.5rem 5rem; }
+      .blog-section { padding: 0 1.25rem 5rem; }
       .coverage-section { padding: 0 1.25rem 5rem; }
     }
   </style>
@@ -509,6 +589,35 @@
       There's no pitch. Just an open door.
     </p>
     <a href="/senior-portraits/" class="bridge-link">Learn about the Senior Memory Experience</a>
+  </section>
+
+  <!-- From the Blog -->
+  <section class="blog-section">
+    <div class="blog-header">
+      <h2>From the Blog</h2>
+      <a href="/blog/" class="blog-header-link">View all →</a>
+    </div>
+    <div class="blog-list">
+
+      <a href="/blog/senior-night-fight-back.html" class="blog-item">
+        <span class="blog-item-tag">Game Coverage &nbsp;·&nbsp; Baseball &nbsp;·&nbsp; 2025</span>
+        <span class="blog-item-title">Senior Night Fight Back</span>
+        <span class="blog-item-desc">Down 10–3 heading into the fifth, the Eagles never did the math. Eleven runs in the sixth. Final: Arroyo Grande 14, Mission College Prep 10.</span>
+      </a>
+
+      <a href="/blog/senior-night-volleyball.html" class="blog-item">
+        <span class="blog-item-tag">Game Coverage &nbsp;·&nbsp; Volleyball &nbsp;·&nbsp; 2024</span>
+        <span class="blog-item-title">Senior Night — Volleyball</span>
+        <span class="blog-item-desc">Some nights you show up with a camera and leave with something more than photos. A reflection on photographing senior nights for families I've known a long time.</span>
+      </a>
+
+      <a href="/blog/shakes-and-all.html" class="blog-item">
+        <span class="blog-item-tag">On Storytelling</span>
+        <span class="blog-item-title">Shakes and All</span>
+        <span class="blog-item-desc">In a world full of AI-generated everything — on choosing the shake, the glance, the unscripted second. That's the story worth keeping.</span>
+      </a>
+
+    </div>
   </section>
 
   <!-- Community coverage inquiry -->
