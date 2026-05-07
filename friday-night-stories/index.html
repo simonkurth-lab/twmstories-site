@@ -3,26 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Friday Night Stories | Simon Kurth — TWM Stories</title>
-  <meta name="description" content="Stories from the sideline. Football, families, seniors, and the moments that matter most. From TWM Stories on California's Central Coast.">
+  <title>Friday Night Stories | TWM Stories — Central Coast</title>
+  <meta name="description" content="Stories from the sideline. Athletes, seasons, and the moments that matter most. A documentary archive from California's Central Coast.">
   <meta property="og:title" content="Friday Night Stories | TWM Stories">
-  <meta property="og:description" content="Stories from the sideline. Football, families, seniors, and the moments that matter most.">
+  <meta property="og:description" content="The lights come on. The season begins. These are the stories we carry.">
   <meta property="og:image" content="https://www.twmstories.com/assets/sports-football.jpg">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.twmstories.com/friday-night-stories/">
   <meta name="author" content="Simon Kurth">
   <link rel="canonical" href="https://www.twmstories.com/friday-night-stories/">
 
-  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=zodiak@400,700,400i&f[]=satoshi@300,400,600&display=swap">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/assets/logo.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,700,400i&f[]=satoshi@300,400,600&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #141210;
-      --gold: #C8A96A;
-      --gold-light: #e0c080;
-      --light: #F2EDE4;
-      --mid: #8a7a6a;
-      --dark-card: #1c1916;
+      --bg:        #141210;
+      --gold:      #C8A96A;
+      --gold-lt:   #e0c080;
+      --light:     #F2EDE4;
+      --mid:       #8a7a6a;
+      --card:      #1c1916;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -37,7 +42,7 @@
       font-size: 18px;
     }
 
-    /* NAV */
+    /* ── Nav ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -46,74 +51,50 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: linear-gradient(to bottom, rgba(20,18,16,0.95), transparent);
+      background: linear-gradient(to bottom, rgba(20,18,16,0.92), transparent);
     }
 
-    .nav-brand {
-      text-decoration: none;
-      display: block;
-      line-height: 0;
-    }
-    .nav-brand img {
-      height: 72px;
-      width: auto;
-      display: block;
-    }
-    @media (max-width: 600px) {
-      .nav-brand img { height: 56px; }
-    }
+    .nav-brand { text-decoration: none; display: block; line-height: 0; }
+    .nav-brand img { height: 72px; width: auto; display: block; }
 
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
       color: var(--light);
       text-decoration: none;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      opacity: 0.7;
-      transition: opacity 0.2s;
+      opacity: 0.6;
+      transition: opacity 0.2s, color 0.2s;
     }
-
     .nav-links a:hover { opacity: 1; color: var(--gold); }
 
-    /* HERO */
+    /* ── Hero ── */
     .hero {
-      min-height: 70vh;
+      min-height: 92vh;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 6rem 2rem 4rem;
+      padding: 6rem 2rem 5rem;
       position: relative;
       overflow: hidden;
-      background: linear-gradient(to bottom, #0a0807 0%, #1a1410 50%, #141210 100%);
+      background-color: #0a0807;
+      background-image: url('/assets/sports-football.jpg');
+      background-size: cover;
+      background-position: center 30%;
     }
 
     .hero::before {
       content: '';
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(ellipse at 15% 60%, rgba(200,169,106,0.07) 0%, transparent 55%),
-        radial-gradient(ellipse at 85% 20%, rgba(200,169,106,0.04) 0%, transparent 50%);
-    }
-
-    .hero-deco {
-      position: absolute;
-      right: -1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      font-family: 'Zodiak', serif;
-      font-size: 22vw;
-      font-weight: 700;
-      color: rgba(200,169,106,0.03);
-      user-select: none;
-      pointer-events: none;
-      line-height: 1;
+      background: linear-gradient(
+        to bottom,
+        rgba(10,8,7,0.4)  0%,
+        rgba(10,8,7,0.15) 35%,
+        rgba(10,8,7,0.65) 68%,
+        rgba(20,18,16,1)  100%
+      );
     }
 
     .hero-content {
@@ -125,96 +106,123 @@
 
     .series-label {
       display: inline-block;
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
+      font-size: 0.67rem;
+      letter-spacing: 0.26em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 1.25rem;
+      opacity: 0.8;
+      margin-bottom: 1.5rem;
     }
 
     .hero h1 {
       font-family: 'Zodiak', serif;
-      font-size: clamp(3rem, 9vw, 7rem);
+      font-size: clamp(3.5rem, 10vw, 7.5rem);
       font-weight: 700;
-      line-height: 1;
+      line-height: 0.95;
       letter-spacing: -0.02em;
-      margin-bottom: 1.5rem;
       color: var(--light);
+      margin-bottom: 2rem;
     }
 
-    .hero h1 em {
-      font-style: italic;
-      color: var(--gold);
+    .hero h1 em { font-style: italic; color: var(--gold); }
+
+    .hero-rule {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.4;
+      margin-bottom: 1.75rem;
     }
 
     .hero-sub {
       font-size: 1rem;
       color: rgba(242,237,228,0.6);
-      max-width: 520px;
-      line-height: 1.7;
+      max-width: 460px;
+      line-height: 1.75;
       font-weight: 300;
     }
 
-    .hero-rule {
-      width: 48px;
-      height: 1px;
-      background: var(--gold);
-      margin: 1.5rem 0;
-      opacity: 0.5;
+    /* ── Manifesto ── */
+    .manifesto {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 6.5rem 2rem 6rem;
+      text-align: center;
     }
 
-    /* POSTS SECTION */
-    .posts-section {
+    .manifesto-quote {
+      font-family: 'Zodiak', serif;
+      font-size: clamp(1.35rem, 2.8vw, 1.9rem);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.55;
+      color: var(--light);
+      margin-bottom: 0;
+    }
+
+    .manifesto-divider {
+      width: 1px;
+      height: 52px;
+      background: var(--gold);
+      opacity: 0.25;
+      margin: 3rem auto;
+    }
+
+    .manifesto-body {
+      font-size: 0.93rem;
+      color: rgba(242,237,228,0.5);
+      line-height: 1.95;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    /* ── Archive ── */
+    .archive-section {
       max-width: 900px;
       margin: 0 auto;
-      padding: 5rem 2rem;
+      padding: 0 2rem 6rem;
     }
 
-    .section-header {
+    .archive-header {
       display: flex;
       align-items: baseline;
       justify-content: space-between;
-      margin-bottom: 3rem;
+      margin-bottom: 2.75rem;
       padding-bottom: 1rem;
-      border-bottom: 1px solid rgba(200,169,106,0.15);
+      border-bottom: 1px solid rgba(200,169,106,0.1);
     }
 
-    .section-header h2 {
+    .archive-header h2 {
       font-family: 'Zodiak', serif;
-      font-size: 1rem;
+      font-size: 0.75rem;
       font-weight: 400;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--mid);
     }
 
-    .section-header span {
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
+    .season-tag {
+      font-size: 0.67rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(138,122,106,0.5);
+      color: rgba(138,122,106,0.4);
     }
 
-    /* POST CARD */
-    .post-card {
+    /* ── Story card ── */
+    .story-card {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0;
-      background: var(--dark-card);
-      border: 1px solid rgba(200,169,106,0.1);
-      border-radius: 4px;
+      background: var(--card);
+      border: 1px solid rgba(200,169,106,0.08);
+      border-radius: 2px;
       overflow: hidden;
       text-decoration: none;
-      transition: border-color 0.3s;
+      transition: border-color 0.4s;
     }
 
-    .post-card:hover {
-      border-color: rgba(200,169,106,0.35);
-    }
+    .story-card:hover { border-color: rgba(200,169,106,0.28); }
 
-    .post-card:hover .card-image img {
-      transform: scale(1.03);
-    }
+    .story-card:hover .card-img { transform: scale(1.03); filter: brightness(0.9); }
 
     .card-image {
       position: relative;
@@ -222,20 +230,20 @@
       aspect-ratio: 4/3;
     }
 
-    .card-image img {
+    .card-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.5s ease;
-      filter: brightness(0.85);
+      transition: transform 0.6s ease, filter 0.4s;
+      filter: brightness(0.78);
     }
 
     .card-image::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to right, transparent 60%, var(--dark-card));
+      background: linear-gradient(to right, transparent 50%, var(--card));
     }
 
     .card-body {
@@ -246,33 +254,31 @@
     }
 
     .card-tag {
-      font-size: 0.68rem;
+      font-size: 0.63rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 1rem;
+      opacity: 0.75;
+      margin-bottom: 1.25rem;
     }
 
     .card-title {
       font-family: 'Zodiak', serif;
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
       font-weight: 700;
-      line-height: 1.1;
+      line-height: 1.05;
       color: var(--light);
       margin-bottom: 1.25rem;
       letter-spacing: -0.01em;
     }
 
-    .card-title em {
-      font-style: italic;
-      color: var(--gold);
-    }
+    .card-title em { font-style: italic; color: var(--gold); }
 
     .card-excerpt {
-      font-size: 0.95rem;
-      color: rgba(242,237,228,0.6);
-      line-height: 1.7;
-      margin-bottom: 2rem;
+      font-size: 0.9rem;
+      color: rgba(242,237,228,0.5);
+      line-height: 1.78;
+      margin-bottom: 2.25rem;
       font-weight: 300;
     }
 
@@ -280,124 +286,156 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--gold);
-      transition: gap 0.2s;
+      transition: gap 0.25s;
     }
 
-    .post-card:hover .card-read {
-      gap: 0.8rem;
+    .story-card:hover .card-read { gap: 0.85rem; }
+    .card-read::after { content: '→'; }
+
+    /* ── Senior bridge — ambient, editorial ── */
+    .senior-bridge {
+      max-width: 580px;
+      margin: 0 auto;
+      padding: 0 2rem 7rem;
+      text-align: center;
     }
 
-    .card-read::after {
-      content: '→';
+    .bridge-rule {
+      width: 1px;
+      height: 52px;
+      background: var(--gold);
+      opacity: 0.18;
+      margin: 0 auto 3.5rem;
     }
 
-    /* TEAM COVERAGE CTA */
-    .coverage-cta {
+    .bridge-label {
+      font-size: 0.63rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.65;
+      margin-bottom: 1.75rem;
+    }
+
+    .bridge-text {
+      font-family: 'Zodiak', serif;
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      font-weight: 400;
+      line-height: 1.75;
+      color: rgba(242,237,228,0.6);
+      margin-bottom: 2.25rem;
+    }
+
+    .bridge-link {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      opacity: 0.7;
+      border-bottom: 1px solid rgba(200,169,106,0.25);
+      padding-bottom: 2px;
+      transition: opacity 0.2s;
+    }
+
+    .bridge-link:hover { opacity: 1; }
+
+    /* ── Coverage inquiry ── */
+    .coverage-section {
       max-width: 900px;
       margin: 0 auto;
-      padding: 0 2rem 6rem;
+      padding: 0 2rem 7rem;
     }
 
     .coverage-inner {
-      background: var(--dark-card);
-      border: 1px solid rgba(200,169,106,0.15);
-      border-radius: 4px;
-      padding: 3.5rem;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 2rem;
-      align-items: center;
+      border-top: 1px solid rgba(200,169,106,0.08);
+      padding-top: 3rem;
     }
 
     .coverage-label {
-      font-size: 0.68rem;
-      letter-spacing: 0.2em;
+      font-size: 0.63rem;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.75rem;
+      color: var(--mid);
+      opacity: 0.75;
+      margin-bottom: 1.25rem;
     }
 
     .coverage-inner h3 {
       font-family: 'Zodiak', serif;
-      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+      font-weight: 400;
       color: var(--light);
-      margin-bottom: 0.75rem;
-      font-weight: 700;
+      margin-bottom: 1rem;
     }
 
     .coverage-inner p {
-      font-size: 0.9rem;
-      color: rgba(242,237,228,0.55);
-      line-height: 1.7;
-      max-width: 480px;
+      font-size: 0.88rem;
+      color: rgba(242,237,228,0.45);
+      line-height: 1.85;
+      max-width: 500px;
+      margin-bottom: 2rem;
     }
 
-    .btn-gold {
-      display: inline-block;
-      padding: 0.9rem 2rem;
-      background: var(--gold);
-      color: var(--bg);
-      text-decoration: none;
-      font-size: 0.78rem;
-      letter-spacing: 0.1em;
+    .coverage-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      font-weight: 600;
-      border-radius: 2px;
-      white-space: nowrap;
-      transition: background 0.2s;
+      color: var(--gold);
+      text-decoration: none;
+      opacity: 0.75;
+      transition: opacity 0.2s, gap 0.2s;
     }
 
-    .btn-gold:hover { background: var(--gold-light); }
+    .coverage-link:hover { opacity: 1; gap: 0.8rem; }
+    .coverage-link::after { content: '→'; }
 
-    /* FOOTER */
+    /* ── Footer ── */
     footer {
-      border-top: 1px solid rgba(200,169,106,0.1);
+      border-top: 1px solid rgba(200,169,106,0.07);
       padding: 3rem 2rem;
       text-align: center;
     }
 
     footer p {
-      font-size: 0.8rem;
-      color: var(--mid);
-      letter-spacing: 0.05em;
+      font-size: 0.77rem;
+      color: rgba(138,122,106,0.55);
+      letter-spacing: 0.06em;
+      line-height: 2.1;
     }
 
-    footer a { color: var(--gold); text-decoration: none; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.7; transition: opacity 0.2s; }
+    footer a:hover { opacity: 1; }
 
-    /* MOBILE */
+    /* ── Mobile ── */
+    @media (max-width: 600px) {
+      .nav-brand img { height: 56px; }
+    }
+
     @media (max-width: 680px) {
-      nav { padding: 1rem; }
+      nav { padding: 1rem 1.25rem; }
       .nav-links { display: none; }
-      .hero { padding: 5rem 1.25rem 3rem; }
 
-      .post-card {
-        grid-template-columns: 1fr;
-      }
+      .hero { min-height: 88vh; padding: 5rem 1.25rem 4rem; }
 
-      .card-image {
-        aspect-ratio: 16/9;
-      }
-
+      .story-card { grid-template-columns: 1fr; }
+      .card-image { aspect-ratio: 16/9; }
       .card-image::after {
-        background: linear-gradient(to bottom, transparent 50%, var(--dark-card));
+        background: linear-gradient(to bottom, transparent 40%, var(--card));
       }
+      .card-body { padding: 2rem 1.5rem 2.5rem; }
 
-      .card-body {
-        padding: 2rem 1.5rem;
-      }
-
-      .coverage-inner {
-        grid-template-columns: 1fr;
-        padding: 2rem 1.5rem;
-        gap: 1.5rem;
-      }
-
-      .posts-section { padding: 3rem 1.25rem; }
-      .coverage-cta { padding: 0 1.25rem 4rem; }
+      .manifesto { padding: 5rem 1.5rem 4.5rem; }
+      .archive-section { padding: 0 1.25rem 5rem; }
+      .senior-bridge { padding: 0 1.5rem 5rem; }
+      .coverage-section { padding: 0 1.25rem 5rem; }
     }
   </style>
 </head>
@@ -408,34 +446,51 @@
       <img src="/assets/logo-full.png" alt="TWM Stories logo">
     </a>
     <ul class="nav-links">
+      <li><a href="#archive">The Archive</a></li>
       <li><a href="/friday-night-stories/the-kick/">The Kick</a></li>
-      <li><a href="https://www.twmstories.com/#seniors">Senior Sessions</a></li>
-      <li><a href="https://www.twmstories.com/#seniors">Book Now</a></li>
+      <li><a href="/senior-portraits/">Senior Sessions</a></li>
     </ul>
   </nav>
 
+  <!-- Hero -->
   <header class="hero">
-    <div class="hero-deco">FNS</div>
     <div class="hero-content">
-      <span class="series-label">TWM Stories · Central Coast</span>
+      <span class="series-label">TWM Stories &nbsp;·&nbsp; Central Coast &nbsp;·&nbsp; Community</span>
       <h1>Friday <em>Night</em><br>Stories</h1>
       <div class="hero-rule"></div>
-      <p class="hero-sub">Stories from the sideline. Football, families, seniors — and the moments that matter most when the lights come on.</p>
+      <p class="hero-sub">The lights come on. The season begins. These are the stories we carry.</p>
     </div>
   </header>
 
-  <section class="posts-section">
-    <div class="section-header">
-      <h2>Stories</h2>
-      <span>1 story</span>
+  <!-- Manifesto -->
+  <section class="manifesto">
+    <p class="manifesto-quote">"Every season has a story worth telling.<br>These are some of them."</p>
+    <div class="manifesto-divider"></div>
+    <p class="manifesto-body">
+      Friday Night Stories documents the athletes, moments, and seasons of California's Central Coast.
+      Not as a business. As a responsibility to the community.
+      These athletes deserve to be seen. These seasons go by faster than anyone expects.
+      This is an attempt to hold onto some of that — honestly, without agenda.
+    </p>
+  </section>
+
+  <!-- Archive -->
+  <section class="archive-section" id="archive">
+    <div class="archive-header">
+      <h2>From the Archive</h2>
+      <span class="season-tag">2024–25 Season</span>
     </div>
 
-    <a href="https://www.twmstories.com/friday-night-stories/the-kick/" class="post-card">
+    <a href="/friday-night-stories/the-kick/" class="story-card">
       <div class="card-image">
-        <img src="/assets/sports-football.jpg" alt="CIF Playoff football — Arroyo Grande vs Bakersfield High">
+        <img
+          class="card-img"
+          src="/assets/sports-football.jpg"
+          alt="CIF Playoff football — Arroyo Grande vs Bakersfield High"
+          loading="lazy" decoding="async">
       </div>
       <div class="card-body">
-        <span class="card-tag">Game Coverage · CIF Playoffs</span>
+        <span class="card-tag">Game Coverage &nbsp;·&nbsp; CIF Playoffs &nbsp;·&nbsp; November 2024</span>
         <h2 class="card-title">The <em>Kick</em></h2>
         <p class="card-excerpt">Arroyo Grande vs. Bakersfield High. CIF playoffs. Extra time. I drove two hours to stand in that end zone — and I will never forget what I saw.</p>
         <span class="card-read">Read the story</span>
@@ -443,20 +498,36 @@
     </a>
   </section>
 
-  <section class="coverage-cta">
+  <!-- Senior Memory bridge — ambient, not a CTA -->
+  <section class="senior-bridge">
+    <div class="bridge-rule"></div>
+    <p class="bridge-label">A Note on the Senior Memory Experience</p>
+    <p class="bridge-text">
+      Some families find us here first. Then, when senior year arrives, they want something more personal —
+      a portrait session, a cinematic film, a memory archive built around that specific year.
+      That's the Senior Memory Experience. It follows naturally from this.
+      There's no pitch. Just an open door.
+    </p>
+    <a href="/senior-portraits/" class="bridge-link">Learn about the Senior Memory Experience</a>
+  </section>
+
+  <!-- Community coverage inquiry -->
+  <section class="coverage-section">
     <div class="coverage-inner">
-      <div>
-        <p class="coverage-label">Team Coverage · 2026 Season</p>
-        <h3>Want your team's season documented?</h3>
-        <p>I cover Central Coast football — the games, the moments, the players. Team coverage starts at $100 per player. Senior Memory packages available for your athlete's final season.</p>
-      </div>
-      <a href="https://tawhaowhaostories.pixieset.com/contact-form/cf_jNb7w8oNx4QgmgWjgDRYIBH5w6YO" class="btn-gold">Get in Touch</a>
+      <p class="coverage-label">Community Coverage &nbsp;·&nbsp; 2025–26 Season</p>
+      <h3>Want your team's season in the archive?</h3>
+      <p>
+        I cover Central Coast athletics — the games, the moments, the players who deserve to be seen.
+        If you'd like to talk about coverage for your team or athlete, reach out.
+      </p>
+      <a href="https://tawhaowhaostories.pixieset.com/contact-form/cf_jNb7w8oNx4QgmgWjgDRYIBH5w6YO" class="coverage-link">Get in touch</a>
     </div>
   </section>
 
   <footer>
     <p>
-      <a href="https://www.twmstories.com">TWM Stories</a> · Arroyo Grande, CA · Central Coast Senior Portraits & Cinematic Films<br>
+      <a href="https://www.twmstories.com">TWM Stories</a> &nbsp;·&nbsp; Arroyo Grande, CA<br>
+      Community storytelling on California's Central Coast<br>
       <a href="https://instagram.com/tawhaowhao_media">@tawhaowhao_media</a>
     </p>
   </footer>
