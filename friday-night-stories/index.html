@@ -344,6 +344,55 @@
 
     .bridge-link:hover { opacity: 1; }
 
+    /* ── Scene setter ── */
+    .scene-setter {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem 5rem;
+    }
+
+    .scene-setter img {
+      width: 100%;
+      aspect-ratio: 21/9;
+      object-fit: cover;
+      object-position: center 45%;
+      display: block;
+    }
+
+    /* ── Editorial moments ── */
+    .editorial-moments {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    .moment-figure {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .moment-figure img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      filter: brightness(0.92);
+    }
+
+    .moment-figure figcaption {
+      font-size: 0.63rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(138,122,106,0.5);
+      line-height: 1.65;
+    }
+
     /* ── From the Blog ── */
     .blog-section {
       max-width: 900px;
@@ -513,6 +562,9 @@
 
       .manifesto { padding: 5rem 1.5rem 4.5rem; }
       .archive-section { padding: 0 1.25rem 5rem; }
+      .scene-setter { padding: 0 1.25rem 4rem; }
+      .scene-setter img { aspect-ratio: 16/9; }
+      .editorial-moments { padding: 0 1.25rem 5rem; grid-template-columns: 1fr; }
       .senior-bridge { padding: 0 1.5rem 5rem; }
       .blog-section { padding: 0 1.25rem 5rem; }
       .coverage-section { padding: 0 1.25rem 5rem; }
@@ -541,6 +593,14 @@
       <p class="hero-sub">The lights come on. The season begins. These are the stories we carry.</p>
     </div>
   </header>
+
+  <!-- Scene setter -->
+  <div class="scene-setter">
+    <img
+      src="/assets/fnl-scene-lights.jpg"
+      alt="Friday Night Lights — Arroyo Grande football under the stadium lights"
+      loading="lazy" decoding="async">
+  </div>
 
   <!-- Manifesto -->
   <section class="manifesto">
@@ -577,6 +637,23 @@
       </div>
     </a>
   </section>
+
+  <!-- Editorial moments -->
+  <div class="editorial-moments">
+    <figure class="moment-figure">
+      <img
+        src="/assets/fnl-chain-gang.jpg"
+        alt="The chain gang crew — Arroyo Grande football"
+        loading="lazy" decoding="async">
+      <figcaption>The People Who Make Friday Night Lights Work</figcaption>
+    </figure>
+    <figure class="moment-figure">
+      <img
+        src="/assets/fnl-kicker.jpg"
+        alt="Arroyo Grande kicker — CIF playoffs 2024"
+        loading="lazy" decoding="async">
+    </figure>
+  </div>
 
   <!-- Senior Memory bridge — ambient, not a CTA -->
   <section class="senior-bridge">
