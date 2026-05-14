@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Photographer San Luis Obispo & Central Coast | TWM Stories</title>
+  <meta name="description" content="Documentary wedding photography and cinematic wedding films on California's Central Coast. Serving San Luis Obispo, Arroyo Grande, Pismo Beach, and surrounding areas. Honest, story-driven coverage — not posed, not rushed.">
+  <meta name="author" content="Simon Kurth">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.twmstories.com/weddings/">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+  <link rel="icon" type="image/png" href="../assets/logo.png">
+  <link rel="apple-touch-icon" href="../assets/logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Wedding Photographer San Luis Obispo | TWM Stories">
+  <meta property="og:description" content="Documentary wedding photography and cinematic wedding films on California's Central Coast. Honest, story-driven coverage.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.twmstories.com/weddings/">
+  <meta property="og:image" content="https://www.twmstories.com/assets/senior-coastal.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="TWM Stories">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Wedding Photographer San Luis Obispo | TWM Stories">
+  <meta name="twitter:description" content="Documentary wedding photography and cinematic wedding films on California's Central Coast.">
+  <meta name="twitter:image" content="https://www.twmstories.com/assets/senior-coastal.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Wedding Photography & Cinematic Films",
+    "description": "Documentary wedding photography and cinematic wedding films for Central Coast couples. Honest, story-driven coverage serving San Luis Obispo, Arroyo Grande, Pismo Beach, and surrounding areas.",
+    "url": "https://www.twmstories.com/weddings/",
+    "provider": {
+      "@type": "ProfessionalService",
+      "name": "TWM Stories",
+      "url": "https://www.twmstories.com",
+      "telephone": "(805) 704-2260",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Arroyo Grande",
+        "addressRegion": "CA",
+        "postalCode": "93420",
+        "addressCountry": "US"
+      }
+    },
+    "areaServed": ["San Luis Obispo, CA", "Arroyo Grande, CA", "Pismo Beach, CA", "Central Coast California"],
+    "potentialAction": {
+      "@type": "CommunicateAction",
+      "target": "https://tawhaowhaostories.pixieset.com/contact-form/cf_jNb7w8oNx4QgmgWjgDRYIBH5w6YO",
+      "name": "Inquire About Your Wedding"
+    }
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=zodiak@400,500,700&display=swap" rel="stylesheet">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NL9075LYZ2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NL9075LYZ2');
+  </script>
+
+  <style>
+    :root {
+      --bg: #141210;
+      --gold: #C8A96A;
+      --gold-hover: #b8954f;
+      --light: #F2EDE4;
+      --muted: rgba(242,237,228,0.6);
+      --faint: rgba(242,237,228,0.35);
+      --border: rgba(242,237,228,0.1);
+      --surface: rgba(242,237,228,0.04);
+      --radius: 6px;
+      --radius-lg: 10px;
+      --font-display: 'Zodiak', Georgia, serif;
+      --font-body: 'Satoshi', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--light);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* Header */
+    .w-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(20,18,16,0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .w-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .w-logo { height: 90px; width: auto; }
+    @media (max-width: 600px) { .w-logo { height: 70px; } }
+    .w-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+    .w-nav a {
+      font-size: 0.85rem;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    .w-nav a:hover { color: var(--light); }
+    .w-nav a.active { color: var(--gold); }
+    .w-nav-book {
+      background: var(--gold);
+      color: #141210 !important;
+      padding: 0.4rem 1rem;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.8rem !important;
+    }
+    .w-nav-book:hover { background: var(--gold-hover) !important; color: #141210 !important; }
+    @media (max-width: 900px) { .w-nav { display: none; } }
+
+    /* Sections */
+    .w-section {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem;
+    }
+    .w-section--wide {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+    .w-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+    .w-h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 400;
+      line-height: 1.12;
+      color: var(--light);
+      margin-bottom: 1.5rem;
+    }
+    .w-h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--light);
+      margin-bottom: 1.25rem;
+    }
+    .w-lead {
+      font-size: 1.1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 58ch;
+      margin-bottom: 2rem;
+    }
+    .w-body {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+    .w-body:last-child { margin-bottom: 0; }
+
+    /* CTA buttons */
+    .w-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--gold);
+      color: #141210;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.85rem 1.75rem;
+      border-radius: 4px;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .w-cta:hover { background: var(--gold-hover); }
+    .w-cta--outline {
+      background: transparent;
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+    }
+    .w-cta--outline:hover { background: rgba(200,169,106,0.08); }
+    .w-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    /* Hero */
+    .w-hero {
+      padding: clamp(4rem, 8vw, 7rem) 1.5rem clamp(3rem, 6vw, 5rem);
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* Divider */
+    .w-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    /* What you get grid */
+    .w-what-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .w-what-item {}
+    .w-what-num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--gold);
+      opacity: 0.5;
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+    .w-what-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--light);
+      margin-bottom: 0.5rem;
+    }
+    .w-what-body { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+
+    /* Testimonial */
+    .w-testimonial {
+      border-left: 2px solid var(--gold);
+      padding-left: 1.75rem;
+      margin: 3rem 0;
+    }
+    .w-testimonial-text {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--light);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+    .w-testimonial-attr {
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* Steps */
+    .w-steps { margin-top: 3rem; display: flex; flex-direction: column; gap: 2.5rem; }
+    .w-step { display: flex; gap: 1.5rem; }
+    .w-step-num {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      color: var(--gold);
+      opacity: 0.45;
+      line-height: 1;
+      flex-shrink: 0;
+      width: 2.5rem;
+    }
+    .w-step-title { font-size: 1rem; font-weight: 600; color: var(--light); margin-bottom: 0.5rem; }
+    .w-step-body { font-size: 0.95rem; color: var(--muted); line-height: 1.75; }
+
+    /* Footer */
+    .w-footer {
+      border-top: 1px solid var(--border);
+      padding: 3.5rem 1.5rem 2.5rem;
+    }
+    .w-footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2.5rem;
+    }
+    .w-footer-brand {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--light);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .w-footer-tagline { font-size: 0.85rem; color: var(--muted); max-width: 34ch; line-height: 1.6; }
+    .w-footer-links { display: flex; flex-direction: column; gap: 0.6rem; }
+    .w-footer-links a { font-size: 0.85rem; color: var(--muted); transition: color 0.2s; }
+    .w-footer-links a:hover { color: var(--gold); }
+    .w-footer-copy {
+      max-width: 1100px;
+      margin: 2rem auto 0;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(242,237,228,0.06);
+      font-size: 0.75rem;
+      color: var(--faint);
+    }
+
+    @media (max-width: 600px) {
+      .w-cta-group { flex-direction: column; }
+      .w-cta { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="w-header">
+    <div class="w-header-inner">
+      <a href="/" aria-label="TWM Stories — home">
+        <img src="../assets/logo-full.png" alt="TWM Stories logo" class="w-logo">
+      </a>
+      <nav class="w-nav" aria-label="Site navigation">
+        <a href="/">Home</a>
+        <a href="/senior-portraits/">Senior Experience</a>
+        <a href="/weddings/" class="active">Weddings</a>
+        <a href="/blog/">Blog</a>
+        <a href="https://tawhaowhaostories.pixieset.com/contact-form/cf_jNb7w8oNx4QgmgWjgDRYIBH5w6YO" target="_blank" rel="noopener noreferrer" class="w-nav-book">Inquire →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <div class="w-hero">
+      <p class="w-label">Wedding Photography &amp; Film · Central Coast</p>
+      <h1 class="w-h1">Wedding coverage for couples who want a real record of the day — not a performance of it.</h1>
+      <p class="w-lead">Documentary photography and cinematic wedding films for couples across San Luis Obispo, Arroyo Grande, Pismo Beach, and the Central Coast. Every wedding is different. The approach stays the same: be present, stay out of the way, and capture what actually happens.</p>
+      <div class="w-cta-group">
+        <a href="https://tawhaowhaostories.pixieset.com/contact-form/cf_jNb7w8oNx4QgmgWjgDRYIBH5w6YO" target="_blank" rel="noopener noreferrer" class="w-cta">Tell Me About Your Wedding →</a>
+        <a href="#how-it-works" class="w-cta w-cta--outline">How It Works ↓</a>
+      </div>
+      <p style="font-size:0.8rem;color:var(--faint);margin-top:1.25rem;">Every wedding is custom-quoted. I take a limited number of weddings each year.</p>
+    </div>
+
+    <hr class="w-divider">
+
+    <!-- The approach -->
+    <section class="w-section">
+      <p class="w-label">The Approach</p>
+      <h2 class="w-h2">Honest coverage. Nothing staged that doesn't need to be.</h2>
+      <p class="w-body">Most photographers talk about being unobtrusive. I mean it. Portraits and family formals happen efficiently — they have to. The rest of the day, I'm in the margins: the getting-ready room, the quiet moment before the ceremony, the table where your grandparents are laughing. That's where the photographs that matter usually come from.</p>
+      <p class="w-body">For couples who want a film as well — I build them around the actual day, not a template. The vows, the toasts, the moments in between. Set to music, edited to feel timeless rather than cinematic for its own sake.</p>
+      <p class="w-body">I'm based in Arroyo Grande and serve the full Central Coast — San Luis Obispo, Pismo Beach, the wine country around Paso Robles, and venues from the beach to the hills. I'm also open to destination work with proper lead time.</p>
+    </section>
+
+    <hr class="w-divider">
+
+    <!-- What's included -->
+    <section class="w-section--wide" style="padding-top:4rem;padding-bottom:4rem;">
+      <div style="max-width:760px;margin:0 auto 0;">
+        <p class="w-label">What You Get</p>
+        <h2 class="w-h2">Full-day coverage, delivered as a complete gallery.</h2>
+      </div>
+      <div class="w-what-grid">
+        <div class="w-what-item">
+          <div class="w-what-num">01</div>
+          <div class="w-what-title">Full-day documentary coverage</div>
+          <div class="w-what-body">From getting ready through the reception — as long as the day needs. No overtime surprises.</div>
+        </div>
+        <div class="w-what-item">
+          <div class="w-what-num">02</div>
+          <div class="w-what-title">Edited photo gallery</div>
+          <div class="w-what-body">Delivered privately via Pixieset. Curated for quality — the images that tell the story of the day, not duplicates.</div>
+        </div>
+        <div class="w-what-item">
+          <div class="w-what-num">03</div>
+          <div class="w-what-title">Cinematic wedding film (add-on)</div>
+          <div class="w-what-body">A 4–8 minute film built from the actual day — vows, speeches, quiet moments. Not a same-day-edit. Something made to hold up for decades.</div>
+        </div>
+        <div class="w-what-item">
+          <div class="w-what-num">04</div>
+          <div class="w-what-title">Pre-wedding consultation</div>
+          <div class="w-what-body">A conversation about the timeline, the venue, and what matters most to you both. Planning photography around how your day actually flows.</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="w-divider">
+
+    <!-- Testimonial -->
+    <section class="w-section">
+      <div class="w-testimonial">
+        <p class="w-testimonial-text">"He was professional, warm, and immediately put us at ease. I couldn't be happier with the results."</p>
+        <p class="w-testimonial-attr">Kerrily Carmichael · TWM Stories client</p>
+      </div>
+    </section>
+
+    <hr class="w-divider">
+
+    <!-- How it works -->
+    <section class="w-section" id="how-it-works">
+      <p class="w-label">The Process</p>
+      <h2 class="w-h2">Simple from the first message to the final delivery.</h2>
+      <div class="w-steps">
+        <div class="w-step">
+          <div class="w-step-num">01</div>
+          <div>
+            <div class="w-step-title">You reach out</div>
+            <div class="w-step-body">Tell me your date, venue, and what you're looking for. I'll confirm availability and we'll set up a call — no quote sheet, just a conversation.</div>
+          </div>
+        </div>
+        <div class="w-step">
+          <div class="w-step-num">02</div>
+          <div>
+            <div class="w-step-title">We plan the day together</div>
+            <div class="w-step-body">Timeline review, venue walk-through (where possible), and a shared understanding of what matters most. Family formals list, golden hour plan, the whole picture.</div>
+          </div>
+        </div>
+        <div class="w-step">
+          <div class="w-step-num">03</div>
+          <div>
+            <div class="w-step-title">I cover the day</div>
+            <div class="w-step-body">Present without being in the way. Portraits done efficiently so you can actually enjoy your reception. Coverage through the end of the night.</div>
+          </div>
+        </div>
+        <div class="w-step">
+          <div class="w-step-num">04</div>
+          <div>
+            <div class="w-step-title">You receive your gallery and film</div>
+            <div class="w-step-body">Fully edited photos delivered to your private gallery. Film delivered separately — properly edited, not rushed.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="w-divider">
+
+    <!-- CTA section -->
+    <section class="w-section" style="text-align:center;">
+      <p class="w-label">Let's Talk</p>
+      <h2 class="w-h2" style="max-width:18ch;margin-inline:auto;">Ready to see if we're a good fit?</h2>
+      <p class="w-body" style="margin-inline:auto;max-width:50ch;">I take a limited number of weddings each year — by design, so each one gets the attention it deserves. If your date is open, let's find out if this is a match.</p>
+      <div class="w-cta-group" style="justify-content:center;margin-top:2rem;">
+        <a href="https://tawhaowhaostories.pixieset.com/contact-form/cf_jNb7w8oNx4QgmgWjgDRYIBH5w6YO" target="_blank" rel="noopener noreferrer" class="w-cta">Tell Me About Your Wedding →</a>
+      </div>
+      <p style="font-size:0.8rem;color:var(--faint);margin-top:1.25rem;">Or reach me directly: <a href="tel:+18057042260" style="color:var(--gold);">(805) 704-2260</a></p>
+    </section>
+
+  </main>
+
+  <footer class="w-footer">
+    <div class="w-footer-inner">
+      <div>
+        <a href="/" class="w-footer-brand">TWM Stories</a>
+        <p class="w-footer-tagline">Portraits &amp; Memory Films on California's Central Coast. Living stories, told honestly.</p>
+        <p style="font-size:0.75rem;color:var(--faint);margin-top:0.5rem;">Serving Arroyo Grande, San Luis Obispo, Pismo Beach, and the 805.</p>
+      </div>
+      <nav aria-label="Footer navigation">
+        <div class="w-footer-links">
+          <a href="/">Home</a>
+          <a href="/senior-portraits/">Senior Experience</a>
+          <a href="/weddings/">Weddings</a>
+          <a href="/dance-recitals/">Dance Recitals</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://tawhaowhaostories.pixieset.com/contact-form/cf_jNb7w8oNx4QgmgWjgDRYIBH5w6YO" target="_blank" rel="noopener noreferrer">Inquire</a>
+          <a href="https://www.instagram.com/tawhaowhao_media/" target="_blank" rel="noopener noreferrer">Instagram @tawhaowhao_media</a>
+        </div>
+      </nav>
+    </div>
+    <p class="w-footer-copy">© 2025 TWM Stories — Tāwhaowhao Stories &nbsp;·&nbsp; Arroyo Grande, CA &nbsp;·&nbsp; (805) 704-2260</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('a[href*="pixieset.com/contact-form"]').forEach(function(el) {
+      el.addEventListener('click', function() {
+        if (typeof gtag === 'undefined') return;
+        gtag('event', 'generate_lead', {
+          event_category: 'wedding_inquiry',
+          event_label: el.textContent.trim().replace(/\s*→$/, '').trim()
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

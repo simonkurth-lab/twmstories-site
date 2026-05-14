@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Senior Portrait Photographer | Arroyo Grande, CA | TWM Stories</title>
-  <meta name="description" content="Natural senior portrait sessions and cinematic memory films in Arroyo Grande, San Luis Obispo, and Pismo Beach. Sessions from $350. $100 holds your date — limited spots each season.">
+  <title>Senior Portrait Photographer San Luis Obispo & Arroyo Grande | TWM Stories</title>
+  <meta name="description" content="Senior portrait photographer serving San Luis Obispo, Arroyo Grande, and Pismo Beach. Natural sessions + cinematic memory films. Sessions from $350. $100 holds your date — limited summer spots.">
   <meta name="author" content="Simon Kurth">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.twmstories.com/senior-portraits/">
@@ -536,8 +536,9 @@
     <div class="sp-hero">
       <div>
         <p class="sp-hero-eyebrow">The Senior Memory Experience</p>
-        <h1>Senior Portrait Photographer · Arroyo Grande &amp; the Central Coast</h1>
+        <h1>Senior Portrait Photographer · San Luis Obispo, Arroyo Grande &amp; Pismo Beach</h1>
         <p class="sp-hero-sub">Not posed. Not forced. Senior portraits that look like your senior — and for families who want more, a cinematic memory film built around who they actually are right now.</p>
+        <p style="font-size:var(--text-xs);letter-spacing:0.08em;color:var(--color-primary);margin-top:calc(-1 * var(--space-3));margin-bottom:var(--space-5);opacity:0.85;">Limited summer 2026 spots · Class of 2027</p>
         <div class="sp-hero-ctas">
           <a href="https://tawhaowhaostories.pixieset.com/booking/" target="_blank" rel="noopener noreferrer" class="hero-cta">Check Dates &amp; Reserve →</a>
           <a href="#packages" class="btn btn--outline">See Packages &amp; Pricing ↓</a>
@@ -886,6 +887,30 @@
     (function () {
       const d = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       document.documentElement.setAttribute('data-theme', d);
+    })();
+
+    // Booking conversion tracking
+    (function () {
+      document.querySelectorAll('a[href*="pixieset.com/booking"]').forEach(function (el) {
+        el.addEventListener('click', function () {
+          if (typeof gtag === 'undefined') return;
+          var label = el.textContent.trim().replace(/\s*→$/, '').trim();
+          var pos = el.closest('.sp-hero') ? 'hero'
+                  : el.classList.contains('pricing-card') ? 'pricing'
+                  : 'page';
+          gtag('event', 'generate_lead', {
+            event_category: 'senior_booking',
+            event_label: label,
+            cta_position: pos
+          });
+          gtag('event', 'cta_click', {
+            cta_page: 'senior-portraits',
+            cta_position: pos,
+            cta_label: label,
+            cta_destination: 'booking'
+          });
+        });
+      });
     })();
 
     // FAQ accordion

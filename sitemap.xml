@@ -15,6 +15,22 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- Weddings service page -->
+  <url>
+    <loc>https://www.twmstories.com/weddings/</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Dance Recitals service page -->
+  <url>
+    <loc>https://www.twmstories.com/dance-recitals/</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Blog index -->
   <url>
     <loc>https://www.twmstories.com/blog/</loc>
