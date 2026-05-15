@@ -75,16 +75,15 @@
 
   <style>
     :root {
-      --bg: #141210;
-      --gold: #C8A96A;
-      --gold-hover: #b8954f;
-      --light: #F2EDE4;
-      --muted: rgba(242,237,228,0.6);
-      --faint: rgba(242,237,228,0.35);
-      --border: rgba(242,237,228,0.1);
-      --surface: rgba(242,237,228,0.04);
-      --radius: 6px;
-      --radius-lg: 10px;
+      --bg: #FAFAF8;
+      --bg-footer: #F2EDE6;
+      --gold: #A8844A;
+      --gold-hover: #8C6D38;
+      --text: #1C1A17;
+      --muted: rgba(28,26,23,0.55);
+      --faint: rgba(28,26,23,0.38);
+      --border: rgba(28,26,23,0.1);
+      --surface: rgba(28,26,23,0.04);
       --font-display: 'Zodiak', Georgia, serif;
       --font-body: 'Satoshi', system-ui, sans-serif;
     }
@@ -93,7 +92,7 @@
     html { scroll-behavior: smooth; }
     body {
       background: var(--bg);
-      color: var(--light);
+      color: var(--text);
       font-family: var(--font-body);
       font-size: 1rem;
       line-height: 1.6;
@@ -107,7 +106,7 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(20,18,16,0.94);
+      background: rgba(250,250,248,0.94);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
@@ -135,17 +134,17 @@
       letter-spacing: 0.02em;
       transition: color 0.2s;
     }
-    .w-nav a:hover { color: var(--light); }
+    .w-nav a:hover { color: var(--text); }
     .w-nav a.active { color: var(--gold); }
     .w-nav-book {
       background: var(--gold);
-      color: #141210 !important;
+      color: #FAFAF8 !important;
       padding: 0.4rem 1rem;
       border-radius: 4px;
       font-weight: 600;
       font-size: 0.8rem !important;
     }
-    .w-nav-book:hover { background: var(--gold-hover) !important; color: #141210 !important; }
+    .w-nav-book:hover { background: var(--gold-hover) !important; color: #FAFAF8 !important; }
     @media (max-width: 900px) { .w-nav { display: none; } }
 
     /* Sections */
@@ -171,7 +170,7 @@
       font-size: clamp(2rem, 5vw, 3.25rem);
       font-weight: 400;
       line-height: 1.12;
-      color: var(--light);
+      color: var(--text);
       margin-bottom: 1.5rem;
     }
     .w-h2 {
@@ -179,7 +178,7 @@
       font-size: clamp(1.5rem, 3.5vw, 2.25rem);
       font-weight: 400;
       line-height: 1.2;
-      color: var(--light);
+      color: var(--text);
       margin-bottom: 1.25rem;
     }
     .w-lead {
@@ -203,7 +202,7 @@
       align-items: center;
       gap: 0.5rem;
       background: var(--gold);
-      color: #141210;
+      color: #FAFAF8;
       font-weight: 600;
       font-size: 0.9rem;
       padding: 0.85rem 1.75rem;
@@ -217,7 +216,7 @@
       border: 1.5px solid var(--gold);
       color: var(--gold);
     }
-    .w-cta--outline:hover { background: rgba(200,169,106,0.08); }
+    .w-cta--outline:hover { background: rgba(168,132,74,0.08); }
     .w-cta-group {
       display: flex;
       flex-wrap: wrap;
@@ -246,19 +245,18 @@
       gap: 2rem;
       margin-top: 3rem;
     }
-    .w-what-item {}
     .w-what-num {
       font-family: var(--font-display);
       font-size: 2rem;
       color: var(--gold);
-      opacity: 0.5;
+      opacity: 0.45;
       line-height: 1;
       margin-bottom: 0.75rem;
     }
     .w-what-title {
       font-size: 1rem;
       font-weight: 600;
-      color: var(--light);
+      color: var(--text);
       margin-bottom: 0.5rem;
     }
     .w-what-body { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
@@ -272,7 +270,7 @@
     .w-testimonial-text {
       font-family: var(--font-display);
       font-size: 1.2rem;
-      color: var(--light);
+      color: var(--text);
       line-height: 1.6;
       margin-bottom: 1rem;
       font-style: italic;
@@ -295,11 +293,12 @@
       flex-shrink: 0;
       width: 2.5rem;
     }
-    .w-step-title { font-size: 1rem; font-weight: 600; color: var(--light); margin-bottom: 0.5rem; }
+    .w-step-title { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 0.5rem; }
     .w-step-body { font-size: 0.95rem; color: var(--muted); line-height: 1.75; }
 
     /* Footer */
     .w-footer {
+      background: var(--bg-footer);
       border-top: 1px solid var(--border);
       padding: 3.5rem 1.5rem 2.5rem;
     }
@@ -314,7 +313,7 @@
     .w-footer-brand {
       font-family: var(--font-display);
       font-size: 1.1rem;
-      color: var(--light);
+      color: var(--text);
       display: block;
       margin-bottom: 0.5rem;
     }
@@ -326,7 +325,7 @@
       max-width: 1100px;
       margin: 2rem auto 0;
       padding-top: 1.25rem;
-      border-top: 1px solid rgba(242,237,228,0.06);
+      border-top: 1px solid rgba(28,26,23,0.08);
       font-size: 0.75rem;
       color: var(--faint);
     }
