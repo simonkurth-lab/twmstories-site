@@ -238,28 +238,90 @@
       margin: 0;
     }
 
-    /* What you get grid */
-    .w-what-grid {
+    /* Packages */
+    .w-pkg-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.75rem;
       margin-top: 3rem;
+      align-items: start;
     }
-    .w-what-num {
+    @media (max-width: 700px) {
+      .w-pkg-grid { grid-template-columns: 1fr; }
+    }
+    .w-pkg {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2.25rem 2rem;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+    .w-pkg--featured {
+      border-color: rgba(168,132,74,0.3);
+    }
+    .w-pkg-name {
       font-family: var(--font-display);
-      font-size: 2rem;
-      color: var(--gold);
-      opacity: 0.45;
-      line-height: 1;
-      margin-bottom: 0.75rem;
-    }
-    .w-what-title {
-      font-size: 1rem;
-      font-weight: 600;
+      font-size: 1.35rem;
+      font-weight: 400;
       color: var(--text);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.3rem;
     }
-    .w-what-body { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+    .w-pkg-type {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+    .w-pkg-price {
+      font-family: var(--font-display);
+      font-size: 1.9rem;
+      font-weight: 400;
+      color: var(--gold);
+      line-height: 1.15;
+      margin-bottom: 1.75rem;
+      padding-bottom: 1.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .w-pkg-price-label {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--faint);
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+    .w-pkg-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+    .w-pkg-list li {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.55;
+      padding-left: 1.35rem;
+      position: relative;
+    }
+    .w-pkg-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      opacity: 0.6;
+    }
+    .w-pkg-closing {
+      max-width: 60ch;
+      margin: 3.5rem auto 0;
+      text-align: center;
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.85;
+    }
 
     /* Testimonial */
     .w-testimonial {
@@ -385,33 +447,67 @@
 
     <hr class="w-divider">
 
-    <!-- What's included -->
-    <section class="w-section--wide" style="padding-top:4rem;padding-bottom:4rem;">
+    <!-- Packages -->
+    <section class="w-section--wide" id="packages" style="padding-top:4rem;padding-bottom:4rem;">
       <div style="max-width:760px;margin:0 auto 0;">
-        <p class="w-label">What You Get</p>
-        <h2 class="w-h2">Full-day coverage, delivered as a complete gallery.</h2>
+        <p class="w-label">Wedding Story Offerings</p>
+        <h2 class="w-h2">Two ways to document your day.</h2>
+        <p class="w-lead" style="margin-bottom:0;">Honest, documentary-style wedding storytelling centered on real moments, family, atmosphere, and the feeling of the day as it naturally unfolds.</p>
       </div>
-      <div class="w-what-grid">
-        <div class="w-what-item">
-          <div class="w-what-num">01</div>
-          <div class="w-what-title">Full-day documentary coverage</div>
-          <div class="w-what-body">From getting ready through the reception — as long as the day needs. No overtime surprises.</div>
+      <div class="w-pkg-grid">
+
+        <!-- Story Stills -->
+        <div class="w-pkg">
+          <p class="w-pkg-name">Story Stills</p>
+          <p class="w-pkg-type">Photography Coverage</p>
+          <div class="w-pkg-price">
+            <span class="w-pkg-price-label">Starting at</span>
+            $1,800
+          </div>
+          <ul class="w-pkg-list">
+            <li>Full-day coverage — from getting ready through reception (up to 8 hours)</li>
+            <li>Documentary-style candid coverage throughout</li>
+            <li>Traditional family photos and guided portraits</li>
+            <li>First-look coverage if desired</li>
+            <li>Golden-hour portraits when the light is best</li>
+            <li>350–500 professionally edited images</li>
+            <li>Private online Pixieset gallery — 1 year access</li>
+            <li>High-resolution downloads with personal print release</li>
+            <li>Sneak peeks within a few days</li>
+            <li>Final gallery delivery within 2–3 weeks</li>
+          </ul>
         </div>
-        <div class="w-what-item">
-          <div class="w-what-num">02</div>
-          <div class="w-what-title">Edited photo gallery</div>
-          <div class="w-what-body">Delivered privately via Pixieset. Curated for quality — the images that tell the story of the day, not duplicates.</div>
+
+        <!-- Living Story -->
+        <div class="w-pkg w-pkg--featured">
+          <p class="w-pkg-name">Living Story</p>
+          <p class="w-pkg-type">Photography + Cinematic Film</p>
+          <div class="w-pkg-price">
+            <span class="w-pkg-price-label">Starting at</span>
+            $2,400
+          </div>
+          <ul class="w-pkg-list">
+            <li>Full-day hybrid coverage — from getting ready through reception (up to 8 hours)</li>
+            <li>Documentary-style candid coverage throughout</li>
+            <li>Traditional family photos and guided portraits</li>
+            <li>First-look coverage if desired</li>
+            <li>Golden-hour portraits when the light is best</li>
+            <li>400+ professionally edited images</li>
+            <li>Private online Pixieset gallery — 1 year access</li>
+            <li>High-resolution downloads with personal print release</li>
+            <li>Sneak peeks within a few days</li>
+            <li>Final photo gallery delivery within 2–3 weeks</li>
+            <li>2–3 minute cinematic highlight film featuring the first look, private vows, and favorite candid moments</li>
+            <li>Highlight film delivery within 3–4 weeks</li>
+            <li>Limited drone footage where conditions allow</li>
+          </ul>
         </div>
-        <div class="w-what-item">
-          <div class="w-what-num">03</div>
-          <div class="w-what-title">Cinematic wedding film (add-on)</div>
-          <div class="w-what-body">A 4–8 minute film built from the actual day — vows, speeches, quiet moments. Not a same-day-edit. Something made to hold up for decades.</div>
-        </div>
-        <div class="w-what-item">
-          <div class="w-what-num">04</div>
-          <div class="w-what-title">Pre-wedding consultation</div>
-          <div class="w-what-body">A conversation about the timeline, the venue, and what matters most to you both. Planning photography around how your day actually flows.</div>
-        </div>
+
+      </div>
+
+      <p class="w-pkg-closing">If you value real moments over posed ones — documentary coverage, emotional storytelling, and a calm presence on your wedding day — I'd love to hear about your plans. Reach out below and we'll figure out if it's a good fit.</p>
+      <div style="text-align:center;margin-top:2rem;">
+        <a href="https://tawhaowhaostories.pixieset.com/contact-form/cf_jNb7w8oNx4QgmgWjgDRYIBH5w6YO" target="_blank" rel="noopener noreferrer" class="w-cta">Tell Me About Your Wedding →</a>
       </div>
     </section>
 
