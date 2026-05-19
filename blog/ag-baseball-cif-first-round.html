@@ -156,6 +156,71 @@
     }
     .clearfix::after { content: ''; display: table; clear: both; }
 
+    /* ── Walk-off moment hero ── */
+    .moment-hero {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      display: grid;
+      grid-template-columns: 44fr 56fr;
+      min-height: 360px;
+      margin: 3.5rem 0;
+      background: #060E1A;
+      border-top: 1px solid rgba(200,169,106,0.15);
+      border-bottom: 1px solid rgba(200,169,106,0.15);
+    }
+    .moment-hero-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 3.5rem 2.5rem 3.5rem 5%;
+    }
+    .moment-hero-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.7;
+      margin-bottom: 1.25rem;
+    }
+    .moment-hero-text blockquote {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 1.6vw, 1.25rem);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.7;
+      margin: 0;
+      border-left: 2px solid var(--gold);
+      padding-left: 1.25rem;
+    }
+    .moment-hero-video {
+      position: relative;
+      min-height: 300px;
+    }
+    .moment-hero-video iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    @media (max-width: 700px) {
+      .moment-hero {
+        grid-template-columns: 1fr;
+      }
+      .moment-hero-video {
+        aspect-ratio: 16/9;
+        min-height: unset;
+      }
+      .moment-hero-text {
+        padding: 2rem 1.25rem;
+        order: 2;
+      }
+      .moment-hero-video { order: 1; }
+    }
+
     /* ── Full-width body image ── */
     .fig-wide {
       width: 100%;
@@ -322,6 +387,21 @@
       </figure>
 
       <p>At the same time, there was a real sense of empathy for the other side too — for their seniors, their parents, and everything they've invested to reach this point. CIF baseball is probably as raw as high school sports gets. Especially for families who understand how quickly it all disappears.</p>
+
+      <!-- Walk-off moment — full-bleed hero break -->
+      <div class="moment-hero">
+        <div class="moment-hero-text">
+          <p class="moment-hero-label">The Moment</p>
+          <blockquote>In the end, Jones Stumph stepped up with a runner on third and delivered a ball deep enough into the outfield to bring Caleb Jaynes home for the walk-off sac fly — a simple baseball moment that somehow carried the weight of an entire season.</blockquote>
+        </div>
+        <div class="moment-hero-video">
+          <iframe
+            src="https://iframe.mediadelivery.net/embed/635710/01193b02-d345-46c7-9073-1b6993bec065?autoplay=false&loop=false&muted=false&preload=true&controls=true"
+            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
 
       <p class="section-heading">Looking Ahead</p>
 
