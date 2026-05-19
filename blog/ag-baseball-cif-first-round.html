@@ -156,6 +156,34 @@
     }
     .clearfix::after { content: ''; display: table; clear: both; }
 
+    /* ── Float image ── */
+    .img-float-right,
+    .img-float-left {
+      width: 44%;
+      max-width: 280px;
+      margin-bottom: 1.25rem;
+    }
+    .img-float-right { float: right; margin-left: 1.75rem; clear: right; }
+    .img-float-left  { float: left;  margin-right: 1.75rem; clear: left; }
+    .img-float-right img,
+    .img-float-left img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      object-position: top;
+    }
+    .img-float-right figcaption,
+    .img-float-left figcaption {
+      font-size: 0.62rem;
+      color: var(--text-faint);
+      padding-top: 0.4rem;
+      letter-spacing: 0.03em;
+      line-height: 1.45;
+      border-top: 1px solid var(--border-mid);
+      margin-top: 0.3rem;
+    }
+
     /* ── Footer ── */
     .blog-footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border-mid); }
     .blog-footer p { font-size: 0.78rem; color: var(--text-faint); letter-spacing: 0.05em; }
@@ -172,6 +200,15 @@
         margin: 1.5rem auto;
         display: block;
       }
+      .img-float-right,
+      .img-float-left {
+        float: none;
+        width: 100%;
+        max-width: 100%;
+        margin: 1.5rem 0;
+      }
+      .img-float-right img,
+      .img-float-left img { aspect-ratio: 16/9; }
     }
   </style>
 </head>
@@ -248,6 +285,15 @@
       </figure>
 
       <p>As both a parent of a senior player and someone documenting the game from behind a camera, it put me in a strange emotional space. There's a different weight to playoff baseball when you realize every inning could potentially be the last time your son takes the field with this group.</p>
+
+      <!-- Thomas Winterberg — floats left -->
+      <figure class="img-float-left">
+        <img
+          src="https://images.pixieset.com/412664011/893171866da07ea80bd53d15fa1637f8-xxlarge.jpg"
+          alt="Thomas Winterberg pitching in relief — AG CIF baseball vs Kerman"
+          loading="lazy">
+        <figcaption>Thomas Winterberg with a clutch inning in relief</figcaption>
+      </figure>
 
       <p>Every pitch felt important. Every at-bat carried tension.</p>
 
