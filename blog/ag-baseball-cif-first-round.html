@@ -123,20 +123,17 @@
     }
     .section-heading::after { content: ''; flex: 1; height: 1px; background: var(--border-mid); }
 
-    /* ── Video embed ── */
-    .video-wrap {
-      width: 100vw;
+    /* ── Vertical video embed ── */
+    .video-vertical {
+      max-width: 360px;
+      margin: 2.5rem auto;
+    }
+    .video-vertical-inner {
       position: relative;
-      left: 50%;
-      transform: translateX(-50%);
-      margin: 2.5rem 0;
+      padding-top: 177.78%;
       background: #000;
     }
-    .video-wrap-inner {
-      position: relative;
-      padding-top: 56.25%;
-    }
-    .video-wrap-inner iframe {
+    .video-vertical-inner iframe {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -192,6 +189,16 @@
       <p class="article-intro">Arroyo Grande Varsity Baseball have been building toward this moment all season — a run at CIF.</p>
 
       <p>Unlucky not to land in Division 1, the Eagles still found themselves in a very dangerous bracket filled with quietly tough opponents. Friday night's matchup against Kerman felt like everything a CIF elimination game should be.</p>
+
+      <div class="video-vertical">
+        <div class="video-vertical-inner">
+          <iframe
+            src="https://iframe.mediadelivery.net/embed/635710/1b292d82-bdf3-4792-a01f-dc6c5cf86436?autoplay=false&loop=false&muted=false&preload=true&controls=true"
+            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
 
       <div class="impact-lines">
         Tense.<br>
