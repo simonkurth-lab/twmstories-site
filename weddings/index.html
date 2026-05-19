@@ -146,7 +146,9 @@
     }
     .w-nav-book:hover { background: var(--gold-hover) !important; color: #FAFAF8 !important; }
     @media (max-width: 900px) { .w-nav { display: none; } }
-    @media (max-width: 767px) { #how-it-works { display: none; } .w-cta--outline { display: none; } }
+    #how-it-works { display: none; }
+    .w-cta--outline { display: none; }
+    @media (min-width: 768px) { #how-it-works { display: block; } .w-cta--outline { display: inline-flex; } }
     .w-nav-toggle {
       display: none;
       align-items: center;
