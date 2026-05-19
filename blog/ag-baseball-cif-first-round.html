@@ -123,15 +123,19 @@
     }
     .section-heading::after { content: ''; flex: 1; height: 1px; background: var(--border-mid); }
 
-    /* ── Float video (vertical 9:16) ── */
-    .video-float-right,
-    .video-float-left {
-      width: 42%;
-      max-width: 260px;
-      margin-bottom: 1.25rem;
+    /* ── Video + text grid pair ── */
+    .video-text-pair {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 2.25rem;
+      align-items: center;
+      margin: 2.5rem 0;
     }
-    .video-float-right { float: right; margin-left: 1.75rem; clear: right; }
-    .video-float-left  { float: left;  margin-right: 1.75rem; clear: left; }
+    .video-text-pair.reverse {
+      grid-template-columns: 1fr 260px;
+    }
+    .video-text-pair.reverse .video-col { order: 2; }
+    .video-text-pair.reverse .text-col  { order: 1; }
     .video-vertical-inner {
       position: relative;
       padding-top: 177.78%;
@@ -144,8 +148,7 @@
       height: 100%;
       border: 0;
     }
-    .video-float-right figcaption,
-    .video-float-left figcaption {
+    .video-col figcaption {
       font-size: 0.62rem;
       color: var(--text-faint);
       padding-top: 0.4rem;
@@ -154,7 +157,8 @@
       border-top: 1px solid var(--border-mid);
       margin-top: 0.3rem;
     }
-    .clearfix::after { content: ''; display: table; clear: both; }
+    .text-col p { margin-bottom: 1.25rem; }
+    .text-col p:last-child { margin-bottom: 0; }
 
     /* ── Walk-off moment hero ── */
     .moment-hero {
@@ -336,14 +340,12 @@
     @media (max-width: 600px) {
       .article-body { padding: 2rem 1.25rem 3rem; }
       .game-hero { padding: 3rem 1.25rem 2.5rem; }
-      .video-float-right,
-      .video-float-left {
-        float: none;
-        width: 100%;
-        max-width: 340px;
-        margin: 1.5rem auto;
-        display: block;
+      .video-text-pair,
+      .video-text-pair.reverse {
+        grid-template-columns: 1fr;
       }
+      .video-text-pair.reverse .video-col,
+      .video-text-pair.reverse .text-col { order: unset; }
       .img-float-right,
       .img-float-left {
         float: none;
@@ -392,21 +394,22 @@
 
       <p class="article-intro">Arroyo Grande Varsity Baseball have been building toward this moment all season — a run at CIF.</p>
 
-      <!-- Brock Paz homerun — floats left, one paragraph wraps -->
-      <figure class="video-float-left">
-        <div class="video-vertical-inner">
-          <iframe
-            src="https://iframe.mediadelivery.net/embed/635710/e6bdff92-07dc-4aa1-9f52-ce941fccf459?autoplay=false&loop=false&muted=false&preload=true&controls=true"
-            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
-            allowfullscreen>
-          </iframe>
+      <!-- Brock Paz — video left, text right, vertically centered -->
+      <div class="video-text-pair">
+        <figure class="video-col">
+          <div class="video-vertical-inner">
+            <iframe
+              src="https://iframe.mediadelivery.net/embed/635710/e6bdff92-07dc-4aa1-9f52-ce941fccf459?autoplay=false&loop=false&muted=false&preload=true&controls=true"
+              allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <figcaption>2029 Freshman Stand Out Brock Paz with a clutch home run — his 7th of the season</figcaption>
+        </figure>
+        <div class="text-col">
+          <p>Unlucky not to land in Division 1, the Eagles still found themselves in a very dangerous bracket filled with quietly tough opponents. Friday night's matchup against Kerman felt like everything a CIF elimination game should be.</p>
         </div>
-        <figcaption>2029 Freshman Stand Out Brock Paz with a clutch home run — his 7th of the season</figcaption>
-      </figure>
-
-      <p>Unlucky not to land in Division 1, the Eagles still found themselves in a very dangerous bracket filled with quietly tough opponents. Friday night's matchup against Kerman felt like everything a CIF elimination game should be.</p>
-
-      <div class="clearfix"></div>
+      </div>
 
       <div class="impact-lines">
         Tense.<br>
@@ -416,23 +419,23 @@
 
       <p>It was the kind of game where neither team truly deserved to lose.</p>
 
-      <!-- Tane Kurth — floats right, two paragraphs wrap -->
-      <figure class="video-float-right">
-        <div class="video-vertical-inner">
-          <iframe
-            src="https://iframe.mediadelivery.net/embed/635710/1b292d82-bdf3-4792-a01f-dc6c5cf86436?autoplay=false&loop=false&muted=false&preload=true&controls=true"
-            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
-            allowfullscreen>
-          </iframe>
+      <!-- Tane Kurth — text left, video right, vertically centered -->
+      <div class="video-text-pair reverse">
+        <figure class="video-col">
+          <div class="video-vertical-inner">
+            <iframe
+              src="https://iframe.mediadelivery.net/embed/635710/1b292d82-bdf3-4792-a01f-dc6c5cf86436?autoplay=false&loop=false&muted=false&preload=true&controls=true"
+              allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <figcaption>Tane Kurth coming home to tie up the game in the bottom of the 6th inning</figcaption>
+        </figure>
+        <div class="text-col">
+          <p>As both a parent of a senior player and someone documenting the game from behind a camera, it put me in a strange emotional space. There's a different weight to playoff baseball when you realize every inning could potentially be the last time your son takes the field with this group.</p>
+          <p>Every pitch felt important. Every at-bat carried tension.</p>
         </div>
-        <figcaption>Tane Kurth coming home to tie up the game in the bottom of the 6th inning</figcaption>
-      </figure>
-
-      <p>As both a parent of a senior player and someone documenting the game from behind a camera, it put me in a strange emotional space. There's a different weight to playoff baseball when you realize every inning could potentially be the last time your son takes the field with this group.</p>
-
-      <p>Every pitch felt important. Every at-bat carried tension.</p>
-
-      <div class="clearfix"></div>
+      </div>
 
       <!-- Thomas Winterberg — full-width editorial break -->
       <figure class="fig-wide">
