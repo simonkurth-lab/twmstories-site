@@ -416,6 +416,7 @@ a:hover {
 @media (min-width: 768px) {
   .testimonials { grid-template-columns: 1fr 1fr; }
 }
+@media (max-width: 767px) { .testimonial--desktop { display: none; } }
 .testimonial {
   padding: var(--space-6);
   background: var(--color-surface);
