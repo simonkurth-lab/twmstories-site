@@ -146,6 +146,56 @@
     }
     .w-nav-book:hover { background: var(--gold-hover) !important; color: #FAFAF8 !important; }
     @media (max-width: 900px) { .w-nav { display: none; } }
+    @media (max-width: 767px) { #how-it-works { display: none; } .w-cta--outline { display: none; } }
+    .w-nav-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      color: var(--text);
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    @media (max-width: 900px) { .w-nav-toggle { display: flex; } }
+    .w-mobile-nav {
+      position: fixed;
+      inset: 0;
+      z-index: 99;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .w-mobile-nav.is-open { opacity: 1; pointer-events: all; }
+    .w-mobile-nav a {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .w-mobile-nav a:hover { color: var(--gold); }
+    .w-mobile-nav a.active { color: var(--gold); }
+    .w-mobile-nav-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
 
     /* Sections */
     .w-section {
@@ -412,8 +462,23 @@
         <a href="/blog/">Blog</a>
         <a href="https://tawhaowhaostories.pixieset.com/contact-form/cf_jNb7w8oNx4QgmgWjgDRYIBH5w6YO" target="_blank" rel="noopener noreferrer" class="w-nav-book">Inquire →</a>
       </nav>
+      <button class="w-nav-toggle" aria-label="Open menu" onclick="document.getElementById('w-mobile-nav').classList.add('is-open')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
     </div>
   </header>
+
+  <!-- Mobile Nav -->
+  <div id="w-mobile-nav" class="w-mobile-nav" aria-label="Mobile navigation">
+    <button class="w-mobile-nav-close" aria-label="Close menu" onclick="document.getElementById('w-mobile-nav').classList.remove('is-open')">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <a href="/">Home</a>
+    <a href="/senior-portraits/">Senior Experience</a>
+    <a href="/weddings/" class="active">Weddings</a>
+    <a href="/blog/">Blog</a>
+    <a href="https://tawhaowhaostories.pixieset.com/contact-form/cf_jNb7w8oNx4QgmgWjgDRYIBH5w6YO" target="_blank" rel="noopener noreferrer">Inquire</a>
+  </div>
 
   <main>
 
