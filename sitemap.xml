@@ -44,6 +44,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.twmstories.com/blog/ag-baseball-cif-first-round.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.twmstories.com/blog/senior-night-fight-back.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
