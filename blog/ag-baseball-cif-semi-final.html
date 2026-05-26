@@ -201,6 +201,36 @@
     }
     .clearfix::after { content: ''; display: table; clear: both; }
 
+    /* ── Mini hero — full-bleed image break ── */
+    .mini-hero {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 3rem 0 2rem;
+      line-height: 0;
+    }
+    .mini-hero img {
+      width: 100%;
+      display: block;
+      height: 480px;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+    .mini-hero figcaption {
+      font-size: 0.65rem;
+      color: var(--text-faint);
+      padding: 0.5rem 2rem 0;
+      letter-spacing: 0.04em;
+      line-height: 1.5;
+      border-top: 1px solid var(--border-mid);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    @media (max-width: 600px) {
+      .mini-hero img { height: 260px; }
+    }
+
     /* ── Video + text grid pair ── */
     .video-text-pair {
       display: grid;
@@ -527,16 +557,15 @@
 
       <p>For the seniors on this roster, Saturday carried a different kind of weight. Winning a playoff game at home — in front of the people who have been there since the beginning — is not something every high school athlete gets to experience. Most don't. This group did.</p>
 
-      <div class="clearfix">
-        <figure class="img-float-left">
-          <img
-            src="https://images.pixieset.com/412664011/57c04356cec4c0a58adde86194a86b63-xxlarge.jpg"
-            alt="Support from the Football team and familiar faces — Arroyo Grande CIF Semi Final"
-            loading="lazy">
-          <figcaption>Support from the Football team and some familiar faces</figcaption>
-        </figure>
-        <p>The stands weren't just full of fans. They were full of people who have known these kids their entire lives. Parents who remember T-ball and travel teams and early morning practices. Families who have given years to this program without asking much in return other than to watch their kids compete. Friends who showed up simply because they wanted to be there.</p>
-      </div>
+      <p>The stands weren't just full of fans. They were full of people who have known these kids their entire lives. Parents who remember T-ball and travel teams and early morning practices. Families who have given years to this program without asking much in return other than to watch their kids compete. Friends who showed up simply because they wanted to be there.</p>
+
+      <figure class="mini-hero">
+        <img
+          src="https://images.pixieset.com/412664011/57c04356cec4c0a58adde86194a86b63-xxlarge.jpg"
+          alt="Support from the Football team and familiar faces — Arroyo Grande CIF Semi Final"
+          loading="lazy">
+        <figcaption>Support from the Football team and some familiar faces</figcaption>
+      </figure>
 
       <div class="impact-lines">
         You can't manufacture that kind of crowd.<br>
