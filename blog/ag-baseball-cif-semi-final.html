@@ -172,6 +172,35 @@
       border: 0;
     }
 
+    /* ── Float images ── */
+    .img-float-right,
+    .img-float-left {
+      width: 42%;
+      max-width: 260px;
+      margin-bottom: 1.25rem;
+    }
+    .img-float-right { float: right; margin-left: 1.75rem; clear: right; }
+    .img-float-left  { float: left;  margin-right: 1.75rem; clear: left; }
+    .img-float-right img,
+    .img-float-left img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      object-position: top;
+    }
+    .img-float-right figcaption,
+    .img-float-left figcaption {
+      font-size: 0.62rem;
+      color: var(--text-faint);
+      padding-top: 0.4rem;
+      letter-spacing: 0.03em;
+      line-height: 1.45;
+      border-top: 1px solid var(--border-mid);
+      margin-top: 0.3rem;
+    }
+    .clearfix::after { content: ''; display: table; clear: both; }
+
     /* ── Video + text grid pair ── */
     .video-text-pair {
       display: grid;
@@ -394,6 +423,15 @@
       .video-text-pair.reverse { grid-template-columns: 1fr; }
       .video-text-pair.reverse .video-col,
       .video-text-pair.reverse .text-col { order: unset; }
+      .img-float-right,
+      .img-float-left {
+        float: none;
+        width: 100%;
+        max-width: 100%;
+        margin: 1.5rem 0;
+      }
+      .img-float-right img,
+      .img-float-left img { aspect-ratio: 16/9; object-position: center; }
     }
   </style>
 </head>
@@ -447,6 +485,14 @@
         </div>
       </div>
 
+      <figure class="fig-wide">
+        <img
+          src="https://images.pixieset.com/412664011/be5882820ede12d1a47120a656765558-xxlarge.jpg"
+          alt="Starting pitcher Tanner Bournonville — Arroyo Grande CIF Semi Final vs Tulare Western"
+          loading="lazy">
+        <figcaption>Starting pitcher Tanner Bournonville</figcaption>
+      </figure>
+
       <p>You could feel it in the way the bench reacted to every big pitch, every defensive play, and every hard-fought at bat. CIF baseball always brings pressure, but this group looks united in a way that can't really be manufactured late in a season.</p>
 
       <div class="impact-lines">
@@ -454,7 +500,15 @@
         Chemistry is often what keeps them alive.
       </div>
 
-      <p>This season has clearly become bigger than individual performances. The Eagles are playing with belief, trust, and the understanding that every player has a role in the story being written right now.</p>
+      <div class="clearfix">
+        <figure class="img-float-right">
+          <img
+            src="https://images.pixieset.com/412664011/d7c2fa04b8f09235b98058a5437952d5-xxlarge.jpg"
+            alt="Arroyo Grande Eagles — CIF Semi Final vs Tulare Western"
+            loading="lazy">
+        </figure>
+        <p>This season has clearly become bigger than individual performances. The Eagles are playing with belief, trust, and the understanding that every player has a role in the story being written right now.</p>
+      </div>
 
       <p class="section-heading">And Now the Journey Continues</p>
 
@@ -473,7 +527,16 @@
 
       <p>For the seniors on this roster, Saturday carried a different kind of weight. Winning a playoff game at home — in front of the people who have been there since the beginning — is not something every high school athlete gets to experience. Most don't. This group did.</p>
 
-      <p>The stands weren't just full of fans. They were full of people who have known these kids their entire lives. Parents who remember T-ball and travel teams and early morning practices. Families who have given years to this program without asking much in return other than to watch their kids compete. Friends who showed up simply because they wanted to be there.</p>
+      <div class="clearfix">
+        <figure class="img-float-left">
+          <img
+            src="https://images.pixieset.com/412664011/57c04356cec4c0a58adde86194a86b63-xxlarge.jpg"
+            alt="Support from the Football team and familiar faces — Arroyo Grande CIF Semi Final"
+            loading="lazy">
+          <figcaption>Support from the Football team and some familiar faces</figcaption>
+        </figure>
+        <p>The stands weren't just full of fans. They were full of people who have known these kids their entire lives. Parents who remember T-ball and travel teams and early morning practices. Families who have given years to this program without asking much in return other than to watch their kids compete. Friends who showed up simply because they wanted to be there.</p>
+      </div>
 
       <div class="impact-lines">
         You can't manufacture that kind of crowd.<br>
