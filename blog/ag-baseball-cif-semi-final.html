@@ -150,6 +150,28 @@
       margin-top: 0.4rem;
     }
 
+    /* ── Edge-to-edge video ── */
+    .video-edge {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 3rem 0;
+      line-height: 0;
+      background: #000;
+    }
+    .video-edge-inner {
+      position: relative;
+      padding-top: 56.25%; /* 16:9 */
+    }
+    .video-edge-inner iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
     /* ── Video + text grid pair ── */
     .video-text-pair {
       display: grid;
@@ -415,24 +437,15 @@
 
       <p>Against Tulare Western, the Eagles didn't just play hard. They played connected. Every inning felt like a team fighting for each other instead of for themselves. Dugout energy mattered. Chemistry mattered.</p>
 
-      <!-- ── VIDEO PLACEHOLDER — swap src when Bunny.net link is ready ── -->
-      <!-- To add: replace the div below with an iframe embed matching this pattern:
-           <figure class="video-full">
-             <div class="video-full-inner">
-               <iframe
-                 src="https://iframe.mediadelivery.net/embed/635710/YOUR-VIDEO-ID?autoplay=false&loop=false&muted=false&preload=true&controls=true"
-                 allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
-                 allowfullscreen>
-               </iframe>
-             </div>
-             <figcaption>Your caption here</figcaption>
-           </figure>
-      -->
-      <figure class="video-full" style="margin: 2.5rem 0;">
-        <div class="video-full-inner" style="display:flex; align-items:center; justify-content:center; background:#060E1A; border: 1px dashed rgba(200,169,106,0.3);">
-          <p style="color:rgba(200,169,106,0.5); font-size:0.8rem; letter-spacing:0.15em; text-transform:uppercase; margin:0; text-align:center; padding: 3rem 2rem;">Video — uploading soon</p>
+      <div class="video-edge">
+        <div class="video-edge-inner">
+          <iframe
+            src="https://iframe.mediadelivery.net/embed/635710/2ca21c41-e212-460b-bbf6-f06876651d60?autoplay=false&loop=false&muted=false&preload=true&controls=true"
+            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen>
+          </iframe>
         </div>
-      </figure>
+      </div>
 
       <p>You could feel it in the way the bench reacted to every big pitch, every defensive play, and every hard-fought at bat. CIF baseball always brings pressure, but this group looks united in a way that can't really be manufactured late in a season.</p>
 
