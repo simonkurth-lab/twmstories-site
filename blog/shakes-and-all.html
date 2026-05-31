@@ -91,11 +91,15 @@
     }
     .back-link:hover { opacity: 1; }
 
+    /* Hero image */
+    .hero-image { width: 100%; line-height: 0; }
+    .hero-image img { width: 100%; display: block; height: 65vw; max-height: 600px; min-height: 240px; object-fit: cover; object-position: center; }
+
     /* Article hero */
     .article-hero {
       max-width: 740px;
       margin: 0 auto;
-      padding: 5rem 2rem 3rem;
+      padding: 3rem 2rem 3rem;
     }
     .article-meta {
       display: flex;
@@ -226,6 +230,14 @@
   </header>
 
   <article>
+
+    <!-- Hero Image -->
+    <div class="hero-image">
+      <img
+        src="../assets/fnl-kicker.jpg"
+        alt="Friday Night Lights — kicker mid-action | TWM Stories"
+        loading="eager">
+    </div>
 
     <div class="article-hero">
       <div class="article-meta">
