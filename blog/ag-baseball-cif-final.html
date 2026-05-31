@@ -303,6 +303,44 @@
     .blog-footer p { font-size: 0.78rem; color: var(--text-faint); letter-spacing: 0.05em; }
     .blog-footer a { color: var(--gold); }
 
+    /* ── Picture-in-picture hero ── */
+    .pip-hero {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 3rem 0 2rem;
+      line-height: 0;
+    }
+    .pip-hero-main {
+      width: 100%;
+      display: block;
+      height: 520px;
+      object-fit: cover;
+      object-position: center;
+    }
+    .pip-hero-inset {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 2.5rem;
+      width: 210px;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      object-position: top;
+      border: 2px solid rgba(200,169,106,0.55);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.75);
+    }
+    .pip-hero figcaption {
+      font-size: 0.65rem;
+      color: var(--text-faint);
+      padding: 0.5rem 2rem 0;
+      letter-spacing: 0.04em;
+      line-height: 1.5;
+      border-top: 1px solid var(--border-mid);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
     @media (max-width: 600px) {
       .article-body { padding: 2rem 1.25rem 3rem; }
       .game-hero { padding: 3rem 1.25rem 2.5rem; }
@@ -315,6 +353,8 @@
       }
       .img-float-right img,
       .img-float-left img { aspect-ratio: 16/9; object-position: center; }
+      .pip-hero-main { height: 280px; }
+      .pip-hero-inset { width: 120px; bottom: 0.75rem; right: 1rem; }
     }
   </style>
 </head>
@@ -388,6 +428,14 @@
 
       <p>And they did.</p>
 
+      <figure class="fig-wide">
+        <img
+          src="https://images.pixieset.com/611359511/8ab14ee37b4d8d3b745c5bfb4aede7c1-xxlarge.jpg"
+          alt="Starting pitcher Grady Pope — CIF Division 2 Championship vs Bakersfield Christian"
+          loading="lazy">
+        <figcaption>Starting pitcher Grady Pope with an excellent start in challenging pitching conditions</figcaption>
+      </figure>
+
       <div class="impact-lines">
         Pitch after pitch.<br>
         Inning after inning.<br>
@@ -404,13 +452,17 @@
 
       <p>Even then, Arroyo Grande never stopped fighting.</p>
 
-      <!-- Add images here as they become available -->
-      <!--
-      <figure class="mini-hero">
-        <img src="https://images.pixieset.com/..." alt="Arroyo Grande Eagles — CIF Final extra innings" loading="lazy">
-        <figcaption></figcaption>
+      <figure class="pip-hero">
+        <img class="pip-hero-main"
+          src="https://images.pixieset.com/611359511/49b3cc12de71d420f88d34adad7434da-xxlarge.jpg"
+          alt="Jones Stumph throwdown at second base — CIF Final extra innings"
+          loading="lazy">
+        <img class="pip-hero-inset"
+          src="https://images.pixieset.com/611359511/4615ed4439ee0d9dbe85e1adeab034b2-xxlarge.jpg"
+          alt="Jones Stumph — CIF Final"
+          loading="lazy">
+        <figcaption>Jones Stumph with the inning-ending throwdown at second</figcaption>
       </figure>
-      -->
 
       <p class="section-heading">The Final Score</p>
 
