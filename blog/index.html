@@ -22,7 +22,6 @@
       --surface: #1c1a17;
       --border: rgba(200,169,106,0.15);
       --gold: #C8A96A;
-      --gold-faint: rgba(200,169,106,0.08);
       --text: #F2EDE4;
       --text-muted: rgba(242,237,228,0.6);
       --text-faint: rgba(242,237,228,0.35);
@@ -37,15 +36,16 @@
       font-size: 16px;
       line-height: 1.7;
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
     a { color: inherit; text-decoration: none; }
 
-    /* Header */
+    /* ---- Header ---- */
     .site-header {
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 200;
       background: rgba(20,18,16,0.95);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
@@ -58,11 +58,7 @@
       align-items: center;
       justify-content: space-between;
     }
-    .logo-img {
-      height: 100px;
-      width: auto;
-      display: block;
-    }
+    .logo-img { height: 100px; width: auto; display: block; }
     @media (max-width: 900px) { .logo-img { height: 80px; } }
     @media (max-width: 600px) { .logo-img { height: 70px; } }
     .back-link {
@@ -75,7 +71,7 @@
     }
     .back-link:hover { opacity: 1; }
 
-    /* Hero */
+    /* ---- Blog hero ---- */
     .blog-hero {
       padding: 5rem 2rem 4rem;
       text-align: center;
@@ -103,90 +99,383 @@
       margin: 0 auto;
       font-size: 1rem;
     }
+    @media (max-width: 600px) { .blog-hero { padding: 3rem 1.25rem 2.5rem; } }
 
-    /* Posts grid */
-    .posts-section {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 4rem 2rem;
+    /* ======================================================
+       CAROUSEL
+    ====================================================== */
+
+    .carousel-section {
+      position: relative;
     }
-    .posts-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 2rem;
-    }
-    .post-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-      transition: border-color 0.3s, transform 0.3s;
-    }
-    .post-card:hover {
-      border-color: rgba(200,169,106,0.4);
-      transform: translateY(-2px);
-    }
-    .post-card-thumb { width: 100%; line-height: 0; }
-    .post-card-thumb img { width: 100%; height: 220px; object-fit: cover; display: block; }
-    .post-card-body {
-      padding: 1.75rem;
-    }
-    .post-meta {
+
+    /* Track: horizontal scroll + snap */
+    .carousel-track {
       display: flex;
-      gap: 1rem;
-      align-items: center;
-      margin-bottom: 0.875rem;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      overscroll-behavior-x: contain;
     }
-    .post-category {
-      font-size: 0.68rem;
-      letter-spacing: 0.15em;
+    .carousel-track::-webkit-scrollbar { display: none; }
+
+    /* Card — mobile: 100vw × full viewport height */
+    .carousel-card {
+      position: relative;
+      flex: 0 0 100vw;
+      height: 100vh;
+      height: 100svh;
+      scroll-snap-align: start;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--bg);
+    }
+
+    /* Media layer: fills full card */
+    .card-media {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    /* Parallax wrapper: slight overflow so shifts don't reveal edges */
+    .card-img-parallax {
+      position: absolute;
+      inset: -4%;
+    }
+
+    .card-bg-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      will-change: transform;
+    }
+
+    /* Ken Burns — subtle 3% scale breath, only on active, no-motion respected */
+    @keyframes kenBurns {
+      0%   { transform: scale(1); }
+      100% { transform: scale(1.03); }
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .carousel-card.is-active .card-bg-img {
+        animation: kenBurns 6s ease-out alternate infinite;
+      }
+    }
+
+    /* Video background */
+    .card-video-wrap {
+      position: absolute;
+      inset: 0;
+      background: #0a0807;
+      overflow: hidden;
+    }
+    .card-video-wrap iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: max(100%, 177.78vh);
+      height: max(100%, 56.25vw);
+      border: 0;
+      pointer-events: none;
+    }
+
+    /* Radial vignette */
+    .card-vignette {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 35%, transparent 25%, rgba(0,0,0,0.55) 100%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Bottom gradient — text legibility */
+    .card-gradient {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 72%;
+      background: linear-gradient(to top,
+        rgba(14,12,10,0.97) 0%,
+        rgba(14,12,10,0.78) 28%,
+        rgba(14,12,10,0.35) 60%,
+        transparent 100%
+      );
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    /* Matted frame — thin gold border, inset like a print */
+    .card-frame {
+      position: absolute;
+      inset: 8px;
+      border: 1px solid rgba(200,169,106,0.2);
+      pointer-events: none;
+      z-index: 6;
+    }
+
+    /* Card text — overlaid at bottom on mobile */
+    .card-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2.5rem 2rem 3.75rem;
+      z-index: 5;
+    }
+
+    /* Text entrance animation — mobile only (desktop always visible) */
+    .card-category,
+    .card-date,
+    .card-title,
+    .card-excerpt,
+    .card-cta {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .carousel-card.is-active .card-category { opacity: 1; transform: none; transition-delay: 0.05s; }
+    .carousel-card.is-active .card-date     { opacity: 1; transform: none; transition-delay: 0.13s; }
+    .carousel-card.is-active .card-title    { opacity: 1; transform: none; transition-delay: 0.22s; }
+    .carousel-card.is-active .card-excerpt  { opacity: 1; transform: none; transition-delay: 0.33s; }
+    .carousel-card.is-active .card-cta      { opacity: 1; transform: none; transition-delay: 0.44s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .card-category, .card-date, .card-title, .card-excerpt, .card-cta {
+        opacity: 1; transform: none; transition: none;
+      }
+    }
+
+    .card-meta {
+      display: flex;
+      gap: 0.875rem;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+    .card-category {
+      font-size: 0.67rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--gold);
     }
-    .post-date {
-      font-size: 0.72rem;
+    .card-date {
+      font-size: 0.7rem;
       color: var(--text-faint);
     }
-    .post-card h2 {
+    .card-title {
       font-family: var(--font-display);
-      font-size: 1.25rem;
+      font-size: clamp(1.3rem, 4vw, 2rem);
       font-weight: 400;
-      line-height: 1.3;
-      margin-bottom: 0.75rem;
+      line-height: 1.2;
       color: var(--text);
+      margin-bottom: 0.875rem;
+      max-width: 520px;
     }
-    .post-card p {
-      font-size: 0.875rem;
+    .card-excerpt {
+      font-size: 0.88rem;
       color: var(--text-muted);
       line-height: 1.65;
       margin-bottom: 1.25rem;
+      max-width: 460px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
-    .post-link {
-      font-size: 0.8rem;
+    .card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
       color: var(--gold);
-      letter-spacing: 0.04em;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      border: 1px solid rgba(200,169,106,0.35);
+      padding: 0.5rem 1rem;
+      border-radius: 2px;
+      transition: border-color 0.25s, background 0.25s;
+    }
+    .card-cta:hover { border-color: var(--gold); background: rgba(200,169,106,0.07); }
+
+    /* Placeholder cards */
+    .carousel-card.is-placeholder { cursor: default; }
+    .carousel-card.is-placeholder .card-frame {
+      border-color: rgba(200,169,106,0.1);
+    }
+    .is-placeholder .card-content {
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 2.5rem;
+    }
+    .is-placeholder .card-title {
+      max-width: 320px;
+      text-align: center;
+      opacity: 1;
+      transform: none;
+    }
+    .placeholder-label {
+      font-size: 0.67rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 1.25rem;
+    }
+    .is-placeholder .card-meta { justify-content: center; }
+    .is-placeholder .card-category { opacity: 1; transform: none; }
+
+    /* ---- Dot navigation (mobile) ---- */
+    .carousel-dots {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 7px;
+      z-index: 10;
+    }
+    .carousel-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(242,237,228,0.28);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .carousel-dot.is-active {
+      background: var(--gold);
+      transform: scale(1.3);
     }
 
-    /* Footer */
+    /* ---- Arrow navigation (desktop only) ---- */
+    .carousel-arrow { display: none; }
+
+    /* ======================================================
+       DESKTOP OVERRIDES — 768px+
+    ====================================================== */
+    @media (min-width: 768px) {
+
+      .carousel-track {
+        align-items: center;
+        padding: 3vh 14vw;
+        gap: 2rem;
+        scroll-padding-left: 14vw;
+      }
+
+      .carousel-card {
+        flex: 0 0 72vw;
+        height: 85vh;
+        scroll-snap-align: start;
+        cursor: default;
+        border-radius: 2px;
+      }
+
+      /* Desktop layout: media fills left 2/3, text panel right 1/3 */
+      .card-content {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: auto;
+        width: 33.33%;
+        padding: 3.5rem 2.5rem 3.5rem 2.75rem;
+        background: var(--surface);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        z-index: 5;
+      }
+
+      /* Subtle gold rule at the image/panel junction */
+      .card-content::before {
+        content: '';
+        position: absolute;
+        top: 20%;
+        bottom: 20%;
+        left: 0;
+        width: 1px;
+        background: rgba(200,169,106,0.18);
+      }
+
+      /* Gradient and vignette clip to image area (left 2/3) */
+      .card-gradient { right: 33.33%; }
+      .card-vignette { right: 33.33%; }
+
+      /* Text always visible on desktop — panel is always shown */
+      .card-category, .card-date, .card-title, .card-excerpt, .card-cta {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .card-title { font-size: clamp(1.15rem, 2vw, 1.65rem); max-width: none; }
+      .card-excerpt { max-width: none; -webkit-line-clamp: 4; }
+
+      /* Placeholder desktop: full-width centered panel */
+      .is-placeholder .card-content {
+        left: 0;
+        width: 100%;
+        background: transparent;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .is-placeholder .card-content::before { display: none; }
+      .is-placeholder .card-title { max-width: 420px; text-align: center; }
+
+      /* Dots hidden on desktop */
+      .carousel-dots { display: none; }
+
+      /* Arrows */
+      .carousel-arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 48px;
+        height: 48px;
+        background: rgba(20,18,16,0.88);
+        border: 1px solid rgba(200,169,106,0.3);
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 20;
+        opacity: 0;
+        transition: opacity 0.3s, background 0.25s, border-color 0.25s;
+      }
+      .carousel-section:hover .carousel-arrow { opacity: 1; }
+      .carousel-arrow:hover { background: rgba(30,26,22,0.96); border-color: var(--gold); }
+      .carousel-arrow:disabled { opacity: 0 !important; pointer-events: none; }
+      .arrow-prev { left: 1.25rem; }
+      .arrow-next { right: 1.25rem; }
+      .carousel-arrow svg {
+        width: 18px;
+        height: 18px;
+        fill: none;
+        stroke: var(--gold);
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+    }
+
+    /* ---- Footer ---- */
     .blog-footer {
       border-top: 1px solid var(--border);
       padding: 3rem 2rem;
       text-align: center;
     }
-    .blog-footer p {
-      font-size: 0.8rem;
-      color: var(--text-faint);
-    }
-    .blog-footer a {
-      color: var(--gold);
-      opacity: 0.8;
-    }
-
-    @media (max-width: 600px) {
-      .blog-hero { padding: 3rem 1.25rem 2.5rem; }
-      .posts-section { padding: 2.5rem 1.25rem; }
-      .posts-grid { grid-template-columns: 1fr; }
-    }
+    .blog-footer p { font-size: 0.8rem; color: var(--text-faint); }
+    .blog-footer a { color: var(--gold); opacity: 0.8; }
   </style>
 </head>
 <body>
@@ -206,123 +495,348 @@
     <p>Senior portrait guides, memory film stories, and photography tips for families in Arroyo Grande, San Luis Obispo, Pismo Beach, and the 805.</p>
   </section>
 
-  <section class="posts-section">
-    <div class="posts-grid">
+  <section class="carousel-section" aria-label="Stories carousel">
 
-      <a href="/blog/ag-baseball-cif-final.html" class="post-card">
-        <div class="post-card-thumb">
-          <img src="https://images.pixieset.com/611359511/85f54519d7396515555e969a0ef9b126-xxlarge.jpg" alt="Eagles CIF Final — TWM Stories" loading="lazy">
-        </div>
-        <div class="post-card-body">
-          <div class="post-meta">
-            <span class="post-category">Game Coverage</span>
-            <span class="post-date">May 2026</span>
+    <div class="carousel-track" id="carouselTrack" role="list">
+
+      <!-- CARD 1: Eagles CIF Final -->
+      <article class="carousel-card" data-index="0" role="listitem">
+        <div class="card-media">
+          <div class="card-img-parallax">
+            <img class="card-bg-img" src="https://images.pixieset.com/611359511/85f54519d7396515555e969a0ef9b126-xxlarge.jpg" alt="Eagles CIF Final — TWM Stories" loading="eager">
           </div>
-          <h2>Eagles Fall in CIF Final, But Their Story Isn't Finished</h2>
-          <p>A heartbreaking 4-3 walk-off loss in extra innings — but a group that never backed down, and a season that isn't over yet. The Eagles are heading to the CIF State Championships.</p>
-          <span class="post-link">Read the story →</span>
+          <div class="card-vignette"></div>
+          <div class="card-gradient"></div>
         </div>
-      </a>
-
-      <a href="/blog/ag-baseball-cif-semi-final.html" class="post-card">
-        <div class="post-card-thumb">
-          <img src="https://images.pixieset.com/412664011/7c62a992bc87ece2084ff4f2f121eea1-xxlarge.jpg" alt="CIF Semi Final — TWM Stories" loading="lazy">
-        </div>
-        <div class="post-card-body">
-          <div class="post-meta">
-            <span class="post-category">Game Coverage</span>
-            <span class="post-date">May 2026</span>
+        <div class="card-frame"></div>
+        <div class="card-content">
+          <div class="card-meta">
+            <span class="card-category">Game Coverage</span>
+            <span class="card-date">May 2026</span>
           </div>
-          <h2>CIF Semi Final — Arroyo Grande Baseball vs Tulare Western</h2>
-          <p>Talent gets teams into the playoffs. Chemistry is often what keeps them alive. A reflection on connection, belief, and a team playing for each other deep in the CIF Central Section.</p>
-          <span class="post-link">Read the story →</span>
+          <h2 class="card-title">Eagles Fall in CIF Final, But Their Story Isn't Finished</h2>
+          <p class="card-excerpt">A heartbreaking 4-3 walk-off loss in extra innings — but a group that never backed down, and a season that isn't over yet. The Eagles are heading to the CIF State Championships.</p>
+          <a href="/blog/ag-baseball-cif-final.html" class="card-cta">Read Story →</a>
         </div>
-      </a>
+      </article>
 
-      <a href="/blog/ag-baseball-cif-first-round.html" class="post-card">
-        <div class="post-card-thumb">
-          <img src="https://images.pixieset.com/412664011/84cc16a1fb695f9eef108bb5553a64d9-xxlarge.jpg" alt="CIF First Round — TWM Stories" loading="lazy">
-        </div>
-        <div class="post-card-body">
-          <div class="post-meta">
-            <span class="post-category">Game Coverage</span>
-            <span class="post-date">May 2026</span>
+      <!-- CARD 2: CIF Semi Final -->
+      <article class="carousel-card" data-index="1" role="listitem">
+        <div class="card-media">
+          <div class="card-img-parallax">
+            <img class="card-bg-img" src="https://images.pixieset.com/412664011/7c62a992bc87ece2084ff4f2f121eea1-xxlarge.jpg" alt="CIF Semi Final — TWM Stories" loading="lazy">
           </div>
-          <h2>CIF First Round — Arroyo Grande Baseball vs Kerman</h2>
-          <p>Tense. Emotional. Consequential. A reflection from behind the lens when every pitch felt important and every inning could be the last with this group.</p>
-          <span class="post-link">Read the story →</span>
+          <div class="card-vignette"></div>
+          <div class="card-gradient"></div>
         </div>
-      </a>
-
-      <a href="/blog/senior-night-fight-back.html" class="post-card">
-        <div class="post-card-thumb">
-          <img src="../assets/baseball/baseball-13-seniors-wide.jpg" alt="Senior Night Fight Back — TWM Stories" loading="lazy">
-        </div>
-        <div class="post-card-body">
-          <div class="post-meta">
-            <span class="post-category">Game Coverage</span>
-            <span class="post-date">May 2026</span>
+        <div class="card-frame"></div>
+        <div class="card-content">
+          <div class="card-meta">
+            <span class="card-category">Game Coverage</span>
+            <span class="card-date">May 2026</span>
           </div>
-          <h2>Senior Night Fight Back</h2>
-          <p>Eleven runs in the sixth. Fifteen hits as a team. The Eagles were down 10-3 and never did the math. Final: Arroyo Grande 14, Mission College Prep 10.</p>
-          <span class="post-link">Read the story →</span>
+          <h2 class="card-title">CIF Semi Final — Arroyo Grande Baseball vs Tulare Western</h2>
+          <p class="card-excerpt">Talent gets teams into the playoffs. Chemistry is often what keeps them alive. A reflection on connection, belief, and a team playing for each other deep in the CIF Central Section.</p>
+          <a href="/blog/ag-baseball-cif-semi-final.html" class="card-cta">Read Story →</a>
         </div>
-      </a>
+      </article>
 
-      <a href="/blog/shakes-and-all.html" class="post-card">
-        <div class="post-card-thumb">
-          <img src="../assets/fnl-kicker.jpg" alt="Shakes and All — TWM Stories" loading="lazy">
-        </div>
-        <div class="post-card-body">
-          <div class="post-meta">
-            <span class="post-category">Perspective</span>
-            <span class="post-date">May 2026</span>
+      <!-- CARD 3: CIF First Round -->
+      <article class="carousel-card" data-index="2" role="listitem">
+        <div class="card-media">
+          <div class="card-img-parallax">
+            <img class="card-bg-img" src="https://images.pixieset.com/412664011/84cc16a1fb695f9eef108bb5553a64d9-xxlarge.jpg" alt="CIF First Round — TWM Stories" loading="lazy">
           </div>
-          <h2>Shakes and All</h2>
-          <p>In a world full of AI-generated everything, I choose to leave the imperfections in. The shake. The glance. The unscripted second. That's the story worth keeping.</p>
-          <span class="post-link">Read the story →</span>
+          <div class="card-vignette"></div>
+          <div class="card-gradient"></div>
         </div>
-      </a>
-
-      <a href="/blog/what-is-a-senior-memory-film.html" class="post-card">
-        <div class="post-card-thumb">
-          <img src="../assets/seniors-golden.jpg" alt="What Is a Senior Memory Film — TWM Stories" loading="lazy">
-        </div>
-        <div class="post-card-body">
-          <div class="post-meta">
-            <span class="post-category">Senior Experience</span>
-            <span class="post-date">April 2026</span>
+        <div class="card-frame"></div>
+        <div class="card-content">
+          <div class="card-meta">
+            <span class="card-category">Game Coverage</span>
+            <span class="card-date">May 2026</span>
           </div>
-          <h2>What Is a Senior Memory Film — and Why Central Coast Families Are Choosing It</h2>
-          <p>There's a moment between the last day of high school and the first morning of whatever comes next when everything your senior has been becomes everything they were. A Senior Memory Film exists to catch that moment.</p>
-          <span class="post-link">Read the story →</span>
+          <h2 class="card-title">CIF First Round — Arroyo Grande Baseball vs Kerman</h2>
+          <p class="card-excerpt">Tense. Emotional. Consequential. A reflection from behind the lens when every pitch felt important and every inning could be the last with this group.</p>
+          <a href="/blog/ag-baseball-cif-first-round.html" class="card-cta">Read Story →</a>
         </div>
-      </a>
+      </article>
 
-      <a href="/blog/senior-night-volleyball.html" class="post-card">
-        <div class="post-card-thumb">
-          <img src="https://images.pixieset.com/444976311/d9728aa3dc75fa4a127786aa852e1a8e-xxlarge.jpg" alt="Senior Night Volleyball — TWM Stories" loading="lazy">
-        </div>
-        <div class="post-card-body">
-          <div class="post-meta">
-            <span class="post-category">Community</span>
-            <span class="post-date">April 2026</span>
+      <!-- CARD 4: Senior Night Fight Back -->
+      <article class="carousel-card" data-index="3" role="listitem">
+        <div class="card-media">
+          <div class="card-img-parallax">
+            <img class="card-bg-img" src="../assets/baseball/baseball-13-seniors-wide.jpg" alt="Senior Night Fight Back — TWM Stories" loading="lazy">
           </div>
-          <h2>Senior Night — Volleyball</h2>
-          <p>Some nights you show up with a camera and leave with something more than photos. A reflection on photographing volleyball senior night for families I've known for a long time.</p>
-          <span class="post-link">Read the story →</span>
+          <div class="card-vignette"></div>
+          <div class="card-gradient"></div>
         </div>
-      </a>
+        <div class="card-frame"></div>
+        <div class="card-content">
+          <div class="card-meta">
+            <span class="card-category">Game Coverage</span>
+            <span class="card-date">May 2026</span>
+          </div>
+          <h2 class="card-title">Senior Night Fight Back</h2>
+          <p class="card-excerpt">Eleven runs in the sixth. Fifteen hits as a team. The Eagles were down 10-3 and never did the math. Final: Arroyo Grande 14, Mission College Prep 10.</p>
+          <a href="/blog/senior-night-fight-back.html" class="card-cta">Read Story →</a>
+        </div>
+      </article>
 
-      <!-- Future posts will be added here -->
+      <!-- CARD 5: Shakes and All -->
+      <article class="carousel-card" data-index="4" role="listitem">
+        <div class="card-media">
+          <div class="card-img-parallax">
+            <img class="card-bg-img" src="../assets/fnl-kicker.jpg" alt="Shakes and All — TWM Stories" loading="lazy">
+          </div>
+          <div class="card-vignette"></div>
+          <div class="card-gradient"></div>
+        </div>
+        <div class="card-frame"></div>
+        <div class="card-content">
+          <div class="card-meta">
+            <span class="card-category">Perspective</span>
+            <span class="card-date">May 2026</span>
+          </div>
+          <h2 class="card-title">Shakes and All</h2>
+          <p class="card-excerpt">In a world full of AI-generated everything, I choose to leave the imperfections in. The shake. The glance. The unscripted second. That's the story worth keeping.</p>
+          <a href="/blog/shakes-and-all.html" class="card-cta">Read Story →</a>
+        </div>
+      </article>
 
-    </div>
+      <!-- CARD 6: Senior Memory Film — VIDEO BACKGROUND -->
+      <article class="carousel-card" data-index="5" role="listitem">
+        <div class="card-media">
+          <div class="card-video-wrap">
+            <iframe
+              src="https://iframe.mediadelivery.net/embed/635710/e34c5835-4e79-4344-a0d5-2d88fb27a650?autoplay=true&loop=true&muted=true&controls=false&preload=metadata"
+              allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+              title="Senior Memory Film — TWM Stories">
+            </iframe>
+          </div>
+          <div class="card-vignette"></div>
+          <div class="card-gradient"></div>
+        </div>
+        <div class="card-frame"></div>
+        <div class="card-content">
+          <div class="card-meta">
+            <span class="card-category">Senior Experience</span>
+            <span class="card-date">April 2026</span>
+          </div>
+          <h2 class="card-title">What Is a Senior Memory Film — and Why Central Coast Families Are Choosing It</h2>
+          <p class="card-excerpt">There's a moment between the last day of high school and the first morning of whatever comes next when everything your senior has been becomes everything they were. A Senior Memory Film exists to catch that moment before it passes.</p>
+          <a href="/blog/what-is-a-senior-memory-film.html" class="card-cta">Read Story →</a>
+        </div>
+      </article>
+
+      <!-- CARD 7: Senior Night Volleyball -->
+      <article class="carousel-card" data-index="6" role="listitem">
+        <div class="card-media">
+          <div class="card-img-parallax">
+            <img class="card-bg-img" src="https://images.pixieset.com/444976311/d9728aa3dc75fa4a127786aa852e1a8e-xxlarge.jpg" alt="Senior Night Volleyball — TWM Stories" loading="lazy">
+          </div>
+          <div class="card-vignette"></div>
+          <div class="card-gradient"></div>
+        </div>
+        <div class="card-frame"></div>
+        <div class="card-content">
+          <div class="card-meta">
+            <span class="card-category">Community</span>
+            <span class="card-date">April 2026</span>
+          </div>
+          <h2 class="card-title">Senior Night — Volleyball</h2>
+          <p class="card-excerpt">Some nights you show up with a camera and leave with something more than photos. A reflection on photographing volleyball senior night for families I've known for a long time.</p>
+          <a href="/blog/senior-night-volleyball.html" class="card-cta">Read Story →</a>
+        </div>
+      </article>
+
+      <!-- PLACEHOLDER CARD 8 — fill in when ready to publish -->
+      <!-- TO DO: add background image, update excerpt, change href and remove cursor:not-allowed -->
+      <article class="carousel-card is-placeholder" data-index="7" role="listitem"
+               style="background: var(--surface); cursor: default;">
+        <div class="card-frame"></div>
+        <div class="card-content">
+          <p class="placeholder-label">Coming Soon</p>
+          <div class="card-meta">
+            <span class="card-category">Senior Experience</span>
+          </div>
+          <h2 class="card-title">What to Wear for Senior Portraits on the Central Coast</h2>
+          <!-- Add when publishing:
+          <p class="card-excerpt">Your excerpt here...</p>
+          <a href="/blog/what-to-wear-senior-portraits.html" class="card-cta">Read Story →</a>
+          -->
+        </div>
+      </article>
+
+      <!-- PLACEHOLDER CARD 9 — fill in when ready to publish -->
+      <!-- TO DO: add background image, update excerpt, change href -->
+      <article class="carousel-card is-placeholder" data-index="8" role="listitem"
+               style="background: var(--surface); cursor: default;">
+        <div class="card-frame"></div>
+        <div class="card-content">
+          <p class="placeholder-label">Coming Soon</p>
+          <div class="card-meta">
+            <span class="card-category">Senior Experience</span>
+          </div>
+          <h2 class="card-title">5 San Luis Obispo Locations for Senior Portraits</h2>
+          <!-- Add when publishing:
+          <p class="card-excerpt">Your excerpt here...</p>
+          <a href="/blog/slo-senior-portrait-locations.html" class="card-cta">Read Story →</a>
+          -->
+        </div>
+      </article>
+
+    </div><!-- /.carousel-track -->
+
+    <!-- Arrow navigation (desktop) -->
+    <button class="carousel-arrow arrow-prev" id="arrowPrev" aria-label="Previous story">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button class="carousel-arrow arrow-next" id="arrowNext" aria-label="Next story">
+      <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"></polyline></svg>
+    </button>
+
+    <!-- Dot navigation (mobile) -->
+    <div class="carousel-dots" id="carouselDots" role="tablist" aria-label="Story navigation"></div>
+
   </section>
 
   <footer class="blog-footer">
     <p>TWM Stories · Arroyo Grande, CA · <a href="/">twmstories.com</a></p>
     <p style="margin-top:0.5rem;">Ngā Kōrero Ora — Living Stories</p>
   </footer>
+
+  <script>
+  (function () {
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var track      = document.getElementById('carouselTrack');
+    var dotsWrap   = document.getElementById('carouselDots');
+    var arrowPrev  = document.getElementById('arrowPrev');
+    var arrowNext  = document.getElementById('arrowNext');
+    var cards      = Array.from(track.querySelectorAll('.carousel-card'));
+    var total      = cards.length;
+    var current    = 0;
+
+    /* --- Build dots --- */
+    cards.forEach(function (_, i) {
+      var dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' is-active' : '');
+      dot.setAttribute('role', 'tab');
+      dot.setAttribute('aria-label', 'Story ' + (i + 1));
+      dot.addEventListener('click', function () { scrollTo(i); });
+      dotsWrap.appendChild(dot);
+    });
+
+    function dots() { return Array.from(dotsWrap.querySelectorAll('.carousel-dot')); }
+
+    /* --- Set active card --- */
+    function setActive(idx) {
+      if (idx < 0 || idx >= total) return;
+      current = idx;
+      cards.forEach(function (c, i) { c.classList.toggle('is-active', i === idx); });
+      dots().forEach(function (d, i) { d.classList.toggle('is-active', i === idx); });
+      arrowPrev.disabled = (idx === 0);
+      arrowNext.disabled = (idx === total - 1);
+    }
+
+    /* --- Scroll to card --- */
+    function scrollTo(idx) {
+      if (idx < 0 || idx >= total) return;
+      var card = cards[idx];
+      track.scrollTo({
+        left: card.offsetLeft,
+        behavior: prefersReducedMotion ? 'auto' : 'smooth'
+      });
+      setActive(idx);
+    }
+
+    /* --- Detect active card from scroll position --- */
+    function detectActive() {
+      var scrollLeft = track.scrollLeft;
+      var closest = 0;
+      var minDist = Infinity;
+      cards.forEach(function (card, i) {
+        var dist = Math.abs(card.offsetLeft - scrollLeft);
+        if (dist < minDist) { minDist = dist; closest = i; }
+      });
+      if (closest !== current) setActive(closest);
+    }
+
+    /* --- Scroll events --- */
+    var scrollTimer;
+    track.addEventListener('scroll', function () {
+      if (!prefersReducedMotion) updateParallax();
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(detectActive, 80);
+    }, { passive: true });
+
+    /* scrollend for modern browsers */
+    if ('onscrollend' in window) {
+      track.addEventListener('scrollend', detectActive, { passive: true });
+    }
+
+    /* --- Parallax (desktop, no-motion preference) --- */
+    function updateParallax() {
+      if (window.innerWidth < 768) return;
+      var scrollLeft = track.scrollLeft;
+      var trackW = track.offsetWidth;
+      cards.forEach(function (card) {
+        var img = card.querySelector('.card-bg-img');
+        if (!img) return;
+        var cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        var viewCenter = scrollLeft + trackW / 2;
+        var norm = (cardCenter - viewCenter) / card.offsetWidth;
+        img.style.transform = 'translateX(' + (norm * 28) + 'px)';
+      });
+    }
+
+    /* --- Arrows --- */
+    arrowPrev.addEventListener('click', function () { scrollTo(current - 1); });
+    arrowNext.addEventListener('click', function () { scrollTo(current + 1); });
+
+    /* --- Keyboard --- */
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); scrollTo(current - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); scrollTo(current + 1); }
+    });
+
+    /* --- Touch swipe --- */
+    var touchStartX = 0, touchStartY = 0, dragged = false;
+
+    track.addEventListener('touchstart', function (e) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      dragged = false;
+    }, { passive: true });
+
+    track.addEventListener('touchmove', function (e) {
+      if (Math.abs(e.touches[0].clientX - touchStartX) > 6) dragged = true;
+    }, { passive: true });
+
+    track.addEventListener('touchend', function (e) {
+      var dx = e.changedTouches[0].clientX - touchStartX;
+      var dy = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+        dragged = true;
+        scrollTo(dx < 0 ? current + 1 : current - 1);
+      }
+    }, { passive: true });
+
+    /* --- Tap to advance (mobile) --- */
+    track.addEventListener('click', function (e) {
+      if (window.innerWidth >= 768) return;
+      if (dragged) { dragged = false; return; }
+      if (e.target.closest('.card-cta')) return;
+      scrollTo(current + 1 < total ? current + 1 : 0);
+    });
+
+    /* --- Init --- */
+    setActive(0);
+    if (!prefersReducedMotion) updateParallax();
+  })();
+  </script>
 
 </body>
 </html>
