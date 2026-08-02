@@ -146,9 +146,6 @@
     }
     .w-nav-book:hover { background: var(--gold-hover) !important; color: #FAFAF8 !important; }
     @media (max-width: 900px) { .w-nav { display: none; } }
-    #how-it-works { display: none; }
-    .w-cta--outline { display: none; }
-    @media (min-width: 768px) { #how-it-works { display: block; } .w-cta--outline { display: inline-flex; } }
     .w-nav-toggle {
       display: none;
       align-items: center;
@@ -263,12 +260,6 @@
       white-space: nowrap;
     }
     .w-cta:hover { background: var(--gold-hover); }
-    .w-cta--outline {
-      background: transparent;
-      border: 1.5px solid var(--gold);
-      color: var(--gold);
-    }
-    .w-cta--outline:hover { background: rgba(168,132,74,0.08); }
     .w-cta-group {
       display: flex;
       flex-wrap: wrap;
@@ -293,13 +284,16 @@
     /* Packages */
     .w-pkg-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr;
       gap: 1.75rem;
       margin-top: 3rem;
       align-items: start;
     }
-    @media (max-width: 700px) {
-      .w-pkg-grid { grid-template-columns: 1fr; }
+    @media (min-width: 700px) {
+      .w-pkg-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1000px) {
+      .w-pkg-grid { grid-template-columns: repeat(3, 1fr); }
     }
     .w-pkg {
       border: 1px solid var(--border);
@@ -310,7 +304,20 @@
       flex-direction: column;
     }
     .w-pkg--featured {
-      border-color: rgba(168,132,74,0.3);
+      position: relative;
+      border: 2px solid var(--gold);
+    }
+    .w-pkg-badge {
+      position: absolute;
+      top: -0.75rem;
+      left: 1.75rem;
+      background: var(--gold);
+      color: #FAFAF8;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 0.3rem 0.9rem;
+      border-radius: 999px;
     }
     .w-pkg-name {
       font-family: var(--font-display);
@@ -319,32 +326,27 @@
       color: var(--text);
       margin-bottom: 0.3rem;
     }
-    .w-pkg-type {
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 1.5rem;
-    }
     .w-pkg-price {
       font-family: var(--font-display);
       font-size: 1.9rem;
       font-weight: 400;
       color: var(--gold);
       line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+    .w-pkg-tagline {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.6;
       margin-bottom: 1.75rem;
       padding-bottom: 1.75rem;
       border-bottom: 1px solid var(--border);
     }
-    .w-pkg-price-label {
-      display: block;
-      font-family: var(--font-body);
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--faint);
-      font-weight: 500;
-      margin-bottom: 0.25rem;
+    .w-pkg-sub {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 1rem;
     }
     .w-pkg-list {
       list-style: none;
@@ -366,49 +368,24 @@
       color: var(--gold);
       opacity: 0.6;
     }
-    .w-pkg-closing {
-      max-width: 60ch;
-      margin: 3.5rem auto 0;
-      text-align: center;
-      font-size: 1rem;
-      color: var(--muted);
-      line-height: 1.85;
-    }
-
-    /* Testimonial */
-    .w-testimonial {
-      border-left: 2px solid var(--gold);
-      padding-left: 1.75rem;
-      margin: 3rem 0;
-    }
-    .w-testimonial-text {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      color: var(--text);
-      line-height: 1.6;
-      margin-bottom: 1rem;
+    .w-pkg-closing-line {
+      margin-top: 1.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
       font-style: italic;
-    }
-    .w-testimonial-attr {
-      font-size: 0.8rem;
       color: var(--muted);
-      letter-spacing: 0.05em;
+      line-height: 1.6;
     }
 
-    /* Steps */
-    .w-steps { margin-top: 3rem; display: flex; flex-direction: column; gap: 2.5rem; }
-    .w-step { display: flex; gap: 1.5rem; }
-    .w-step-num {
-      font-family: var(--font-display);
-      font-size: 1.75rem;
-      color: var(--gold);
-      opacity: 0.45;
-      line-height: 1;
-      flex-shrink: 0;
-      width: 2.5rem;
-    }
-    .w-step-title { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 0.5rem; }
-    .w-step-body { font-size: 0.95rem; color: var(--muted); line-height: 1.75; }
+    /* Optional additions */
+    .w-addons { display: flex; flex-direction: column; margin-top: 2rem; }
+    .w-addon { padding: 1.25rem 0; border-bottom: 1px solid var(--border); }
+    .w-addon:last-child { border-bottom: none; }
+    .w-addon-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+    .w-addon-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; color: var(--text); }
+    .w-addon-price { font-size: 0.9rem; color: var(--gold); font-weight: 600; white-space: nowrap; }
+    .w-addon-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.6; margin-top: 0.4rem; }
 
     /* Footer */
     .w-footer {
@@ -484,136 +461,142 @@
 
   <main>
 
-    <!-- Hero -->
+    <!-- Hero: letter-style intro -->
     <div class="w-hero">
-      <p class="w-label">Wedding Photography &amp; Film · Central Coast</p>
-      <h1 class="w-h1">Wedding coverage rooted in real moments, honest connection, and the feeling of being there.</h1>
-      <p class="w-lead">Documentary photography and cinematic wedding films for couples across San Luis Obispo, Arroyo Grande, Pismo Beach, and the Central Coast. Every wedding is different. The approach stays the same: be present, stay out of the way, and capture what actually happens.</p>
-      <div class="w-cta-group">
-        <a href="https://tawhaowhaostories.pixieset.com/contact-form/cf_jNb7w8oNx4QgmgWjgDRYIBH5w6YO" target="_blank" rel="noopener noreferrer" class="w-cta">Tell Me About Your Wedding →</a>
-        <a href="#how-it-works" class="w-cta w-cta--outline">How It Works ↓</a>
-      </div>
-      <p style="font-size:0.8rem;color:var(--faint);margin-top:1.25rem;">Every wedding is custom-quoted. I take a limited number of weddings each year.</p>
+      <p class="w-label">Wedding Films</p>
+      <h1 class="w-h1">Your wedding day will pass quickly.</h1>
+      <p class="w-body">My hope is to create a film that allows you to experience those moments again, not just remember them.</p>
+      <p class="w-body">My role isn't to direct every moment. It's to notice them.</p>
+      <p class="w-body">The quiet moments before the ceremony. The laughter between family and friends. The emotion that often goes unnoticed. The glance across the room. The hug that lasts a little longer than expected.</p>
+      <p class="w-body">Every wedding is filmed and edited personally by me. I don't outsource any part of the process because I believe every story deserves the same care from beginning to end.</p>
+      <p class="w-body">As I continue building my wedding film portfolio, I'm offering a limited number of weddings at these introductory collection prices. Once those dates have been filled, my standard pricing will apply.</p>
+      <p class="w-body">If your plans look a little different, I'd love to hear about them. Every wedding is unique, and I'm always happy to create a collection that fits your day.</p>
     </div>
-
-    <hr class="w-divider">
-
-    <!-- The approach -->
-    <section class="w-section">
-      <p class="w-label">The Approach</p>
-      <p class="w-body">Twenty years of standing in front of a classroom taught me how to read a room, settle nervous energy, and get the best out of people without making them feel directed. That's not something you learn behind a camera, it's something you bring to one.</p>
-      <p class="w-body">On a wedding day I'd be in the margins for most of it. The getting-ready room. The quiet moment before you walk out. The table where your grandparents have been laughing for twenty minutes and don't know anyone is watching.</p>
-      <p class="w-body">That's usually where the photographs that matter come from.</p>
-      <p class="w-body">For couples who want a film alongside the photos, I'd build it around your actual day. The vows. The toasts. The moments in between that nobody planned. Edited to feel like a memory rather than a production.</p>
-      <p class="w-body">A lot of my background has been in hybrid storytelling through sports, learning how to anticipate emotion, movement, pressure, and real moments as they happen. I love living in both worlds moment by moment, deciding the best way to tell something through motion or through a still frame. I'm equally happy focusing fully on photography or film depending on what best serves the day, and I work well alongside other creatives when needed.</p>
-      <p class="w-body">I'm now bringing that same approach into weddings in a way that feels honest and grounded. Still learning, still growing, but deeply committed to creating films and photographs that feel alive years later, not overproduced or forced.</p>
-      <p class="w-body">This is the philosophy behind everything I make, Ngā Kōrero Ora, Living Stories. Not manufactured moments. Not polished surfaces. The real thing, documented honestly, so you can return to it years from now and feel like you're actually back there.</p>
-      <p class="w-body">A wedding is one of the few days in life where everything that matters is happening at once. I'd show up to pay attention to all of it.</p>
-      <p class="w-body">I'm based on the Central Coast, Arroyo Grande, San Luis Obispo, Pismo Beach, the hills and vineyards around Paso Robles. Available for beaches, ranches, wineries, backyards, and anywhere the light is good and the story is real.</p>
-      <p class="w-body">Destination work welcome with the right lead time.</p>
-    </section>
 
     <hr class="w-divider">
 
     <!-- Packages -->
     <section class="w-section--wide" id="packages" style="padding-top:4rem;padding-bottom:4rem;">
       <div style="max-width:760px;margin:0 auto 0;">
-        <p class="w-label">Wedding Story Offerings</p>
-        <h2 class="w-h2">Two ways to document your day.</h2>
-        <p class="w-lead" style="margin-bottom:0;">Weddings move quickly. My goal is to preserve the real texture of the day: the people, the light, the atmosphere, the in-between moments, and the feeling of being there.</p>
+        <p class="w-label">Wedding Film Collections</p>
+        <h2 class="w-h2">Choose your collection.</h2>
+        <p class="w-lead" style="margin-bottom:0;">A limited number of weddings are available at these introductory collection prices.</p>
       </div>
       <div class="w-pkg-grid">
 
-        <!-- Story Stills -->
+        <!-- Story Film Collection -->
         <div class="w-pkg">
-          <p class="w-pkg-name">Story Stills</p>
-          <p class="w-pkg-type">Documentary Photography</p>
-          <div class="w-pkg-price">
-            <span class="w-pkg-price-label">Starting at</span>
-            $1,800
-          </div>
+          <p class="w-pkg-name">Story Film Collection</p>
+          <div class="w-pkg-price">$1,000</div>
+          <p class="w-pkg-tagline">A simple and thoughtful film focused on the heart of your wedding day.</p>
           <ul class="w-pkg-list">
-            <li>Full day with you, getting ready through the last song (up to 8 hours)</li>
-            <li>Candid, documentary-style coverage throughout, present and out of the way</li>
-            <li>Family portraits and a few guided moments when you want them</li>
-            <li>Golden-hour portraits when the light is right</li>
-            <li>350–500 edited photographs</li>
-            <li>Private online gallery, 1 year access, high-resolution downloads, personal print rights</li>
-            <li>Sneak peeks within a few days; full gallery within 2–3 weeks</li>
+            <li>Up to 3 hours of coverage</li>
+            <li>Ceremony coverage</li>
+            <li>Time celebrating with family and friends after the ceremony</li>
+            <li>Creative footage captured during your portrait session</li>
+            <li>Professionally recorded ceremony audio</li>
+            <li>Licensed music</li>
+            <li>Handcrafted 2 to 3 minute wedding film</li>
+            <li>Digital delivery</li>
+            <li>Delivered within 6 weeks</li>
           </ul>
+          <p class="w-pkg-closing-line">A beautiful keepsake focused on the moments that matter most.</p>
         </div>
 
-        <!-- Living Story -->
+        <!-- Living Story Collection -->
         <div class="w-pkg w-pkg--featured">
-          <p class="w-pkg-name">Living Story</p>
-          <p class="w-pkg-type">Photographs + Cinematic Memory Film</p>
-          <div class="w-pkg-price">
-            <span class="w-pkg-price-label">Starting at</span>
-            $2,400
-          </div>
+          <span class="w-pkg-badge">Most Popular</span>
+          <p class="w-pkg-name">Living Story Collection</p>
+          <div class="w-pkg-price">$1,500</div>
+          <p class="w-pkg-tagline">A wedding film that follows your day from the anticipation before the ceremony through to the celebration that follows.</p>
           <ul class="w-pkg-list">
-            <li>Everything in Story Stills, full documentary photography coverage</li>
-            <li>400+ edited photographs</li>
-            <li>A 2–3 minute handcrafted film built around the emotional texture of the day, not a highlights reel</li>
-            <li>Film delivery within 3–4 weeks</li>
-            <li>Limited drone footage where conditions allow</li>
+            <li>Up to 8 hours of coverage</li>
+            <li>Final preparations</li>
+            <li>Venue and wedding details</li>
+            <li>Ceremony coverage</li>
+            <li>Time celebrating with family and friends after the ceremony</li>
+            <li>Creative footage captured during your portrait session</li>
+            <li>Reception celebrations</li>
+            <li>First dance</li>
+            <li>Parent dances</li>
+            <li>Meaningful moments from speeches woven naturally into your film</li>
+            <li>Professionally recorded audio throughout the day</li>
+            <li>Licensed music</li>
+            <li>Handcrafted 4 to 6 minute wedding film</li>
+            <li>Digital delivery</li>
+            <li>Delivered within 6 weeks</li>
           </ul>
+          <p class="w-pkg-closing-line">A film that brings together the people, the moments, and the emotions that made your wedding day uniquely yours.</p>
         </div>
 
-      </div>
+        <!-- Legacy Story Collection -->
+        <div class="w-pkg">
+          <p class="w-pkg-name">Legacy Story Collection</p>
+          <div class="w-pkg-price">$2,000</div>
+          <p class="w-pkg-tagline">A more complete documentary of your wedding day, preserving not only the big moments, but many of the quieter moments that often become the most meaningful over time.</p>
+          <p class="w-pkg-sub">Everything included in the Living Story Collection, plus</p>
+          <ul class="w-pkg-list">
+            <li>Up to 10 hours of coverage</li>
+            <li>Extended reception coverage</li>
+            <li>Cake cutting</li>
+            <li>Open dancing</li>
+            <li>Handcrafted 6 to 8 minute wedding film</li>
+            <li>Full ceremony film</li>
+            <li>Full speeches film</li>
+            <li>Priority editing</li>
+            <li>Digital delivery within 4 weeks</li>
+          </ul>
+          <p class="w-pkg-closing-line">A complete record of your wedding day to return to for years to come.</p>
+        </div>
 
-      <p class="w-pkg-closing">If this feels like the right fit, reach out and tell me about your day. I take a limited number of weddings each year. I'd rather have a real conversation than sell you a package.</p>
-      <div style="text-align:center;margin-top:2rem;">
-        <a href="https://tawhaowhaostories.pixieset.com/contact-form/cf_jNb7w8oNx4QgmgWjgDRYIBH5w6YO" target="_blank" rel="noopener noreferrer" class="w-cta">Tell Me About Your Wedding →</a>
       </div>
     </section>
 
     <hr class="w-divider">
 
-    <!-- Testimonial -->
+    <!-- Optional Additions -->
     <section class="w-section">
-      <div class="w-testimonial">
-        <p class="w-testimonial-text">"He was professional, warm, and immediately put us at ease. I couldn't be happier with the results."</p>
-        <p class="w-testimonial-attr">Kerrily Carmichael · TWM Stories client</p>
+      <p class="w-label">Optional Additions</p>
+      <h2 class="w-h2">A la carte</h2>
+      <div class="w-addons">
+        <div class="w-addon">
+          <div class="w-addon-row">
+            <span class="w-addon-name">Additional Coverage</span>
+            <span class="w-addon-price">$200 per hour</span>
+          </div>
+        </div>
+        <div class="w-addon">
+          <div class="w-addon-row">
+            <span class="w-addon-name">Standalone First Dances Film</span>
+            <span class="w-addon-price">$150</span>
+          </div>
+          <p class="w-addon-desc">A complete edited film of your first dance and parent dances, delivered separately from your main wedding film.</p>
+        </div>
+        <div class="w-addon">
+          <div class="w-addon-row">
+            <span class="w-addon-name">Additional Edited Speech</span>
+            <span class="w-addon-price">$100</span>
+          </div>
+          <p class="w-addon-desc">A standalone edit of an individual speech, delivered separately from your wedding film.</p>
+        </div>
       </div>
     </section>
 
     <hr class="w-divider">
 
-    <!-- How it works -->
-    <section class="w-section" id="how-it-works">
-      <p class="w-label">The Process</p>
-      <h2 class="w-h2">Simple from the first message to the final delivery.</h2>
-      <div class="w-steps">
-        <div class="w-step">
-          <div class="w-step-num">01</div>
-          <div>
-            <div class="w-step-title">You reach out</div>
-            <div class="w-step-body">Tell me your date, venue, and what you're looking for. I'll confirm availability and we'll set up a call — no quote sheet, just a conversation.</div>
-          </div>
-        </div>
-        <div class="w-step">
-          <div class="w-step-num">02</div>
-          <div>
-            <div class="w-step-title">We plan the day together</div>
-            <div class="w-step-body">Timeline review, venue walk-through (where possible), and a shared understanding of what matters most. Family formals list, golden hour plan, the whole picture.</div>
-          </div>
-        </div>
-        <div class="w-step">
-          <div class="w-step-num">03</div>
-          <div>
-            <div class="w-step-title">I cover the day</div>
-            <div class="w-step-body">Present without being in the way. Portraits done efficiently so you can actually enjoy your reception. Coverage through the end of the night.</div>
-          </div>
-        </div>
-        <div class="w-step">
-          <div class="w-step-num">04</div>
-          <div>
-            <div class="w-step-title">You receive your gallery and film</div>
-            <div class="w-step-body">Fully edited photos delivered to your private gallery. Film delivered separately — properly edited, never rushed.</div>
-          </div>
-        </div>
-      </div>
+    <!-- Travel -->
+    <section class="w-section">
+      <p class="w-label">Travel</p>
+      <p class="w-body">Travel throughout San Luis Obispo County is included.</p>
+      <p class="w-body">Weddings outside the county are always welcome and are quoted individually based on location.</p>
+    </section>
+
+    <hr class="w-divider">
+
+    <!-- Thank you -->
+    <section class="w-section" style="text-align:center;">
+      <p class="w-lead" style="margin-inline:auto;">Thank you for considering me to document such an important day in your lives.</p>
+      <p class="w-lead" style="margin-inline:auto;margin-bottom:0;">It would be a privilege to tell your story.</p>
     </section>
 
     <hr class="w-divider">
