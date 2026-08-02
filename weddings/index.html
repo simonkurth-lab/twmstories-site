@@ -287,7 +287,7 @@
       grid-template-columns: 1fr;
       gap: 1.75rem;
       margin-top: 3rem;
-      align-items: start;
+      align-items: stretch;
     }
     @media (min-width: 700px) {
       .w-pkg-grid { grid-template-columns: repeat(2, 1fr); }
@@ -338,6 +338,7 @@
       font-size: 0.95rem;
       color: var(--muted);
       line-height: 1.6;
+      min-height: 6.4rem;
       margin-bottom: 1.75rem;
       padding-bottom: 1.75rem;
       border-bottom: 1px solid var(--border);
@@ -369,7 +370,7 @@
       opacity: 0.6;
     }
     .w-pkg-closing-line {
-      margin-top: 1.5rem;
+      margin-top: auto;
       padding-top: 1.25rem;
       border-top: 1px solid var(--border);
       font-size: 0.85rem;
@@ -377,15 +378,6 @@
       color: var(--muted);
       line-height: 1.6;
     }
-
-    /* Optional additions */
-    .w-addons { display: flex; flex-direction: column; margin-top: 2rem; }
-    .w-addon { padding: 1.25rem 0; border-bottom: 1px solid var(--border); }
-    .w-addon:last-child { border-bottom: none; }
-    .w-addon-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
-    .w-addon-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; color: var(--text); }
-    .w-addon-price { font-size: 0.9rem; color: var(--gold); font-weight: 600; white-space: nowrap; }
-    .w-addon-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.6; margin-top: 0.4rem; }
 
     /* Footer */
     .w-footer {
@@ -549,36 +541,6 @@
           <p class="w-pkg-closing-line">A complete record of your wedding day to return to for years to come.</p>
         </div>
 
-      </div>
-    </section>
-
-    <hr class="w-divider">
-
-    <!-- Optional Additions -->
-    <section class="w-section">
-      <p class="w-label">Optional Additions</p>
-      <h2 class="w-h2">A la carte</h2>
-      <div class="w-addons">
-        <div class="w-addon">
-          <div class="w-addon-row">
-            <span class="w-addon-name">Additional Coverage</span>
-            <span class="w-addon-price">$200 per hour</span>
-          </div>
-        </div>
-        <div class="w-addon">
-          <div class="w-addon-row">
-            <span class="w-addon-name">Standalone First Dances Film</span>
-            <span class="w-addon-price">$150</span>
-          </div>
-          <p class="w-addon-desc">A complete edited film of your first dance and parent dances, delivered separately from your main wedding film.</p>
-        </div>
-        <div class="w-addon">
-          <div class="w-addon-row">
-            <span class="w-addon-name">Additional Edited Speech</span>
-            <span class="w-addon-price">$100</span>
-          </div>
-          <p class="w-addon-desc">A standalone edit of an individual speech, delivered separately from your wedding film.</p>
-        </div>
       </div>
     </section>
 
