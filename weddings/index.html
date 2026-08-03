@@ -434,6 +434,10 @@
       transition: border-color 0.2s, box-shadow 0.2s;
     }
     .w-exp-card:hover { border-color: var(--gold); }
+    .w-exp-card:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+    }
     .w-exp-card.is-active {
       border-color: var(--gold);
       border-width: 2px;
@@ -584,7 +588,7 @@
       </div>
       <div class="w-exp-grid">
 
-        <button type="button" class="w-exp-card" data-exp="photography" aria-pressed="false">
+        <button type="button" class="w-exp-card" data-exp="photography" aria-pressed="false" aria-controls="photography">
           <span class="w-exp-icon">
             <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 14l2.5-5h9L31 14"/><rect x="6" y="14" width="36" height="24" rx="4"/><circle cx="24" cy="26" r="7"/></svg>
           </span>
@@ -593,7 +597,7 @@
           <span class="w-exp-from">From $1,800</span>
         </button>
 
-        <button type="button" class="w-exp-card" data-exp="film" aria-pressed="false">
+        <button type="button" class="w-exp-card" data-exp="film" aria-pressed="false" aria-controls="films">
           <span class="w-exp-icon">
             <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="24" r="17"/><path d="M20 17l11 7-11 7V17z" fill="currentColor" stroke="none"/></svg>
           </span>
@@ -602,7 +606,7 @@
           <span class="w-exp-from">From $1,000</span>
         </button>
 
-        <button type="button" class="w-exp-card is-active" data-exp="hybrid" aria-pressed="true">
+        <button type="button" class="w-exp-card is-active" data-exp="hybrid" aria-pressed="true" aria-controls="photography-and-film">
           <span class="w-exp-icon">
             <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 14l2.5-5h9L31 14"/><rect x="6" y="14" width="36" height="24" rx="4"/><circle cx="24" cy="26" r="7"/></svg>
             <span class="w-exp-icon-plus">+</span>
@@ -636,7 +640,7 @@
     <hr class="w-divider">
 
     <!-- Photography Panel -->
-    <section class="w-exp-panel" data-panel="photography">
+    <section class="w-exp-panel" id="photography" data-panel="photography">
       <div class="w-section--wide" style="padding-top:4rem;padding-bottom:4rem;">
         <div style="max-width:760px;margin:0 auto 0;">
           <p class="w-label">Wedding Photography</p>
@@ -752,7 +756,7 @@
     </section>
 
     <!-- Film Panel -->
-    <section class="w-exp-panel" data-panel="film">
+    <section class="w-exp-panel" id="films" data-panel="film">
       <div class="w-section--wide" style="padding-top:4rem;padding-bottom:4rem;">
         <div style="max-width:760px;margin:0 auto 0;">
           <p class="w-label">Wedding Films</p>
@@ -868,7 +872,7 @@
     </section>
 
     <!-- Hybrid Panel -->
-    <section class="w-exp-panel is-active" data-panel="hybrid">
+    <section class="w-exp-panel is-active" id="photography-and-film" data-panel="hybrid">
       <div class="w-section--wide" style="padding-top:4rem;padding-bottom:4rem;">
         <div style="max-width:760px;margin:0 auto 0;">
           <p class="w-label">Photography &amp; Film</p>
@@ -1055,20 +1059,90 @@
   </footer>
 
   <script>
-    document.querySelectorAll('.w-exp-card').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        var target = btn.dataset.exp;
+    (function() {
+      var HASH_BY_EXP = { photography: 'photography', film: 'films', hybrid: 'photography-and-film' };
+      var EXP_BY_HASH = { photography: 'photography', films: 'film', 'photography-and-film': 'hybrid' };
+      var SCROLL_CLEARANCE = 90; // gap below the sticky header, per spec (80-100px)
+
+      function prefersReducedMotion() {
+        return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      }
+
+      function scrollToPanel(panel) {
+        var header = document.querySelector('.w-header');
+        var headerHeight = header ? header.offsetHeight : 0;
+        var offset = headerHeight + SCROLL_CLEARANCE;
+        var targetY = window.pageYOffset + panel.getBoundingClientRect().top - offset;
+        window.scrollTo({
+          top: Math.max(targetY, 0),
+          // 'auto' would still defer to the page's CSS `scroll-behavior: smooth`,
+          // so reduced motion needs the explicit 'instant' value to actually skip animation.
+          behavior: prefersReducedMotion() ? 'instant' : 'smooth'
+        });
+      }
+
+      function activatePanel(exp, options) {
+        options = options || {};
+        var btn = document.querySelector('.w-exp-card[data-exp="' + exp + '"]');
+        var panel = document.querySelector('.w-exp-panel[data-panel="' + exp + '"]');
+        if (!btn || !panel) return;
+
         document.querySelectorAll('.w-exp-card').forEach(function(b) {
           var active = b === btn;
           b.classList.toggle('is-active', active);
           b.setAttribute('aria-pressed', active ? 'true' : 'false');
         });
         document.querySelectorAll('.w-exp-panel').forEach(function(p) {
-          p.classList.toggle('is-active', p.dataset.panel === target);
+          p.classList.toggle('is-active', p === panel);
         });
-        btn.closest('section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        if (options.scroll !== false) {
+          // Wait for the panel's display:block to be painted before measuring/scrolling
+          requestAnimationFrame(function() {
+            requestAnimationFrame(function() {
+              scrollToPanel(panel);
+            });
+          });
+        }
+      }
+
+      function expFromHash(hash) {
+        var key = (hash || '').replace('#', '');
+        return EXP_BY_HASH[key] || null;
+      }
+
+      document.querySelectorAll('.w-exp-card').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var exp = btn.dataset.exp;
+          activatePanel(exp);
+          var hash = '#' + HASH_BY_EXP[exp];
+          if (location.hash !== hash) {
+            history.pushState({ exp: exp }, '', hash);
+          }
+        });
       });
-    });
+
+      window.addEventListener('popstate', function() {
+        var exp = expFromHash(location.hash) || 'hybrid';
+        activatePanel(exp);
+      });
+
+      // Initial load: open (and scroll to) the panel matching the URL hash, if any.
+      // No history mutation here — the URL already reflects this state.
+      // Wait for web fonts to settle first, since a late font swap on a cold
+      // page load can shift heading position after the scroll has already run.
+      var initialExp = expFromHash(location.hash);
+      if (initialExp) {
+        if (document.fonts && document.fonts.ready) {
+          var timeout = new Promise(function(resolve) { setTimeout(resolve, 1000); });
+          Promise.race([document.fonts.ready, timeout]).then(function() {
+            activatePanel(initialExp);
+          });
+        } else {
+          activatePanel(initialExp);
+        }
+      }
+    })();
   </script>
 
   <script>
