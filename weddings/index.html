@@ -449,6 +449,32 @@
     /* Experience panels */
     .w-exp-panel { display: none; }
     .w-exp-panel.is-active { display: block; }
+
+    /* Photo break */
+    .w-photo-full { position: relative; width: 100%; overflow: hidden; }
+    .w-photo-full img { width: 100%; height: 640px; object-fit: cover; object-position: center 65%; }
+    .w-photo-caption {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      padding: 3rem 1.5rem 2rem;
+      background: linear-gradient(to top, rgba(20,18,16,0.65), transparent);
+    }
+    .w-photo-caption-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #D9BE8E;
+      margin-bottom: 0.5rem;
+    }
+    .w-photo-caption-text {
+      font-size: 1.05rem;
+      color: #FAFAF8;
+      max-width: 520px;
+      line-height: 1.5;
+    }
+    @media (max-width: 600px) {
+      .w-photo-full img { height: 480px; }
+    }
     .w-includes-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -589,6 +615,15 @@
       </div>
     </section>
 
+    <!-- Pre-Wedding Session Photo -->
+    <div class="w-photo-full">
+      <img src="https://images.pixieset.com/617259811/c11dacb0944b689aa556425e9a634768-xxlarge.jpg" alt="Engaged couple laughing together under oak trees at golden hour, Central Coast pre-wedding session" loading="lazy" decoding="async">
+      <div class="w-photo-caption">
+        <p class="w-photo-caption-label">Included</p>
+        <p class="w-photo-caption-text">A complimentary pre-wedding session comes with every Photography or Photography &amp; Film collection.</p>
+      </div>
+    </div>
+
     <hr class="w-divider">
 
     <!-- Photography Panel -->
@@ -601,6 +636,7 @@
           <p class="w-pkg-group-label">Every Photography Collection Includes</p>
           <ul class="w-pkg-list w-includes-grid">
             <li>Wedding planning consultation</li>
+            <li>Complimentary pre-wedding session</li>
             <li>Personally photographed by Simon, beginning to end</li>
             <li>Personally edited by Simon</li>
             <li>High-resolution, professionally edited images</li>
@@ -832,6 +868,7 @@
           <p class="w-pkg-group-label">Every Hybrid Collection Includes</p>
           <ul class="w-pkg-list w-includes-grid">
             <li>Wedding planning consultation</li>
+            <li>Complimentary pre-wedding session</li>
             <li>One creative vision — photography and film shot and edited by the same person</li>
             <li>High-resolution, professionally edited photographs</li>
             <li>Handcrafted wedding film</li>
