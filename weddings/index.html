@@ -393,6 +393,72 @@
       color: var(--muted);
       line-height: 1.6;
     }
+    .w-pkg-save {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin-top: -0.75rem;
+      margin-bottom: 1.25rem;
+    }
+    .w-pkg-group-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin: 1.25rem 0 0.65rem;
+    }
+    .w-pkg-group-label:first-child { margin-top: 0; }
+
+    /* Experience selector */
+    .w-exp-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+    @media (min-width: 700px) {
+      .w-exp-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .w-exp-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem 1.5rem;
+      background: #fff;
+      text-align: left;
+      cursor: pointer;
+      font-family: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .w-exp-card:hover { border-color: var(--gold); }
+    .w-exp-card.is-active {
+      border-color: var(--gold);
+      border-width: 2px;
+      box-shadow: 0 2px 14px rgba(168,132,74,0.14);
+    }
+    .w-exp-icon { display: flex; align-items: center; gap: 0.35rem; color: var(--gold); }
+    .w-exp-icon svg { width: 26px; height: 26px; flex-shrink: 0; }
+    .w-exp-icon-plus { font-family: var(--font-display); font-size: 1.1rem; color: var(--faint); }
+    .w-exp-name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 400; color: var(--text); }
+    .w-exp-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.5; }
+    .w-exp-from { font-size: 0.85rem; color: var(--gold); font-weight: 600; margin-top: 0.25rem; }
+
+    /* Experience panels */
+    .w-exp-panel { display: none; }
+    .w-exp-panel.is-active { display: block; }
+    .w-includes-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.65rem 2rem;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    @media (min-width: 700px) {
+      .w-includes-grid { grid-template-columns: 1fr 1fr; }
+    }
 
     /* Footer */
     .w-footer {
@@ -470,189 +536,422 @@
 
     <!-- Hero: letter-style intro -->
     <div class="w-hero">
-      <p class="w-label">Wedding Films</p>
+      <p class="w-label">Weddings</p>
       <h1 class="w-h1">Your wedding day will pass quickly.</h1>
-      <p class="w-body">My hope is to create a film that allows you to experience those moments again, not just remember them.</p>
+      <p class="w-body">My hope is to create images and films that allow you to experience those moments again, not just remember them.</p>
       <p class="w-body">My role isn't to direct every moment. It's to notice them.</p>
       <p class="w-body">The quiet moments before the ceremony. The laughter between family and friends. The emotion that often goes unnoticed. The glance across the room. The hug that lasts a little longer than expected.</p>
-      <p class="w-body">Every wedding is filmed and edited personally by me. I don't outsource any part of the process because I believe every story deserves the same care from beginning to end.</p>
-      <p class="w-body">As I continue building my wedding film portfolio, I'm offering a limited number of weddings at these introductory collection prices. Once those dates have been filled, my standard pricing will apply.</p>
+      <p class="w-body">Every wedding is photographed, filmed, and edited personally by me. I don't outsource any part of the process because I believe every story deserves the same care from beginning to end.</p>
+      <p class="w-body">As I continue building my wedding portfolio, I'm offering a limited number of weddings at these introductory collection prices. Once those dates have been filled, my standard pricing will apply.</p>
       <p class="w-body">If your plans look a little different, I'd love to hear about them. Every wedding is unique, and I'm always happy to create a collection that fits your day.</p>
     </div>
 
     <hr class="w-divider">
 
-    <!-- Hybrid Collections -->
-    <section class="w-section--wide" id="packages" style="padding-top:4rem;padding-bottom:4rem;">
+    <!-- Choose Your Experience -->
+    <section class="w-section--wide" style="padding-top:4rem;padding-bottom:4rem;">
       <div style="max-width:760px;margin:0 auto 0;">
-        <p class="w-label">Wedding Collections</p>
-        <h2 class="w-h2">Photography and film, documented together.</h2>
-        <p class="w-lead" style="margin-bottom:0;">Each collection below pairs full photography coverage with a matching wedding film, delivered together as a digital gallery alongside your film.</p>
+        <p class="w-label">Choose Your Experience</p>
+        <h2 class="w-h2">How would you like your story documented?</h2>
+        <p class="w-lead" style="margin-bottom:0;">Every collection below is offered at introductory portfolio pricing — a limited number of dates, before standard pricing applies.</p>
       </div>
-      <div class="w-pkg-grid">
+      <div class="w-exp-grid">
 
-        <div class="w-pkg">
-          <p class="w-pkg-name">Story Collection</p>
-          <div class="w-pkg-price">$1,800</div>
-          <p class="w-pkg-tagline">A wedding film paired with full photography coverage of your ceremony and the celebration that follows.</p>
-          <details class="w-pkg-details">
-            <summary>See everything included</summary>
-            <ul class="w-pkg-list">
-              <li>Up to 3 hours of coverage</li>
-              <li>Ceremony coverage</li>
-              <li>Time celebrating with family and friends after the ceremony</li>
-              <li>Creative footage captured during your portrait session</li>
-              <li>Full photography coverage of your ceremony and the time celebrating with family and friends afterward</li>
-              <li>Professionally recorded ceremony audio</li>
-              <li>Licensed music</li>
-              <li>Handcrafted 2 to 3 minute wedding film</li>
-              <li>Digital delivery</li>
-              <li>Delivered as a digital gallery alongside your film</li>
-              <li>Delivered within 6 weeks</li>
-            </ul>
-          </details>
-        </div>
+        <button type="button" class="w-exp-card" data-exp="photography" aria-pressed="false">
+          <span class="w-exp-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 14l2.5-5h9L31 14"/><rect x="6" y="14" width="36" height="24" rx="4"/><circle cx="24" cy="26" r="7"/></svg>
+          </span>
+          <span class="w-exp-name">Wedding Photography</span>
+          <span class="w-exp-desc">Timeless, authentic photography.</span>
+          <span class="w-exp-from">From $1,800</span>
+        </button>
 
-        <div class="w-pkg">
-          <p class="w-pkg-name">Complete Story Collection</p>
-          <div class="w-pkg-price">$3,300</div>
-          <p class="w-pkg-tagline">A wedding film paired with full-day photography coverage, from preparations through reception highlights.</p>
-          <details class="w-pkg-details">
-            <summary>See everything included</summary>
-            <ul class="w-pkg-list">
-              <li>Up to 8 hours of coverage</li>
-              <li>Final preparations</li>
-              <li>Venue and wedding details</li>
-              <li>Ceremony coverage</li>
-              <li>Time celebrating with family and friends after the ceremony</li>
-              <li>Creative footage captured during your portrait session</li>
-              <li>Full-day photography coverage, from preparations through reception highlights</li>
-              <li>Reception celebrations</li>
-              <li>First dance</li>
-              <li>Parent dances</li>
-              <li>Meaningful moments from speeches woven naturally into your film</li>
-              <li>Professionally recorded audio throughout the day</li>
-              <li>Licensed music</li>
-              <li>Handcrafted 4 to 6 minute wedding film</li>
-              <li>Digital delivery</li>
-              <li>Delivered as a digital gallery alongside your film</li>
-              <li>Delivered within 6 weeks</li>
-            </ul>
-          </details>
-        </div>
+        <button type="button" class="w-exp-card" data-exp="film" aria-pressed="false">
+          <span class="w-exp-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="24" r="17"/><path d="M20 17l11 7-11 7V17z" fill="currentColor" stroke="none"/></svg>
+          </span>
+          <span class="w-exp-name">Wedding Films</span>
+          <span class="w-exp-desc">Motion, sound, and storytelling.</span>
+          <span class="w-exp-from">From $1,000</span>
+        </button>
 
-        <div class="w-pkg">
-          <p class="w-pkg-name">Legacy Collection</p>
-          <div class="w-pkg-price">$4,100</div>
-          <p class="w-pkg-tagline">A wedding film paired with complete photography coverage of your full day, including extended reception and priority gallery delivery.</p>
-          <details class="w-pkg-details">
-            <summary>See everything included</summary>
-            <ul class="w-pkg-list">
-              <li>Up to 10 hours of coverage</li>
-              <li>Final preparations</li>
-              <li>Venue and wedding details</li>
-              <li>Ceremony coverage</li>
-              <li>Full ceremony film</li>
-              <li>Time celebrating with family and friends after the ceremony</li>
-              <li>Creative footage captured during your portrait session</li>
-              <li>Reception celebrations</li>
-              <li>Extended reception coverage</li>
-              <li>Cake cutting</li>
-              <li>Open dancing</li>
-              <li>First dance</li>
-              <li>Parent dances</li>
-              <li>Meaningful moments from speeches woven naturally into your film</li>
-              <li>Full speeches film</li>
-              <li>Professionally recorded audio throughout the day</li>
-              <li>Licensed music</li>
-              <li>Handcrafted 6 to 8 minute wedding film</li>
-              <li>Priority editing</li>
-              <li>Complete photography coverage of your full day, including extended reception and priority gallery delivery</li>
-              <li>Delivered as a digital gallery alongside your film</li>
-              <li>Digital delivery within 4 weeks</li>
-            </ul>
-          </details>
-        </div>
+        <button type="button" class="w-exp-card is-active" data-exp="hybrid" aria-pressed="true">
+          <span class="w-exp-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 14l2.5-5h9L31 14"/><rect x="6" y="14" width="36" height="24" rx="4"/><circle cx="24" cy="26" r="7"/></svg>
+            <span class="w-exp-icon-plus">+</span>
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="24" r="17"/><path d="M20 17l11 7-11 7V17z" fill="currentColor" stroke="none"/></svg>
+          </span>
+          <span class="w-exp-name">Photography &amp; Film</span>
+          <span class="w-exp-desc">One consistent documentary approach.</span>
+          <span class="w-exp-from">From $2,500</span>
+        </button>
 
       </div>
     </section>
 
     <hr class="w-divider">
 
-    <!-- Videography Only -->
-    <section class="w-section--wide" id="videography" style="padding-top:4rem;padding-bottom:4rem;">
-      <div style="max-width:760px;margin:0 auto 0;">
-        <p class="w-label">Videography Only</p>
-        <h2 class="w-h2">Prefer video without photography?</h2>
-        <p class="w-lead" style="margin-bottom:0;">Each collection above is also available as a video-only package, at its own introductory price.</p>
+    <!-- Photography Panel -->
+    <section class="w-exp-panel" data-panel="photography">
+      <div class="w-section--wide" style="padding-top:4rem;padding-bottom:4rem;">
+        <div style="max-width:760px;margin:0 auto 0;">
+          <p class="w-label">Wedding Photography</p>
+          <h2 class="w-h2">Held in still, honest frames.</h2>
+          <p class="w-lead" style="margin-bottom:0;">For couples who want their wedding day held in still, honest frames — the kind you return to years later and feel exactly what the room felt like. I photograph and edit every frame myself, so the story stays consistent from your first look to your last dance.</p>
+          <p class="w-pkg-group-label">Every Photography Collection Includes</p>
+          <ul class="w-pkg-list w-includes-grid">
+            <li>Wedding planning consultation</li>
+            <li>Personally photographed by Simon, beginning to end</li>
+            <li>Personally edited by Simon</li>
+            <li>High-resolution, professionally edited images</li>
+            <li>Private, secure online gallery</li>
+            <li>Personal print release</li>
+            <li>Access to professional fine art prints, albums, and wall art</li>
+          </ul>
+        </div>
+        <div class="w-pkg-grid">
+
+          <div class="w-pkg">
+            <p class="w-pkg-name">Story Collection</p>
+            <div class="w-pkg-price">$1,800</div>
+            <p class="w-pkg-tagline">Perfect for smaller weddings, or couples wanting the most important parts of their day beautifully documented.</p>
+            <details class="w-pkg-details">
+              <summary>See full details</summary>
+              <p class="w-pkg-group-label">Coverage</p>
+              <ul class="w-pkg-list">
+                <li>Up to 4 hours of coverage</li>
+                <li>Ceremony</li>
+                <li>Family and friends afterward</li>
+                <li>Couple portrait session</li>
+              </ul>
+              <p class="w-pkg-group-label">You Receive</p>
+              <ul class="w-pkg-list">
+                <li>Approximately 250–350 professionally edited photographs</li>
+                <li>Online gallery with downloads</li>
+              </ul>
+              <p class="w-pkg-group-label">Delivery</p>
+              <ul class="w-pkg-list">
+                <li>Approximately 4 weeks</li>
+              </ul>
+            </details>
+          </div>
+
+          <div class="w-pkg w-pkg--featured">
+            <span class="w-pkg-badge">Most Popular</span>
+            <p class="w-pkg-name">Living Story Collection</p>
+            <div class="w-pkg-price">$2,400</div>
+            <p class="w-pkg-tagline">Perfect for couples wanting the complete story of their wedding day.</p>
+            <details class="w-pkg-details">
+              <summary>See full details</summary>
+              <p class="w-pkg-group-label">Coverage</p>
+              <ul class="w-pkg-list">
+                <li>Up to 8 hours of coverage</li>
+                <li>Preparations</li>
+                <li>Venue details</li>
+                <li>Ceremony</li>
+                <li>Family celebrations</li>
+                <li>Couple portraits</li>
+                <li>Reception</li>
+                <li>First dance</li>
+                <li>Parent dances</li>
+                <li>Speeches</li>
+              </ul>
+              <p class="w-pkg-group-label">You Receive</p>
+              <ul class="w-pkg-list">
+                <li>Approximately 500–700 professionally edited photographs</li>
+                <li>Online gallery with downloads</li>
+              </ul>
+              <p class="w-pkg-group-label">Delivery</p>
+              <ul class="w-pkg-list">
+                <li>Approximately 4 weeks</li>
+              </ul>
+            </details>
+          </div>
+
+          <div class="w-pkg">
+            <p class="w-pkg-name">Legacy Story Collection</p>
+            <div class="w-pkg-price">$3,000</div>
+            <p class="w-pkg-tagline">Perfect for couples wanting complete documentary coverage from beginning to end.</p>
+            <details class="w-pkg-details">
+              <summary>See full details</summary>
+              <p class="w-pkg-group-label">Coverage</p>
+              <ul class="w-pkg-list">
+                <li>Up to 10 hours of coverage</li>
+                <li>Preparations</li>
+                <li>Venue details</li>
+                <li>Ceremony</li>
+                <li>Family celebrations</li>
+                <li>Couple portraits</li>
+                <li>Reception</li>
+                <li>Extended reception</li>
+                <li>Cake cutting</li>
+                <li>Open dancing</li>
+                <li>First dance</li>
+                <li>Parent dances</li>
+                <li>Speeches</li>
+              </ul>
+              <p class="w-pkg-group-label">You Receive</p>
+              <ul class="w-pkg-list">
+                <li>Approximately 700–900 professionally edited photographs</li>
+                <li>Online gallery with downloads</li>
+              </ul>
+              <p class="w-pkg-group-label">Delivery</p>
+              <ul class="w-pkg-list">
+                <li>Approximately 3–4 weeks, with priority editing</li>
+              </ul>
+            </details>
+          </div>
+
+        </div>
       </div>
-      <div class="w-pkg-grid">
+    </section>
 
-        <!-- Story Film Collection -->
-        <div class="w-pkg">
-          <p class="w-pkg-name">Story Film Collection</p>
-          <div class="w-pkg-price">$1,000</div>
-          <p class="w-pkg-tagline">A simple and thoughtful film focused on the heart of your wedding day.</p>
-          <ul class="w-pkg-list">
-            <li>Up to 3 hours of coverage</li>
-            <li>Ceremony coverage</li>
-            <li>Time celebrating with family and friends after the ceremony</li>
-            <li>Creative footage captured during your portrait session</li>
-            <li>Professionally recorded ceremony audio</li>
+    <!-- Film Panel -->
+    <section class="w-exp-panel" data-panel="film">
+      <div class="w-section--wide" style="padding-top:4rem;padding-bottom:4rem;">
+        <div style="max-width:760px;margin:0 auto 0;">
+          <p class="w-label">Wedding Films</p>
+          <h2 class="w-h2">Experience your day again, in motion.</h2>
+          <p class="w-lead" style="margin-bottom:0;">For couples who want to feel their wedding day again — the motion, the sound, the room full of people who love them. I film and edit every frame myself, so nothing about the story passes through someone else's hands before it reaches you.</p>
+          <p class="w-pkg-group-label">Every Film Collection Includes</p>
+          <ul class="w-pkg-list w-includes-grid">
+            <li>Wedding planning consultation</li>
+            <li>Personally filmed by Simon</li>
+            <li>Personally edited by Simon</li>
+            <li>Professionally recorded audio</li>
             <li>Licensed music</li>
-            <li>Handcrafted 2 to 3 minute wedding film</li>
-            <li>Digital delivery</li>
-            <li>Delivered within 6 weeks</li>
+            <li>Cinematic color grading</li>
+            <li>Private online delivery</li>
           </ul>
-          <p class="w-pkg-closing-line">A beautiful keepsake focused on the moments that matter most.</p>
         </div>
+        <div class="w-pkg-grid">
 
-        <!-- Living Story Collection -->
-        <div class="w-pkg w-pkg--featured">
-          <span class="w-pkg-badge">Most Popular</span>
-          <p class="w-pkg-name">Living Story Collection</p>
-          <div class="w-pkg-price">$1,500</div>
-          <p class="w-pkg-tagline">A wedding film that follows your day from the anticipation before the ceremony through to the celebration that follows.</p>
-          <ul class="w-pkg-list">
-            <li>Up to 8 hours of coverage</li>
-            <li>Final preparations</li>
-            <li>Venue and wedding details</li>
-            <li>Ceremony coverage</li>
-            <li>Time celebrating with family and friends after the ceremony</li>
-            <li>Creative footage captured during your portrait session</li>
-            <li>Reception celebrations</li>
-            <li>First dance</li>
-            <li>Parent dances</li>
-            <li>Meaningful moments from speeches woven naturally into your film</li>
-            <li>Professionally recorded audio throughout the day</li>
-            <li>Licensed music</li>
-            <li>Handcrafted 4 to 6 minute wedding film</li>
-            <li>Digital delivery</li>
-            <li>Delivered within 6 weeks</li>
+          <div class="w-pkg">
+            <p class="w-pkg-name">Story Collection</p>
+            <div class="w-pkg-price">$1,000</div>
+            <p class="w-pkg-tagline">Perfect for couples wanting a beautifully crafted film of the most meaningful moments of their day.</p>
+            <details class="w-pkg-details">
+              <summary>See full details</summary>
+              <p class="w-pkg-group-label">Coverage</p>
+              <ul class="w-pkg-list">
+                <li>Up to 3 hours of coverage</li>
+                <li>Ceremony</li>
+                <li>Family celebrations afterward</li>
+                <li>Couple portrait session</li>
+              </ul>
+              <p class="w-pkg-group-label">You Receive</p>
+              <ul class="w-pkg-list">
+                <li>One handcrafted 2–3 minute wedding film</li>
+                <li>Professionally recorded ceremony audio</li>
+              </ul>
+              <p class="w-pkg-group-label">Delivery</p>
+              <ul class="w-pkg-list">
+                <li>Within 6 weeks</li>
+              </ul>
+            </details>
+          </div>
+
+          <div class="w-pkg w-pkg--featured">
+            <span class="w-pkg-badge">Most Popular</span>
+            <p class="w-pkg-name">Living Story Collection</p>
+            <div class="w-pkg-price">$1,500</div>
+            <p class="w-pkg-tagline">Perfect for couples wanting the story of their day told from beginning to end.</p>
+            <details class="w-pkg-details">
+              <summary>See full details</summary>
+              <p class="w-pkg-group-label">Coverage</p>
+              <ul class="w-pkg-list">
+                <li>Up to 8 hours of coverage</li>
+                <li>Preparations</li>
+                <li>Venue details</li>
+                <li>Ceremony</li>
+                <li>Family celebrations</li>
+                <li>Couple portrait session</li>
+                <li>Reception</li>
+                <li>First dance</li>
+                <li>Parent dances</li>
+                <li>Meaningful speech moments</li>
+              </ul>
+              <p class="w-pkg-group-label">You Receive</p>
+              <ul class="w-pkg-list">
+                <li>One handcrafted 4–6 minute wedding film</li>
+                <li>Professionally recorded audio throughout the day</li>
+              </ul>
+              <p class="w-pkg-group-label">Delivery</p>
+              <ul class="w-pkg-list">
+                <li>Within 6 weeks</li>
+              </ul>
+            </details>
+          </div>
+
+          <div class="w-pkg">
+            <p class="w-pkg-name">Legacy Story Collection</p>
+            <div class="w-pkg-price">$2,000</div>
+            <p class="w-pkg-tagline">Perfect for couples wanting a complete documentary record of their wedding day.</p>
+            <details class="w-pkg-details">
+              <summary>See full details</summary>
+              <p class="w-pkg-group-label">Coverage</p>
+              <ul class="w-pkg-list">
+                <li>Up to 10 hours of coverage</li>
+                <li>Preparations</li>
+                <li>Venue details</li>
+                <li>Ceremony</li>
+                <li>Family celebrations</li>
+                <li>Couple portrait session</li>
+                <li>Reception</li>
+                <li>Extended reception</li>
+                <li>Cake cutting</li>
+                <li>Open dancing</li>
+                <li>First dance</li>
+                <li>Parent dances</li>
+                <li>Meaningful speech moments</li>
+              </ul>
+              <p class="w-pkg-group-label">You Receive</p>
+              <ul class="w-pkg-list">
+                <li>One handcrafted 6–8 minute wedding film</li>
+                <li>Full ceremony film</li>
+                <li>Full speeches film</li>
+              </ul>
+              <p class="w-pkg-group-label">Delivery</p>
+              <ul class="w-pkg-list">
+                <li>Priority editing — delivered within 4 weeks</li>
+              </ul>
+            </details>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Hybrid Panel -->
+    <section class="w-exp-panel is-active" data-panel="hybrid">
+      <div class="w-section--wide" style="padding-top:4rem;padding-bottom:4rem;">
+        <div style="max-width:760px;margin:0 auto 0;">
+          <p class="w-label">Photography &amp; Film</p>
+          <h2 class="w-h2">One consistent approach, in frames and in film.</h2>
+          <p class="w-lead" style="margin-bottom:0;">For couples who want their wedding day preserved in full — the frames you hold and the film you feel — shot with one consistent eye instead of two vendors working separately. I photograph, film, and edit everything myself, so both tell the same story.</p>
+          <p class="w-pkg-group-label">Every Hybrid Collection Includes</p>
+          <ul class="w-pkg-list w-includes-grid">
+            <li>Wedding planning consultation</li>
+            <li>One creative vision — photography and film shot and edited by the same person</li>
+            <li>High-resolution, professionally edited photographs</li>
+            <li>Handcrafted wedding film</li>
+            <li>Professionally recorded audio</li>
+            <li>Private, secure online gallery and film delivery</li>
+            <li>Personal print release</li>
+            <li>Access to professional fine art prints, albums, and wall art</li>
           </ul>
-          <p class="w-pkg-closing-line">A film that brings together the people, the moments, and the emotions that made your wedding day uniquely yours.</p>
         </div>
+        <div class="w-pkg-grid">
 
-        <!-- Legacy Story Collection -->
-        <div class="w-pkg">
-          <p class="w-pkg-name">Legacy Story Collection</p>
-          <div class="w-pkg-price">$2,000</div>
-          <p class="w-pkg-tagline">A more complete documentary of your wedding day, preserving not only the big moments, but many of the quieter moments that often become the most meaningful over time.</p>
-          <p class="w-pkg-sub">Everything included in the Living Story Collection, plus</p>
-          <ul class="w-pkg-list">
-            <li>Up to 10 hours of coverage</li>
-            <li>Extended reception coverage</li>
-            <li>Cake cutting</li>
-            <li>Open dancing</li>
-            <li>Handcrafted 6 to 8 minute wedding film</li>
-            <li>Full ceremony film</li>
-            <li>Full speeches film</li>
-            <li>Priority editing</li>
-            <li>Digital delivery within 4 weeks</li>
-          </ul>
-          <p class="w-pkg-closing-line">A complete record of your wedding day to return to for years to come.</p>
+          <div class="w-pkg">
+            <p class="w-pkg-name">Story Collection</p>
+            <div class="w-pkg-price">$2,500</div>
+            <p class="w-pkg-save">Save $300 vs booking separately</p>
+            <p class="w-pkg-tagline">Perfect for couples wanting the most important moments captured through both photography and film.</p>
+            <details class="w-pkg-details">
+              <summary>See full details</summary>
+              <p class="w-pkg-group-label">Coverage</p>
+              <ul class="w-pkg-list">
+                <li>Up to 4 hours of coverage</li>
+                <li>Ceremony</li>
+                <li>Family celebrations</li>
+                <li>Couple portraits</li>
+              </ul>
+              <p class="w-pkg-group-label">You Receive — Photography</p>
+              <ul class="w-pkg-list">
+                <li>250–350 edited photographs</li>
+              </ul>
+              <p class="w-pkg-group-label">You Receive — Film</p>
+              <ul class="w-pkg-list">
+                <li>One handcrafted 2–3 minute wedding film</li>
+              </ul>
+              <p class="w-pkg-group-label">Delivery</p>
+              <ul class="w-pkg-list">
+                <li>Photography within 4 weeks</li>
+                <li>Film within 6 weeks</li>
+              </ul>
+            </details>
+          </div>
+
+          <div class="w-pkg w-pkg--featured">
+            <span class="w-pkg-badge">Most Popular</span>
+            <p class="w-pkg-name">Living Story Collection</p>
+            <div class="w-pkg-price">$3,400</div>
+            <p class="w-pkg-save">Save $500 vs booking separately</p>
+            <p class="w-pkg-tagline">Perfect for couples wanting a complete storytelling experience.</p>
+            <details class="w-pkg-details">
+              <summary>See full details</summary>
+              <p class="w-pkg-group-label">Coverage</p>
+              <ul class="w-pkg-list">
+                <li>Up to 8 hours of coverage</li>
+                <li>Preparations</li>
+                <li>Venue</li>
+                <li>Ceremony</li>
+                <li>Family celebrations</li>
+                <li>Couple portraits</li>
+                <li>Reception</li>
+                <li>First dance</li>
+                <li>Parent dances</li>
+                <li>Speech highlights</li>
+              </ul>
+              <p class="w-pkg-group-label">You Receive — Photography</p>
+              <ul class="w-pkg-list">
+                <li>500–700 edited photographs</li>
+              </ul>
+              <p class="w-pkg-group-label">You Receive — Film</p>
+              <ul class="w-pkg-list">
+                <li>One handcrafted 4–6 minute wedding film</li>
+              </ul>
+              <p class="w-pkg-group-label">Delivery</p>
+              <ul class="w-pkg-list">
+                <li>Photography within 4 weeks</li>
+                <li>Film within 6 weeks</li>
+              </ul>
+            </details>
+          </div>
+
+          <div class="w-pkg">
+            <p class="w-pkg-name">Legacy Story Collection</p>
+            <div class="w-pkg-price">$4,300</div>
+            <p class="w-pkg-save">Save $700 vs booking separately</p>
+            <p class="w-pkg-tagline">Perfect for couples wanting every chapter of their wedding day preserved through both photography and film.</p>
+            <details class="w-pkg-details">
+              <summary>See full details</summary>
+              <p class="w-pkg-group-label">Coverage</p>
+              <ul class="w-pkg-list">
+                <li>Up to 10 hours of coverage</li>
+                <li>Preparations</li>
+                <li>Venue</li>
+                <li>Ceremony</li>
+                <li>Family celebrations</li>
+                <li>Couple portraits</li>
+                <li>Reception</li>
+                <li>Extended reception</li>
+                <li>Cake cutting</li>
+                <li>Open dancing</li>
+                <li>First dance</li>
+                <li>Parent dances</li>
+                <li>Speech highlights</li>
+              </ul>
+              <p class="w-pkg-group-label">You Receive — Photography</p>
+              <ul class="w-pkg-list">
+                <li>700–900 edited photographs</li>
+              </ul>
+              <p class="w-pkg-group-label">You Receive — Film</p>
+              <ul class="w-pkg-list">
+                <li>One handcrafted 6–8 minute wedding film</li>
+                <li>Full ceremony film</li>
+                <li>Full speeches film</li>
+              </ul>
+              <p class="w-pkg-group-label">Delivery</p>
+              <ul class="w-pkg-list">
+                <li>Photography within 3–4 weeks</li>
+                <li>Film within 4 weeks, with priority editing</li>
+              </ul>
+            </details>
+          </div>
+
         </div>
-
       </div>
     </section>
 
@@ -708,6 +1007,23 @@
     </div>
     <p class="w-footer-copy">© 2025 TWM Stories — Tāwhaowhao Stories &nbsp;·&nbsp; Arroyo Grande, CA &nbsp;·&nbsp; (805) 704-2260</p>
   </footer>
+
+  <script>
+    document.querySelectorAll('.w-exp-card').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var target = btn.dataset.exp;
+        document.querySelectorAll('.w-exp-card').forEach(function(b) {
+          var active = b === btn;
+          b.classList.toggle('is-active', active);
+          b.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+        document.querySelectorAll('.w-exp-panel').forEach(function(p) {
+          p.classList.toggle('is-active', p.dataset.panel === target);
+        });
+        btn.closest('section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
 
   <script>
     document.querySelectorAll('a[href*="pixieset.com/contact-form"]').forEach(function(el) {
