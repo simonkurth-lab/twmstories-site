@@ -451,13 +451,14 @@
     .w-exp-panel.is-active { display: block; }
 
     /* Photo break */
-    .w-photo-full { position: relative; width: 100%; overflow: hidden; }
-    .w-photo-full img { width: 100%; height: 640px; object-fit: cover; object-position: center 65%; }
+    .w-photo-strip { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .w-photo-strip-panel { position: relative; overflow: hidden; }
+    .w-photo-strip-panel img { display: block; width: 100%; height: 640px; object-fit: cover; }
     .w-photo-caption {
       position: absolute;
       left: 0; right: 0; bottom: 0;
-      padding: 3rem 1.5rem 2rem;
-      background: linear-gradient(to top, rgba(20,18,16,0.65), transparent);
+      padding: 2.5rem 1.5rem 1.5rem;
+      background: linear-gradient(to top, rgba(20,18,16,0.7), transparent);
     }
     .w-photo-caption-label {
       font-size: 0.7rem;
@@ -467,13 +468,13 @@
       margin-bottom: 0.5rem;
     }
     .w-photo-caption-text {
-      font-size: 1.05rem;
+      font-size: 0.95rem;
       color: #FAFAF8;
-      max-width: 520px;
       line-height: 1.5;
     }
-    @media (max-width: 600px) {
-      .w-photo-full img { height: 480px; }
+    @media (max-width: 700px) {
+      .w-photo-strip { grid-template-columns: 1fr; }
+      .w-photo-strip-panel img { height: 420px; }
     }
     .w-includes-grid {
       display: grid;
@@ -615,12 +616,20 @@
       </div>
     </section>
 
-    <!-- Pre-Wedding Session Photo -->
-    <div class="w-photo-full">
-      <img src="https://images.pixieset.com/617259811/c11dacb0944b689aa556425e9a634768-xxlarge.jpg" alt="Engaged couple laughing together under oak trees at golden hour, Central Coast pre-wedding session" loading="lazy" decoding="async">
-      <div class="w-photo-caption">
-        <p class="w-photo-caption-label">Included</p>
-        <p class="w-photo-caption-text">A complimentary pre-wedding session comes with every Photography or Photography &amp; Film collection.</p>
+    <!-- Pre-Wedding Session Photo Strip -->
+    <div class="w-photo-strip">
+      <div class="w-photo-strip-panel">
+        <img src="https://images.pixieset.com/617259811/c11dacb0944b689aa556425e9a634768-xxlarge.jpg" alt="Engaged couple laughing together under oak trees at golden hour, Central Coast pre-wedding session" loading="lazy" decoding="async" style="object-position:center 65%;">
+        <div class="w-photo-caption">
+          <p class="w-photo-caption-label">Included</p>
+          <p class="w-photo-caption-text">A complimentary pre-wedding session comes with every Photography or Photography &amp; Film collection.</p>
+        </div>
+      </div>
+      <div class="w-photo-strip-panel">
+        <img src="https://images.pixieset.com/617259811/9c52dc2ec862639aa9b86db44871ce48-xxlarge.jpg" alt="Engaged couple embracing on a golden hillside overlook at sunset, San Luis Obispo Central Coast" loading="lazy" decoding="async">
+      </div>
+      <div class="w-photo-strip-panel">
+        <img src="https://images.pixieset.com/617259811/f7d28cfa00f99ff674d29ffc9a7b6f7e-xxlarge.jpg" alt="Engaged couple holding hands looking out over golden hills at sunset, Central Coast pre-wedding session" loading="lazy" decoding="async" style="object-position:center 65%;">
       </div>
     </div>
 
