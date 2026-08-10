@@ -124,6 +124,28 @@
     gtag('js', new Date());
     gtag('config', 'G-NL9075LYZ2');
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Photographer",
+    "name": "TWM Stories",
+    "image": "https://www.twmstories.com/assets/logo-full.png",
+    "url": "https://www.twmstories.com",
+    "priceRange": "$250-$700",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Arroyo Grande",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    },
+    "areaServed": ["Arroyo Grande", "San Luis Obispo", "Pismo Beach"],
+    "sameAs": [
+      "https://www.instagram.com/tawhaowhao_media/",
+      "https://www.facebook.com/profile.php?id=61561558226676"
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -142,9 +164,9 @@
         <a href="/weddings/">Weddings</a>
         <a href="/friday-night-stories/">Friday Night Stories</a>
         <a href="/blog/">Stories</a>
-        <a href="#" onclick="showPage('portraits'); return false;" data-page="portraits">Portraits</a>
-        <a href="#" onclick="showPage('motion'); return false;" data-page="motion">Sports & Film</a>
-        <a href="#" onclick="showPage('mediaday'); return false;" data-page="mediaday">Media Days</a>
+        <a href="#portraits" onclick="showPage('portraits'); return false;" data-page="portraits">Portraits</a>
+        <a href="#motion" onclick="showPage('motion'); return false;" data-page="motion">Sports & Film</a>
+        <a href="#mediaday" onclick="showPage('mediaday'); return false;" data-page="mediaday">Media Days</a>
         <a href="#" onclick="showPage('about'); return false;" data-page="about">About</a>
         <a href="https://tawhaowhaostories.pixieset.com/contact-form/cf_jNb7w8oNx4QgmgWjgDRYIBH5w6YO" target="_blank" rel="noopener noreferrer"  target="_blank" rel="noopener noreferrer" data-page="contact">Contact</a>
         <a href="https://tawhaowhaostories.pixieset.com/" target="_blank" rel="noopener noreferrer" style="background:var(--color-primary);color:#FAF8F5;padding:var(--space-2) var(--space-4);border-radius:4px;font-size:var(--text-sm);letter-spacing:0.03em;">Client Galleries</a>
@@ -174,9 +196,9 @@
     <a href="/weddings/" onclick="closeMobile()">Weddings</a>
     <a href="/friday-night-stories/" onclick="closeMobile()">Friday Night Stories</a>
     <a href="/blog/" onclick="closeMobile()">Stories</a>
-    <a href="#" onclick="showPage('portraits'); closeMobile(); return false;">Portraits</a>
-    <a href="#" onclick="showPage('motion'); closeMobile(); return false;">Sports & Film</a>
-    <a href="#" onclick="showPage('mediaday'); closeMobile(); return false;">Media Days</a>
+    <a href="#portraits" onclick="showPage('portraits'); closeMobile(); return false;">Portraits</a>
+    <a href="#motion" onclick="showPage('motion'); closeMobile(); return false;">Sports & Film</a>
+    <a href="#mediaday" onclick="showPage('mediaday'); closeMobile(); return false;">Media Days</a>
     <a href="#" onclick="showPage('about'); closeMobile(); return false;">About</a>
     <a href="https://tawhaowhaostories.pixieset.com/contact-form/cf_jNb7w8oNx4QgmgWjgDRYIBH5w6YO" target="_blank" rel="noopener noreferrer"  target="_blank" rel="noopener noreferrer" onclick="closeMobile()">Contact</a>
   </div>
@@ -347,14 +369,14 @@
                 <p>Portraits + cinematic film</p>
               </div>
             </a>
-            <a href="#" onclick="showPage('portraits'); return false;" class="service-card">
+            <a href="#portraits" onclick="showPage('portraits'); return false;" class="service-card">
               <img src="https://twmstories.com/assets/portraits-trees.jpg" alt="Family portrait session in oak trees, San Luis Obispo Central Coast" width="600" height="800" loading="lazy" decoding="async">
               <div class="service-card-overlay">
                 <h3>Family & Portraits</h3>
                 <p>Family sessions from $250</p>
               </div>
             </a>
-            <a href="#" onclick="showPage('motion'); return false;" class="service-card">
+            <a href="#motion" onclick="showPage('motion'); return false;" class="service-card">
               <video autoplay muted playsinline loop="false" style="width:100%;height:100%;object-fit:cover;pointer-events:none;" onended="this.pause();">
                 <source src="https://vz-31aea457-56c.b-cdn.net/bd0b4e49-a76f-4fa9-a87c-045fe4d6d67d/play_720p.mp4" type="video/mp4">
               </video>
@@ -363,7 +385,7 @@
                 <p>Action photography and cinematic highlight films</p>
               </div>
             </a>
-            <a href="#" onclick="showPage('mediaday'); return false;" class="service-card">
+            <a href="#mediaday" onclick="showPage('mediaday'); return false;" class="service-card">
               <img src="https://twmstories.com/assets/media-day-flag.jpg" alt="Baseball athlete in Eagles uniform with American flag, dramatic studio lighting" width="600" height="800" loading="lazy" decoding="async" style="object-position: center top;">
               <div class="service-card-overlay">
                 <h3>Athlete Media Days</h3>
@@ -2103,7 +2125,7 @@
                 <span class="fns-story-dept">Cover Story</span>
                 <h3 class="fns-story-title">The Last Home Game</h3>
                 <p class="fns-story-desc">What it means when the season is almost over and everything is on the line.</p>
-                <a href="#" class="fns-story-link">Read Story →</a>
+                <a href="/blog/" class="fns-story-link">Coming this season →</a>
               </div>
             </div>
 
@@ -2113,7 +2135,7 @@
                 <span class="fns-story-dept">Photo Essay</span>
                 <h3 class="fns-story-title">Under the Lights</h3>
                 <p class="fns-story-desc">A sequence of moments from opening night that words could not capture.</p>
-                <a href="#" class="fns-story-link">Read Story →</a>
+                <a href="/blog/" class="fns-story-link">Coming this season →</a>
               </div>
             </div>
 
@@ -2123,7 +2145,7 @@
                 <span class="fns-story-dept">Player Feature</span>
                 <h3 class="fns-story-title">Beyond the Roster</h3>
                 <p class="fns-story-desc">One athlete. One season. One story worth telling.</p>
-                <a href="#" class="fns-story-link">Read Story →</a>
+                <a href="/blog/" class="fns-story-link">Coming this season →</a>
               </div>
             </div>
 
@@ -2193,9 +2215,9 @@
         <a href="#" onclick="showPage('home'); return false;">Home</a>
         <a href="/senior-portraits/">Senior Experience</a>
         <a href="/friday-night-stories/">Friday Night Stories</a>
-        <a href="#" onclick="showPage('portraits'); return false;">Portraits</a>
-        <a href="#" onclick="showPage('motion'); return false;">Sports & Film</a>
-        <a href="#" onclick="showPage('mediaday'); return false;">Media Days</a>
+        <a href="#portraits" onclick="showPage('portraits'); return false;">Portraits</a>
+        <a href="#motion" onclick="showPage('motion'); return false;">Sports & Film</a>
+        <a href="#mediaday" onclick="showPage('mediaday'); return false;">Media Days</a>
         <a href="#" onclick="showPage('about'); return false;">About</a>
         <a href="https://tawhaowhaostories.pixieset.com/contact-form/cf_jNb7w8oNx4QgmgWjgDRYIBH5w6YO" target="_blank" rel="noopener noreferrer"  target="_blank" rel="noopener noreferrer">Contact</a>
         <a href="/blog/">Blog</a>
