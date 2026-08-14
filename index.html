@@ -1366,9 +1366,24 @@
         <p>A photograph holds a moment. A film holds how it felt. These are the memory films: senior nights, sports seasons, and the in-between moments worth keeping. Based on the Central Coast, serving Arroyo Grande, San Luis Obispo, and surrounding areas.</p>
       </section>
 
+      <style>
+        .reel-sound-btn {
+          position: absolute; bottom: var(--space-4); right: var(--space-4); z-index: 3;
+          width: 40px; height: 40px; border-radius: 50%;
+          background: rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.25); color: #fff;
+          display: flex; align-items: center; justify-content: center; cursor: pointer;
+          backdrop-filter: blur(4px); transition: background 0.2s ease;
+        }
+        .reel-sound-btn:hover { background: rgba(0,0,0,0.65); }
+        .reel-sound-btn .icon-on { display: none; }
+        .reel-sound-btn.is-unmuted .icon-off { display: none; }
+        .reel-sound-btn.is-unmuted .icon-on { display: block; }
+      </style>
+
       <!-- Full-width autoplay video strip -->
       <div class="full-bleed" style="position:relative;background:#0a0a0a;overflow:hidden;height:70vh;min-height:400px;">
         <iframe
+          id="sportsHeroVideo"
           src=""
           data-src="https://iframe.mediadelivery.net/embed/635710/5b804b27-3dfa-447c-8a8d-bee3aef71249?autoplay=true&loop=true&muted=true&preload=true&controls=false&background=true"
           style="position:absolute;top:-10%;left:-5%;width:110%;height:120%;border:0;z-index:1;opacity:0;transition:opacity 0.8s ease;"
@@ -1381,7 +1396,21 @@
           <p style="font-size:var(--text-xs);letter-spacing:0.15em;text-transform:uppercase;color:var(--color-accent);margin-bottom:var(--space-2);">Sports & Performance</p>
           <p style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:400;max-width:20ch;">Presence, effort, and real emotion.</p>
         </div>
+        <button type="button" class="reel-sound-btn" id="sportsHeroSoundBtn" aria-label="Unmute video" onclick="toggleReelSound('sportsHeroVideo', this)">
+          <svg class="icon-off" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+          <svg class="icon-on" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+        </button>
       </div>
+      <script>
+        function toggleReelSound(iframeId, btn) {
+          var iframe = document.getElementById(iframeId);
+          if (!iframe || !iframe.src) return;
+          var wasMuted = iframe.src.indexOf('muted=true') !== -1;
+          iframe.src = iframe.src.replace(wasMuted ? 'muted=true' : 'muted=false', wasMuted ? 'muted=false' : 'muted=true');
+          btn.classList.toggle('is-unmuted', wasMuted);
+          btn.setAttribute('aria-label', wasMuted ? 'Mute video' : 'Unmute video');
+        }
+      </script>
 
       <!-- Performance Spotlight -->
       <div class="full-bleed" style="position:relative;background:#0a0a0a;overflow:hidden;height:70vh;min-height:400px;">
@@ -1393,24 +1422,29 @@
         </div>
       </div>
 
-      <!-- Performance Reel — 20s excerpt from Bravo Show B, starting at 11:21 -->
+      <!-- Performance Reel — 20s excerpt from Bravo Show B, starting at 11:25 -->
       <div class="full-bleed" style="position:relative;background:#0a0a0a;overflow:hidden;height:70vh;min-height:400px;">
         <iframe
           id="bravoShowClip"
-          src="https://player.vimeo.com/video/1206165915?h=3426b6b6b4&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1#t=681s"
+          src="https://player.vimeo.com/video/1206165915?h=3426b6b6b4&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1#t=685s"
           style="position:absolute;top:-10%;left:-5%;width:110%;height:120%;border:0;"
           allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
           referrerpolicy="strict-origin-when-cross-origin"
           title="Bravo Show B">
         </iframe>
+        <button type="button" class="reel-sound-btn" id="bravoSoundBtn" aria-label="Unmute video" onclick="toggleBravoSound(this)">
+          <svg class="icon-off" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+          <svg class="icon-on" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+        </button>
       </div>
       <script src="https://player.vimeo.com/api/player.js"></script>
       <script>
-        (function() {
+        var bravoReel = (function() {
           var iframe = document.getElementById('bravoShowClip');
           var player = new Vimeo.Player(iframe);
-          var CLIP_START = 681; // 11:21
-          var CLIP_END = 701;   // +20s
+          var CLIP_START = 685; // 11:25
+          var CLIP_END = 705;   // +20s
+          var muted = true;
           player.ready().then(function() {
             player.setCurrentTime(CLIP_START);
           });
@@ -1419,7 +1453,28 @@
               player.setCurrentTime(CLIP_START);
             }
           });
+          return {
+            player: player,
+            reset: function() {
+              muted = true;
+              player.setMuted(true);
+              player.setCurrentTime(CLIP_START);
+              var btn = document.getElementById('bravoSoundBtn');
+              if (btn) {
+                btn.classList.remove('is-unmuted');
+                btn.setAttribute('aria-label', 'Unmute video');
+              }
+            },
+            pause: function() { player.pause(); }
+          };
         })();
+
+        function toggleBravoSound(btn) {
+          var wasMuted = !btn.classList.contains('is-unmuted');
+          bravoReel.player.setMuted(!wasMuted);
+          btn.classList.toggle('is-unmuted', wasMuted);
+          btn.setAttribute('aria-label', wasMuted ? 'Mute video' : 'Unmute video');
+        }
       </script>
 
       <!-- Featured Films Carousel -->
@@ -2354,9 +2409,16 @@
             setTimeout(function() { motionHero.style.opacity = '1'; }, 600);
             motionHero.removeEventListener('load', onLoad);
           });
+          const heroSoundBtn = document.getElementById('sportsHeroSoundBtn');
+          if (heroSoundBtn) {
+            heroSoundBtn.classList.remove('is-unmuted');
+            heroSoundBtn.setAttribute('aria-label', 'Unmute video');
+          }
+          if (window.bravoReel) window.bravoReel.reset();
         } else {
           motionHero.src = '';
           motionHero.style.opacity = '0';
+          if (window.bravoReel) window.bravoReel.pause();
         }
       }
 
