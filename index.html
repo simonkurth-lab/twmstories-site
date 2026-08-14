@@ -1423,11 +1423,17 @@
       </div>
 
       <!-- Performance Reel — 20s excerpt from Bravo Show B, starting at 11:25 -->
+      <style>
+        #bravoShowClip { top:-16%; left:-6%; width:112%; height:124%; }
+        @media (max-width: 640px) {
+          #bravoShowClip { top:-30%; left:-14%; width:128%; height:160%; }
+        }
+      </style>
       <div class="full-bleed" style="position:relative;background:#0a0a0a;overflow:hidden;height:70vh;min-height:400px;">
         <iframe
           id="bravoShowClip"
           src="https://player.vimeo.com/video/1206165915?h=3426b6b6b4&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1#t=685s"
-          style="position:absolute;top:-16%;left:-6%;width:112%;height:124%;border:0;"
+          style="position:absolute;border:0;"
           allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
           referrerpolicy="strict-origin-when-cross-origin"
           title="Bravo Show B">
