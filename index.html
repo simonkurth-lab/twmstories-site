@@ -1393,6 +1393,35 @@
         </div>
       </div>
 
+      <!-- Performance Reel — 20s excerpt from Bravo Show B, starting at 11:21 -->
+      <div class="full-bleed" style="position:relative;background:#0a0a0a;overflow:hidden;height:70vh;min-height:400px;">
+        <iframe
+          id="bravoShowClip"
+          src="https://player.vimeo.com/video/1206165915?h=3426b6b6b4&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1#t=681s"
+          style="position:absolute;top:-10%;left:-5%;width:110%;height:120%;border:0;"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          title="Bravo Show B">
+        </iframe>
+      </div>
+      <script src="https://player.vimeo.com/api/player.js"></script>
+      <script>
+        (function() {
+          var iframe = document.getElementById('bravoShowClip');
+          var player = new Vimeo.Player(iframe);
+          var CLIP_START = 681; // 11:21
+          var CLIP_END = 701;   // +20s
+          player.ready().then(function() {
+            player.setCurrentTime(CLIP_START);
+          });
+          player.on('timeupdate', function(data) {
+            if (data.seconds >= CLIP_END || data.seconds < CLIP_START - 1) {
+              player.setCurrentTime(CLIP_START);
+            }
+          });
+        })();
+      </script>
+
       <!-- Featured Films Carousel -->
       <section class="section section--alt">
         <div class="section-inner fade-in" style="text-align:center;">
