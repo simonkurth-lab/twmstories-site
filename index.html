@@ -1427,7 +1427,7 @@
         <iframe
           id="bravoShowClip"
           src="https://player.vimeo.com/video/1206165915?h=3426b6b6b4&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1#t=685s"
-          style="position:absolute;top:-10%;left:-5%;width:110%;height:120%;border:0;"
+          style="position:absolute;top:-16%;left:-6%;width:112%;height:124%;border:0;"
           allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
           referrerpolicy="strict-origin-when-cross-origin"
           title="Bravo Show B">
@@ -1443,7 +1443,7 @@
           var iframe = document.getElementById('bravoShowClip');
           var player = new Vimeo.Player(iframe);
           var CLIP_START = 685; // 11:25
-          var CLIP_END = 705;   // +20s
+          var CLIP_END = 703;   // ends 2s earlier
           var muted = true;
           player.ready().then(function() {
             player.setCurrentTime(CLIP_START);
