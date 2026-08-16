@@ -96,6 +96,22 @@
     .hero-image { width: 100%; line-height: 0; }
     .hero-image img { width: 100%; display: block; height: auto; max-height: 78vh; object-fit: cover; object-position: top; }
 
+    /* Hero video */
+    .hero-video { width: 100%; background: #000; display: flex; justify-content: center; }
+    .hero-video-frame {
+      position: relative;
+      width: 100%;
+      max-width: calc(78vh * 16 / 9);
+      aspect-ratio: 16 / 9;
+    }
+    .hero-video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
     /* Article hero */
     .article-hero {
       max-width: 740px;
@@ -286,13 +302,18 @@
 
   <article>
 
-    <!-- Hero Image -->
-    <div class="hero-image">
-      <img
-        src="../assets/scrimmage/scrimmage-05-under-center.jpg"
-        alt="Arroyo Grande quarterback under center at dusk during the Templeton scrimmage — Friday Night Stories"
-        loading="eager">
+    <!-- Hero Video -->
+    <div class="hero-video">
+      <div class="hero-video-frame">
+        <iframe
+          src="https://player.vimeo.com/video/1218746495?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          title="Arroyo Grande football scrimmage vs. Templeton — Friday Night Stories"
+          allowfullscreen></iframe>
+      </div>
     </div>
+    <script src="https://player.vimeo.com/api/player.js" defer></script>
 
     <div class="article-hero">
       <div class="article-meta">
