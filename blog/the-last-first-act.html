@@ -222,7 +222,14 @@
       margin: 2.5rem 0;
       clear: both;
     }
-    .practice-gallery.gallery-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .practice-gallery.gallery-3 {
+      grid-template-columns: 1fr 1fr 1fr;
+      width: 94vw;
+      max-width: 1200px;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+    }
     .practice-gallery img {
       width: 100%; aspect-ratio: 4/3; object-fit: cover; object-position: top; display: block;
       filter: brightness(0.94);
@@ -382,7 +389,7 @@
 
       <div class="practice-gallery gallery-3">
         <img src="../assets/scrimmage/scrimmage-04-sideline.jpg" alt="Arroyo Grande on the sideline at midfield during the scrimmage" loading="lazy">
-        <img src="../assets/scrimmage/scrimmage-03-qb-pass.jpg" alt="Arroyo Grande quarterback throwing downfield during the scrimmage" loading="lazy">
+        <img src="../assets/scrimmage/scrimmage-03-qb-pass.jpg" alt="Arroyo Grande quarterback throwing downfield during the scrimmage" style="object-position: center 62%;" loading="lazy">
         <img src="../assets/scrimmage/scrimmage-06-pile-drill.jpg" alt="Arroyo Grande football working through a tackling drill" loading="lazy">
       </div>
 
