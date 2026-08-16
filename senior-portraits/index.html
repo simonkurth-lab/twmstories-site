@@ -366,6 +366,45 @@
     }
     .faq-item.is-open .faq-a { display: block; }
 
+    /* ── Athlete bonus callout ── */
+    .athlete-bonus {
+      max-width: 620px;
+      margin: var(--space-8) auto 0;
+      padding: var(--space-5) var(--space-6);
+      background: oklch(from var(--color-primary) l c h / 0.06);
+      border: 1px solid oklch(from var(--color-primary) l c h / 0.25);
+      border-left: 3px solid var(--color-primary);
+      border-radius: var(--radius-md);
+      text-align: center;
+    }
+    .athlete-bonus-label {
+      font-size: var(--text-xs);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      font-weight: 500;
+      margin-bottom: var(--space-2);
+    }
+    .athlete-bonus-text {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      max-width: 48ch;
+      margin: 0 auto;
+    }
+    .athlete-bonus-highlight {
+      font-size: var(--text-sm);
+      color: var(--color-text);
+      font-weight: 500;
+      margin-top: var(--space-2);
+    }
+    .athlete-bonus-note {
+      font-size: var(--text-xs);
+      color: var(--color-text-faint);
+      font-style: italic;
+      margin-top: var(--space-3);
+    }
+
     /* ── Booking boxes ── */
     .booking-grid {
       display: grid;
@@ -737,6 +776,13 @@
 
         </div>
         <p style="text-align:center;font-size:var(--text-sm);color:var(--color-text-faint);margin-top:var(--space-6);">Payment plans available. $100 retainer secures your date.</p>
+
+        <div class="athlete-bonus">
+          <p class="athlete-bonus-label">A Little More for Senior Athletes</p>
+          <p class="athlete-bonus-text">When I photograph your team during your senior year, any images I capture of you are included with your senior session and available to download at no additional cost. No additional package. No per-image purchase.</p>
+          <p class="athlete-bonus-highlight">If I'm there and I capture you, they're yours.</p>
+          <p class="athlete-bonus-note">Game and event coverage varies and is not guaranteed.</p>
+        </div>
       </div>
     </section>
 
