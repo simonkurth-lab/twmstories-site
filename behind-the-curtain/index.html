@@ -329,8 +329,8 @@
       position: relative; padding-top: 56.25%;
       background: #060504; overflow: hidden;
     }
-    .bc-film-ratio iframe {
-      position: absolute; inset: 0; width: 100%; height: 100%; border: 0;
+    .bc-film-ratio iframe, .bc-film-ratio video {
+      position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: cover;
     }
     /* Placeholder shown until a real Vimeo embed replaces it — see comment in HTML */
     .bc-film-placeholder {
@@ -736,9 +736,13 @@
         <div class="bc-film-ratio">
 
           <!-- =====================================================
-               REPLACE ME: delete the placeholder div below and
-               uncomment the iframe, then paste your Vimeo embed
-               URL (e.g. https://player.vimeo.com/video/XXXXXXXXX).
+               DEMO ONLY — a 4s sample pulled from "Hip Hop Flex"
+               (silhouette walking line, 7.9s-11.9s) standing in so
+               Simon can see how a video plays in this frame. Swap
+               for the real Vimeo film when it's ready: delete this
+               <video> block, delete demo-note below, and uncomment
+               the iframe with your Vimeo embed URL
+               (e.g. https://player.vimeo.com/video/XXXXXXXXX).
 
           <iframe
             src="https://player.vimeo.com/video/VIDEO-ID?title=0&byline=0&portrait=0"
@@ -749,13 +753,13 @@
           </iframe>
           ===================================================== -->
 
-          <div class="bc-film-placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
-            <span class="label">Vimeo film — paste embed code here</span>
-          </div>
+          <video autoplay muted loop playsinline preload="auto">
+            <source src="../assets/behind-the-curtain/clips/demo-silhouette-line.mp4" type="video/mp4">
+          </video>
 
         </div>
       </div>
+      <p style="text-align:center; font-size:0.68rem; letter-spacing:0.06em; color:var(--text-faint); margin-top:0.85rem;">Demo clip — placeholder for the real film</p>
     </section>
 
     <!-- =====================================================
