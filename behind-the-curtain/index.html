@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- =====================================================
+       PRIVATE REVIEW — do not remove noindex until Simon
+       has explicit approval from Flex Dance Company / DNA
+       Productions to publish this feature publicly.
+       This page is intentionally NOT linked from nav, the
+       blog, Friday Night Stories, sitemap.xml, or robots.txt
+       allow rules. It is reachable only via direct URL.
+  ===================================================== -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <title>Behind the Curtain — Flex Performing Arts (Private Preview) | TWM Stories</title>
+  <meta name="description" content="A documentary photo essay from three days inside Flex Performing Arts — rehearsals, five performances, and everything that happens before the lights come up.">
+  <link rel="canonical" href="https://www.twmstories.com/behind-the-curtain/">
+  <link rel="icon" type="image/png" href="../assets/logo.png">
+
+  <!-- Open Graph — for private link-sharing previews only (search engines are blocked via noindex above) -->
+  <meta property="og:title" content="Behind the Curtain — Flex Performing Arts">
+  <meta property="og:description" content="A documentary photo essay from three days inside Flex Performing Arts — rehearsals, five performances, and everything that happens before the lights come up.">
+  <meta property="og:url" content="https://www.twmstories.com/behind-the-curtain/">
+  <meta property="og:image" content="https://www.twmstories.com/assets/behind-the-curtain/full-company-01.jpg">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=zodiak@400,500,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=zodiak@400,500,700&display=swap" rel="stylesheet"></noscript>
+
+  <style>
+    /* =====================================================
+       DESIGN TOKENS — matches twmstories.com sub-page palette
+       (see CLAUDE.md: --bg #141210, --gold #C8A96A, --text #F2EDE4)
+       Scoped entirely to this file. Nothing here touches
+       style.css / base.css or any other page.
+    ===================================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #141210;
+      --surface: #1c1a17;
+      --border: rgba(200,169,106,0.15);
+      --gold: #C8A96A;
+      --text: #F2EDE4;
+      --text-muted: rgba(242,237,228,0.68);
+      --text-faint: rgba(242,237,228,0.38);
+      --font-display: 'Zodiak', Georgia, serif;
+      --font-body: 'Satoshi', system-ui, sans-serif;
+    }
+
+    html { background: var(--bg); }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    a { color: inherit; }
+    img { max-width: 100%; }
+
+    /* ---- Header ---- */
+    .site-header {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(20,18,16,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      max-width: 1200px; margin: 0 auto;
+      padding: 0.75rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo-img { height: 84px; width: auto; display: block; }
+    @media (max-width: 900px) { .logo-img { height: 66px; } }
+    @media (max-width: 600px) { .logo-img { height: 56px; } }
+    .home-link {
+      font-size: 0.72rem; color: var(--gold);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      opacity: 0.75; transition: opacity 0.2s; white-space: nowrap;
+      text-decoration: none;
+    }
+    .home-link:hover { opacity: 1; }
+
+    /* Small "private preview" pill, visible only in the header */
+    .preview-pill {
+      font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--text-faint); border: 1px solid var(--border);
+      padding: 0.3rem 0.6rem; border-radius: 2px; margin-left: 1rem;
+      display: none;
+    }
+    @media (min-width: 560px) { .preview-pill { display: inline-block; } }
+
+    /* =====================================================
+       SCROLL REVEAL — subtle fade only, respects
+       prefers-reduced-motion. No parallax, no zoom.
+    ===================================================== */
+    .bc-reveal {
+      opacity: 0; transform: translateY(16px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .bc-reveal.is-visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .bc-reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* =====================================================
+       TITLE TREATMENT — minimal, restrained, short.
+       No hero-scale imagery here; the photograph does that
+       job in the very next section.
+    ===================================================== */
+    .bc-title {
+      padding: 12vh 1.5rem 9vh;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .bc-title .kicker {
+      display: block;
+      font-size: 0.68rem; letter-spacing: 0.32em; text-transform: uppercase;
+      color: var(--text-faint); margin-bottom: 1.75rem;
+    }
+    .bc-title h1 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(2.4rem, 7vw, 5rem);
+      letter-spacing: 0.01em;
+      line-height: 1.05;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+    .bc-title .subtitle {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.1rem, 2.6vw, 1.5rem);
+      color: var(--gold);
+    }
+
+    /* =====================================================
+       HERO PHOTOGRAPH — the one deliberately cropped image
+       on the page. Full-bleed, cinematic, LCP-optimized
+       (eager + fetchpriority, no lazy-load).
+    ===================================================== */
+    .bc-hero {
+      width: 100vw; position: relative; left: 50%; transform: translateX(-50%);
+      background: #0a0807;
+    }
+    .bc-hero img {
+      width: 100%; display: block;
+      height: min(92vh, 1100px);
+      object-fit: cover; object-position: center 38%;
+    }
+    @media (max-width: 640px) {
+      .bc-hero img { height: 68vh; }
+    }
+
+    /* =====================================================
+       EDITORIAL TEXT — restrained column, generous leading.
+       Reused throughout for every prose beat.
+    ===================================================== */
+    .bc-text {
+      max-width: 620px; margin: 0 auto;
+      padding: clamp(3.5rem, 8vw, 6rem) 1.75rem 0;
+    }
+    .bc-text p {
+      color: var(--text-muted);
+      font-size: clamp(1rem, 1.6vw, 1.12rem);
+      line-height: 1.9;
+      margin-bottom: 1.5rem;
+    }
+    .bc-text p:last-child { margin-bottom: 0; }
+    .bc-text.bc-text--tight { padding-top: clamp(2rem, 5vw, 3rem); }
+
+    /* A single short line, given room to breathe on its own */
+    .bc-line {
+      max-width: 820px; margin: 0 auto;
+      padding: clamp(3.5rem, 9vw, 6.5rem) 1.75rem;
+      text-align: center;
+    }
+    .bc-line p {
+      font-family: var(--font-display);
+      font-style: italic; font-weight: 400;
+      font-size: clamp(1.5rem, 4.2vw, 2.5rem);
+      line-height: 1.35;
+      color: var(--gold);
+    }
+
+    /* Chapter marker — quiet section break, not a blog category tag */
+    .bc-chapter {
+      display: flex; flex-direction: column; align-items: center; gap: 1rem;
+      padding: clamp(4rem, 9vw, 7rem) 1.5rem clamp(1rem, 3vw, 2rem);
+    }
+    .bc-chapter .rule { width: 1px; height: 48px; background: var(--border); }
+    .bc-chapter .numeral {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 0.95rem; letter-spacing: 0.08em; color: var(--text-faint);
+    }
+
+    /* =====================================================
+       PHOTOGRAPHY — the core system. Every layout preserves
+       the photograph's native aspect ratio. Nothing here
+       force-crops to a uniform grid.
+    ===================================================== */
+    .bc-photo-section {
+      padding: clamp(2.5rem, 6vw, 4.5rem) 0;
+    }
+
+    /* Full-width cinematic — edge to edge, natural height */
+    .bc-full {
+      width: 100vw; position: relative; left: 50%; transform: translateX(-50%);
+    }
+    .bc-full img { width: 100%; height: auto; display: block; }
+    .bc-full figcaption { margin-top: 0.85rem; text-align: center; }
+
+    /* Full-width HERO moment (e.g. the performance crescendo) —
+       the only other place besides the opener that crops,
+       used sparingly for deliberate visual impact. */
+    .bc-full--crop img {
+      height: min(88vh, 1050px);
+      object-fit: cover;
+    }
+    @media (max-width: 640px) {
+      .bc-full--crop img { height: 62vh; }
+    }
+
+    /* Large portrait — allowed to dominate the viewport,
+       constrained by height so it never overflows the fold
+       by an absurd amount, width follows aspect ratio. */
+    .bc-portrait {
+      display: flex; justify-content: center;
+      padding: 0 1.5rem;
+    }
+    .bc-portrait img {
+      width: auto; height: auto;
+      max-height: min(90vh, 1150px);
+      max-width: 100%;
+      display: block;
+    }
+    @media (max-width: 640px) {
+      .bc-portrait img { max-height: 78vh; }
+    }
+
+    /* Two-image pairing */
+    .bc-pair {
+      max-width: 1400px; margin: 0 auto;
+      padding: 0 1.5rem;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: clamp(1.25rem, 3vw, 2.5rem);
+      align-items: center;
+    }
+    .bc-pair img { width: 100%; height: auto; display: block; }
+    @media (max-width: 720px) {
+      .bc-pair { grid-template-columns: 1fr; gap: 1.5rem; }
+    }
+
+    /* Three-image sequence */
+    .bc-trio {
+      max-width: 1500px; margin: 0 auto;
+      padding: 0 1.5rem;
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: clamp(1rem, 2.4vw, 1.75rem);
+      align-items: center;
+    }
+    .bc-trio img { width: 100%; height: auto; display: block; }
+    @media (max-width: 900px) {
+      .bc-trio { grid-template-columns: 1fr 1fr; }
+      .bc-trio > figure:last-child:nth-child(3) { grid-column: 1 / -1; max-width: 60%; margin: 0 auto; }
+    }
+    @media (max-width: 560px) {
+      .bc-trio { grid-template-columns: 1fr; }
+      .bc-trio > figure:last-child:nth-child(3) { max-width: 100%; }
+    }
+
+    figure { margin: 0; }
+    figcaption {
+      font-size: 0.72rem; letter-spacing: 0.04em;
+      color: var(--text-faint); margin-top: 0.6rem;
+    }
+
+    /* =====================================================
+       MISSING-IMAGE PLACEHOLDER
+       Shows automatically (via onerror) until real files are
+       dropped into assets/behind-the-curtain/. Safe to leave
+       in place — disappears the moment a matching file exists.
+    ===================================================== */
+    figure.bc-missing { position: relative; }
+    figure.bc-missing img { display: none; }
+    figure.bc-missing::before {
+      content: attr(data-slot);
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 1.5rem;
+      min-height: 260px;
+      background: var(--surface);
+      border: 1px dashed var(--border);
+      color: var(--text-faint);
+      font-size: 0.72rem; letter-spacing: 0.06em; line-height: 1.6;
+    }
+    .bc-hero figure.bc-missing::before,
+    .bc-full--crop figure.bc-missing::before { min-height: min(70vh, 700px); }
+    .bc-portrait figure.bc-missing::before { min-height: min(60vh, 600px); width: 340px; max-width: 80vw; }
+
+    /* =====================================================
+       FILM SECTION — its own chapter, generous width,
+       deliberately not a generic "video card."
+    ===================================================== */
+    .bc-film-wrap {
+      max-width: 1120px; margin: 0 auto;
+      padding: clamp(1rem, 4vw, 2rem) 1.5rem clamp(4rem, 9vw, 7rem);
+    }
+    .bc-film-intro {
+      text-align: center; max-width: 640px; margin: 0 auto clamp(2rem, 5vw, 3rem);
+    }
+    .bc-film-intro p {
+      color: var(--text-muted); font-size: 1.02rem; line-height: 1.85;
+    }
+    .bc-film-frame {
+      position: relative;
+      padding: 10px;
+      border: 1px solid rgba(200,169,106,0.18);
+      border-radius: 3px;
+      background: #0a0807;
+    }
+    .bc-film-ratio {
+      position: relative; padding-top: 56.25%;
+      background: #060504; overflow: hidden;
+    }
+    .bc-film-ratio iframe {
+      position: absolute; inset: 0; width: 100%; height: 100%; border: 0;
+    }
+    /* Placeholder shown until a real Vimeo embed replaces it — see comment in HTML */
+    .bc-film-placeholder {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 0.85rem; color: var(--text-faint); text-align: center; padding: 1.5rem;
+    }
+    .bc-film-placeholder svg { width: 40px; height: 40px; opacity: 0.6; }
+    .bc-film-placeholder .label {
+      font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    @media (max-width: 640px) {
+      .bc-film-wrap { padding-left: 0.5rem; padding-right: 0.5rem; }
+      .bc-film-frame { padding: 4px; }
+    }
+
+    /* =====================================================
+       CLOSING SIGNATURE / ACKNOWLEDGMENT
+    ===================================================== */
+    .bc-signature {
+      max-width: 620px; margin: 0 auto;
+      padding: 0 1.75rem clamp(6rem, 12vw, 9rem);
+    }
+    .bc-signature p {
+      color: var(--text-muted); font-size: 1.05rem; line-height: 1.9;
+      margin-bottom: 1.5rem;
+    }
+    .bc-signature p:last-child { margin-bottom: 0; }
+    .bc-signature strong { color: var(--text); font-weight: 600; }
+    .bc-signature .sign-off {
+      font-family: var(--font-display); font-style: italic; color: var(--text-muted);
+      margin-top: 2rem;
+    }
+
+    /* ---- Footer ---- */
+    .bc-footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 2rem; text-align: center;
+    }
+    .bc-footer p { font-size: 0.78rem; color: var(--text-faint); }
+    .bc-footer a { color: var(--gold); opacity: 0.85; text-decoration: none; }
+    .bc-footer .review-note {
+      margin-top: 1rem; font-size: 0.68rem; letter-spacing: 0.04em;
+      color: var(--text-faint); opacity: 0.7;
+    }
+
+    @media (max-width: 640px) {
+      .bc-photo-section { padding: 2rem 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="logo">
+        <img src="../assets/logo-full.png" alt="TWM Stories logo" class="logo-img">
+      </a>
+      <div style="display:flex; align-items:center;">
+        <a href="/" class="home-link">← twmstories.com</a>
+        <span class="preview-pill">Private Preview</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- =====================================================
+         TITLE TREATMENT
+    ===================================================== */ -->
+    <section class="bc-title">
+      <span class="kicker">TWM Stories · Documentary Feature</span>
+      <h1>Behind the Curtain</h1>
+      <p class="subtitle">Flex Performing Arts</p>
+    </section>
+
+    <!-- =====================================================
+         HERO PHOTOGRAPH
+         Not lazy-loaded — this is the LCP element.
+         Replace bts-hero.jpg with your single strongest frame.
+    ===================================================== -->
+    <div class="bc-hero">
+      <figure>
+        <img src="../assets/behind-the-curtain/full-company-01.jpg"
+             alt="The full company of Flex Performing Arts on stage"
+             loading="eager" fetchpriority="high" decoding="async">
+      </figure>
+    </div>
+
+    <!-- =====================================================
+         OPENING TEXT
+    ===================================================== -->
+    <div class="bc-text bc-reveal" data-observe>
+      <p>I came into this as an outsider who knew almost nothing about the dance world.</p>
+      <p>After several days documenting Flex Performing Arts, I can honestly say I was blown away by the passion, precision and energy I witnessed.</p>
+    </div>
+
+    <div class="bc-line bc-reveal" data-observe>
+      <p>And I'm just talking about the volunteers.</p>
+    </div>
+
+    <!-- =====================================================
+         CHAPTER I — BEGINNING
+         Rehearsal, preparation, detail. Quieter images.
+    ===================================================== -->
+    <div class="bc-chapter">
+      <span class="rule"></span>
+      <span class="numeral">I.</span>
+    </div>
+
+    <div class="bc-text bc-text--tight bc-reveal" data-observe>
+      <p>The amount of dedication and effort that goes into pulling off five shows over three days was incredible to see and even more incredible to document.</p>
+    </div>
+
+    <section class="bc-photo-section">
+      <div class="bc-pair">
+        <figure class="bc-reveal" data-observe data-slot="beginning-01a.jpg — costume or wardrobe detail">
+          <img src="../assets/behind-the-curtain/beginning-01a.jpg" alt="Costume detail before the show" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('bc-missing')">
+        </figure>
+        <figure class="bc-reveal" data-observe data-slot="beginning-01b.jpg — dancer preparing / warming up, quiet moment">
+          <img src="../assets/behind-the-curtain/beginning-01b.jpg" alt="A dancer preparing before rehearsal" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('bc-missing')">
+        </figure>
+      </div>
+    </section>
+
+    <div class="bc-text bc-reveal" data-observe>
+      <p>Of course, what I witnessed was really only the final chapter.</p>
+      <p>I wasn't privy to the countless hours spent practicing routines, or the logistical challenges of creating elaborate costumes and coordinating recital schedules. The music. The sound. The lighting. The staging. The list goes on and on.</p>
+    </div>
+
+    <section class="bc-photo-section">
+      <div class="bc-trio">
+        <figure class="bc-reveal" data-observe data-slot="beginning-02a.jpg — behind-the-scenes detail (sound board, lighting rig, or program)">
+          <img src="../assets/behind-the-curtain/beginning-02a.jpg" alt="Behind-the-scenes production detail" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('bc-missing')">
+        </figure>
+        <figure class="bc-reveal" data-observe data-slot="beginning-02b.jpg — costume rack or wardrobe prep">
+          <img src="../assets/behind-the-curtain/beginning-02b.jpg" alt="Costumes prepared backstage" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('bc-missing')">
+        </figure>
+        <figure class="bc-reveal" data-observe data-slot="beginning-02c.jpg — backstage volunteer or crew at work">
+          <img src="../assets/behind-the-curtain/beginning-02c.jpg" alt="A volunteer at work backstage" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('bc-missing')">
+        </figure>
+      </div>
+    </section>
+
+    <div class="bc-text bc-reveal" data-observe>
+      <p>There are so many moving pieces behind a production like this, most of which the audience will never see.</p>
+      <p>What they do see is what happens when all of those pieces finally come together.</p>
+    </div>
+
+    <section class="bc-photo-section">
+      <div class="bc-full">
+        <figure class="bc-reveal" data-observe data-slot="beginning-03-cometogether.jpg — wide shot of the full stage/company coming together, transition into the show">
+          <img src="../assets/behind-the-curtain/beginning-03-cometogether.jpg" alt="The full company coming together on stage" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('bc-missing')">
+        </figure>
+      </div>
+    </section>
+
+    <div class="bc-line bc-reveal" data-observe>
+      <p>There are moments that happen once, under constantly changing light, and then they're gone. My job was simply to be ready for them.</p>
+    </div>
+
+    <div class="bc-text bc-text--tight bc-reveal" data-observe>
+      <p>I felt a tremendous amount of responsibility documenting a production of this scale for the first time.</p>
+    </div>
+
+    <!-- =====================================================
+         CHAPTER II — BUILDING
+         Stronger dance imagery. Precision, athleticism,
+         concentration. Individual images allowed to dominate.
+    ===================================================== -->
+    <div class="bc-chapter">
+      <span class="rule"></span>
+      <span class="numeral">II.</span>
+    </div>
+
+    <div class="bc-text bc-reveal" data-observe>
+      <p>And the more time I spent around the dancers, the more impressed I became.</p>
+      <p>The precision, athleticism and passion were impossible to miss.</p>
+    </div>
+
+    <section class="bc-photo-section">
+      <div class="bc-full">
+        <figure class="bc-reveal" data-observe>
+          <img src="../assets/behind-the-curtain/once-upon-a-december-02.jpg" alt="Dancers moving in precise unison, Once Upon a December" loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </section>
+
+    <div class="bc-text bc-reveal" data-observe>
+      <p>As a father of two athletes, that athleticism particularly resonated with me. Had dance been part of their world growing up, it's something I would have embraced just as enthusiastically as a dad. There was strength, endurance, timing, coordination and an extraordinary amount of discipline on display.</p>
+    </div>
+
+    <!-- Single exceptional image allowed to dominate the viewport -->
+    <section class="bc-photo-section">
+      <div class="bc-portrait">
+        <figure class="bc-reveal" data-observe>
+          <img src="../assets/behind-the-curtain/palladio-01.jpg" alt="A dancer at full extension, Palladio" loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </section>
+
+    <div class="bc-text bc-text--tight bc-reveal" data-observe>
+      <p>But athleticism was only part of it.</p>
+    </div>
+
+    <div class="bc-text bc-reveal" data-observe>
+      <p>The performances themselves were characterized by thoughtful and passionate choreography. There were moments of enormous energy and others that were quiet and expressive. Each seemed to carry its own personality and story.</p>
+    </div>
+
+    <section class="bc-photo-section">
+      <div class="bc-pair">
+        <figure class="bc-reveal" data-observe>
+          <img src="../assets/behind-the-curtain/dance-off-01.jpg" alt="A high-energy moment of choreography, Dance Off" loading="lazy" decoding="async">
+        </figure>
+        <figure class="bc-reveal" data-observe>
+          <img src="../assets/behind-the-curtain/remains-of-the-day-01.jpg" alt="A quiet, expressive moment of choreography, Remains of the Day" loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </section>
+
+    <div class="bc-text bc-reveal" data-observe>
+      <p>And from the other side of the stage, the pride and support shown by the audience was abundantly clear.</p>
+    </div>
+
+    <section class="bc-photo-section">
+      <div class="bc-full">
+        <figure class="bc-reveal" data-observe data-slot="building-04-audience.jpg — audience reaction / pride and support, wide shot">
+          <img src="../assets/behind-the-curtain/building-04-audience.jpg" alt="Family and friends in the audience" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('bc-missing')">
+        </figure>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         CHAPTER III — PERFORMANCE
+         The visual crescendo. Strongest stage photography.
+         Rhythm below intentionally follows the sequence:
+         full landscape → text → large vertical → pairing →
+         full landscape → short text → trio → full hero.
+    ===================================================== -->
+    <div class="bc-chapter">
+      <span class="rule"></span>
+      <span class="numeral">III.</span>
+    </div>
+
+    <div class="bc-text bc-reveal" data-observe>
+      <p>Perhaps that's what stayed with me most after the final performance.</p>
+    </div>
+
+    <section class="bc-photo-section">
+      <div class="bc-full">
+        <figure class="bc-reveal" data-observe>
+          <img src="../assets/behind-the-curtain/opener-kickline.jpg" alt="Dancers mid-kick under warm stage light" loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </section>
+
+    <div class="bc-text bc-text--tight bc-reveal" data-observe>
+      <p>Five shows. Three days. Every one of them different.</p>
+    </div>
+
+    <section class="bc-photo-section">
+      <div class="bc-portrait">
+        <figure class="bc-reveal" data-observe>
+          <img src="../assets/behind-the-curtain/dancer-01.jpg" alt="Dancers captured mid-performance" loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </section>
+
+    <section class="bc-photo-section">
+      <div class="bc-pair">
+        <figure class="bc-reveal" data-observe>
+          <img src="../assets/behind-the-curtain/cuban-pete-01.jpg" alt="Dancers on stage, Cuban Pete" loading="lazy" decoding="async">
+          <figcaption>Cuban Pete</figcaption>
+        </figure>
+        <figure class="bc-reveal" data-observe>
+          <img src="../assets/behind-the-curtain/ruby-blue-01.jpg" alt="Dancers on stage, Ruby Blue" loading="lazy" decoding="async">
+          <figcaption>Ruby Blue</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="bc-photo-section">
+      <div class="bc-full">
+        <figure class="bc-reveal" data-observe>
+          <img src="../assets/behind-the-curtain/once-upon-a-december-01.jpg" alt="The company on stage, Once Upon a December" loading="lazy" decoding="async">
+          <figcaption>Once Upon a December</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <div class="bc-text bc-text--tight bc-reveal" data-observe>
+      <p>Every one of them full of moments that happened only once.</p>
+    </div>
+
+    <section class="bc-photo-section">
+      <div class="bc-trio">
+        <figure class="bc-reveal" data-observe>
+          <img src="../assets/behind-the-curtain/misc-01.jpg" alt="Dancers on stage in purple lighting" loading="lazy" decoding="async">
+        </figure>
+        <figure class="bc-reveal" data-observe>
+          <img src="../assets/behind-the-curtain/misc-02.jpg" alt="Young dancers on stage" loading="lazy" decoding="async">
+        </figure>
+        <figure class="bc-reveal" data-observe>
+          <img src="../assets/behind-the-curtain/fedoras-ties-01.jpg" alt="Dancers in fedoras and ties under red light" loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </section>
+
+    <section class="bc-photo-section">
+      <div class="bc-full">
+        <figure class="bc-reveal" data-observe>
+          <img src="../assets/behind-the-curtain/paciencia-y-fe-01.jpg" alt="A dancer lifted by the company, Paciencia y Fe" loading="lazy" decoding="async">
+          <figcaption>Paciencia y Fe</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="bc-photo-section">
+      <div class="bc-pair">
+        <figure class="bc-reveal" data-observe>
+          <img src="../assets/behind-the-curtain/alive-01.jpg" alt="Dancers in dark costume, Alive" loading="lazy" decoding="async">
+          <figcaption>Alive</figcaption>
+        </figure>
+        <figure class="bc-reveal" data-observe>
+          <img src="../assets/behind-the-curtain/alive-02.jpg" alt="A dancer in dark costume, Alive" loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </section>
+
+    <section class="bc-photo-section">
+      <div class="bc-full">
+        <figure class="bc-reveal" data-observe>
+          <img src="../assets/behind-the-curtain/silhouettes-extras.jpg" alt="Dancers in silhouette against red light" loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </section>
+
+    <section class="bc-photo-section">
+      <div class="bc-trio">
+        <figure class="bc-reveal" data-observe>
+          <img src="../assets/behind-the-curtain/eyelashes-01.jpg" alt="Dancers on stage, Eyelashes" loading="lazy" decoding="async">
+        </figure>
+        <figure class="bc-reveal" data-observe>
+          <img src="../assets/behind-the-curtain/the-climb-01.jpg" alt="Dancers on stage, The Climb" loading="lazy" decoding="async">
+        </figure>
+        <figure class="bc-reveal" data-observe>
+          <img src="../assets/behind-the-curtain/full-company-02.jpg" alt="The full company on stage" loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </section>
+
+    <section class="bc-photo-section">
+      <div class="bc-portrait">
+        <figure class="bc-reveal" data-observe>
+          <img src="../assets/behind-the-curtain/oh-what-a-beautiful-morning-01.jpg" alt="A young dancer on stage, Oh What a Beautiful Mornin'" loading="lazy" decoding="async">
+          <figcaption>Oh, What a Beautiful Mornin'</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="bc-photo-section">
+      <div class="bc-pair">
+        <figure class="bc-reveal" data-observe>
+          <img src="../assets/behind-the-curtain/dance-off-02.jpg" alt="Dancers on stage, Dance Off" loading="lazy" decoding="async">
+        </figure>
+        <figure class="bc-reveal" data-observe>
+          <img src="../assets/behind-the-curtain/once-upon-a-december-03.jpg" alt="Dancers on stage, Once Upon a December" loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </section>
+
+    <section class="bc-photo-section">
+      <div class="bc-full">
+        <figure class="bc-reveal" data-observe>
+          <img src="../assets/behind-the-curtain/n95-01.jpg" alt="The full company on stage" loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </section>
+
+    <!-- Crescendo image — the second (and last) deliberately cropped full-bleed moment on the page -->
+    <section class="bc-photo-section">
+      <div class="bc-full bc-full--crop">
+        <figure class="bc-reveal" data-observe>
+          <img src="../assets/behind-the-curtain/whatd-i-miss-01.jpg" alt="Dancers in silhouette, What'd I Miss?" loading="lazy" decoding="async">
+          <figcaption>What'd I Miss?</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         CHAPTER IV — THE FILM
+    ===================================================== -->
+    <div class="bc-chapter">
+      <span class="rule"></span>
+      <span class="numeral">IV.</span>
+    </div>
+
+    <section class="bc-film-wrap">
+      <div class="bc-film-intro bc-reveal" data-observe>
+        <p>A short film from the production.</p>
+      </div>
+      <div class="bc-film-frame bc-reveal" data-observe>
+        <div class="bc-film-ratio">
+
+          <!-- =====================================================
+               REPLACE ME: delete the placeholder div below and
+               uncomment the iframe, then paste your Vimeo embed
+               URL (e.g. https://player.vimeo.com/video/XXXXXXXXX).
+
+          <iframe
+            src="https://player.vimeo.com/video/VIDEO-ID?title=0&byline=0&portrait=0"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+            allowfullscreen
+            loading="lazy"
+            title="Behind the Curtain — Flex Performing Arts film">
+          </iframe>
+          ===================================================== -->
+
+          <div class="bc-film-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+            <span class="label">Vimeo film — paste embed code here</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         CHAPTER V — ENDING
+         Slower rhythm. Quieter, reflective images.
+    ===================================================== -->
+    <div class="bc-chapter">
+      <span class="rule"></span>
+      <span class="numeral">V.</span>
+    </div>
+
+    <div class="bc-text bc-reveal" data-observe>
+      <p>I arrived expecting to document a dance recital.</p>
+    </div>
+
+    <section class="bc-photo-section">
+      <div class="bc-full">
+        <figure class="bc-reveal" data-observe>
+          <img src="../assets/behind-the-curtain/so-good-so-good-01.jpg" alt="Dancers walking off stage beneath a lit cross, So Good So Good" loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </section>
+
+    <div class="bc-text bc-reveal" data-observe>
+      <p>What I found was an entire community of dancers, teachers, families, volunteers and countless people behind the scenes, collectively working toward the same fleeting moment when the lights come up, the music begins and all that work finally has its few minutes on stage.</p>
+    </div>
+
+    <div class="bc-line bc-reveal" data-observe>
+      <p>Then the lights go down.</p>
+    </div>
+
+    <section class="bc-photo-section">
+      <div class="bc-portrait">
+        <figure class="bc-reveal" data-observe>
+          <img src="../assets/behind-the-curtain/aint-got-no-body-01.jpg" alt="A dancer alone on stage among empty chairs" loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </section>
+
+    <div class="bc-signature bc-reveal" data-observe>
+      <p>I'm grateful I was there to document it.</p>
+      <p>Thank you to <strong>Flex Dance Company and DNA Productions</strong> for allowing me into your world and trusting me to document such an important production. It was a privilege to capture it and an experience that left me with a genuine appreciation for everyone who helped bring it to life.</p>
+      <p class="sign-off">— Simon Kurth, TWM Stories</p>
+    </div>
+
+  </main>
+
+  <footer class="bc-footer">
+    <p>TWM Stories · Arroyo Grande, CA · <a href="/">twmstories.com</a></p>
+    <p style="margin-top:0.5rem;">Ngā Kōrero Ora — Living Stories</p>
+    <p class="review-note">Private preview — not indexed, not linked from the site. Please do not share this URL publicly until approved for publication.</p>
+  </footer>
+
+  <script>
+  (function () {
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('[data-observe]').forEach(function (el) {
+      observer.observe(el);
+    });
+  })();
+  </script>
+
+</body>
+</html>

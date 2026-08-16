@@ -1,6 +1,9 @@
 User-agent: *
 Allow: /
 
+# Private preview — unpublished, not yet approved for public release
+Disallow: /behind-the-curtain/
+
 # Block AI training bots
 User-agent: GPTBot
 Disallow: /
