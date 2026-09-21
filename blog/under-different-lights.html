@@ -193,6 +193,25 @@
     }
     .fig-fullbleed img { width: 100%; display: block; max-height: 68vh; object-fit: cover; }
 
+    /* Video embed — full-bleed hero treatment */
+    .video-hero {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 2.5rem 0;
+      aspect-ratio: 4 / 3;
+      max-height: 85vh;
+      background: #0a0807;
+      overflow: hidden;
+    }
+    .video-hero iframe {
+      width: 100%; height: 100%; border: 0; display: block;
+    }
+    @media (max-width: 640px) {
+      .video-hero { aspect-ratio: 3 / 4; max-height: none; }
+    }
+
     /* Video embed */
     .video-embed {
       width: 100%;
@@ -342,18 +361,16 @@
       <p class="video-caption">The pregame rhythm — warmups, repetition, and the unity that builds a team.</p>
 
       <figure class="fig-float-right">
-        <!-- PLACEHOLDER: coach directing players during warmups -->
-        <img src="https://www.twmstories.com/assets/PLACEHOLDER-01.jpg" alt="Arroyo Grande football coach giving direction during warmups" loading="lazy">
+        <img src="../assets/under-different-lights/warmup-stretch.jpg" alt="Arroyo Grande football players stretching on the sideline as the sun drops low" loading="lazy">
       </figure>
 
       <p>It wasn't perfect. Coaches still had to yell a correction. Players occasionally ended up a step out of place. A drill would reset and they'd go again. But underneath all of that, you could see the repetition beginning to pay off. There was a familiarity to the way they worked together, the kind that comes from spending hours doing the same things alongside the same people.</p>
 
-      <figure class="fig-float-left">
-        <!-- PLACEHOLDER: players moving through a drill line -->
-        <img src="https://www.twmstories.com/assets/PLACEHOLDER-02.jpg" alt="Arroyo Grande football players moving through a warmup drill" loading="lazy">
-      </figure>
-
       <p class="clearfix">As the sun dropped behind the hills and the stadium lights took over, that connection became even more apparent.</p>
+
+      <figure class="fig-wide">
+        <img src="../assets/under-different-lights/team-lineup-sunset.jpg" alt="Arroyo Grande football team lined up on the track as the sun drops behind the stadium" loading="lazy">
+      </figure>
 
       <figure class="fig-fullbleed">
         <img src="../assets/under-different-lights/scene-setter.jpg" alt="Sunset over Rio Memorial Field, Santa Ynez, before an Arroyo Grande football game on the road" loading="lazy">
