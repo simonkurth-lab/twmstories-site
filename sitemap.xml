@@ -51,6 +51,12 @@
 
   <!-- Blog posts — narrative / brand content -->
   <url>
+    <loc>https://www.twmstories.com/blog/under-different-lights.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.twmstories.com/blog/senior-night-volleyball.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
