@@ -219,8 +219,7 @@
     /* Decorative play affordance — purely visual, clicks pass through to the iframe beneath */
     .video-hero-play {
       position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
+      bottom: 2rem; left: 2rem;
       width: 76px; height: 76px;
       border-radius: 50%;
       background: rgba(20,18,16,0.5);
@@ -239,7 +238,7 @@
       border-color: transparent transparent transparent #F2EDE4;
     }
     @media (max-width: 640px) {
-      .video-hero-play { width: 60px; height: 60px; }
+      .video-hero-play { width: 60px; height: 60px; bottom: 1.25rem; left: 1.25rem; }
       .video-hero-play::after { border-width: 10px 0 10px 16px; margin-left: 4px; }
     }
     @media (max-width: 640px) {
