@@ -53,7 +53,7 @@ Zodiak (display/headings) + Satoshi (body) loaded from `api.fontshare.com`. The 
 
 ### Third-party embeds
 
-- Videos: Bunny.net (`iframe.mediadelivery.net`)
+- Videos: Vimeo (`player.vimeo.com`) — switched from Bunny.net as of September 2026. Older pages may still reference `iframe.mediadelivery.net`; new video embeds should use Vimeo going forward.
 - Galleries: Pixieset (`images.pixieset.com`) and Behold (`w.behold.so`)
 
 ### SEO / structured data

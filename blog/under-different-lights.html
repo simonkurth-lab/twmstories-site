@@ -193,6 +193,30 @@
     }
     .fig-fullbleed img { width: 100%; display: block; max-height: 68vh; object-fit: cover; }
 
+    /* Video embed */
+    .video-embed {
+      width: 100%;
+      max-width: 620px;
+      margin: 2.5rem auto;
+      clear: both;
+      position: relative;
+      padding: 75% 0 0 0;
+      background: #0a0807;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .video-embed iframe {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%; border: 0;
+    }
+    .video-caption {
+      font-size: 0.78rem;
+      color: var(--text-faint);
+      text-align: center;
+      margin: 0.75rem 0 2rem;
+      clear: both;
+    }
+
     /* Closing gallery grid */
     .practice-gallery {
       display: grid;
@@ -334,6 +358,11 @@
 
       <blockquote class="pull-quote">The sideline erupted.</blockquote>
 
+      <div class="video-embed">
+        <iframe src="https://player.vimeo.com/video/1228690609?h=380fbb1155&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Cole's defensive touchdown — Arroyo Grande Football"></iframe>
+      </div>
+      <p class="video-caption">Cole's touchdown, the moment the sideline erupted.</p>
+
       <p>Players rushed toward their teammate, arms went into the air, and for a few seconds there seemed to be as much joy from the players watching as there was from those on the field. It was genuine, and from an outsider's perspective, the moment wasn't lost on me. There is something revealing about watching people celebrate when the moment belongs to somebody else.</p>
 
       <figure class="fig-wide">
@@ -342,6 +371,11 @@
       </figure>
 
       <p>I noticed it again later in the second half as some players who hadn't seen as much of the field got their opportunity. When they stepped across that line, the effort didn't change. They gave everything they had, and their teammates were still there — watching, encouraging and celebrating.</p>
+
+      <div class="video-embed">
+        <iframe src="https://player.vimeo.com/video/1228691457?h=1c5870884c&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Second-half opportunity — Arroyo Grande Football"></iframe>
+      </div>
+      <p class="video-caption">A player who hadn't seen much of the field gets his shot in the second half.</p>
 
       <p>Football gives you plenty of obvious things to photograph: catches, tackles, touchdowns and collisions beneath the stadium lights. But increasingly, I find myself looking just outside the play. A coach making a correction during warmups. Players gathering around one another. A hand on a shoulder. An entire sideline losing its mind because a teammate just got his moment.</p>
 
@@ -390,6 +424,8 @@
     <p>TWM Stories · Arroyo Grande, CA · <a href="/">twmstories.com</a></p>
     <p style="margin-top:0.5rem;">Ngā Kōrero Ora — Living Stories</p>
   </footer>
+
+  <script src="https://player.vimeo.com/api/player.js"></script>
 
 </body>
 </html>
