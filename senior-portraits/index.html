@@ -287,22 +287,50 @@
       line-height: 1.7;
     }
 
-    /* ── Gallery ── */
-    .sp-gallery {
+    /* ── Gallery: exclusive bento spotlight ── */
+    .sp-bento {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 70px;
       gap: var(--space-3);
-      padding: 0 var(--space-4);
       max-width: var(--content-wide);
       margin: 0 auto;
+      padding: 0 var(--space-4);
     }
-    .sp-gallery img {
-      width: 100%;
-      aspect-ratio: 3/4;
-      object-fit: cover;
-      object-position: center 15%;
+    .sp-bento-item {
+      position: relative;
+      overflow: hidden;
       border-radius: var(--radius-md);
+      background: var(--color-surface);
+      grid-row: span 4;
+    }
+    .sp-bento-item--tall { grid-row: span 7; }
+    .sp-bento-item--wide { grid-column: span 2; }
+    .sp-bento-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .sp-bento-item:hover img { transform: scale(1.045); }
+    .sp-bento-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 0 1px oklch(from var(--color-primary) l c h / 0.18);
+      border-radius: var(--radius-md);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .sp-bento-item:hover::after { opacity: 1; }
+    @media (max-width: 900px) {
+      .sp-bento { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 60px; }
+    }
+    @media (max-width: 600px) {
+      .sp-bento { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 52px; gap: var(--space-2); }
+      .sp-bento-item--tall { grid-row: span 6; }
     }
 
     /* ── Video embed ── */
@@ -488,11 +516,6 @@
       }
     }
 
-    /* ── Mobile ── */
-    @media (max-width: 767px) {
-      .sp-gallery { grid-template-columns: 1fr 1fr; }
-    }
-
     /* ── Mobile header + hero refinements ── */
     @media (max-width: 767px) {
       /* Tight padding so logo fills more of the header band — feels dominant, not padded */
@@ -511,7 +534,6 @@
     }
 
     @media (max-width: 414px) {
-      .sp-gallery { grid-template-columns: 1fr 1fr; }
       .sp-hero-ctas { flex-direction: column; }
       .sp-hero-ctas .hero-cta,
       .sp-hero-ctas .btn { width: 100%; justify-content: center; min-height: 48px; }
@@ -632,39 +654,97 @@
       </div>
     </section>
 
-    <!-- ─────────────────────────────── Gallery ─── -->
-    <div class="sp-gallery">
-      <img
-        src="https://images.pixieset.com/210334211/a0a8888f2a8bf1d17ccc75c4eec33a24-xxlarge.jpg"
-        alt="Senior girl portrait at golden hour — San Luis Obispo area senior photographer"
-        width="800" height="1067"
-        loading="lazy" decoding="async">
-      <img
-        src="https://twmstories.com/assets/portraits-trees.jpg"
-        alt="Senior portrait under oak trees — Central Coast California senior photographer"
-        width="800" height="1067"
-        loading="lazy" decoding="async">
-      <img
-        src="https://twmstories.com/assets/senior-beach.jpg"
-        alt="Senior boy relaxed on the beach at golden hour — Arroyo Grande senior portrait"
-        width="800" height="1067"
-        loading="lazy" decoding="async">
-      <img
-        src="https://twmstories.com/assets/senior-crutches.jpg"
-        alt="Senior portrait — authentic moment, Central Coast California"
-        width="800" height="1067"
-        loading="lazy" decoding="async">
-      <img
-        src="https://twmstories.com/assets/senior-crossed-arms.jpg"
-        alt="Senior boy portrait with arms crossed at golden hour — Central Coast senior photographer"
-        width="800" height="1200"
-        loading="lazy" decoding="async">
-      <img
-        src="https://twmstories.com/assets/senior-profile-smile.jpg"
-        alt="Senior boy candid profile portrait smiling by the reeds — Central Coast senior photographer"
-        width="960" height="1200"
-        loading="lazy" decoding="async">
-    </div>
+    <!-- ─────────────────────────────── Gallery: Recent Work ─── -->
+    <section class="section">
+      <div class="section-narrow fade-in" style="text-align:center;">
+        <p class="section-label">Recent Work</p>
+        <h2 class="section-title">A Season Full of Stories</h2>
+        <p class="section-subtitle" style="margin-inline:auto;">It's been a busy season on the Central Coast — a small, unposed look at recent sessions. Every gallery is different, because every senior is.</p>
+      </div>
+
+      <div class="sp-bento" style="margin-top:var(--space-8);">
+        <div class="sp-bento-item sp-bento-item--tall">
+          <img src="../assets/senior-2026/senior-oak-lake-jacket.jpg"
+               alt="Senior portrait in a varsity letterman jacket under an oak tree by the lake — Central Coast senior photographer"
+               width="1400" height="1000" loading="lazy" decoding="async">
+        </div>
+        <div class="sp-bento-item">
+          <img src="../assets/senior-2026/senior-jacket-profile-walk.jpg"
+               alt="Senior portrait in a varsity jacket, golden hour profile — Central Coast senior photographer"
+               width="1400" height="933" loading="lazy" decoding="async">
+        </div>
+        <div class="sp-bento-item sp-bento-item--tall">
+          <img src="../assets/senior-2026/senior-railroad-trestle.jpg"
+               alt="Senior portrait framed inside a historic railroad trestle — San Luis Obispo County senior photographer"
+               width="1050" height="1400" loading="lazy" decoding="async">
+        </div>
+        <div class="sp-bento-item">
+          <img src="../assets/senior-2026/senior-sunset-road-walk.jpg"
+               alt="Senior portrait walking into golden hour light along the coast — Central Coast senior photographer"
+               width="1000" height="1400" loading="lazy" decoding="async">
+        </div>
+        <div class="sp-bento-item">
+          <img src="../assets/senior-2026/senior-forest-oxford-portrait.jpg"
+               alt="Senior portrait, candid look in natural forest light — Central Coast senior photographer"
+               width="1120" height="1400" loading="lazy" decoding="async">
+        </div>
+        <div class="sp-bento-item sp-bento-item--tall">
+          <img src="../assets/senior-2026/senior-softball-field-walk.jpg"
+               alt="Senior softball player walking a golden hour field path, bat in hand — Central Coast senior photographer"
+               width="933" height="1400" loading="lazy" decoding="async">
+        </div>
+        <div class="sp-bento-item sp-bento-item--wide">
+          <img src="../assets/senior-2026/senior-fence-golden-hour.jpg"
+               alt="Senior portrait backlit at golden hour, sitting on a fence line — Central Coast senior photographer"
+               width="1400" height="1050" loading="lazy" decoding="async">
+        </div>
+        <div class="sp-bento-item sp-bento-item--tall">
+          <img src="../assets/senior-2026/senior-oak-canopy-dress.jpg"
+               alt="Senior portrait in a white dress beneath an arching oak tree canopy — Arroyo Grande senior photographer"
+               width="1120" height="1400" loading="lazy" decoding="async">
+        </div>
+        <div class="sp-bento-item">
+          <img src="../assets/senior-2026/senior-eucalyptus-lean.jpg"
+               alt="Senior portrait leaning against a sunlit eucalyptus tree — Central Coast senior photographer"
+               width="1400" height="1050" loading="lazy" decoding="async">
+        </div>
+        <div class="sp-bento-item">
+          <img src="../assets/senior-2026/senior-white-lace-portrait.jpg"
+               alt="Senior portrait in a white lace dress, golden hour smile — Central Coast senior photographer"
+               width="933" height="1400" loading="lazy" decoding="async">
+        </div>
+        <div class="sp-bento-item sp-bento-item--wide">
+          <img src="../assets/senior-2026/senior-coastal-rocks-standing.jpg"
+               alt="Senior portrait among coastal rocks at golden hour — Pismo Beach senior photographer"
+               width="1400" height="1050" loading="lazy" decoding="async">
+        </div>
+        <div class="sp-bento-item sp-bento-item--wide">
+          <img src="../assets/senior-2026/senior-coastal-sunset-sit.jpg"
+               alt="Senior portrait watching the sunset over the ocean — Central Coast senior photographer"
+               width="1400" height="1000" loading="lazy" decoding="async">
+        </div>
+        <div class="sp-bento-item">
+          <img src="../assets/senior-2026/senior-wetlands-footbridge.jpg"
+               alt="Senior portrait on a footbridge over the wetlands — Central Coast senior photographer"
+               width="1400" height="1050" loading="lazy" decoding="async">
+        </div>
+        <div class="sp-bento-item">
+          <img src="../assets/senior-2026/senior-footbridge-crossed-arms.jpg"
+               alt="Senior portrait, arms crossed on a wetland footbridge — Central Coast senior photographer"
+               width="1400" height="787" loading="lazy" decoding="async">
+        </div>
+        <div class="sp-bento-item">
+          <img src="../assets/senior-2026/senior-wetlands-laugh.jpg"
+               alt="Senior portrait laughing beside the wetlands — Central Coast senior photographer"
+               width="1400" height="1050" loading="lazy" decoding="async">
+        </div>
+        <div class="sp-bento-item">
+          <img src="../assets/senior-2026/senior-foggy-beach-plaid.jpg"
+               alt="Senior portrait on a foggy beach morning — Central Coast senior photographer"
+               width="1120" height="1400" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </section>
 
     <!-- ─────────────────────────────── Testimonials ─── -->
     <section class="section">
