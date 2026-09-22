@@ -326,12 +326,13 @@
       transition: opacity 0.4s ease;
     }
     .sp-bento-item:hover::after { opacity: 1; }
+    /* Below 900px the row-span masonry produces slivers too narrow for
+       object-fit to crop sanely — switch to fixed aspect-ratio tiles instead. */
     @media (max-width: 900px) {
-      .sp-bento { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 80px; }
-    }
-    @media (max-width: 600px) {
-      .sp-bento { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 60px; gap: var(--space-3); }
-      .sp-bento-item--tall { grid-row: span 6; }
+      .sp-bento { grid-template-columns: repeat(2, 1fr); grid-auto-rows: auto; gap: var(--space-3); }
+      .sp-bento-item,
+      .sp-bento-item--tall { grid-row: auto; aspect-ratio: 4 / 5; }
+      .sp-bento-item--wide { grid-column: span 2; grid-row: auto; aspect-ratio: 16 / 9; }
     }
 
     /* ── Video embed ── */
