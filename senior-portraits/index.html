@@ -750,10 +750,9 @@
     <section class="section">
       <style>
         .sg-wrap { max-width: var(--content-wide); margin: var(--space-8) auto 0; padding: 0 var(--space-4); }
-        .sg-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; align-items: start; }
-        .sg-item { display: block; padding: 0; border: 0; background: var(--color-surface); cursor: zoom-in; overflow: hidden; }
-        .sg-item--wide { grid-column: 1 / -1; }
-        .sg-item img { display: block; width: 100%; height: auto; transition: opacity .3s ease; }
+        .sg-grid { column-count: 2; column-gap: 6px; }
+        .sg-item { display: block; width: 100%; margin: 0 0 6px; break-inside: avoid; padding: 0; border: 0; background: var(--color-surface); cursor: zoom-in; overflow: hidden; }
+              .sg-item img { display: block; width: 100%; height: auto; transition: opacity .3s ease; }
         .sg-item:hover img, .sg-item:focus-visible img { opacity: .88; }
         .sg-item:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
         .sg-note { text-align: center; margin-top: var(--space-5); font-size: var(--text-sm); color: var(--color-text-faint); }
@@ -765,23 +764,41 @@
         .sg-lb-close { top: 4px; right: 8px; }
         .sg-lb-prev { left: 4px; top: 50%; transform: translateY(-50%); }
         .sg-lb-next { right: 4px; top: 50%; transform: translateY(-50%); }
-        @media (min-width: 800px) { .sg-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (min-width: 800px) { .sg-grid { column-count: 3; } }
       </style>
       <div class="section-narrow fade-in" style="text-align:center;">
         <p class="section-label">Featured Session</p>
         <h2 class="section-title">One Session, Start to Finish</h2>
-        <p class="section-subtitle" style="margin-inline:auto;">A closer look at a single senior session — vineyard rows, a weathered barn, and a few quiet moments in between.</p>
+        <p class="section-subtitle" style="margin-inline:auto;">A closer look at a single senior session — vineyard rows, a weathered barn, and golden hour on the coast.</p>
       </div>
       <div class="sg-wrap">
         <div class="sg-grid">
-          <button type="button" class="sg-item sg-item--wide" data-index="0" aria-label="View photo 1 of 3">
+          <button type="button" class="sg-item" data-index="0" aria-label="View photo 1 of 9">
             <img src="../assets/senior-2026/senior-vineyard-road-walk.jpg" alt="Senior walking down a vineyard dirt road at golden hour — Central Coast senior photographer" width="2400" height="1350" loading="lazy" decoding="async">
           </button>
-          <button type="button" class="sg-item" data-index="1" aria-label="View photo 2 of 3">
+          <button type="button" class="sg-item" data-index="1" aria-label="View photo 2 of 9">
+            <img src="../assets/senior-2026/senior-barn-smile.jpg" alt="Senior smiling, leaning against a weathered barn door — Central Coast senior photographer" width="1440" height="1800" loading="lazy" decoding="async">
+          </button>
+          <button type="button" class="sg-item" data-index="2" aria-label="View photo 3 of 9">
+            <img src="../assets/senior-2026/senior-rock-sit.jpg" alt="Senior sitting on coastal rocks at sunset, looking back at the camera — Central Coast senior photographer" width="1800" height="1012" loading="lazy" decoding="async">
+          </button>
+          <button type="button" class="sg-item" data-index="3" aria-label="View photo 4 of 9">
             <img src="../assets/senior-2026/senior-vineyard-crouch.jpg" alt="Senior crouching in the vineyard, looking off camera — Central Coast senior photographer" width="1200" height="1800" loading="lazy" decoding="async">
           </button>
-          <button type="button" class="sg-item" data-index="2" aria-label="View photo 3 of 3">
-            <img src="../assets/senior-2026/senior-barn-smile.jpg" alt="Senior smiling, leaning against a weathered barn door — Central Coast senior photographer" width="1440" height="1800" loading="lazy" decoding="async">
+          <button type="button" class="sg-item" data-index="4" aria-label="View photo 5 of 9">
+            <img src="../assets/senior-2026/senior-vine-post-smile.jpg" alt="Senior smiling, leaning on a vineyard post in golden light — Central Coast senior photographer" width="1350" height="1800" loading="lazy" decoding="async">
+          </button>
+          <button type="button" class="sg-item" data-index="5" aria-label="View photo 6 of 9">
+            <img src="../assets/senior-2026/senior-flag-porch.jpg" alt="Senior portrait on a porch beside an American flag — Central Coast senior photographer" width="1800" height="1440" loading="lazy" decoding="async">
+          </button>
+          <button type="button" class="sg-item" data-index="6" aria-label="View photo 7 of 9">
+            <img src="../assets/senior-2026/senior-pillar-profile.jpg" alt="Senior in profile, leaning on a post in backlit golden light — Central Coast senior photographer" width="1350" height="1800" loading="lazy" decoding="async">
+          </button>
+          <button type="button" class="sg-item" data-index="7" aria-label="View photo 8 of 9">
+            <img src="../assets/senior-2026/senior-beach-walk.jpg" alt="Senior walking along the beach at sunset — Central Coast senior photographer" width="1350" height="1800" loading="lazy" decoding="async">
+          </button>
+          <button type="button" class="sg-item" data-index="8" aria-label="View photo 9 of 9">
+            <img src="../assets/senior-2026/senior-rocks-crouch.jpg" alt="Senior crouching on coastal rocks in warm sunset light — Central Coast senior photographer" width="1800" height="1350" loading="lazy" decoding="async">
           </button>
         </div>
         <p class="sg-note">Tap any photo to view larger.</p>
