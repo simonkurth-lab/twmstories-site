@@ -402,7 +402,7 @@
       </section>
 
       <!-- Services Overview -->
-      <section class="section section--alt" id="services">
+      <section class="section section--alt" id="services" style="scroll-margin-top:80px;">
         <div class="section-inner fade-in">
           <p class="section-label">Services</p>
           <h2 class="section-title">What I Offer</h2>
@@ -1887,6 +1887,10 @@
     var _historyNav = false;
     window.addEventListener('popstate', function() {
       var hash = location.hash.replace('#', '');
+      // In-page anchors (e.g. #services) are handled by the browser — don't reset to top
+      if (hash && !document.getElementById('page-' + hash) && document.getElementById(hash)) {
+        return;
+      }
       _historyNav = true;
       showPage(hash && document.getElementById('page-' + hash) ? hash : 'home');
       _historyNav = false;
