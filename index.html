@@ -205,19 +205,22 @@
 
         <!-- Rotating background slides — Senior, Wedding, Events & Performances, Sports & Community -->
         <div class="hero-slides" aria-hidden="true">
-          <div class="hero-slide is-active" data-slide-index="0">
+          <div class="hero-slide is-active" data-slide-index="0" data-duration="9000">
             <img class="hero-slide__poster" src="/assets/senior-2026/senior-coastal-rocks-standing.jpg" alt="Senior portrait standing on coastal rocks, Central Coast California" loading="eager" decoding="async">
             <div class="hero-slide__motion hero-slide__motion--bunny">
               <iframe data-src="https://iframe.mediadelivery.net/embed/635710/ee5a6dd5-64f2-470e-a5d9-82293037571e?autoplay=true&loop=true&muted=true&preload=true&controls=false&background=true" allow="autoplay" title="Senior Portraits &amp; Memory Films"></iframe>
             </div>
           </div>
-          <div class="hero-slide" data-slide-index="1">
-            <img class="hero-slide__poster" src="https://images.pixieset.com/617259811/9c52dc2ec862639aa9b86db44871ce48-xxlarge.jpg" alt="Engaged couple embracing on a golden hillside overlook at sunset, San Luis Obispo Central Coast" loading="lazy" decoding="async">
+          <div class="hero-slide" data-slide-index="1" data-duration="9000">
+            <img class="hero-slide__poster" src="/assets/senior-2026/senior-gazebo-smile.jpg" alt="Senior girl in a white dress smiling against a wooden post, Arroyo Grande California" loading="lazy" decoding="async" style="object-position:center 30%;">
           </div>
           <div class="hero-slide" data-slide-index="2">
-            <img class="hero-slide__poster" src="https://images.pixieset.com/033471711/a78a060c769b7df60b85c9f830665862-xxlarge.jpg" alt="Dance performer on stage with flowing fabric, Central Coast California" loading="lazy" decoding="async" style="object-position:center 8%;">
+            <img class="hero-slide__poster" src="/assets/wedding-oak-embrace.jpg" alt="Engaged couple embracing in golden light beneath a canopy of oak trees, San Luis Obispo Central Coast" loading="lazy" decoding="async">
           </div>
           <div class="hero-slide" data-slide-index="3">
+            <img class="hero-slide__poster" src="https://images.pixieset.com/033471711/a78a060c769b7df60b85c9f830665862-xxlarge.jpg" alt="Dance performer on stage with flowing fabric, Central Coast California" loading="lazy" decoding="async" style="object-position:center 8%;">
+          </div>
+          <div class="hero-slide" data-slide-index="4">
             <img class="hero-slide__poster" src="/assets/under-different-lights/hero.jpg" alt="Football team under the stadium lights, Central Coast California" loading="lazy" decoding="async">
             <div class="hero-slide__motion hero-slide__motion--video">
               <video data-src="https://vz-31aea457-56c.b-cdn.net/bd0b4e49-a76f-4fa9-a87c-045fe4d6d67d/play_720p.mp4" muted playsinline loop title="Sports &amp; Community"></video>
@@ -231,7 +234,7 @@
             if (!slides.length) return;
             var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             var current = 0;
-            var ROTATE_MS = 6000;
+            var ROTATE_MS = 6000; // default; seniors (primary) override via data-duration
 
             function motionEl(slide) {
               var wrap = slide.querySelector('.hero-slide__motion');
@@ -267,13 +270,17 @@
               current = (index + slides.length) % slides.length;
               slides[current].classList.add('is-active');
               load(slides[current]);
+              schedule();
+            }
+
+            function schedule() {
+              var ms = parseInt(slides[current].getAttribute('data-duration'), 10) || ROTATE_MS;
+              setTimeout(function() { goTo(current + 1); }, ms);
             }
 
             load(slides[0]);
 
-            if (!reduceMotion && slides.length > 1) {
-              setInterval(function() { goTo(current + 1); }, ROTATE_MS);
-            }
+            if (!reduceMotion && slides.length > 1) schedule();
           })();
         </script>
 
@@ -401,14 +408,14 @@
           <h2 class="section-title">What I Offer</h2>
           <div class="services-grid">
             <a href="/senior-portraits/" class="service-card">
-              <img src="https://twmstories.com/assets/senior-coastal.jpg" alt="Senior boy sitting on coastal rocks, Central Coast California" width="600" height="800" loading="lazy" decoding="async" style="object-position:center 20%;">
+              <img src="/assets/senior-2026/senior-gazebo-smile.jpg" alt="Senior girl in a white dress smiling against a wooden post, Arroyo Grande California" width="600" height="800" loading="lazy" decoding="async" style="object-position:center 30%;">
               <div class="service-card-overlay">
                 <h3>Senior Memory Experience</h3>
                 <p>Portraits + cinematic film</p>
               </div>
             </a>
             <a href="/weddings/" class="service-card">
-              <img src="https://images.pixieset.com/617259811/9c52dc2ec862639aa9b86db44871ce48-xxlarge.jpg" alt="Engaged couple embracing on a golden hillside overlook at sunset, San Luis Obispo Central Coast" loading="lazy" decoding="async">
+              <img src="/assets/wedding-oak-embrace.jpg" alt="Engaged couple embracing in golden light beneath a canopy of oak trees, San Luis Obispo Central Coast" loading="lazy" decoding="async">
               <div class="service-card-overlay">
                 <h3>Wedding Photography & Film</h3>
                 <p>Photography, film, or both — from $1,000</p>
