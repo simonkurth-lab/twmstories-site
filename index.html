@@ -914,12 +914,11 @@
 
       <!-- Performance Reel — 20s excerpt from Bravo Show B, starting at 11:25 -->
       <style>
-        #bravoShowClip { top:-10%; left:-5%; width:110%; height:120%; }
-        @media (max-width: 640px) {
-          #bravoShowClip { top:-14%; left:-7%; width:114%; height:128%; }
-        }
+        /* Match the 16:9 source so the dancers' full bodies (feet) stay in frame; on very short screens only the sides crop */
+        #bravoShowWrap { position:relative; background:#0a0a0a; overflow:hidden; aspect-ratio:16/9; max-height:85vh; }
+        #bravoShowClip { top:0; left:0; width:100%; height:100%; }
       </style>
-      <div class="full-bleed" style="position:relative;background:#0a0a0a;overflow:hidden;height:70vh;min-height:400px;">
+      <div class="full-bleed" id="bravoShowWrap">
         <iframe
           id="bravoShowClip"
           src="https://player.vimeo.com/video/1206165915?h=3426b6b6b4&badge=0&autopause=0&player_id=0&app_id=58479&background=1&autoplay=1&loop=1&muted=1#t=685s"
