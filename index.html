@@ -421,6 +421,61 @@
         </div>
       </section>
 
+      <!-- Cinematic showcase film — full-bleed 16:9, custom play button bottom-left -->
+      <section class="film-showcase" id="showcase-film" aria-label="Featured film">
+        <style>
+          .film-showcase { position:relative; width:100%; aspect-ratio:16/9; max-height:92vh; background:#0a0a0a; overflow:hidden; }
+          .film-showcase iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+          .film-showcase__shade { position:absolute; inset:0; z-index:1; pointer-events:none; transition:opacity .6s ease;
+            background:linear-gradient(to top, rgba(10,9,8,.75) 0%, rgba(10,9,8,0) 38%); }
+          .film-showcase__btn { position:absolute; z-index:2; left:clamp(16px,4vw,56px); bottom:clamp(16px,4vw,48px);
+          .film-showcase__icon { width:clamp(52px,6vw,72px); height:clamp(52px,6vw,72px); border-radius:50%;
+            display:flex; align-items:center; justify-content:center; background:rgba(10,9,8,.45);
+            border:1.5px solid #C8A96A; color:#C8A96A; backdrop-filter:blur(4px); transition:background .25s ease,color .25s ease,transform .25s ease; }
+          .film-showcase__btn:hover .film-showcase__icon, .film-showcase__btn:focus-visible .film-showcase__icon { background:#C8A96A; color:#141210; transform:scale(1.06); }
+          .film-showcase__btn:focus-visible { outline:2px solid #C8A96A; outline-offset:6px; border-radius:40px; }
+          .film-showcase__label { font-size:var(--text-xs); letter-spacing:.18em; text-transform:uppercase; transition:opacity .4s ease; }
+          .film-showcase .icon-pause { display:none; }
+          .film-showcase.is-playing .icon-play { display:none; }
+          .film-showcase.is-playing .icon-pause { display:block; }
+          /* while playing: fade the shade + label so the film is unobstructed; button stays as pause control */
+          .film-showcase.is-playing .film-showcase__shade, .film-showcase.is-playing .film-showcase__label { opacity:0; }
+          .film-showcase.is-playing .film-showcase__btn { opacity:.55; transition:opacity .3s ease; }
+          .film-showcase.is-playing:hover .film-showcase__btn, .film-showcase.is-playing .film-showcase__btn:focus-visible { opacity:1; }
+        </style>
+        <iframe id="showcaseFilm"
+          src="https://player.vimeo.com/video/1233275924?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;controls=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1"
+          loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" title="Tāwhaowhao Stories showcase film"></iframe>
+        <div class="film-showcase__shade"></div>
+        <button type="button" class="film-showcase__btn" id="showcaseBtn" aria-label="Play film">
+          <span class="film-showcase__icon">
+            <svg class="icon-play" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            <svg class="icon-pause" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+          </span>
+          <span class="film-showcase__label">Watch the film</span>
+        </button>
+        <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            var wrap = document.getElementById('showcase-film');
+            var btn = document.getElementById('showcaseBtn');
+            var frame = document.getElementById('showcaseFilm');
+            if (!wrap || !btn || !frame || !window.Vimeo) return;
+            var player = new Vimeo.Player(frame);
+            var playing = false;
+            function sync(on) {
+              playing = on;
+              wrap.classList.toggle('is-playing', on);
+              btn.setAttribute('aria-label', on ? 'Pause film' : 'Play film');
+            }
+            btn.addEventListener('click', function () { (playing ? player.pause() : player.play()).catch(function () {}); });
+            player.on('play', function () { sync(true); });
+            player.on('pause', function () { sync(false); });
+            player.on('ended', function () { sync(false); });
+          });
+        </script>
+      </section>
+
     </div>
 
     <!-- ============================= -->
