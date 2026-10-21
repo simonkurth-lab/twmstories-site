@@ -18,7 +18,7 @@
   <meta property="og:description" content="Documentary wedding photography and cinematic wedding films on California's Central Coast. Honest, story-driven coverage.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.twmstories.com/weddings/">
-  <meta property="og:image" content="https://www.twmstories.com/assets/senior-coastal.jpg">
+  <meta property="og:image" content="https://www.twmstories.com/assets/wedding-og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="en_US">
@@ -28,7 +28,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Wedding Photographer San Luis Obispo | TWM Stories">
   <meta name="twitter:description" content="Documentary wedding photography and cinematic wedding films on California's Central Coast.">
-  <meta name="twitter:image" content="https://www.twmstories.com/assets/senior-coastal.jpg">
+  <meta name="twitter:image" content="https://www.twmstories.com/assets/wedding-og.jpg">
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -265,6 +265,20 @@
       flex-wrap: wrap;
       gap: 1rem;
       align-items: center;
+    }
+
+    /* Cover image */
+    .w-cover {
+      width: 100%;
+      height: clamp(320px, 62vh, 680px);
+      overflow: hidden;
+      background: #1c1a17;
+    }
+    .w-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
     }
 
     /* Hero */
@@ -564,6 +578,11 @@
   </div>
 
   <main>
+
+    <!-- Cover image -->
+    <div class="w-cover">
+      <img src="/assets/wedding-hero.jpg" alt="Bride and groom touching foreheads beneath a veil with the setting sun glowing between them, Central Coast wedding" width="2400" height="1800" fetchpriority="high" decoding="async">
+    </div>
 
     <!-- Hero: letter-style intro -->
     <div class="w-hero">
