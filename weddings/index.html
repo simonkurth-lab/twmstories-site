@@ -434,50 +434,6 @@
     }
     .w-pkg-group-label:first-child { margin-top: 0; }
 
-    /* Experience selector */
-    .w-exp-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
-      margin-top: 2.5rem;
-    }
-    @media (min-width: 700px) {
-      .w-exp-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-    .w-exp-card {
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.75rem 1.5rem;
-      background: #fff;
-      text-align: left;
-      cursor: pointer;
-      font-family: inherit;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .w-exp-card:hover { border-color: var(--gold); }
-    .w-exp-card:focus-visible {
-      outline: 2px solid var(--gold);
-      outline-offset: 3px;
-    }
-    .w-exp-card.is-active {
-      border-color: var(--gold);
-      border-width: 2px;
-      box-shadow: 0 2px 14px rgba(168,132,74,0.14);
-    }
-    .w-exp-icon { display: flex; align-items: center; gap: 0.35rem; color: var(--gold); }
-    .w-exp-icon svg { width: 26px; height: 26px; flex-shrink: 0; }
-    .w-exp-icon-plus { font-family: var(--font-display); font-size: 1.1rem; color: var(--faint); }
-    .w-exp-name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 400; color: var(--text); }
-    .w-exp-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.5; }
-    .w-exp-from { font-size: 0.85rem; color: var(--gold); font-weight: 600; margin-top: 0.25rem; }
-
-    /* Experience panels */
-    .w-exp-panel { display: none; }
-    .w-exp-panel.is-active { display: block; }
-
     /* Photo break */
     .w-photo-strip { display: grid; grid-template-columns: repeat(3, 1fr); }
     .w-photo-strip-panel { position: relative; overflow: hidden; }
@@ -553,6 +509,91 @@
       .w-cta-group { flex-direction: column; }
       .w-cta { width: 100%; justify-content: center; }
     }
+    /* Hours selector */
+    .w-hours {
+      display: inline-flex;
+      margin: 2.5rem 0 0;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #fff;
+      padding: 0.25rem;
+    }
+    .w-hours-btn {
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--muted);
+      background: none;
+      border: none;
+      border-radius: 999px;
+      padding: 0.6rem 1.5rem;
+      min-height: 44px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .w-hours-btn:hover { color: var(--text); }
+    .w-hours-btn.is-active { background: var(--gold); color: #FAFAF8; }
+    .w-hours-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .w-hours + .w-pkg-grid { margin-top: 1.5rem; }
+    .w-pkg-details summary:focus-visible,
+    .w-philosophy summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+
+    /* Intimate weddings */
+    .w-intimate-list { list-style: none; border-top: 1px solid var(--border); margin-top: 1.5rem; }
+    .w-intimate-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+    .w-intimate-list em { font-style: normal; color: var(--muted); font-size: 0.9rem; }
+    .w-intimate-list strong { font-family: var(--font-display); font-weight: 400; font-size: 1.25rem; color: var(--gold); }
+
+    /* Philosophy */
+    .w-philosophy summary {
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-height: 44px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--gold);
+      list-style: none;
+    }
+    .w-philosophy summary::-webkit-details-marker { display: none; }
+    .w-philosophy summary::after { content: '+'; font-size: 1.1rem; line-height: 1; }
+    .w-philosophy[open] summary::after { content: '−'; }
+    .w-philosophy-body { margin-top: 1.25rem; }
+    /* Film only */
+    .w-film-only summary { cursor: pointer; display: block; list-style: none; position: relative; padding-right: 2.5rem; }
+    .w-film-only summary::-webkit-details-marker { display: none; }
+    .w-film-only summary::after {
+      content: ''; position: absolute; right: 0.25rem; top: 2.1rem;
+      width: 0.6rem; height: 0.6rem;
+      border-right: 2px solid var(--gold); border-bottom: 2px solid var(--gold);
+      transform: rotate(45deg); transition: transform 0.2s;
+    }
+    .w-film-only[open] summary::after { transform: rotate(-135deg); }
+    .w-film-only summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 6px; }
+    .w-film-only summary .w-label, .w-film-only summary .w-h2 { display: block; }
+    .w-film-only-sub { display: block; color: var(--muted); margin-bottom: 0.75rem; }
+    .w-film-only-cta { display: inline-block; font-size: 0.9rem; font-weight: 600; color: var(--gold); padding: 0.6rem 0; }
+    .w-film-panel { margin-top: 1rem; }
+    .w-film-result { margin-top: 1.75rem; padding: 1.5rem; border: 1px solid var(--border); border-radius: 6px; background: #fff; }
+    .w-film-price { font-family: var(--font-display); font-size: 1.9rem; color: var(--gold); line-height: 1.15; margin-bottom: 1rem; }
+    .w-film-fine { font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-top: 1.25rem; }
+    @media (max-width: 480px) {
+      .w-hours { display: flex; }
+      .w-hours-btn { flex: 1; padding: 0.6rem 0.5rem; }
+    }
+    .w-inquire-line { margin-top: 2rem; text-align: center; font-size: 0.95rem; color: var(--muted); }
+    .w-inquire-line a { color: var(--gold); font-weight: 600; display: inline-block; padding: 0.4rem 0; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+    .w-inquire-line a:hover, .w-inquire-line a:focus-visible { border-bottom-color: var(--gold); outline: none; }
+    #collections, #intimate, #films, #philosophy, #photography, #photography-and-film { scroll-margin-top: 130px; }
   </style>
 </head>
 <body>
@@ -601,52 +642,10 @@
       <p class="w-body">My role isn't to direct every moment. It's to notice them.</p>
       <p class="w-body">The quiet moments before the ceremony. The laughter between family and friends. The emotion that often goes unnoticed. The glance across the room. The hug that lasts a little longer than expected.</p>
       <p class="w-body">Every wedding is photographed, filmed, and edited personally by me. I don't outsource any part of the process because I believe every story deserves the same care from beginning to end.</p>
-      <p class="w-body">As I continue building my wedding portfolio, I'm offering a limited number of weddings at these introductory collection prices. Once those dates have been filled, my standard pricing will apply.</p>
       <p class="w-body">If your plans look a little different, I'd love to hear about them. Every wedding is unique, and I'm always happy to create a collection that fits your day.</p>
     </div>
 
     <hr class="w-divider">
-
-    <!-- Choose Your Experience -->
-    <section class="w-section--wide" style="padding-top:4rem;padding-bottom:4rem;">
-      <div style="max-width:760px;margin:0 auto 0;">
-        <p class="w-label">Choose Your Experience</p>
-        <h2 class="w-h2">How would you like your story documented?</h2>
-        <p class="w-lead" style="margin-bottom:0;">Photography and Photography &amp; Film collections are offered at introductory portfolio pricing — a limited number of dates, before standard pricing applies. Wedding film collections reflect 2027 pricing.</p>
-      </div>
-      <div class="w-exp-grid">
-
-        <button type="button" class="w-exp-card" data-exp="photography" aria-pressed="false" aria-controls="photography">
-          <span class="w-exp-icon">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 14l2.5-5h9L31 14"/><rect x="6" y="14" width="36" height="24" rx="4"/><circle cx="24" cy="26" r="7"/></svg>
-          </span>
-          <span class="w-exp-name">Wedding Photography</span>
-          <span class="w-exp-desc">Timeless, authentic photography.</span>
-          <span class="w-exp-from">From $1,800</span>
-        </button>
-
-        <button type="button" class="w-exp-card" data-exp="film" aria-pressed="false" aria-controls="films">
-          <span class="w-exp-icon">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="24" r="17"/><path d="M20 17l11 7-11 7V17z" fill="currentColor" stroke="none"/></svg>
-          </span>
-          <span class="w-exp-name">Wedding Films</span>
-          <span class="w-exp-desc">Music-driven cinematic highlights.</span>
-          <span class="w-exp-from">From $1,250</span>
-        </button>
-
-        <button type="button" class="w-exp-card is-active" data-exp="hybrid" aria-pressed="true" aria-controls="photography-and-film">
-          <span class="w-exp-icon">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 14l2.5-5h9L31 14"/><rect x="6" y="14" width="36" height="24" rx="4"/><circle cx="24" cy="26" r="7"/></svg>
-            <span class="w-exp-icon-plus">+</span>
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="24" r="17"/><path d="M20 17l11 7-11 7V17z" fill="currentColor" stroke="none"/></svg>
-          </span>
-          <span class="w-exp-name">Photography &amp; Film</span>
-          <span class="w-exp-desc">Photos plus a cinematic highlight reel.</span>
-          <span class="w-exp-from">From $2,500</span>
-        </button>
-
-      </div>
-    </section>
 
     <!-- Pre-Wedding Session Photo Strip -->
     <div class="w-photo-strip">
@@ -657,7 +656,7 @@
         <img src="https://images.pixieset.com/617259811/c11dacb0944b689aa556425e9a634768-xxlarge.jpg" alt="Engaged couple laughing together under oak trees at golden hour, Central Coast pre-wedding session" loading="lazy" decoding="async" style="object-position:center 65%;">
         <div class="w-photo-caption">
           <p class="w-photo-caption-label">Included</p>
-          <p class="w-photo-caption-text">A complimentary pre-wedding session comes with every Photography or Photography &amp; Film collection.</p>
+          <p class="w-photo-caption-text">An engagement portrait session comes with every Photography and Hybrid collection.</p>
         </div>
       </div>
       <div class="w-photo-strip-panel">
@@ -667,389 +666,169 @@
 
     <hr class="w-divider">
 
-    <!-- Photography Panel -->
-    <section class="w-exp-panel" id="photography" data-panel="photography">
-      <div class="w-section--wide" style="padding-top:4rem;padding-bottom:4rem;">
-        <div style="max-width:760px;margin:0 auto 0;">
-          <p class="w-label">Wedding Photography</p>
-          <h2 class="w-h2">Held in still, honest frames.</h2>
-          <p class="w-lead" style="margin-bottom:0;">For couples who want their wedding day held in still, honest frames — the kind you return to years later and feel exactly what the room felt like. I photograph and edit every frame myself, so the story stays consistent from your first look to your last dance.</p>
-          <p class="w-pkg-group-label">Every Photography Collection Includes</p>
-          <ul class="w-pkg-list w-includes-grid">
-            <li>Wedding planning consultation</li>
-            <li>Complimentary pre-wedding session</li>
-            <li>Personally photographed by Simon, beginning to end</li>
-            <li>Personally edited, start to finish</li>
-            <li>High-resolution, professionally edited images</li>
-            <li>Private, secure online gallery</li>
-            <li>Personal print release</li>
-            <li>Access to professional fine art prints, albums, and wall art</li>
-          </ul>
-        </div>
-        <div class="w-pkg-grid">
-
-          <div class="w-pkg">
-            <p class="w-pkg-name">Story Collection</p>
-            <div class="w-pkg-price">$1,800</div>
-            <p class="w-pkg-tagline">Perfect for smaller weddings, or couples wanting the most important parts of their day beautifully documented.</p>
-            <details class="w-pkg-details">
-              <summary>See full details</summary>
-              <p class="w-pkg-group-label">Coverage</p>
-              <ul class="w-pkg-list">
-                <li>Up to 4 hours of coverage</li>
-                <li>Ceremony</li>
-                <li>Family and friends afterward</li>
-                <li>Couple portrait session</li>
-              </ul>
-              <p class="w-pkg-group-label">You Receive</p>
-              <ul class="w-pkg-list">
-                <li>Approximately 250–350 professionally edited photographs</li>
-                <li>Online gallery with downloads</li>
-              </ul>
-              <p class="w-pkg-group-label">Delivery</p>
-              <ul class="w-pkg-list">
-                <li>Approximately 4 weeks</li>
-              </ul>
-            </details>
-          </div>
-
-          <div class="w-pkg w-pkg--featured">
-            <span class="w-pkg-badge">Most Popular</span>
-            <p class="w-pkg-name">Living Story Collection</p>
-            <div class="w-pkg-price">$2,400</div>
-            <p class="w-pkg-tagline">Perfect for couples wanting the complete story of their wedding day.</p>
-            <details class="w-pkg-details">
-              <summary>See full details</summary>
-              <p class="w-pkg-group-label">Coverage</p>
-              <ul class="w-pkg-list">
-                <li>Up to 8 hours of coverage</li>
-                <li>Preparations</li>
-                <li>Venue details</li>
-                <li>Ceremony</li>
-                <li>Family celebrations</li>
-                <li>Couple portraits</li>
-                <li>Reception</li>
-                <li>First dance</li>
-                <li>Parent dances</li>
-                <li>Speeches</li>
-              </ul>
-              <p class="w-pkg-group-label">You Receive</p>
-              <ul class="w-pkg-list">
-                <li>Approximately 500–700 professionally edited photographs</li>
-                <li>Online gallery with downloads</li>
-              </ul>
-              <p class="w-pkg-group-label">Delivery</p>
-              <ul class="w-pkg-list">
-                <li>Approximately 4 weeks</li>
-              </ul>
-            </details>
-          </div>
-
-          <div class="w-pkg">
-            <p class="w-pkg-name">Legacy Story Collection</p>
-            <div class="w-pkg-price">$3,000</div>
-            <p class="w-pkg-tagline">Perfect for couples wanting complete documentary coverage from beginning to end.</p>
-            <details class="w-pkg-details">
-              <summary>See full details</summary>
-              <p class="w-pkg-group-label">Coverage</p>
-              <ul class="w-pkg-list">
-                <li>Up to 10 hours of coverage</li>
-                <li>Preparations</li>
-                <li>Venue details</li>
-                <li>Ceremony</li>
-                <li>Family celebrations</li>
-                <li>Couple portraits</li>
-                <li>Reception</li>
-                <li>Extended reception</li>
-                <li>Cake cutting</li>
-                <li>Open dancing</li>
-                <li>First dance</li>
-                <li>Parent dances</li>
-                <li>Speeches</li>
-              </ul>
-              <p class="w-pkg-group-label">You Receive</p>
-              <ul class="w-pkg-list">
-                <li>Approximately 700–900 professionally edited photographs</li>
-                <li>Online gallery with downloads</li>
-              </ul>
-              <p class="w-pkg-group-label">Delivery</p>
-              <ul class="w-pkg-list">
-                <li>Approximately 3–4 weeks, with priority editing</li>
-              </ul>
-            </details>
-          </div>
-
-        </div>
+    <!-- Collections (legacy anchors #photography and #photography-and-film land here) -->
+    <span id="photography"></span><span id="photography-and-film"></span>
+    <section class="w-section--wide" id="collections" style="padding-top:4rem;padding-bottom:4rem;">
+      <div style="max-width:760px;margin:0 auto;">
+        <p class="w-label">Wedding Collections</p>
+        <h2 class="w-h2">Choose the coverage that fits your day.</h2>
+        <p class="w-lead" style="margin-bottom:0;">Three collections, each with six or eight hours of coverage. Every collection is photographed, filmed, and edited personally by me.</p>
+        <p class="w-pkg-group-label">Every Collection Includes</p>
+        <ul class="w-pkg-list w-includes-grid">
+          <li>An engagement portrait session</li>
+          <li>A carefully curated gallery</li>
+          <li>Wedding planning consultation</li>
+          <li>Private, secure online gallery</li>
+          <li>Personal print release</li>
+          <li>Access to professional fine art prints, albums, and wall art</li>
+        </ul>
       </div>
-    </section>
 
-    <!-- Film Panel -->
-    <section class="w-exp-panel" id="films" data-panel="film">
-      <div class="w-section--wide" style="padding-top:4rem;padding-bottom:4rem;">
-        <div style="max-width:760px;margin:0 auto 0;">
-          <p class="w-label">Wedding Films · 2027 Collections</p>
-          <h2 class="w-h2">Some moments deserve to be felt again.</h2>
-          <p class="w-lead">The laughter. The nervous anticipation. The embrace that lasts a little longer. The joy of everyone coming together.</p>
-          <p class="w-lead">My wedding films are handcrafted cinematic highlights set to carefully selected music, capturing the feeling of your day through authentic moments, natural movement, and rich, beautiful color.</p>
-          <p class="w-lead" style="margin-bottom:0;">Not a recording of everything that happened. A film that brings you back to how it felt.</p>
-          <p class="w-pkg-group-label">Every Film Collection Includes</p>
-          <ul class="w-pkg-list w-includes-grid">
-            <li>Wedding planning consultation</li>
-            <li>Personally filmed by Simon</li>
-            <li>Personally edited, start to finish</li>
-            <li>Licensed music</li>
-            <li>Professional color grading</li>
-            <li>Private online delivery</li>
-          </ul>
-        </div>
-        <div class="w-pkg-grid">
-
-          <div class="w-pkg">
-            <p class="w-pkg-name">Story Collection</p>
-            <div class="w-pkg-price">$1,250</div>
-            <p class="w-pkg-tagline">Ideal for intimate weddings and smaller celebrations.</p>
-            <details class="w-pkg-details">
-              <summary>See full details</summary>
-              <p class="w-pkg-group-label">Coverage</p>
-              <ul class="w-pkg-list">
-                <li>Up to 3 hours of coverage</li>
-                <li>Ceremony</li>
-                <li>Family celebrations afterward</li>
-                <li>Couple portrait session</li>
-              </ul>
-              <p class="w-pkg-group-label">You Receive</p>
-              <ul class="w-pkg-list">
-                <li>One handcrafted 2–3 minute cinematic highlight film</li>
-                <li>Music-driven edit with subtle natural sounds such as laughter and applause</li>
-              </ul>
-              <p class="w-pkg-group-label">Delivery</p>
-              <ul class="w-pkg-list">
-                <li>Within 6 weeks</li>
-              </ul>
-            </details>
-          </div>
-
-          <div class="w-pkg w-pkg--featured">
-            <span class="w-pkg-badge">Most Popular</span>
-            <p class="w-pkg-name">Living Story Collection</p>
-            <div class="w-pkg-price">$1,950</div>
-            <p class="w-pkg-tagline">Ideal for couples wanting the meaningful chapters of their wedding day.</p>
-            <details class="w-pkg-details">
-              <summary>See full details</summary>
-              <p class="w-pkg-group-label">Coverage</p>
-              <ul class="w-pkg-list">
-                <li>Up to 6 hours of coverage</li>
-                <li>Preparations</li>
-                <li>Venue details</li>
-                <li>Ceremony</li>
-                <li>Family celebrations</li>
-                <li>Couple portrait session</li>
-                <li>Reception</li>
-                <li>First dance</li>
-                <li>Parent dances</li>
-                <li>Toasts and celebration moments</li>
-              </ul>
-              <p class="w-pkg-group-label">You Receive</p>
-              <ul class="w-pkg-list">
-                <li>One handcrafted 3–5 minute cinematic highlight film</li>
-                <li>Music-driven edit with subtle natural sounds such as laughter, applause, and celebration</li>
-              </ul>
-              <p class="w-pkg-group-label">Delivery</p>
-              <ul class="w-pkg-list">
-                <li>Within 6 weeks</li>
-              </ul>
-            </details>
-          </div>
-
-          <div class="w-pkg">
-            <p class="w-pkg-name">Legacy Story Collection</p>
-            <div class="w-pkg-price">$2,750</div>
-            <p class="w-pkg-tagline">Ideal for couples wanting a richer, more complete cinematic highlight of their wedding day.</p>
-            <details class="w-pkg-details">
-              <summary>See full details</summary>
-              <p class="w-pkg-group-label">Coverage</p>
-              <ul class="w-pkg-list">
-                <li>Up to 8 hours of coverage</li>
-                <li>Preparations</li>
-                <li>Venue details</li>
-                <li>Ceremony</li>
-                <li>Family celebrations</li>
-                <li>Couple portrait session</li>
-                <li>Reception</li>
-                <li>Cake cutting</li>
-                <li>Open dancing</li>
-                <li>First dance</li>
-                <li>Parent dances</li>
-                <li>Toasts and celebration moments</li>
-              </ul>
-              <p class="w-pkg-group-label">You Receive</p>
-              <ul class="w-pkg-list">
-                <li>One handcrafted 5–7 minute cinematic highlight film</li>
-                <li>Licensed music and thoughtful natural sound design</li>
-                <li>Selected vows, speeches, or spoken moments may be incorporated at my creative discretion when suitable audio is available</li>
-              </ul>
-              <p class="w-pkg-group-label">Delivery</p>
-              <ul class="w-pkg-list">
-                <li>Within 6 weeks</li>
-              </ul>
-            </details>
-          </div>
-
-        </div>
-        <p class="w-film-note">Wedding films are thoughtfully crafted, music-driven highlights of your day. Complete ceremony recordings, full speeches, raw footage, and unedited recordings are not included. Selected natural sounds or spoken moments may be incorporated where they enhance the story.</p>
+      <div class="w-hours" role="group" aria-label="Coverage length">
+        <button type="button" class="w-hours-btn is-active" data-hours="six" aria-pressed="true">6 hours</button>
+        <button type="button" class="w-hours-btn" data-hours="eight" aria-pressed="false">8 hours</button>
       </div>
-    </section>
 
-    <!-- Hybrid Panel -->
-    <section class="w-exp-panel is-active" id="photography-and-film" data-panel="hybrid">
-      <div class="w-section--wide" style="padding-top:4rem;padding-bottom:4rem;">
-        <div style="max-width:760px;margin:0 auto 0;">
-          <p class="w-label">Photography &amp; Highlight Reel</p>
-          <h2 class="w-h2">One consistent approach, in frames and in film.</h2>
-          <p class="w-lead" style="margin-bottom:0;">For couples who want their wedding day preserved in full — the frames you hold and the highlight reel you feel — shot with one consistent eye instead of two vendors working separately. I photograph, film, and edit everything myself, so both tell the same story.</p>
-          <p class="w-pkg-group-label">Every Hybrid Collection Includes</p>
-          <ul class="w-pkg-list w-includes-grid">
-            <li>Wedding planning consultation</li>
-            <li>Complimentary pre-wedding session</li>
-            <li>One creative vision — photography and highlight reel shot and edited by the same person</li>
-            <li>High-resolution, professionally edited photographs</li>
-            <li>Handcrafted cinematic highlight reel, set to music</li>
-            <li>Private, secure online gallery and film delivery</li>
-            <li>Personal print release</li>
-            <li>Access to professional fine art prints, albums, and wall art</li>
-          </ul>
+      <div class="w-pkg-grid" id="collection-grid" aria-live="polite">
+
+        <div class="w-pkg">
+          <p class="w-pkg-name">Photography</p>
+          <div class="w-pkg-price"><span class="w-price" data-six="$2,500" data-eight="$3,000">$2,500</span></div>
+          <p class="w-pkg-tagline">Documentary photography of your day, from the quiet moments beforehand through the celebration.</p>
+          <details class="w-pkg-details">
+            <summary>See full details</summary>
+            <p class="w-pkg-group-label">Coverage</p>
+            <ul class="w-pkg-list">
+              <li><span class="w-hours-text">Six</span> hours of coverage, planned together around your timeline</li>
+              <li>One photographer</li>
+            </ul>
+            <p class="w-pkg-group-label">You Receive</p>
+            <ul class="w-pkg-list">
+              <li>Engagement portrait session</li>
+              <li>Carefully curated gallery of professionally edited photographs</li>
+            </ul>
+          </details>
         </div>
-        <div class="w-pkg-grid">
 
-          <div class="w-pkg">
-            <p class="w-pkg-name">Story Collection</p>
-            <div class="w-pkg-price">$2,500</div>
-            <p class="w-pkg-tagline">Perfect for couples wanting the most important moments captured through both photography and a cinematic highlight reel.</p>
-            <details class="w-pkg-details">
-              <summary>See full details</summary>
-              <p class="w-pkg-group-label">Coverage</p>
-              <ul class="w-pkg-list">
-                <li>Up to 4 hours of coverage</li>
-                <li>Ceremony</li>
-                <li>Family celebrations</li>
-                <li>Couple portraits</li>
-              </ul>
-              <p class="w-pkg-group-label">You Receive — Photography</p>
-              <ul class="w-pkg-list">
-                <li>250–350 edited photographs</li>
-              </ul>
-              <p class="w-pkg-group-label">You Receive — Highlight Reel</p>
-              <ul class="w-pkg-list">
-                <li>One handcrafted 2–3 minute highlight reel</li>
-              </ul>
-              <p class="w-pkg-group-label">Delivery</p>
-              <ul class="w-pkg-list">
-                <li>Photography within 4 weeks</li>
-                <li>Highlight reel within 6 weeks</li>
-              </ul>
-            </details>
-          </div>
-
-          <div class="w-pkg w-pkg--featured">
-            <span class="w-pkg-badge">Most Popular</span>
-            <p class="w-pkg-name">Living Story Collection</p>
-            <div class="w-pkg-price">$3,400</div>
-            <p class="w-pkg-tagline">Perfect for couples wanting a complete storytelling experience.</p>
-            <details class="w-pkg-details">
-              <summary>See full details</summary>
-              <p class="w-pkg-group-label">Coverage</p>
-              <ul class="w-pkg-list">
-                <li>Up to 8 hours of coverage</li>
-                <li>Preparations</li>
-                <li>Venue</li>
-                <li>Ceremony</li>
-                <li>Family celebrations</li>
-                <li>Couple portraits</li>
-                <li>Reception</li>
-                <li>First dance</li>
-                <li>Parent dances</li>
-              </ul>
-              <p class="w-pkg-group-label">You Receive — Photography</p>
-              <ul class="w-pkg-list">
-                <li>500–700 edited photographs</li>
-              </ul>
-              <p class="w-pkg-group-label">You Receive — Highlight Reel</p>
-              <ul class="w-pkg-list">
-                <li>One handcrafted 4–6 minute highlight reel</li>
-              </ul>
-              <p class="w-pkg-group-label">Delivery</p>
-              <ul class="w-pkg-list">
-                <li>Photography within 4 weeks</li>
-                <li>Highlight reel within 6 weeks</li>
-              </ul>
-            </details>
-          </div>
-
-          <div class="w-pkg">
-            <p class="w-pkg-name">Legacy Story Collection</p>
-            <div class="w-pkg-price">$4,300</div>
-            <p class="w-pkg-tagline">Perfect for couples wanting every chapter of their wedding day preserved through both photography and a cinematic highlight reel.</p>
-            <details class="w-pkg-details">
-              <summary>See full details</summary>
-              <p class="w-pkg-group-label">Coverage</p>
-              <ul class="w-pkg-list">
-                <li>Up to 10 hours of coverage</li>
-                <li>Preparations</li>
-                <li>Venue</li>
-                <li>Ceremony</li>
-                <li>Family celebrations</li>
-                <li>Couple portraits</li>
-                <li>Reception</li>
-                <li>Extended reception</li>
-                <li>Cake cutting</li>
-                <li>Open dancing</li>
-                <li>First dance</li>
-                <li>Parent dances</li>
-              </ul>
-              <p class="w-pkg-group-label">You Receive — Photography</p>
-              <ul class="w-pkg-list">
-                <li>700–900 edited photographs</li>
-              </ul>
-              <p class="w-pkg-group-label">You Receive — Highlight Reel</p>
-              <ul class="w-pkg-list">
-                <li>One handcrafted 6–8 minute highlight reel</li>
-              </ul>
-              <p class="w-pkg-group-label">Delivery</p>
-              <ul class="w-pkg-list">
-                <li>Photography within 3–4 weeks</li>
-                <li>Highlight reel within 4 weeks, with priority editing</li>
-              </ul>
-            </details>
-          </div>
-
+        <div class="w-pkg w-pkg--featured">
+          <span class="w-pkg-badge">Photography + Film</span>
+          <p class="w-pkg-name">Signature Hybrid</p>
+          <div class="w-pkg-price"><span class="w-price" data-six="$3,000" data-eight="$3,500">$3,000</span></div>
+          <p class="w-pkg-tagline">Your photographs and a cinematic highlight film, shot and edited by the same person so both tell one story.</p>
+          <details class="w-pkg-details">
+            <summary>See full details</summary>
+            <p class="w-pkg-group-label">Coverage</p>
+            <ul class="w-pkg-list">
+              <li><span class="w-hours-text">Six</span> hours of coverage, planned together around your timeline</li>
+              <li>One photographer and filmmaker</li>
+            </ul>
+            <p class="w-pkg-group-label">You Receive</p>
+            <ul class="w-pkg-list">
+              <li>Engagement portrait session</li>
+              <li>Carefully curated gallery of professionally edited photographs</li>
+              <li>Handcrafted cinematic highlight film, set to music</li>
+            </ul>
+          </details>
         </div>
+
+        <div class="w-pkg">
+          <p class="w-pkg-name">Premium Hybrid</p>
+          <div class="w-pkg-price"><span class="w-price" data-six="$4,000" data-eight="$4,750">$4,000</span></div>
+          <p class="w-pkg-tagline">A second photographer and a longer film, for couples who want more angles and more of the day.</p>
+          <details class="w-pkg-details">
+            <summary>See full details</summary>
+            <p class="w-pkg-group-label">Coverage</p>
+            <ul class="w-pkg-list">
+              <li><span class="w-hours-text">Six</span> hours of coverage, planned together around your timeline</li>
+              <li>Lead photographer and filmmaker, plus a second photographer</li>
+            </ul>
+            <p class="w-pkg-group-label">You Receive</p>
+            <ul class="w-pkg-list">
+              <li>Engagement portrait session</li>
+              <li>Carefully curated gallery of professionally edited photographs</li>
+              <li>Longer handcrafted cinematic highlight film, set to music</li>
+            </ul>
+          </details>
+        </div>
+
       </div>
+      <p class="w-film-note">Wedding films are thoughtfully crafted, music-driven highlights of your day. Complete ceremony recordings, full speeches, raw footage, and unedited recordings are not included. Selected natural sounds or spoken moments may be incorporated where they enhance the story.</p>
+      <p class="w-inquire-line">Ready to talk about your date? <a href="https://tawhaowhaostories.pixieset.com/contact-form/cf_jNb7w8oNx4QgmgWjgDRYIBH5w6YO" target="_blank" rel="noopener noreferrer">Inquire about your wedding →</a></p>
+      <p class="w-film-note">Travel throughout San Luis Obispo County is included. Weddings outside the county are always welcome and are quoted individually based on location.</p>
     </section>
 
     <hr class="w-divider">
 
-    <!-- Travel -->
-    <section class="w-section">
-      <p class="w-label">Travel</p>
-      <p class="w-body">Travel throughout San Luis Obispo County is included.</p>
-      <p class="w-body">Weddings outside the county are always welcome and are quoted individually based on location.</p>
+    <!-- Intimate Weddings -->
+    <section class="w-section" id="intimate">
+      <p class="w-label">Intimate Weddings</p>
+      <h2 class="w-h2">Smaller celebrations, the same care.</h2>
+      <p class="w-body">For elopements, courthouse ceremonies, and small gatherings, a four-hour option. An engagement portrait session and a carefully curated gallery are included.</p>
+      <ul class="w-intimate-list">
+        <li><span>Photography <em>· four hours</em></span><strong>$2,000</strong></li>
+        <li><span>Signature Hybrid <em>· four hours</em></span><strong>$2,500</strong></li>
+      </ul>
     </section>
 
     <hr class="w-divider">
 
-    <!-- Thank you -->
-    <section class="w-section" style="text-align:center;">
-      <p class="w-lead" style="margin-inline:auto;">Thank you for considering me to document such an important day in your lives.</p>
-      <p class="w-lead" style="margin-inline:auto;margin-bottom:0;">It would be a privilege to tell your story.</p>
+    <!-- Film Only -->
+    <section class="w-section" id="films">
+      <details class="w-film-only">
+        <summary>
+          <span class="w-label">Another Way to Tell Your Story</span>
+          <span class="w-h2">Film Only</span>
+          <span class="w-film-only-sub">Just the moving pictures. Cinematic, music-driven storytelling.</span>
+          <span class="w-film-only-cta">Explore film collections</span>
+        </summary>
+        <div class="w-film-panel">
+          <p class="w-body">Music-driven cinematic storytelling, thoughtfully woven together with selected natural audio and spoken moments where available.</p>
+          <div class="w-hours" role="group" aria-label="Film coverage length">
+            <button type="button" class="w-hours-btn w-film-btn" data-film="four" aria-pressed="false">4 hours</button>
+            <button type="button" class="w-hours-btn w-film-btn is-active" data-film="six" aria-pressed="true">6 hours</button>
+            <button type="button" class="w-hours-btn w-film-btn" data-film="eight" aria-pressed="false">8 hours</button>
+          </div>
+          <div class="w-film-result" aria-live="polite">
+            <p class="w-film-price" id="film-price">$2,500</p>
+            <ul class="w-pkg-list" id="film-list">
+              <li>2–3-minute cinematic highlight film</li>
+              <li>Selected natural audio or spoken moments where available</li>
+            </ul>
+          </div>
+          <p class="w-film-fine">Includes a pre-wedding consultation. Optional pre-wedding filming may be quoted separately. Full ceremony recordings, complete speeches, and continuous audio coverage are not included.</p>
+          <p class="w-inquire-line" style="text-align:left;margin-top:1rem;">Interested in film only? <a href="https://tawhaowhaostories.pixieset.com/contact-form/cf_jNb7w8oNx4QgmgWjgDRYIBH5w6YO" target="_blank" rel="noopener noreferrer">Inquire about film →</a></p>
+        </div>
+      </details>
+    </section>
+
+    </section>
+
+
+    <hr class="w-divider">
+
+    <!-- Philosophy -->
+    <section class="w-section" id="philosophy">
+      <p class="w-label">Ngā Kōrero Ora</p>
+      <h2 class="w-h2">Ngā Kōrero Ora — Living Stories</h2>
+      <details class="w-philosophy">
+        <summary>Read my philosophy</summary>
+        <div class="w-philosophy-body">
+          <p class="w-body">I believe good photography starts with getting to know the people in front of the camera. It's why I make time to connect before the wedding, and why I prefer to let the day unfold naturally.</p>
+          <p class="w-body">Every Photography and Hybrid collection includes an engagement portrait session. It's a chance for us to meet, talk, take photographs, and become comfortable working together before the wedding.</p>
+          <p class="w-body">When the day arrives, I want you to know who I am and how I work. I'll offer direction when it's useful, lend a hand when I can, and step into the background when the moments are unfolding naturally. My job is to help you enjoy your day while I document it.</p>
+          <p class="w-body"><em>Ngā Kōrero Ora — Living Stories. Real people, real moments, and the stories worth remembering.</em></p>
+        </div>
+      </details>
     </section>
 
     <hr class="w-divider">
 
     <!-- CTA section -->
     <section class="w-section" style="text-align:center;">
+      <p class="w-lead" style="margin-inline:auto;">Thank you for considering me to document such an important day in your lives. It would be a privilege to tell your story.</p>
       <p class="w-label">Let's Talk</p>
       <h2 class="w-h2" style="max-width:18ch;margin-inline:auto;">Ready to see if we're a good fit?</h2>
-      <p class="w-body" style="margin-inline:auto;max-width:50ch;">I take a limited number of weddings each year — by design, so each one gets the attention it deserves. If your date is open, let's find out if this is a match.</p>
+      <p class="w-body" style="margin-inline:auto;max-width:50ch;">I take on a select number of weddings each year so I can give every couple the attention their story deserves. If your date is open, let's find out if this is a match.</p>
       <div class="w-cta-group" style="justify-content:center;margin-top:2rem;">
         <a href="https://tawhaowhaostories.pixieset.com/contact-form/cf_jNb7w8oNx4QgmgWjgDRYIBH5w6YO" target="_blank" rel="noopener noreferrer" class="w-cta">Tell Me About Your Wedding →</a>
       </div>
@@ -1081,88 +860,66 @@
 
   <script>
     (function() {
-      var HASH_BY_EXP = { photography: 'photography', film: 'films', hybrid: 'photography-and-film' };
-      var EXP_BY_HASH = { photography: 'photography', films: 'film', 'photography-and-film': 'hybrid' };
-      var SCROLL_CLEARANCE = 90; // gap below the sticky header, per spec (80-100px)
-
-      function prefersReducedMotion() {
-        return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      }
-
-      function scrollToPanel(panel) {
-        var header = document.querySelector('.w-header');
-        var headerHeight = header ? header.offsetHeight : 0;
-        var offset = headerHeight + SCROLL_CLEARANCE;
-        var targetY = window.pageYOffset + panel.getBoundingClientRect().top - offset;
-        window.scrollTo({
-          top: Math.max(targetY, 0),
-          // 'auto' would still defer to the page's CSS `scroll-behavior: smooth`,
-          // so reduced motion needs the explicit 'instant' value to actually skip animation.
-          behavior: prefersReducedMotion() ? 'instant' : 'smooth'
+      var btns = document.querySelectorAll('.w-hours-btn');
+      function setHours(which) {
+        btns.forEach(function(b) {
+          var on = b.dataset.hours === which;
+          b.classList.toggle('is-active', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        document.querySelectorAll('.w-price').forEach(function(el) {
+          el.textContent = el.dataset[which];
+        });
+        document.querySelectorAll('.w-hours-text').forEach(function(el) {
+          el.textContent = which === 'eight' ? 'Eight' : 'Six';
         });
       }
+      btns.forEach(function(b) {
+        b.addEventListener('click', function() { setHours(b.dataset.hours); });
+      });
+    })();
+  </script>
 
-      function activatePanel(exp, options) {
-        options = options || {};
-        var btn = document.querySelector('.w-exp-card[data-exp="' + exp + '"]');
-        var panel = document.querySelector('.w-exp-panel[data-panel="' + exp + '"]');
-        if (!btn || !panel) return;
-
-        document.querySelectorAll('.w-exp-card').forEach(function(b) {
-          var active = b === btn;
-          b.classList.toggle('is-active', active);
-          b.setAttribute('aria-pressed', active ? 'true' : 'false');
-        });
-        document.querySelectorAll('.w-exp-panel').forEach(function(p) {
-          p.classList.toggle('is-active', p === panel);
-        });
-
-        if (options.scroll !== false) {
-          // Wait for the panel's display:block to be painted before measuring/scrolling
-          requestAnimationFrame(function() {
-            requestAnimationFrame(function() {
-              scrollToPanel(panel);
-            });
+  <script>
+    (function() {
+      var DATA = {
+        four:  { price: '$1,750', items: ['Music-driven cinematic reel, up to 90 seconds', 'Natural ambient audio where appropriate'] },
+        six:   { price: '$2,500', items: ['2–3-minute cinematic highlight film', 'Selected natural audio or spoken moments where available'] },
+        eight: { price: '$3,000', items: ['4–5-minute cinematic wedding film', 'Separate vertical reel, up to 90 seconds', 'Selected natural audio and spoken moments where available'] }
+      };
+      var btns = document.querySelectorAll('.w-film-btn');
+      var price = document.getElementById('film-price');
+      var list = document.getElementById('film-list');
+      btns.forEach(function(b) {
+        b.addEventListener('click', function() {
+          var d = DATA[b.dataset.film];
+          btns.forEach(function(x) {
+            var on = x === b;
+            x.classList.toggle('is-active', on);
+            x.setAttribute('aria-pressed', on ? 'true' : 'false');
           });
-        }
-      }
-
-      function expFromHash(hash) {
-        var key = (hash || '').replace('#', '');
-        return EXP_BY_HASH[key] || null;
-      }
-
-      document.querySelectorAll('.w-exp-card').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          var exp = btn.dataset.exp;
-          activatePanel(exp);
-          var hash = '#' + HASH_BY_EXP[exp];
-          if (location.hash !== hash) {
-            history.pushState({ exp: exp }, '', hash);
-          }
+          price.textContent = d.price;
+          list.innerHTML = '';
+          d.items.forEach(function(t) {
+            var li = document.createElement('li');
+            li.textContent = t;
+            list.appendChild(li);
+          });
         });
       });
+    })();
+  </script>
 
-      window.addEventListener('popstate', function() {
-        var exp = expFromHash(location.hash) || 'hybrid';
-        activatePanel(exp);
-      });
-
-      // Initial load: open (and scroll to) the panel matching the URL hash, if any.
-      // No history mutation here — the URL already reflects this state.
-      // Wait for web fonts to settle first, since a late font swap on a cold
-      // page load can shift heading position after the scroll has already run.
-      var initialExp = expFromHash(location.hash);
-      if (initialExp) {
-        if (document.fonts && document.fonts.ready) {
-          var timeout = new Promise(function(resolve) { setTimeout(resolve, 1000); });
-          Promise.race([document.fonts.ready, timeout]).then(function() {
-            activatePanel(initialExp);
-          });
-        } else {
-          activatePanel(initialExp);
-        }
+  <script>
+    // Open the expandable section when its anchor is linked to (#films, #philosophy)
+    (function() {
+      function openForHash() {
+        var el = document.getElementById(location.hash.slice(1));
+        var d = el && el.querySelector('details');
+        if (d) d.open = true;
       }
+      openForHash();
+      window.addEventListener('hashchange', openForHash);
     })();
   </script>
 
