@@ -594,6 +594,13 @@
     .w-inquire-line a { color: var(--gold); font-weight: 600; display: inline-block; padding: 0.4rem 0; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
     .w-inquire-line a:hover, .w-inquire-line a:focus-visible { border-bottom-color: var(--gold); outline: none; }
     #collections, #intimate, #films, #philosophy, #photography, #photography-and-film { scroll-margin-top: 130px; }
+    /* Collection cards: readability, tighter spacing, details toggle */
+    #collection-grid .w-pkg-tagline { color: rgba(28,26,23,0.76); min-height: 0; margin-bottom: 1.25rem; padding-bottom: 1.25rem; }
+    #collection-grid .w-pkg-list li { color: rgba(28,26,23,0.74); }
+    #collection-grid .w-pkg-details { margin-top: 0; }
+    .w-sum-open { display: none; }
+    .w-pkg-details[open] .w-sum-open { display: inline; }
+    .w-pkg-details[open] .w-sum-closed { display: none; }
   </style>
 </head>
 <body>
@@ -672,7 +679,7 @@
       <div style="max-width:760px;margin:0 auto;">
         <p class="w-label">Wedding Collections</p>
         <h2 class="w-h2">Choose the coverage that fits your day.</h2>
-        <p class="w-lead" style="margin-bottom:0;">Three collections, each with six or eight hours of coverage. Every collection is photographed, filmed, and edited personally by me.</p>
+        <p class="w-lead" style="margin-bottom:0;">Three collections, each with six or eight hours of coverage. From the first conversation to the final edit, I'm personally involved in telling your story. Photography is always at the heart of my work, with film woven in when it's part of your collection.</p>
         <p class="w-pkg-group-label">Every Collection Includes</p>
         <ul class="w-pkg-list w-includes-grid">
           <li>An engagement portrait session</li>
@@ -696,7 +703,7 @@
           <div class="w-pkg-price"><span class="w-price" data-six="$2,500" data-eight="$3,000">$2,500</span></div>
           <p class="w-pkg-tagline">Documentary photography of your day, from the quiet moments beforehand through the celebration.</p>
           <details class="w-pkg-details">
-            <summary>See full details</summary>
+            <summary><span class="w-sum-closed">See full details</span><span class="w-sum-open">Hide details</span></summary>
             <p class="w-pkg-group-label">Coverage</p>
             <ul class="w-pkg-list">
               <li><span class="w-hours-text">Six</span> hours of coverage, planned together around your timeline</li>
@@ -714,9 +721,9 @@
           <span class="w-pkg-badge">Photography + Film</span>
           <p class="w-pkg-name">Signature Hybrid</p>
           <div class="w-pkg-price"><span class="w-price" data-six="$3,000" data-eight="$3,500">$3,000</span></div>
-          <p class="w-pkg-tagline">Your photographs and a cinematic highlight film, shot and edited by the same person so both tell one story.</p>
+          <p class="w-pkg-tagline">Your photographs and a music-driven vertical reel, shot and edited by the same person so both tell one story.</p>
           <details class="w-pkg-details">
-            <summary>See full details</summary>
+            <summary><span class="w-sum-closed">See full details</span><span class="w-sum-open">Hide details</span></summary>
             <p class="w-pkg-group-label">Coverage</p>
             <ul class="w-pkg-list">
               <li><span class="w-hours-text">Six</span> hours of coverage, planned together around your timeline</li>
@@ -726,7 +733,7 @@
             <ul class="w-pkg-list">
               <li>Engagement portrait session</li>
               <li>Carefully curated gallery of professionally edited photographs</li>
-              <li>Handcrafted cinematic highlight film, set to music</li>
+              <li>Music-driven cinematic vertical reel, up to 90 seconds</li>
             </ul>
           </details>
         </div>
@@ -734,9 +741,9 @@
         <div class="w-pkg">
           <p class="w-pkg-name">Premium Hybrid</p>
           <div class="w-pkg-price"><span class="w-price" data-six="$4,000" data-eight="$4,750">$4,000</span></div>
-          <p class="w-pkg-tagline">A second photographer and a longer film, for couples who want more angles and more of the day.</p>
+          <p class="w-pkg-tagline">A second photographer brings additional perspectives, for a fuller and more complete telling of your story.</p>
           <details class="w-pkg-details">
-            <summary>See full details</summary>
+            <summary><span class="w-sum-closed">See full details</span><span class="w-sum-open">Hide details</span></summary>
             <p class="w-pkg-group-label">Coverage</p>
             <ul class="w-pkg-list">
               <li><span class="w-hours-text">Six</span> hours of coverage, planned together around your timeline</li>
@@ -746,7 +753,7 @@
             <ul class="w-pkg-list">
               <li>Engagement portrait session</li>
               <li>Carefully curated gallery of professionally edited photographs</li>
-              <li>Longer handcrafted cinematic highlight film, set to music</li>
+              <li>2–3-minute cinematic highlight film, plus a separate vertical reel up to 90 seconds</li>
             </ul>
           </details>
         </div>
