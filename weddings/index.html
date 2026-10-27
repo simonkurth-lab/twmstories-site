@@ -606,6 +606,22 @@
     .w-hours--card .w-hours-btn { flex: 1; min-height: 44px; padding: 0.55rem 0.5rem; }
     .w-pkg-price { margin-bottom: 0.9rem; }
     .w-price-for { font-family: var(--font-body); font-size: 0.9rem; color: rgba(28,26,23,0.65); }
+    /* Wedding story gallery */
+    .w-gallery {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .w-gallery-item { margin: 0; overflow: hidden; border-radius: 4px; background: var(--surface); }
+    .w-gallery-item img { width: 100%; height: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+    @media (min-width: 700px) {
+      .w-gallery { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+      .w-gallery-item--wide { grid-column: 1 / -1; }
+      .w-gallery-item--wide img { aspect-ratio: 2 / 1; }
+    }
   </style>
 </head>
 <body>
@@ -659,10 +675,19 @@
 
     <hr class="w-divider">
 
+    <!-- Wedding story gallery -->
+    <section class="w-gallery" aria-label="Wedding photographs">
+      <figure class="w-gallery-item"><img src="/assets/wedding-getting-ready.jpg" alt="A bride in her wedding dress looks down with a quiet smile while a bridesmaid adjusts the gown and flower girls watch, in warm window light" width="2000" height="1600" loading="lazy" decoding="async" style="object-position:center 30%;"></figure>
+      <figure class="w-gallery-item"><img src="/assets/wedding-hillside-dip.jpg" alt="A groom dips and kisses his bride on a golden grass hillside above rolling Central Coast hills at sunset" width="2000" height="1125" loading="lazy" decoding="async" style="object-position:35% center;"></figure>
+      <figure class="w-gallery-item w-gallery-item--wide"><img src="/assets/wedding-sparkler-exit.jpg" alt="A couple kisses in a dip beneath string lights in front of a wooden barn as guests on both sides hold sparklers" width="2000" height="1333" loading="lazy" decoding="async"></figure>
+    </section>
+
+    <hr class="w-divider">
+
     <!-- Pre-Wedding Session Photo Strip -->
     <div class="w-photo-strip">
       <div class="w-photo-strip-panel">
-        <img src="/assets/wedding-oak-embrace.jpg" alt="Engaged couple embracing in golden light beneath a canopy of oak trees, San Luis Obispo Central Coast" loading="lazy" decoding="async">
+        <img src="/assets/wedding-first-look.jpg" alt="A bride and groom touching foreheads with their eyes closed, her arm around his neck, in a close embrace" loading="lazy" decoding="async" style="object-position:center 35%;">
       </div>
       <div class="w-photo-strip-panel">
         <img src="https://images.pixieset.com/617259811/c11dacb0944b689aa556425e9a634768-xxlarge.jpg" alt="Engaged couple laughing together under oak trees at golden hour, Central Coast pre-wedding session" loading="lazy" decoding="async" style="object-position:center 65%;">
@@ -672,7 +697,7 @@
         </div>
       </div>
       <div class="w-photo-strip-panel">
-        <img src="https://images.pixieset.com/617259811/f7d28cfa00f99ff674d29ffc9a7b6f7e-xxlarge.jpg" alt="Engaged couple holding hands looking out over golden hills at sunset, Central Coast pre-wedding session" loading="lazy" decoding="async" style="object-position:center bottom;">
+        <img src="/assets/wedding-sunset-embrace.jpg" alt="A smiling bride leans into her groom as he kisses her forehead, golden hillside light glowing behind them" loading="lazy" decoding="async" style="object-position:55% center;">
       </div>
     </div>
 
