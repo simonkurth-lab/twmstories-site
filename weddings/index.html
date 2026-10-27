@@ -534,7 +534,7 @@
     .w-hours-btn:hover { color: var(--text); }
     .w-hours-btn.is-active { background: var(--gold); color: #FAFAF8; }
     .w-hours-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-    .w-hours + .w-pkg-grid { margin-top: 1.5rem; }
+    #collection-grid { margin-top: 2rem; }
     .w-pkg-details summary:focus-visible,
     .w-philosophy summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
 
@@ -601,6 +601,11 @@
     .w-sum-open { display: none; }
     .w-pkg-details[open] .w-sum-open { display: inline; }
     .w-pkg-details[open] .w-sum-closed { display: none; }
+    /* Per-card coverage selector */
+    .w-hours--card { display: flex; width: 100%; margin: 0 0 1.25rem; }
+    .w-hours--card .w-hours-btn { flex: 1; min-height: 44px; padding: 0.55rem 0.5rem; }
+    .w-pkg-price { margin-bottom: 0.9rem; }
+    .w-price-for { font-family: var(--font-body); font-size: 0.9rem; color: rgba(28,26,23,0.65); }
   </style>
 </head>
 <body>
@@ -691,16 +696,15 @@
         </ul>
       </div>
 
-      <div class="w-hours" role="group" aria-label="Coverage length">
-        <button type="button" class="w-hours-btn is-active" data-hours="six" aria-pressed="true">6 hours</button>
-        <button type="button" class="w-hours-btn" data-hours="eight" aria-pressed="false">8 hours</button>
-      </div>
-
-      <div class="w-pkg-grid" id="collection-grid" aria-live="polite">
+      <div class="w-pkg-grid" id="collection-grid">
 
         <div class="w-pkg">
           <p class="w-pkg-name">Photography</p>
-          <div class="w-pkg-price"><span class="w-price" data-six="$2,500" data-eight="$3,000">$2,500</span></div>
+          <div class="w-pkg-price" aria-live="polite"><span class="w-price" data-six="$2,500" data-eight="$3,000">$2,500</span> <span class="w-price-for">/ <span class="w-hours-label">6 hours</span></span></div>
+          <div class="w-hours w-hours--card" role="group" aria-label="Photography coverage length">
+            <button type="button" class="w-hours-btn is-active" data-hours="six" aria-pressed="true">6 hours</button>
+            <button type="button" class="w-hours-btn" data-hours="eight" aria-pressed="false">8 hours</button>
+          </div>
           <p class="w-pkg-tagline">Documentary photography of your day, from the quiet moments beforehand through the celebration.</p>
           <details class="w-pkg-details">
             <summary><span class="w-sum-closed">See full details</span><span class="w-sum-open">Hide details</span></summary>
@@ -720,7 +724,11 @@
         <div class="w-pkg w-pkg--featured">
           <span class="w-pkg-badge">Photography + Film</span>
           <p class="w-pkg-name">Signature Hybrid</p>
-          <div class="w-pkg-price"><span class="w-price" data-six="$3,000" data-eight="$3,500">$3,000</span></div>
+          <div class="w-pkg-price" aria-live="polite"><span class="w-price" data-six="$3,000" data-eight="$3,500">$3,000</span> <span class="w-price-for">/ <span class="w-hours-label">6 hours</span></span></div>
+          <div class="w-hours w-hours--card" role="group" aria-label="Signature Hybrid coverage length">
+            <button type="button" class="w-hours-btn is-active" data-hours="six" aria-pressed="true">6 hours</button>
+            <button type="button" class="w-hours-btn" data-hours="eight" aria-pressed="false">8 hours</button>
+          </div>
           <p class="w-pkg-tagline">Your photographs and a music-driven vertical reel, shot and edited by the same person so both tell one story.</p>
           <details class="w-pkg-details">
             <summary><span class="w-sum-closed">See full details</span><span class="w-sum-open">Hide details</span></summary>
@@ -740,7 +748,11 @@
 
         <div class="w-pkg">
           <p class="w-pkg-name">Premium Hybrid</p>
-          <div class="w-pkg-price"><span class="w-price" data-six="$4,000" data-eight="$4,750">$4,000</span></div>
+          <div class="w-pkg-price" aria-live="polite"><span class="w-price" data-six="$4,000" data-eight="$4,750">$4,000</span> <span class="w-price-for">/ <span class="w-hours-label">6 hours</span></span></div>
+          <div class="w-hours w-hours--card" role="group" aria-label="Premium Hybrid coverage length">
+            <button type="button" class="w-hours-btn is-active" data-hours="six" aria-pressed="true">6 hours</button>
+            <button type="button" class="w-hours-btn" data-hours="eight" aria-pressed="false">8 hours</button>
+          </div>
           <p class="w-pkg-tagline">A second photographer brings additional perspectives, for a fuller and more complete telling of your story.</p>
           <details class="w-pkg-details">
             <summary><span class="w-sum-closed">See full details</span><span class="w-sum-open">Hide details</span></summary>
@@ -866,25 +878,25 @@
   </footer>
 
   <script>
-    (function() {
-      var btns = document.querySelectorAll('.w-hours-btn');
-      function setHours(which) {
-        btns.forEach(function(b) {
-          var on = b.dataset.hours === which;
-          b.classList.toggle('is-active', on);
-          b.setAttribute('aria-pressed', on ? 'true' : 'false');
-        });
-        document.querySelectorAll('.w-price').forEach(function(el) {
-          el.textContent = el.dataset[which];
-        });
-        document.querySelectorAll('.w-hours-text').forEach(function(el) {
-          el.textContent = which === 'eight' ? 'Eight' : 'Six';
-        });
-      }
+    // Each collection card has its own independent 6 / 8-hour selector
+    document.querySelectorAll('.w-pkg').forEach(function(card) {
+      var btns = card.querySelectorAll('.w-hours-btn');
+      var price = card.querySelector('.w-price');
+      if (!btns.length || !price) return;
       btns.forEach(function(b) {
-        b.addEventListener('click', function() { setHours(b.dataset.hours); });
+        b.addEventListener('click', function() {
+          var which = b.dataset.hours;
+          btns.forEach(function(x) {
+            var on = x === b;
+            x.classList.toggle('is-active', on);
+            x.setAttribute('aria-pressed', on ? 'true' : 'false');
+          });
+          price.textContent = price.dataset[which];
+          card.querySelector('.w-hours-label').textContent = which === 'eight' ? '8 hours' : '6 hours';
+          card.querySelector('.w-hours-text').textContent = which === 'eight' ? 'Eight' : 'Six';
+        });
       });
-    })();
+    });
   </script>
 
   <script>
