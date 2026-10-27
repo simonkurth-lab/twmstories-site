@@ -633,24 +633,6 @@
     .w-philosophy summary::after { content: '+'; font-size: 1.1rem; line-height: 1; }
     .w-philosophy[open] summary::after { content: '−'; }
     .w-philosophy-body { margin-top: 1.25rem; }
-    /* Film only */
-    .w-film-only summary { cursor: pointer; display: block; list-style: none; position: relative; padding-right: 2.5rem; }
-    .w-film-only summary::-webkit-details-marker { display: none; }
-    .w-film-only summary::after {
-      content: ''; position: absolute; right: 0.25rem; top: 2.1rem;
-      width: 0.6rem; height: 0.6rem;
-      border-right: 2px solid var(--gold); border-bottom: 2px solid var(--gold);
-      transform: rotate(45deg); transition: transform 0.2s;
-    }
-    .w-film-only[open] summary::after { transform: rotate(-135deg); }
-    .w-film-only summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 6px; }
-    .w-film-only summary .w-label, .w-film-only summary .w-h2 { display: block; }
-    .w-film-only-sub { display: block; color: var(--muted); margin-bottom: 0.75rem; }
-    .w-film-only-cta { display: inline-block; font-size: 0.9rem; font-weight: 600; color: var(--gold); padding: 0.6rem 0; }
-    .w-film-panel { margin-top: 1rem; }
-    .w-film-result { margin-top: 1.75rem; padding: 1.5rem; border: 1px solid var(--border); border-radius: 6px; background: #fff; }
-    .w-film-price { font-family: var(--font-display); font-size: 1.9rem; color: var(--gold); line-height: 1.15; margin-bottom: 1rem; }
-    .w-film-fine { font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-top: 1.25rem; }
     @media (max-width: 480px) {
       .w-hours { display: flex; }
       .w-hours-btn { flex: 1; padding: 0.6rem 0.5rem; }
@@ -660,8 +642,8 @@
     .w-inquire-line a:hover, .w-inquire-line a:focus-visible { border-bottom-color: var(--gold); outline: none; }
     #collections, #intimate, #films, #philosophy, #photography, #photography-and-film { scroll-margin-top: 130px; }
     /* Collection cards: readability, tighter spacing, details toggle */
-    #collection-grid .w-pkg-tagline { color: rgba(28,26,23,0.76); min-height: 0; margin-bottom: 1.25rem; padding-bottom: 1.25rem; }
-    #collection-grid .w-pkg-list li { color: rgba(28,26,23,0.74); }
+    #collection-grid .w-pkg-tagline, #film-grid .w-pkg-tagline { color: rgba(28,26,23,0.76); min-height: 0; margin-bottom: 1.25rem; padding-bottom: 1.25rem; }
+    #collection-grid .w-pkg-list li, #film-grid .w-pkg-list li { color: rgba(28,26,23,0.74); }
     #collection-grid .w-pkg-details { margin-top: 0; }
     .w-sum-open { display: none; }
     .w-pkg-details[open] .w-sum-open { display: inline; }
@@ -785,7 +767,7 @@
       <div style="max-width:760px;margin:0 auto;">
         <p class="w-label">Wedding Collections</p>
         <h2 class="w-h2">Choose the coverage that fits your day.</h2>
-        <p class="w-lead" style="margin-bottom:0;">Three collections, each with six or eight hours of coverage. From the first conversation to the final edit, I'm personally involved in telling your story. Photography is always at the heart of my work, with film woven in when it's part of your collection.</p>
+        <p class="w-lead" style="margin-bottom:0;">Three collections, each with six or eight hours of coverage. From the first conversation to the final edit, I'm personally involved in telling your story. Photography is always at the heart of my work, with film woven in when it's part of your collection. Prefer film on its own? <a href="#films" style="color:var(--gold);font-weight:600;">See Film Only</a>.</p>
         <p class="w-pkg-group-label">Every Collection Includes</p>
         <ul class="w-pkg-list w-includes-grid">
           <li>An engagement portrait session</li>
@@ -892,34 +874,48 @@
     <hr class="w-divider">
 
     <!-- Film Only -->
-    <section class="w-section" id="films">
-      <details class="w-film-only">
-        <summary>
-          <span class="w-label">Another Way to Tell Your Story</span>
-          <span class="w-h2">Film Only</span>
-          <span class="w-film-only-sub">Just the moving pictures. Cinematic, music-driven storytelling.</span>
-          <span class="w-film-only-cta">Explore Film Only options</span>
-        </summary>
-        <div class="w-film-panel">
-          <p class="w-body">Music-driven cinematic storytelling, thoughtfully woven together with selected natural audio and spoken moments where available.</p>
-          <div class="w-hours" role="group" aria-label="Film coverage length">
-            <button type="button" class="w-hours-btn w-film-btn" data-film="four" aria-pressed="false">4 hours</button>
-            <button type="button" class="w-hours-btn w-film-btn is-active" data-film="six" aria-pressed="true">6 hours</button>
-            <button type="button" class="w-hours-btn w-film-btn" data-film="eight" aria-pressed="false">8 hours</button>
-          </div>
-          <div class="w-film-result" aria-live="polite">
-            <p class="w-film-price" id="film-price">$2,500</p>
-            <ul class="w-pkg-list" id="film-list">
-              <li>2–3-minute cinematic highlight film</li>
-              <li>Selected natural audio or spoken moments where available</li>
-            </ul>
-          </div>
-          <p class="w-film-fine">Includes a pre-wedding consultation. Optional pre-wedding filming may be quoted separately. Full ceremony recordings, complete speeches, and continuous audio coverage are not included.</p>
-          <p class="w-inquire-line" style="text-align:left;margin-top:1rem;">Interested in Film Only? <a href="https://tawhaowhaostories.pixieset.com/contact-form/cf_jNb7w8oNx4QgmgWjgDRYIBH5w6YO" target="_blank" rel="noopener noreferrer">Inquire about film →</a></p>
+    <section class="w-section--wide" id="films" style="padding-top:4rem;padding-bottom:4rem;">
+      <div style="max-width:760px;margin:0 auto;">
+        <p class="w-label">Wedding Films</p>
+        <h2 class="w-h2">Film Only</h2>
+        <p class="w-lead" style="margin-bottom:0;">Just the moving pictures. Cinematic, music-driven storytelling, shot and edited personally by me, with selected natural audio and spoken moments woven in where available.</p>
+      </div>
+      <div class="w-pkg-grid" id="film-grid">
+        <div class="w-pkg">
+          <p class="w-pkg-name">Film Only · 4 hours</p>
+          <div class="w-pkg-price"><span class="w-price">$1,750</span></div>
+          <p class="w-pkg-tagline">A focused, music-driven reel of the moments that matter most.</p>
+          <p class="w-pkg-group-label">You Receive</p>
+          <ul class="w-pkg-list">
+            <li>Music-driven cinematic reel, up to 90 seconds</li>
+            <li>Natural ambient audio where appropriate</li>
+          </ul>
         </div>
-      </details>
+        <div class="w-pkg">
+          <p class="w-pkg-name">Film Only · 6 hours</p>
+          <div class="w-pkg-price"><span class="w-price">$2,500</span></div>
+          <p class="w-pkg-tagline">A cinematic highlight film that carries the feeling of your whole celebration.</p>
+          <p class="w-pkg-group-label">You Receive</p>
+          <ul class="w-pkg-list">
+            <li>2–3-minute cinematic highlight film</li>
+            <li>Selected natural audio or spoken moments where available</li>
+          </ul>
+        </div>
+        <div class="w-pkg">
+          <p class="w-pkg-name">Film Only · 8 hours</p>
+          <div class="w-pkg-price"><span class="w-price">$3,000</span></div>
+          <p class="w-pkg-tagline">A fuller wedding film, with a vertical reel ready to share.</p>
+          <p class="w-pkg-group-label">You Receive</p>
+          <ul class="w-pkg-list">
+            <li>4–5-minute cinematic wedding film</li>
+            <li>Separate vertical reel, up to 90 seconds</li>
+            <li>Selected natural audio and spoken moments where available</li>
+          </ul>
+        </div>
+      </div>
+      <p class="w-film-note">Every Film Only collection includes a pre-wedding consultation. Optional pre-wedding filming may be quoted separately. Full ceremony recordings, complete speeches, and continuous audio coverage are not included.</p>
+      <p class="w-inquire-line">Interested in Film Only? <a href="https://tawhaowhaostories.pixieset.com/contact-form/cf_jNb7w8oNx4QgmgWjgDRYIBH5w6YO" target="_blank" rel="noopener noreferrer">Inquire about film →</a></p>
     </section>
-
 
     <hr class="w-divider">
 
@@ -1100,36 +1096,6 @@
         });
       });
     });
-  </script>
-
-  <script>
-    (function() {
-      var DATA = {
-        four:  { price: '$1,750', items: ['Music-driven cinematic reel, up to 90 seconds', 'Natural ambient audio where appropriate'] },
-        six:   { price: '$2,500', items: ['2–3-minute cinematic highlight film', 'Selected natural audio or spoken moments where available'] },
-        eight: { price: '$3,000', items: ['4–5-minute cinematic wedding film', 'Separate vertical reel, up to 90 seconds', 'Selected natural audio and spoken moments where available'] }
-      };
-      var btns = document.querySelectorAll('.w-film-btn');
-      var price = document.getElementById('film-price');
-      var list = document.getElementById('film-list');
-      btns.forEach(function(b) {
-        b.addEventListener('click', function() {
-          var d = DATA[b.dataset.film];
-          btns.forEach(function(x) {
-            var on = x === b;
-            x.classList.toggle('is-active', on);
-            x.setAttribute('aria-pressed', on ? 'true' : 'false');
-          });
-          price.textContent = d.price;
-          list.innerHTML = '';
-          d.items.forEach(function(t) {
-            var li = document.createElement('li');
-            li.textContent = t;
-            list.appendChild(li);
-          });
-        });
-      });
-    })();
   </script>
 
   <script>
