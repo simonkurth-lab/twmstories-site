@@ -777,7 +777,7 @@
             <button type="button" class="w-hours-btn is-active" data-hours="six" aria-pressed="true">6 hours</button>
             <button type="button" class="w-hours-btn" data-hours="eight" aria-pressed="false">8 hours</button>
           </div>
-          <p class="w-pkg-tagline">A second photographer brings additional perspectives, for a fuller and more complete telling of your story.</p>
+          <p class="w-pkg-tagline">A second photographer brings additional perspectives, with a cinematic highlight film at six hours and a fuller wedding film at eight.</p>
           <details class="w-pkg-details">
             <summary><span class="w-sum-closed">See full details</span><span class="w-sum-open">Hide details</span></summary>
             <p class="w-pkg-group-label">Coverage</p>
@@ -789,7 +789,8 @@
             <ul class="w-pkg-list">
               <li>Engagement portrait session</li>
               <li>Carefully curated gallery of professionally edited photographs</li>
-              <li>2–3-minute cinematic highlight film, plus a separate vertical reel up to 90 seconds</li>
+              <li><span class="w-by-hours" data-six="2–3-minute cinematic highlight film" data-eight="4–5-minute cinematic wedding film">2–3-minute cinematic highlight film</span></li>
+              <li>Separate vertical reel, up to 90 seconds</li>
             </ul>
           </details>
         </div>
@@ -960,6 +961,7 @@
             x.setAttribute('aria-pressed', on ? 'true' : 'false');
           });
           price.textContent = price.dataset[which];
+          card.querySelectorAll('.w-by-hours').forEach(function(el) { el.textContent = el.dataset[which]; });
           card.querySelector('.w-hours-label').textContent = which === 'eight' ? '8 hours' : '6 hours';
           card.querySelector('.w-hours-text').textContent = which === 'eight' ? 'Eight' : 'Six';
         });
