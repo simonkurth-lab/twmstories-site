@@ -60,6 +60,71 @@
   }
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many photographs will we receive?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every wedding tells a different story. For photography-only coverage, couples can generally expect approximately 50 thoughtfully edited photographs per hour. Hybrid collections may deliver fewer photographs because I'm personally capturing both photography and film. Premium Hybrid includes a second photographer, allowing for more comprehensive coverage. These are estimates rather than guaranteed minimums. My priority is preserving the meaningful moments, relationships, and atmosphere of your day."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When will we receive our photographs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "I aim to share a small preview within 72 hours whenever possible. Complete wedding galleries are typically delivered within 6–8 weeks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When will our wedding film be ready?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Wedding films are typically delivered within 8–12 weeks. Each film is individually crafted, thoughtfully paced, and paired with licensed music."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What kind of wedding films do you create?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "My wedding films are cinematic, music-driven stories that preserve the feeling of your celebration. Signature Hybrid includes a social-media-ready wedding reel of up to 90 seconds. Premium Hybrid includes a cinematic film, a 2–3-minute highlight film with six hours of coverage or a 4–5-minute wedding film with eight, plus a separate vertical reel of up to 90 seconds. Film Only is available with four, six, or eight hours of coverage: a reel of up to 90 seconds at four hours, a 2–3-minute highlight film at six hours, and a 4–5-minute wedding film with a separate vertical reel of up to 90 seconds at eight hours. Full ceremony recordings, complete speeches, and documentary audio coverage are not included unless specifically agreed upon."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do we reserve our date?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A signed agreement and booking retainer secure your wedding date. The retainer is applied toward your collection total, and the remaining payment terms are outlined in your agreement."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you travel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. I'm based on California's Central Coast and photograph weddings throughout San Luis Obispo County, Paso Robles, and surrounding areas. Travel arrangements and any additional fees are discussed before booking."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will you help us feel comfortable in front of the camera?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. I'll offer gentle direction when needed, especially during portraits, while allowing the genuine moments of your day to unfold naturally. Your wedding should feel like a celebration, not an all-day photoshoot."
+      }
+    }
+  ]
+}
+  </script>
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://api.fontshare.com">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=zodiak@400,500,700&display=swap" rel="stylesheet">
@@ -648,6 +713,18 @@
     .w-addl-body { text-align: left; max-width: 60ch; margin: 0.25rem auto 0; }
     .w-addl-body p { font-size: 0.9rem; color: rgba(28,26,23,0.74); line-height: 1.75; margin-bottom: 0.9rem; }
     .w-addl-body p:last-child { margin-bottom: 0; }
+    /* FAQ */
+    .w-faq { margin-top: 1.5rem; border-top: 1px solid var(--border); }
+    .w-faq-item { border-bottom: 1px solid var(--border); }
+    .w-faq-item summary { display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-height: 44px; padding: 0.9rem 0; cursor: pointer; list-style: none; font-size: 1rem; font-weight: 500; color: var(--text); }
+    .w-faq-item summary::-webkit-details-marker { display: none; }
+    .w-faq-item summary::after { content: '+'; color: var(--gold); font-size: 1.2rem; line-height: 1; flex-shrink: 0; }
+    .w-faq-item[open] summary::after { content: '−'; }
+    .w-faq-item summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+    .w-faq-body { padding-bottom: 1rem; max-width: 62ch; }
+    .w-faq-body .w-body { font-size: 0.95rem; margin-bottom: 0.9rem; }
+    .w-faq-body .w-body:last-child { margin-bottom: 0; }
+    #faq { scroll-margin-top: 130px; }
   </style>
 </head>
 <body>
@@ -696,7 +773,7 @@
       <p class="w-body">My role isn't to direct every moment. It's to notice them.</p>
       <figure class="w-hero-figure"><img src="/assets/wedding-getting-ready.jpg" alt="A bride in her wedding dress looks down with a quiet smile while a bridesmaid adjusts the gown and flower girls watch, in warm window light" width="2000" height="1600" loading="lazy" decoding="async"></figure>
       <p class="w-body">The quiet moments before the ceremony. The laughter between family and friends. The emotion that often goes unnoticed. The glance across the room. The hug that lasts a little longer than expected.</p>
-      <p class="w-body">Every wedding is photographed, filmed, and edited personally by me. I don't outsource any part of the process because I believe every story deserves the same care from beginning to end.</p>
+      <p class="w-body">Every wedding is led and edited personally by me, because I believe every story deserves the same care from beginning to end.</p>
       <p class="w-body">If your plans look a little different, I'd love to hear about them. Every wedding is unique, and I'm always happy to create a collection that fits your day.</p>
     </div>
 
@@ -739,7 +816,6 @@
             </ul>
             <p class="w-pkg-group-label">You Receive</p>
             <ul class="w-pkg-list">
-              <li>Engagement portrait session</li>
               <li>Carefully curated gallery of professionally edited photographs</li>
             </ul>
           </details>
@@ -763,7 +839,6 @@
             </ul>
             <p class="w-pkg-group-label">You Receive</p>
             <ul class="w-pkg-list">
-              <li>Engagement portrait session</li>
               <li>Carefully curated gallery of professionally edited photographs</li>
               <li>Music-driven cinematic vertical reel, up to 90 seconds</li>
             </ul>
@@ -787,7 +862,6 @@
             </ul>
             <p class="w-pkg-group-label">You Receive</p>
             <ul class="w-pkg-list">
-              <li>Engagement portrait session</li>
               <li>Carefully curated gallery of professionally edited photographs</li>
               <li><span class="w-by-hours" data-six="2–3-minute cinematic highlight film" data-eight="4–5-minute cinematic wedding film">2–3-minute cinematic highlight film</span></li>
               <li>Separate vertical reel, up to 90 seconds</li>
@@ -799,7 +873,7 @@
       <!-- Additional coverage -->
       <div class="w-addl" id="additional-coverage">
         <h3 class="w-addl-title">Need a little more time?</h3>
-        <p class="w-addl-text">Additional wedding coverage is available at $350 per hour, regardless of collection.</p>
+        <p class="w-addl-text">Additional wedding coverage is available at $350 per hour, subject to availability and advance agreement.</p>
         <details class="w-pkg-details w-addl-details">
           <summary>How additional coverage works</summary>
           <div class="w-addl-body">
@@ -824,7 +898,7 @@
           <span class="w-label">Another Way to Tell Your Story</span>
           <span class="w-h2">Film Only</span>
           <span class="w-film-only-sub">Just the moving pictures. Cinematic, music-driven storytelling.</span>
-          <span class="w-film-only-cta">Explore film collections</span>
+          <span class="w-film-only-cta">Explore Film Only options</span>
         </summary>
         <div class="w-film-panel">
           <p class="w-body">Music-driven cinematic storytelling, thoughtfully woven together with selected natural audio and spoken moments where available.</p>
@@ -841,11 +915,9 @@
             </ul>
           </div>
           <p class="w-film-fine">Includes a pre-wedding consultation. Optional pre-wedding filming may be quoted separately. Full ceremony recordings, complete speeches, and continuous audio coverage are not included.</p>
-          <p class="w-inquire-line" style="text-align:left;margin-top:1rem;">Interested in film only? <a href="https://tawhaowhaostories.pixieset.com/contact-form/cf_jNb7w8oNx4QgmgWjgDRYIBH5w6YO" target="_blank" rel="noopener noreferrer">Inquire about film →</a></p>
+          <p class="w-inquire-line" style="text-align:left;margin-top:1rem;">Interested in Film Only? <a href="https://tawhaowhaostories.pixieset.com/contact-form/cf_jNb7w8oNx4QgmgWjgDRYIBH5w6YO" target="_blank" rel="noopener noreferrer">Inquire about film →</a></p>
         </div>
       </details>
-    </section>
-
     </section>
 
 
@@ -902,7 +974,6 @@
         <summary>Read my philosophy</summary>
         <div class="w-philosophy-body">
           <p class="w-body">I believe good photography starts with getting to know the people in front of the camera. It's why I make time to connect before the wedding, and why I prefer to let the day unfold naturally.</p>
-          <p class="w-body">Every Photography and Hybrid collection includes an engagement portrait session. It's a chance for us to meet, talk, take photographs, and become comfortable working together before the wedding.</p>
           <p class="w-body">When the day arrives, I want you to know who I am and how I work. I'll offer direction when it's useful, lend a hand when I can, and step into the background when the moments are unfolding naturally. My job is to help you enjoy your day while I document it.</p>
           <p class="w-body"><em>Ngā Kōrero Ora — Living Stories. Real people, real moments, and the stories worth remembering.</em></p>
         </div>
@@ -910,6 +981,67 @@
     </section>
 
     <hr class="w-divider">
+
+    <!-- FAQ -->
+    <section class="w-section" id="faq">
+      <p class="w-label">Wedding FAQ</p>
+      <h2 class="w-h2">Good questions, honest answers.</h2>
+      <div class="w-faq">
+        <details class="w-faq-item">
+          <summary>How many photographs will we receive?</summary>
+          <div class="w-faq-body">
+            <p class="w-body">Every wedding tells a different story. For photography-only coverage, couples can generally expect approximately 50 thoughtfully edited photographs per hour.</p>
+            <p class="w-body">Hybrid collections may deliver fewer photographs because I'm personally capturing both photography and film. Premium Hybrid includes a second photographer, allowing for more comprehensive coverage.</p>
+            <p class="w-body">These are estimates rather than guaranteed minimums. My priority is preserving the meaningful moments, relationships, and atmosphere of your day.</p>
+          </div>
+        </details>
+        <details class="w-faq-item">
+          <summary>When will we receive our photographs?</summary>
+          <div class="w-faq-body">
+            <p class="w-body">I aim to share a small preview within 72 hours whenever possible. Complete wedding galleries are typically delivered within 6–8 weeks.</p>
+          </div>
+        </details>
+        <details class="w-faq-item">
+          <summary>When will our wedding film be ready?</summary>
+          <div class="w-faq-body">
+            <p class="w-body">Wedding films are typically delivered within 8–12 weeks. Each film is individually crafted, thoughtfully paced, and paired with licensed music.</p>
+          </div>
+        </details>
+        <details class="w-faq-item">
+          <summary>What kind of wedding films do you create?</summary>
+          <div class="w-faq-body">
+            <p class="w-body">My wedding films are cinematic, music-driven stories that preserve the feeling of your celebration.</p>
+            <p class="w-body">Signature Hybrid includes a social-media-ready wedding reel of up to 90 seconds.</p>
+            <p class="w-body">Premium Hybrid includes a cinematic film, a 2–3-minute highlight film with six hours of coverage or a 4–5-minute wedding film with eight, plus a separate vertical reel of up to 90 seconds.</p>
+            <p class="w-body">Film Only is available with four, six, or eight hours of coverage: a reel of up to 90 seconds at four hours, a 2–3-minute highlight film at six hours, and a 4–5-minute wedding film with a separate vertical reel of up to 90 seconds at eight hours.</p>
+            <p class="w-body">Full ceremony recordings, complete speeches, and documentary audio coverage are not included unless specifically agreed upon.</p>
+          </div>
+        </details>
+        <details class="w-faq-item">
+          <summary>How do we reserve our date?</summary>
+          <div class="w-faq-body">
+            <p class="w-body">A signed agreement and booking retainer secure your wedding date. The retainer is applied toward your collection total, and the remaining payment terms are outlined in your agreement.</p>
+          </div>
+        </details>
+        <details class="w-faq-item">
+          <summary>Do you travel?</summary>
+          <div class="w-faq-body">
+            <p class="w-body">Absolutely. I'm based on California's Central Coast and photograph weddings throughout San Luis Obispo County, Paso Robles, and surrounding areas. Travel arrangements and any additional fees are discussed before booking.</p>
+          </div>
+        </details>
+        <details class="w-faq-item">
+          <summary>Will you help us feel comfortable in front of the camera?</summary>
+          <div class="w-faq-body">
+            <p class="w-body">Absolutely. I'll offer gentle direction when needed, especially during portraits, while allowing the genuine moments of your day to unfold naturally.</p>
+            <p class="w-body">Your wedding should feel like a celebration, not an all-day photoshoot.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <hr class="w-divider">
+
+    <!-- Future: wedding film section (add here once a film is cleared for publication; do not embed placeholders) -->
 
     <!-- CTA section -->
     <section class="w-section" style="text-align:center;">
@@ -929,7 +1061,7 @@
     <div class="w-footer-inner">
       <div>
         <a href="/" class="w-footer-brand">TWM Stories</a>
-        <p class="w-footer-tagline">Portraits &amp; Memory Films on California's Central Coast. Living stories, told honestly.</p>
+        <p class="w-footer-tagline">Photography, wedding films &amp; storytelling on California's Central Coast. Living stories, told honestly.</p>
         <p style="font-size:0.75rem;color:var(--faint);margin-top:0.5rem;">Serving Arroyo Grande, San Luis Obispo, Pismo Beach, and the 805.</p>
       </div>
       <nav aria-label="Footer navigation">
@@ -943,10 +1075,11 @@
         </div>
       </nav>
     </div>
-    <p class="w-footer-copy">© 2025 TWM Stories — Tāwhaowhao Stories &nbsp;·&nbsp; Arroyo Grande, CA &nbsp;·&nbsp; (805) 704-2260</p>
+    <p class="w-footer-copy">© <span id="copy-year">2026</span> TWM Stories — Tāwhaowhao Stories &nbsp;·&nbsp; Arroyo Grande, CA &nbsp;·&nbsp; (805) 704-2260</p>
   </footer>
 
   <script>
+    document.getElementById('copy-year').textContent = new Date().getFullYear();
     // Each collection card has its own independent 6 / 8-hour selector
     document.querySelectorAll('.w-pkg').forEach(function(card) {
       var btns = card.querySelectorAll('.w-hours-btn');
