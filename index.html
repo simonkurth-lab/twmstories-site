@@ -205,13 +205,13 @@
 
         <!-- Rotating background slides — Senior, Wedding, Events & Performances, Sports & Community -->
         <div class="hero-slides" aria-hidden="true">
-          <div class="hero-slide is-active" data-slide-index="0" data-duration="9000">
+          <div class="hero-slide is-active" data-slide-index="0" data-duration="4500">
             <img class="hero-slide__poster" src="/assets/senior-2026/senior-coastal-rocks-standing.jpg" alt="Senior portrait standing on coastal rocks, Central Coast California" loading="eager" decoding="async">
             <div class="hero-slide__motion hero-slide__motion--bunny">
               <iframe data-src="https://iframe.mediadelivery.net/embed/635710/ee5a6dd5-64f2-470e-a5d9-82293037571e?autoplay=true&loop=true&muted=true&preload=true&controls=false&background=true" allow="autoplay" title="Senior Portraits &amp; Memory Films"></iframe>
             </div>
           </div>
-          <div class="hero-slide" data-slide-index="1" data-duration="9000">
+          <div class="hero-slide" data-slide-index="1" data-duration="4500">
             <img class="hero-slide__poster" src="/assets/senior-2026/senior-vineyard-road-walk.jpg" alt="Senior boy walking down a vineyard dirt road at golden hour, Central Coast California" loading="lazy" decoding="async" style="object-position:center 40%;">
           </div>
           <div class="hero-slide" data-slide-index="2">
@@ -234,7 +234,7 @@
             if (!slides.length) return;
             var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             var current = 0;
-            var ROTATE_MS = 6000; // default; seniors (primary) override via data-duration
+            var ROTATE_MS = 4500; // default; seniors (primary) override via data-duration
 
             function motionEl(slide) {
               var wrap = slide.querySelector('.hero-slide__motion');
