@@ -678,6 +678,9 @@
       .w-gallery-item--wide img { aspect-ratio: 2 / 1; }
     }
     /* Intro image wrapped by the 'quiet moments' paragraph */
+    .w-panorama { margin: 0; background: #14110f; }
+    .w-panorama img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+    @media (min-width: 1100px) { .w-panorama img { max-height: 82vh; } }
     .w-hero-figure { margin: 0 0 1.5rem; border-radius: 4px; overflow: hidden; }
     .w-hero-figure img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: center 30%; }
     @media (min-width: 700px) {
@@ -779,6 +782,11 @@
       <p class="w-body">Every wedding is led and edited personally by me, because I believe every story deserves the same care from beginning to end.</p>
       <p class="w-body">If your plans look a little different, I'd love to hear about them. Every wedding is unique, and I'm always happy to create a collection that fits your day.</p>
     </div>
+
+    <!-- Full-bleed sunset panorama -->
+    <figure class="w-panorama">
+      <img src="/assets/wedding-sunset-panorama.jpg" alt="A bride and groom embrace forehead to forehead on a golden grass hilltop as the sun sets over rolling Central Coast hills" width="2400" height="1350" loading="lazy" decoding="async">
+    </figure>
 
     <hr class="w-divider">
 
